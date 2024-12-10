@@ -1,0 +1,31 @@
+{{ if or (eq .Sitetitle "JimmyWong") (eq .Sitetitle "JimmyWong.XYZ") }}
+<div class="comments">
+	<h3>Comments</h3>
+	<div id="comment-form-container"></div> <!-- 这里将插入评论框 -->
+</div>
+
+<div class="commentsList">
+	<h3>Comments Lists</h3>
+	<div id="comment-list-container-{{ .uuid }}"></div> <!-- 这里播放评论列表-->
+</div>
+{{ else if eq .Sitetitle "几米黄" }}
+
+<div>
+<a href="mailto:aboutworks@outlook.com">给几米黄发送邮件</a>
+</div>
+
+<div>
+关注微信公众号,或微信搜索: 几米黄
+<img src="/wechat.jpg" width="30%">
+</div>
+
+{{ end }} 
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		// 调用 formComments 函数生成评论框，并插入到指定位置
+		const uuid = '{{ .uuid }}';
+		document.getElementById('comment-form-container').innerHTML = formComments(uuid);
+		getComments(uuid);
+	});
+</script>

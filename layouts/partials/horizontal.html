@@ -1,0 +1,43 @@
+<div class="home-horizontal">
+
+	<div class="home-image" style="background-image: url('{{ .image | absURL }}'); ">
+
+		{{ if eq .Position "top"}}
+		<div class="flag">{{ .Position }}</div>
+		{{ end }}
+
+		<div class="home-msrc">
+
+			{{ if or (eq .Sitetitle "JimmyWong") (eq .Sitetitle "JimmyWong.XYZ") }}
+			{{ with .youtube }}
+			<a href="{{ . }}" style="background-image:url('youtube.svg')"></a>
+			{{ end }}
+			{{ else if eq .Sitetitle "JimmyWong.CN" }}
+			{{ with .bilibili }}
+			<a href="{{ . }}" style="background-image:url('bilibili.png')"></a>
+			{{ end }}
+			{{ end }}
+
+		</div>
+	</div>
+
+	<div class="home-tablet-item-detail">
+		<div class="home-item-detail-title">
+			<h2>
+				<a href="{{ .Permalink }}" target="_blank" class="read-more">
+				<span style="display:inline-block; background-color: red; color:white; padding:0 1rem;  text-transform: uppercase;">{{ .Position }}</span>	{{ .Title }}
+				</a>
+			</h2>
+			<div class="home-date">{{ .Date.Format "2006-01-02" }}</div>
+		</div>
+		<div class="home-item-detail-desc">{{ .desc }}</div>
+		<div class="between">
+			<div></div>
+			<div>
+				{{ partial "share.html" (dict "title" .Title "sitetitle" .Sitetitle "image" (.image | absURL)) }}
+			</div>
+		</div>
+	</div>
+
+
+</div>

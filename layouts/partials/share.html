@@ -1,0 +1,22 @@
+<div class="share-list">
+	{{ if or (eq .sitetitle "JimmyWong") (eq .sitetitle "JimmyWong.XYZ") }}
+
+	<span onclick="shareToPinterest('{{ .image }}')">
+		<img src="{{ " /svgs/pin.svg" | relURL }}" alt="pinterest">
+	</span>
+	<span>
+		<img src="{{ " /svgs/in.svg" | relURL }}" alt="linkin">
+	</span>
+	<span onclick="shareToReddit('{{ .image }}', '{{ .title }}')">
+		<i class="icon-shareToReddit"></i>
+	</span>
+
+	{{ else if eq .sitetitle "JimmyWong.CN" }}
+
+	<span onclick="shareToHuaban('{{ .title }}', '{{ .image }}', '{{ .title }}')">
+		<img src="{{ " /svgs/hb.svg" | relURL }}" alt="Huaban">
+	</span>
+
+	{{ end }}
+
+</div>

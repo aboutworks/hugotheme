@@ -1,0 +1,34 @@
+<!-- {{ range site.RegularPages }}
+<h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }} </a></h2>
+{{ end }} -->
+<div class="header">
+	<ul>
+		<li class="logo">
+			
+			<a href="/">JimmyWong</a>
+			<!-- <a href="/">{{ .Site.Title }}</a> -->
+		</li>
+		<li style="padding-left:3rem">
+			{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "JimmyWong.XYZ") }}
+			<a href="https://www.youtube.com/@jimmywongxyz">Youtube</a> |
+			<a href="https://www.tiktok.com/@jimmywongxyz" >TikTok</a> |
+			<a href="https://x.com/jimmywongxyz">Twitter&X</a> |
+			<a href="mailto:aboutworks@outlook.com">Email</a>
+			{{ else if eq .Site.Title "JimmyWong.CN" }}
+			<a href="https://www.bilibili.com/@jimmywongxyz">哔哩哔哩</a>
+			<a href="https://www.douyin.com/@jimmywongxyz">抖音</a>
+			<a href="mailto:aboutworks@outlook.com">邮件</a>
+			{{ end }}
+		</li>
+		<!-- {{ range .Site.Menus.main }}
+		<li><a href="{{ .URL }}">{{ .Name }}</a></li>
+		{{ end }}
+		<li> -->
+			<!-- {{ range .Site.Languages }}
+			<a href="{{ .Lang | relLangURL }}">
+			  {{ .LanguageName }}
+			</a> |
+			{{ end }} -->
+		</li>
+	</ul>
+</div>

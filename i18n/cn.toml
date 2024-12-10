@@ -1,0 +1,9 @@
+catalog = "目录"
+[welcome]
+welcome = "欢迎"
+[footer]
+copyright = "版权所有"
+privacy = "隐私政策"
+terms = "使用条款"
+contactus = "联系我们"
+all_rights_reserved = "保留所有权利"
