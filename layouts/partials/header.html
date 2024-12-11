@@ -1,7 +1,7 @@
 <div class="header">
 	<ul>
 		<li class="logo">
-			<a href="/">{{ .Site.Title }}</a>
+			<a href="/"><embed src='{{ .Site.Params.logoUrl }}' /></a>
 		</li>
 		<li style="padding-left:3rem">
 			{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "JimmyWong.XYZ") }}
