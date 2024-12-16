@@ -6,6 +6,7 @@
 .logo {
 	font-family: 'PressStart2P', sans-serif;
 	font-size: 32px;
+	text-transform: uppercase;
 }
 
 .light {
@@ -168,8 +169,6 @@ h2 {
 	width: var(--homeWidth);
 	margin: auto;
 }
-
-.home-item {}
 
 .home-mobile-item,
 .home-tablet-item {
@@ -417,7 +416,6 @@ h2 {
 }
 .home-vertical,
 .home-horizontal{
-	margin:5rem 0;
 }
 
 .home-horizontal {
