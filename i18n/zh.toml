@@ -1,6 +1,7 @@
 catalog = "目录"
-[welcome]
-welcome = "欢迎"
+[common]
+date = "发表时间"
+type = "文章类型"
 [footer]
 copyright = "版权所有"
 privacy = "隐私政策"

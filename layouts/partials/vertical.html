@@ -1,6 +1,7 @@
 <div class="home-vertical">
-
-	<div class="home-image" style="background-image: url('{{ .image | absURL }}'); ">
+<!-- style="background-image: url('{{ .image | absURL }}'); " -->
+	<div class="home-image" >
+		<img src="{{ .image | absURL }}" width="393">
 
 		{{ if eq .Position "top"}}
 		<div class="flag">{{ .Position }}</div>

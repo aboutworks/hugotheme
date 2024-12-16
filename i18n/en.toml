@@ -1,7 +1,7 @@
-
 catalog = "Catalog"
-[welcome]
-welcome = "Welcome"
+[common]
+date = "Date"
+type = "Type"
 [footer]
 copyright = "Copyright"
 privacy = "Privacy Policy"
