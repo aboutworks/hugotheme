@@ -20,7 +20,7 @@
 	--colorImage: rgb(237, 237, 237);
 	--colorDate: rgb(214, 214, 214);
 	--colorDesc: rgb(180, 180, 180);
-	--colorLink: gray;
+	--colorLink: #598ecb;
 	--colorHover: gray;
 	--colorVisited: gray;
 	--colorActive: gray;
@@ -41,9 +41,10 @@
 	box-sizing: border-box;
 }
 
+.markdown-body a,
 a:link {
 	text-decoration: none;
-	color: var(--colorLink)
+	color: var(--colorLink) !important;
 }
 
 a:hover {
