@@ -1,15 +1,18 @@
 <div class="header">
 	<ul>
 		<li class="logo">
-			<a href="/"><img src='{{ .Site.Params.logoUrl }}' height="42" /></a>
+			<!-- <a href="/"><img src='{{ .Site.Params.logoUrl }}' height="42" /></a> -->
+			 <!-- {{ .Site.Title }} -->
+			   <a href="/">JIMMYWONG</a>
+			   <a href="/about">More</a>
 		</li>
-		<li style="padding-left:3rem">
+		<li >
 			{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "JimmyWong.XYZ") }}
 			<a href="https://www.youtube.com/@jimmywongxyz">Youtube</a> |
 			<a href="https://www.tiktok.com/@jimmywongxyz" >TikTok</a> |
 			<a href="https://x.com/jimmywongxyz">Twitter&X</a> |
 			<a href="mailto:aboutworks@outlook.com">Email</a>
-			{{ else if eq .Site.Title "JimmyWong.CN" }}
+			{{ else if eq .Site.Title "几米黄" }}
 			<a href="https://www.bilibili.com/@jimmywongxyz">哔哩哔哩</a>
 			<a href="https://www.douyin.com/@jimmywongxyz">抖音</a>
 			<a href="mailto:aboutworks@outlook.com">邮件</a>
