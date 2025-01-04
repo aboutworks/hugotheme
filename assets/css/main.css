@@ -4,8 +4,7 @@
 }
 
 .logo {
-	font-family: 'PressStart2P', sans-serif;
-	font-size: 32px;
+	/* font-family: 'PressStart2P', sans-serif; */
 	text-transform: uppercase;
 }
 
@@ -16,7 +15,7 @@
 :root {
 	--colorBorderStyle: #ECECEC;
 	--colorHomeItem: #ffffff;
-	--colorBackground: #F6F6F6;
+	--colorBackground: #DDDDD5;
 	--colorImage: rgb(237, 237, 237);
 	--colorDate: rgb(214, 214, 214);
 	--colorDesc: rgb(180, 180, 180);
@@ -28,10 +27,10 @@
 	/* --headerWidth:  */
 	--fontSize: 14px;
 	--fontFamily: Arial, Helvetica, sans-serif;
-	--homeWidth: 1280px;
+	--homeWidth: 980px;
 	--scrollbarWidth: 0px;
 	--mobileWidth: 393px;
-	--headerHeight: 10rem;
+	--headerHeight: 300px;
 	--footerHeight: 2rem;
 	--mainHeight: calc(100vh - var(--headerHeight) - var(--footerHeight));
 	--borderStyle: 1px solid var(--colorBorderStyle);
@@ -414,55 +413,60 @@ h2 {
 	width: var(--homeWidth);
 	margin: auto;
 }
+
 .home-vertical,
-.home-horizontal{
-}
+.home-horizontal {}
 
 .home-horizontal {
 	background-color: white;
 	border: var(--borderStyle)
 }
-.home-image{
-	position:relative;
+
+.home-image {
+	position: relative;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
-.home-horizontal .home-image img{
+
+.home-horizontal .home-image img {
 	width: 100%;
 	/* height:495px; */
 	/* width: 100%; height:336px; */
 }
-.home-vertical .home-image img{
+
+.home-vertical .home-image img {
 	width: 393px;
 	/* height: 852px; */
 }
 
-.home-msrc{
+.home-msrc {
 	height: 100%;
 	width: 100%;
 	display: none;
 	position: absolute;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	background-color: rgba(0, 0, 0, .6);
 	backdrop-filter: blur(6px);
 }
-.home-image:hover .home-msrc{
+
+.home-image:hover .home-msrc {
 	transition: all .3s ease-in-out;
-	display:block;
+	display: block;
 	position: absolute;
 }
-.home-msrc a{
+
+.home-msrc a {
 	display: block;
 	width: 120px;
-	height:80px;
+	height: 80px;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size:contain;
+	background-size: contain;
 }
 
 .home-vertical {
@@ -471,7 +475,8 @@ h2 {
 	display: flex;
 	justify-content: space-between;
 }
-.home-vertical-detail{
+
+.home-vertical-detail {
 	width: calc(var(--homeWidth) - var(--mobileWidth));
 	text-align: left;
 	display: flex;
@@ -484,7 +489,7 @@ h2 {
 	padding: 2rem;
 }
 
-.home-vertical-reverse-detail{
+.home-vertical-reverse-detail {
 	width: calc(var(--homeWidth) - var(--mobileWidth));
 	text-align: right;
 	display: flex;
@@ -503,8 +508,8 @@ h2 {
 	color: rgb(95, 95, 95);
 }
 
-.logosvg{
-	height:42px;
+.logosvg {
+	height: 42px;
 	width: 202px;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -525,26 +530,31 @@ h2 {
 }
 
 @media screen and (max-width: 780px) {
-	.home-page-content,.home-item{
+
+	.home-page-content,
+	.home-item {
 		width: 100%;
 	}
+
 	.home-vertical,
-	.home-horizontal{
+	.home-horizontal {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 
 	}
+
 	.home-vertical .home-image img,
-	.home-horizontal .home-image img{
-		width:100%
-		/* width: 100%;
+	.home-horizontal .home-image img {
+		width: 100%
+			/* width: 100%;
 		height:300px; */
 	}
-	.home-vertical-detail{
+
+	.home-vertical-detail {
 		width: 100%;
 	}
-	
+
 
 
 
@@ -571,74 +581,124 @@ h2 {
 
 .flag {
 	position: absolute;
-	top:0;
-	left:1rem;
+	top: 0;
+	left: 1rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-transform: uppercase;
-	color:white;
-	width: 50px; /* 正方形宽度 */
-	height: 50px; /* 正方形高度 */
-	background-color: rgba(255, 0, 0,.8); /* 正方形颜色 */
-  }
-  
-  .flag::before,
-  .flag::after {
+	color: white;
+	width: 50px;
+	/* 正方形宽度 */
+	height: 50px;
+	/* 正方形高度 */
+	background-color: rgba(255, 0, 0, .8);
+	/* 正方形颜色 */
+}
+
+.flag::before,
+.flag::after {
 	content: "";
 	position: absolute;
 	width: 0;
 	height: 0;
 	border-style: solid;
-  }
-  
-  .flag::before {
-	bottom: -25px; /* 垂帘向下偏移 */
-	left: 0; /* 靠左 */
-	border-width: 25px 25px 0 0; /* 直角朝左上方 */
-	border-color: rgba(255, 0, 0,.8) transparent transparent transparent; /* 颜色和透明部分 */
-  }
-  
-  .flag::after {
-	bottom: -25px; /* 垂帘向下偏移 */
-	right: 0; /* 靠右 */
-	border-width: 25px 0 0 25px; /* 直角朝右上方 */
-	border-color: rgba(255, 0, 0,.8) transparent transparent transparent; /* 颜色和透明部分 */
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .home-items{
-
-  }
- .home-item-box{
-	display: flex;
-	justify-content: flex-start;
- } 
-
- .home-item-img{
-	background-color: white;
-	border-radius: 20px;
-	overflow: hidden;
-	height:468px; width: 24%;margin:4px; 		
-	opacity: .7;
- }
-.home-item-img:hover{
-	opacity: 1;
 }
 
-*{
+.flag::before {
+	bottom: -25px;
+	/* 垂帘向下偏移 */
+	left: 0;
+	/* 靠左 */
+	border-width: 25px 25px 0 0;
+	/* 直角朝左上方 */
+	border-color: rgba(255, 0, 0, .8) transparent transparent transparent;
+	/* 颜色和透明部分 */
+}
+
+.flag::after {
+	bottom: -25px;
+	/* 垂帘向下偏移 */
+	right: 0;
+	/* 靠右 */
+	border-width: 25px 0 0 25px;
+	/* 直角朝右上方 */
+	border-color: rgba(255, 0, 0, .8) transparent transparent transparent;
+	/* 颜色和透明部分 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.home-items {}
+
+.home-item-box {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.home-item-img {
+	overflow: hidden;
+	width: 50%;
+	margin: 4px;
+	display: flex;
+	justify-content: center;
+	position: relative;
+
+}
+.home-item-img-box{
+	filter: grayscale(100%);
+}
+
+.home-item-img:hover .home-item-img-box{
+	opacity: 1;
+	filter: grayscale(0%);
+}
+
+.home-item-img::after {
+	content: '';
+	display: block;
+	position: absolute;
+	z-index: -1;
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0),rgba(255,255,255,.6), rgba(60, 60, 50, 0));
+	width: 100%;
+	top: 20%;
+	height: 300px;
+}
+
+.home-item-img-box {
+	width: 100%;
+	border-radius: 8px;
+	height: 0;
+	padding-top: 56.25%;
+	position: relative;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+	/* 使伪元素的绝对定位基于此元素 */
+}
+
+
+* {
 	transition: all .3s ease-in-out;
+}
+
+i {
+	display: inline-block !important;
+	margin:4px;
+	height: 32px;
+	width: 32px;
+	background-image: url('icon.png');
 }
