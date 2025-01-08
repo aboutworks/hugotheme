@@ -15,6 +15,7 @@
 :root {
 	--colorBorderStyle: #ECECEC;
 	--colorHomeItem: #ffffff;
+	--borderRadius:0px;
 	--colorBackground: #DDDDD5;
 	--colorImage: rgb(237, 237, 237);
 	--colorDate: rgb(214, 214, 214);
@@ -360,7 +361,7 @@ h2 {
 .kb-comment-form button,
 .kb-comment-form input,
 .kb-comment-form textarea {
-	border-radius: 0;
+	border-radius: var(--borderRadius);
 	border: var(--borderStyle);
 	margin: 8px 0;
 	padding: 0 1rem;
@@ -517,6 +518,21 @@ h2 {
 
 
 
+.home-item-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.home-item-img {
+    overflow: hidden;
+    width: calc(50% - 8px); /* 减去左右两边的外边距 */
+    margin: 4px;
+	padding-bottom:6rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
 
 
 
@@ -556,6 +572,23 @@ h2 {
 	}
 
 
+
+	.home-item-box {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+	
+	.home-item-img {
+		overflow: hidden;
+		width: calc(100% - 8px); /* 减去左右两边的外边距 */
+		margin: 4px;
+		padding-bottom:6rem;
+		display: flex;
+		justify-content: center;
+		position: relative;
+	}
+	
 
 
 	section {
@@ -641,22 +674,7 @@ h2 {
 
 
 
-.home-items {}
 
-.home-item-box {
-	display: flex;
-	justify-content: flex-start;
-}
-
-.home-item-img {
-	overflow: hidden;
-	width: 50%;
-	margin: 4px;
-	display: flex;
-	justify-content: center;
-	position: relative;
-
-}
 .home-item-img-box{
 	filter: grayscale(100%);
 }
@@ -665,7 +683,7 @@ h2 {
 	opacity: 1;
 	filter: grayscale(0%);
 }
-
+/* 
 .home-item-img::after {
 	content: '';
 	display: block;
@@ -675,11 +693,11 @@ h2 {
 	width: 100%;
 	top: 20%;
 	height: 300px;
-}
+} */
 
 .home-item-img-box {
 	width: 100%;
-	border-radius: 8px;
+	border-radius: var(--borderRadius);
 	height: 0;
 	padding-top: 56.25%;
 	position: relative;
@@ -701,4 +719,20 @@ i {
 	height: 32px;
 	width: 32px;
 	background-image: url('icon.png');
+}
+
+
+.hoverbox{
+	position: relative;
+}
+.hoverbox:hover .hoverboxpic{
+	display: block;
+}
+
+.hoverboxpic{
+	display: none;
+	top:16px;
+	left:16px;
+
+	position: absolute;
 }

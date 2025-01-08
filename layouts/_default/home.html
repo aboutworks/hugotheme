@@ -1,13 +1,14 @@
 {{ define "main" }}
-<div class="home-page-content">	<div class="home-item-box">
-	{{ range where .Site.Pages "Section" "posts" }}
-
+<div class="home-page-content">	
+	<div class="home-item-box">
+	{{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
 		{{ if eq .Params.position "home" }}
 		{{ if eq .Params.arrange "horizontal" }}
 		{{ partial "item.html"
 		(
 		dict
 		"Title" .Title
+		"tags" .Params.tags
 		"Position" .Params.position
 		"Sitetitle" .Site.Title
 		"Permalink" .Permalink
@@ -17,6 +18,7 @@
 		"youtube" .Params.youtube
 		"bilibili" .Params.bilibili
 		"desc" .Params.desc
+		"weight" .Params.weight
 		)}}
 		{{ end }}
 		{{ end }}
