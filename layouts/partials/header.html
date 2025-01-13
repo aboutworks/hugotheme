@@ -1,17 +1,20 @@
 <div class="header" style="width:var(--homeWidth); margin: auto;">
 	<a href="/" style="
 			   font-weight: bolder;
-			   padding:3rem;
+			   padding:1rem;
 			   font-size: 2rem;
 			   display: block;
+			   text-align: center;
 			   color:#66400E;
-			   ">Jemin Wong</a>
-	<div style="height:4rem; font-size: 1rem; color:rgb(181, 181, 181)">
-		<a href="/">Home</a>
-		<a href="/about">More</a>
-	</div>
+			   " id="websitetitle"></a>
 
-	<div style="height: 4rem;">
+	<ul class="menu">
+		{{ range .Site.Menus.main }}
+		  <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+		{{ end }}
+	</ul>
+
+	<div style="height: 4rem;display: flex; justify-content: center; align-items: center">
 		{{ $icon := resources.Get "image/icon.png" }}
 
 		{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "JimmyWong.XYZ") }}
@@ -36,3 +39,34 @@
 		{{ end }}
 	</div>
 </div>
+
+<script>
+function getDomainAsTitle() {
+    // 获取当前页面的完整URL
+    const url = new URL(window.location.href);
+
+    // 提取主机名（域名）
+    let hostname = url.hostname;
+
+    // 移除 'www.' 前缀（如果存在）
+    if (hostname.startsWith('www.')) {
+        hostname = hostname.slice(4);
+    }
+
+    // 找到最后一个 '.' 的位置并移除其后的内容
+    const lastDotIndex = hostname.lastIndexOf('.');
+    if (lastDotIndex !== -1) {
+        hostname = hostname.slice(0, lastDotIndex);
+    }
+
+    // 首字母大写，其余字母小写
+    const title = hostname.charAt(0).toUpperCase() + hostname.slice(1).toLowerCase();
+
+    return title;
+}
+
+// 示例使用：将结果设置为页面标题或显示在页面上
+document.title = getDomainAsTitle();
+document.getElementById('websitetitle').innerHTML = document.title
+
+</script>

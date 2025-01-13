@@ -1,34 +1,42 @@
 {{ define "main" }}
-<div class="home-page-content">	
-	<div class="home-item-box">
-	{{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
-		{{ if eq .Params.position "home" }}
-		{{ if eq .Params.arrange "horizontal" }}
-		{{ partial "item.html"
-		(
-		dict
-		"Title" .Title
-		"tags" .Params.tags
-		"Position" .Params.position
-		"Sitetitle" .Site.Title
-		"Permalink" .Permalink
-		"Date" .Params.Date
-		"type" .Params.Type
-		"image" .Params.Image
-		"youtube" .Params.youtube
-		"bilibili" .Params.bilibili
-		"desc" .Params.desc
-		"weight" .Params.weight
-		)}}
-		{{ end }}
-		{{ end }}
+  {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
-	{{ end }}
-	</div>
-</div>
-<div>
-	{{ range first 10 .Site.RegularPages }}
-	{{ .Render "summary" }}
-	{{ end }}
-</div>
+  {{ if eq $webtype "brand" }}
+    {{ partial "brand.html" . }} <!-- 加载 brand.html partial -->
+  {{ end }}
+
+  {{ if eq $webtype "blog" }}
+    <div class="home-page-content">    
+      <div class="home-item-box">
+        {{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
+          {{ if eq .Params.position "home" }}
+            {{ if eq .Params.arrange "horizontal" }}
+              {{/* 创建一个新的上下文对象来传递给 partial */}}
+              {{ $context := dict
+                "Title" .Title
+                "Tags" .Params.tags
+                "Position" .Params.position
+                "Sitetitle" .Site.Title
+                "Permalink" .Permalink
+                "Date" .Params.Date
+                "Type" .Params.Type
+                "Image" .Params.Image
+                "YouTube" .Params.youtube
+                "Bilibili" .Params.bilibili
+                "Desc" .Params.desc
+                "Weight" .Params.weight
+              }}
+              {{ partial "blog.html" $context }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+
+    <div>
+      {{ range first 10 .Site.RegularPages }}
+        {{ .Render "summary" }}
+      {{ end }}
+    </div>
+  {{ end }}
 {{ end }}

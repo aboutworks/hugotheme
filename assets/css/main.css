@@ -16,11 +16,11 @@
 	--colorBorderStyle: #ECECEC;
 	--colorHomeItem: #ffffff;
 	--borderRadius:0px;
-	--colorBackground: #DDDDD5;
+	/* --colorBackground: #DDDDD5; */
 	--colorImage: rgb(237, 237, 237);
 	--colorDate: rgb(214, 214, 214);
 	--colorDesc: rgb(180, 180, 180);
-	--colorLink: #598ecb;
+	--colorLink: #000000;
 	--colorHover: gray;
 	--colorVisited: gray;
 	--colorActive: gray;
@@ -31,7 +31,7 @@
 	--homeWidth: 980px;
 	--scrollbarWidth: 0px;
 	--mobileWidth: 393px;
-	--headerHeight: 300px;
+	--headerHeight: 200px;
 	--footerHeight: 2rem;
 	--mainHeight: calc(100vh - var(--headerHeight) - var(--footerHeight));
 	--borderStyle: 1px solid var(--colorBorderStyle);
@@ -65,7 +65,7 @@ html {
 	width: 100vw;
 	font-family: var(--fontFamily);
 	font-size: var(--fontSize);
-	background-color: var(--colorBackground);
+	/* background-color: var(--colorBackground); */
 }
 
 ::-webkit-scrollbar {
@@ -291,16 +291,6 @@ h2 {
 
 .read-more {}
 
-.header {
-	width: 100%;
-	padding: 0 2rem;
-}
-
-.header ul {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
 
 .icon10 svg {
 	height: 10px;
@@ -391,14 +381,6 @@ h2 {
 	line-height: 1.75rem;
 	border-bottom: var(--borderStyle)
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -736,3 +718,43 @@ i {
 
 	position: absolute;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu{
+	height:4rem; font-size: 1.4rem; color:rgb(181, 181, 181); width: 100%; display: flex; justify-content: center; align-items: center;
+}
+.menu li{
+	padding: 0 1rem;
+}
+
+
+
+
+.home-brand{
+	width: 100vw;
+}
+.home-brand-bannel{
+	height: 800px;
+	background-color: white;
+	border-bottom: 250px solid #FFD200;
+}
+.home-brand-service{
+	background-color: #3E2E1A;
+	height: 300px;
+}
+

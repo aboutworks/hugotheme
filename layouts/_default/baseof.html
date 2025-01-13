@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ or site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<html lang="{{ or .Site.Language.Lang "en" }}" dir="{{ or .Site.Language.LanguageDirection "ltr" }}">
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="light">
+<!-- <body class="light" style="background-color:rgb(255, 255, 255);"> -->
+<body class="light" style="background-color:#F5F5F5;">
+  {{ .Site.Params.setting.backgroundColor }}
   <header>
     {{ partial "header.html" . }}
   </header>
