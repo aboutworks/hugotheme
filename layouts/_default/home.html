@@ -1,8 +1,24 @@
 {{ define "main" }}
+  {{ $logo := resources.Get "image/logo.svg" }}
+  {{ $illustortar := resources.Get "image/1.png" }}
   {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
-  {{ if eq $webtype "brand" }}
-    {{ partial "brand.html" . }} <!-- 加载 brand.html partial -->
+  {{ if eq $webtype "offical" }}
+  {{ $context := dict
+    "Title" .Title
+    "Tags" .Params.tags
+    "Companylist" .Params.companylist
+   "Illustortar" $illustortar.Permalink
+    "Permalink" .Permalink
+    "Logo" $logo.Permalink
+    "Type" .Params.Type
+    "Image" .Params.Image
+    "YouTube" .Params.youtube
+    "Bilibili" .Params.bilibili
+    "Desc" .Params.desc
+    "Weight" .Params.weight
+  }}
+    {{ partial "offical.html" $context }} <!-- 加载 brand.html partial -->
   {{ end }}
 
   {{ if eq $webtype "blog" }}

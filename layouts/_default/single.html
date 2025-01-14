@@ -16,7 +16,10 @@
 
   <article class="markdown-body">
     <!-- 调用目录模块 -->
+
+    {{ if eq .Params.toc "true"}}
     {{ partial "toc.html" . }}
+    {{end}}
 
     {{ .Content }}
   </article>

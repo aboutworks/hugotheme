@@ -1,0 +1,68 @@
+<div class="home-brand">
+	<div class="home-brand-content-banner" style="background-image: url('{{ .Illustortar }}'); background-size: cover; background-position: right; background-size: contain; background-color: #FFE111;
+		 background-repeat: no-repeat;">
+		<div class="home-brand-box" style="display: flex; justify-content: center; align-items: center; height: 100%;
+		
+		">
+			<div style="flex-direction: column; flex: .7;">
+				<div><img src="{{.Logo }}" width="150px" /></div>
+				<h4>We only do digital culture</h4>
+				<h2 style=" font-size: 3rem; padding:1rem; display: block;
+		text-transform: uppercase;
+		">
+					What can we do <br> What can we Generate
+				</h2>
+
+				<div>
+					{{ range .Tags }}
+					<span style="background-color: rgba(45, 26, 0, 0.5);border-radius: 4px; backdrop-filter:blur(10px) ;color:white; padding:8px; display: inline-flex; margin: 4px; justify-content: center; ">{{ . }}</span>
+					{{ end }}
+				</div>
+			</div>
+			<div
+				style="flex: .3; height: 100%;">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="home-brand-content-recently">
+	<div class="home-brand-box">
+		<ul class="recentlyPost">
+			<li data-text="Title is Here"></li>
+			<li>d</li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div>
+<div class="home-brand-content-service">
+	<div class="home-brand-box">
+	</div>
+</div>
+<div>
+	<div class="home-brand-box">
+	</div>
+</div>
+<div class="home-brand-content-story">
+	<div class="home-brand-box">
+	</div>
+</div>
+<div class="home-brand-content-company">
+	<div class="home-brand-box" style="padding: 3rem;">
+		<ul class="companylist">
+			{{ range .Companylist }}
+			<li data-text="{{.}}"></li>
+			{{ end}}
+		</ul>
+	</div>
+</div>
+<div class="home-brand-content-message">
+	<div class="home-brand-box" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+		<div style="flex: .7;">
+			{{ partial "message.html" . }}
+		</div>
+		<div style="flex:.3">pic</div>
+	</div>
+</div>
+</div>
