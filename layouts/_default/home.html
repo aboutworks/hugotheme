@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{ $logo := resources.Get "image/logo.svg" }}
-  {{ $illustortar := resources.Get "image/1.png" }}
+  {{ $illustortar := resources.Get "image/1.svg" }}
   {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
   {{ if eq $webtype "offical" }}
