@@ -1,16 +1,23 @@
 {{ define "main" }}
   {{ $logo := resources.Get "image/logo.svg" }}
   {{ $illustortar := resources.Get "image/1.svg" }}
+  {{ $illustortarLe := resources.Get "image/2.svg" }}
+  {{ $illustortarC := resources.Get "image/3.svg" }}
   {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
   {{ if eq $webtype "offical" }}
   {{ $context := dict
     "Title" .Title
     "Tags" .Params.tags
-    "Companylist" .Params.companylist
    "Illustortar" $illustortar.Permalink
+   "IllustortarLe" $illustortarLe.Permalink
+   "IllustortarC" $illustortarC.Permalink
     "Permalink" .Permalink
     "Logo" $logo.Permalink
+    "Can" .Params.can
+    "Company" .Params.company
+    "Companylist" .Params.companylist
+    "Message" .Params.Message
     "Type" .Params.Type
     "Image" .Params.Image
     "YouTube" .Params.youtube

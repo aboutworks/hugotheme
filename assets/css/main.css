@@ -838,8 +838,10 @@ i {
 	/* 必须有 content 属性才能让伪元素生效 */
 	display: block;
 	padding-top: 100%;
+	background-image: url('../image/3.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
 	/* 创建一个正方形 */
-	background-color: #ccc;
 	/* 给正方形添加背景色以便可视化 */
 }
 

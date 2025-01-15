@@ -1,32 +1,39 @@
 <div class="home-brand">
-	<div class="home-brand-content-banner" style="background-image: url('{{ .Illustortar }}'); background-size: cover; background-position: right; background-size: contain; background-color: #FFE111;
-		 background-repeat: no-repeat;">
+	<div class="home-brand-content-banner" style="background-image: url('{{ .Illustortar }}'); background-size: cover; background-position: right; background-size: cover; 
+		 background-repeat: repeat-x; position: relative;">
 		<div class="home-brand-box" style="display: flex; justify-content: center; align-items: center; height: 100%;
 		
 		">
-			<div style="flex-direction: column; flex: .7;">
-				<div><img src="{{.Logo }}" width="150px" /></div>
+			<div style="flex-direction: column; flex: .8;">
 				<h4>We only do digital culture</h4>
-				<h2 style=" font-size: 3rem; padding:1rem; display: block;
+				<h2 style=" font-size: 6em; padding:1rem; display: block;font-family: Impact; font-weight: lighter; color: rgb(100, 55, 0);
 		text-transform: uppercase;
 		">
-					What can we do <br> What can we Generate
+		{{ .Can }}
 				</h2>
 
 				<div>
 					{{ range .Tags }}
-					<span style="background-color: rgba(45, 26, 0, 0.5);border-radius: 4px; backdrop-filter:blur(10px) ;color:white; padding:8px; display: inline-flex; margin: 4px; justify-content: center; ">{{ . }}</span>
+					<span style="
+					background-color: rgba(45, 26, 0, 0.5);
+					border-radius: 4px; backdrop-filter:blur(10px) ;
+					color:white; 
+					padding:8px 1rem; display: inline-flex; margin: 4px; 
+					justify-content: center; 
+					font-size: 2rem;
+					">{{ . }}</span>
 					{{ end }}
 				</div>
 			</div>
-			<div
-				style="flex: .3; height: 100%;">
+			<div style="flex: .2; height: 100%;">
+				<img style="position: absolute; bottom: 0;" src=" {{ .IllustortarLe }}" />
 			</div>
 		</div>
 	</div>
 </div>
 <div class="home-brand-content-recently">
 	<div class="home-brand-box">
+
 		<ul class="recentlyPost">
 			<li data-text="Title is Here"></li>
 			<li>d</li>
@@ -50,19 +57,21 @@
 </div>
 <div class="home-brand-content-company">
 	<div class="home-brand-box" style="padding: 3rem;">
+				<h1>{{ .Company }}</h1>
 		<ul class="companylist">
 			{{ range .Companylist }}
-			<li data-text="{{.}}"></li>
+			<li data-text="{{.}}" ></li>
 			{{ end}}
 		</ul>
 	</div>
 </div>
 <div class="home-brand-content-message">
-	<div class="home-brand-box" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-		<div style="flex: .7;">
+	<div class="home-brand-box" style="display: flex; flex-direction: column; height: 100%;">
+				<h1>{{ .Message }}</h1>
+		<div style="flex: 1;">
 			{{ partial "message.html" . }}
 		</div>
-		<div style="flex:.3">pic</div>
+		<!-- <div style="flex:.3">pic</div> -->
 	</div>
 </div>
 </div>
