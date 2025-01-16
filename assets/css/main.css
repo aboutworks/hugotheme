@@ -384,6 +384,38 @@ h2 {
 
 
 
+.message form {
+	background-color: #fff;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.message input, textarea {
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.message button {
+	padding: 0.5rem 1rem;
+	margin-right: 0.5rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.message button[type="submit"] {
+	background-color: #28a745;
+	color: white;
+}
+.message button[type="reset"], button[type="button"] {
+	background-color: #dc3545;
+	color: white;
+}
+.message button:hover {
+	opacity: 0.8;
+}
+
 
 
 
@@ -773,41 +805,62 @@ i {
 
 .home-brand-content-banner {
 	height: 60vh;
+	width: 100%;
+	position: relative;
 	background-color: white;
+	background-image: url('../image/1.svg'),
+		url('../image/1.svg');
+	background-size: auto 100%, auto 100%;
+	/* 确保两张图片高度一致 */
+	background-position: 0 0, 100% 0;
+	animation: scrollBackground 30s linear infinite;
 }
 
+@keyframes scrollBackground {
+	from {
+	  background-position: 0 0, 100% 0;
+	}
+	to {
+	  background-position: -100% 0, 0 0;
+	}
+  }
+
 .home-brand-content-recently {
-	padding:2rem;
+	padding: 2rem;
 	background-color: rgb(255, 179, 0);
 }
 
-.recentlyPost{
+.recentlyPost {
 	display: flex;
 	flex-direction: row;
 }
-.recentlyPost li{
+
+.recentlyPost li {
 	width: 18%;
 	background-color: #1D1D1D;
-	margin: 1%;;
+	margin: 1%;
+	;
 	position: relative;
 }
-.recentlyPost li::before{
-	content:'';
+
+.recentlyPost li::before {
+	content: '';
 	display: block;
 	z-index: 2;
-	padding-top:100%;
+	padding-top: 100%;
 }
-.recentlyPost li::after{
-	content:attr(data-text);
+
+.recentlyPost li::after {
+	content: attr(data-text);
 	display: block;
 	background-color: rgb(255, 179, 0);
-	color:#1D1D1D;
+	color: #1D1D1D;
 	position: absolute;
 	z-index: 3;
 	font-size: 1.3rem;
-	padding:8px 1rem;
-	top:1rem;
-	left:1rem;
+	padding: 8px 1rem;
+	top: 1rem;
+	left: 1rem;
 }
 
 .home-brand-content-service {
@@ -829,7 +882,7 @@ i {
 	position: relative;
 	/* 使子元素可以相对于它进行绝对定位 */
 	width: 18%;
-	margin:1%;
+	margin: 1%;
 	box-sizing: border-box;
 }
 
@@ -848,22 +901,24 @@ i {
 .companylist li::after {
 	width: 100%;
 	display: block;
-	padding:1rem 0;
+	padding: 1rem 0;
 	text-align: center;
 	content: attr(data-text);
 }
 
-input,button{
+input,
+button {
 	height: 3rem;
 }
-textarea{
+
+textarea {
 	height: 9rem;
 	border-width: 0;
 }
 
-input,textarea
-button {
+input,
+textarea button {
 	width: 100%;
-	padding:1rem;
+	padding: 1rem;
 	border: 0;
 }

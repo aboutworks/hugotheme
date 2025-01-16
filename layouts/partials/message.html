@@ -1,20 +1,104 @@
-<div class="message"
- style="
- background-color: #3E2E1A;
-
- "
->
+<div class="message">
 	<form>
-		<div style="display: flex; flex-direction: column; padding: 2rem;">
-			<input placeholder="Email">
-			<input placeholder="Name">
-			<input placeholder="Phone">
-			<input placeholder="Company">
-			<textarea placeholder="About Something"></textarea>
-			<div>
-				<button type="submit">Submit</button>
-				<button type="reset">Reset</button>
-			</div>
+	<div style="display: flex; flex-direction: column;">
+		<input name="email" placeholder="Email" required>
+		<input name="name" placeholder="Name" required>
+		<input name="phone" placeholder="Phone" required>
+		<input name="company" placeholder="Company" required>
+		<textarea name="message" placeholder="About Something" rows="4" required></textarea>
+
+		<div style="display: flex; flex-direction: row;">
+		<canvas id="captcha-canvas" width="200" height="42" style="margin-bottom: 1rem;"></canvas>
+		<input name="verifcode" placeholder="Enter Verification Code" required>
 		</div>
-	</form>
+
+		<div style="margin-top: 1rem;">
+			<button type="submit">Submit</button>
+			<button type="reset">Reset</button>
+		</div>
+	</div>
+</form>
 </div>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const api = 'https://view.lehuye.com'
+		//const api = 'http://localhost:7020'
+		const form = document.querySelector('form');
+		const captchaCanvas = document.getElementById('captcha-canvas');
+		const verifCodeInput = document.querySelector('input[name="verifcode"]');
+
+		let verificationCode;
+
+		function generateCaptcha() {
+			const ctx = captchaCanvas.getContext('2d');
+			ctx.clearRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+			ctx.fillStyle = '#ddd';
+			ctx.fillRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+
+			// Generate random characters
+			const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			verificationCode = '';
+			for (let i = 0; i < 4; i++) {
+				verificationCode += chars.charAt(Math.floor(Math.random() * chars.length));
+			}
+
+			// Draw text
+			ctx.font = '24px Arial';
+			ctx.fillStyle = '#000';
+			ctx.textBaseline = 'middle';
+			ctx.fillText(verificationCode, 50, 30);
+
+			// Add noise
+			for (let i = 0; i < 100; i++) {
+				ctx.beginPath();
+				ctx.arc(
+					Math.random() * captchaCanvas.width,
+					Math.random() * captchaCanvas.height,
+					Math.random() * 1,
+					0,
+					2 * Math.PI
+				);
+				ctx.fillStyle = '#aaa';
+				ctx.fill();
+			}
+		}
+
+		generateCaptcha();
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+
+			const formData = new FormData(form);
+			const userVerifCode = formData.get('verifcode');
+
+			if (userVerifCode !== verificationCode) {
+				alert('Invalid verification code');
+				return;
+			}
+
+			try {
+				const response = await fetch(`${api}/leavemessage`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						email: formData.get('email'),
+						name: formData.get('name'),
+						phone: formData.get('phone'),
+						company: formData.get('company'),
+						message: formData.get('message')
+					})
+				});
+
+				if (!response.ok) throw new Error('Failed to submit message');
+				alert('Message submitted successfully!');
+				form.reset();
+				generateCaptcha(); // Regenerate captcha after successful submission
+			} catch (error) {
+				console.error(error);
+				alert('Error submitting message');
+			}
+		});
+	});
+</script>
