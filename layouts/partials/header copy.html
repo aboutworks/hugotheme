@@ -6,6 +6,7 @@ justify-content: space-between;
 	{{ $logo := resources.Get "image/logo.svg" }}
 	<div>
 
+		<!-- {{ if eq .Site.Params.logoType "txt" }} -->
 		<a href="/" style="
 			   font-weight: bolder;
 			   padding:1rem;
@@ -14,6 +15,11 @@ justify-content: space-between;
 			   text-align: center;
 			   color:#66400E;
 			   "id="websitetitle"></a>
+		<!-- {{ else if eq .Site.Params.logoType "logo" }} -->
+
+		<!-- <a><img src="{{ $logo.Permalink }}" width="200px" /></a>
+
+		{{ end }} -->
 
 		<div style="height: 4rem;display: flex; justify-content: center; align-items: center">
 			{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "Lehuye") }}
