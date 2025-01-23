@@ -32,7 +32,7 @@
 	--scrollbarWidth: 0px;
 	--mobileWidth: 393px;
 	--headerHeight: 200px;
-	--footerHeight: 2rem;
+	--footerHeight: 4rem;
 	--mainHeight: calc(100vh - var(--headerHeight) - var(--footerHeight));
 	--borderStyle: 1px solid var(--colorBorderStyle);
 }
@@ -788,10 +788,15 @@ i {
 }
 
 
-
+.fullbackground{
+	/* background-image: url('../image/1.svg'); */
+	background-size:cover;
+}
 
 .home-brand {
 	width: 100vw;
+	height: var(--mainHeight);
+	position: relative;
 }
 
 [class*='home-brand-content'] {
@@ -801,6 +806,64 @@ i {
 [class*='home-brand-box'] {
 	width: 1280px;
 	margin: auto;
+}
+
+.home-brand-left,
+.home-brand-right{
+	height: 100vh;
+	width: 100px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.home-brand-left{
+	left:0;
+}
+.home-brand-right{
+	right:0;
+}
+.home-brand-left::after,
+.home-brand-left::before,
+.home-brand-right::after,
+.home-brand-right::before{
+	content:attr(data-text);
+	display: block;
+}
+.home-brand-content-company,
+.home-brand-content-message
+{
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+.home-brand-left:hover,
+.home-brand-right:hover {
+	width: 90vw;
+	height: var(--mainHeight);
+
+	background-color: black;
+}
+.home-brand-left:hover .home-brand-content-company{
+	display: flex !important;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+
+.home-brand-right:hover .home-brand-content-message{
+	display: flex !important;
+	position: absolute;
+	top:0;
+	right: 0;
+}
+.home-brand-left-icon,
+.home-brand-right-icon{
+	height:32px;
+	width:32px;
+	background-image: url('../image/icon.svg');
+	background-position-x: 192px;
 }
 
 .home-brand-content-banner {

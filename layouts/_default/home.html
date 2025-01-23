@@ -1,66 +1,66 @@
 {{ define "main" }}
-  {{ $logo := resources.Get "image/logo.svg" }}
-  {{ $illustortar := resources.Get "image/1.svg" }}
-  {{ $illustortarLe := resources.Get "image/2.svg" }}
-  {{ $illustortarC := resources.Get "image/3.svg" }}
-  {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
+{{ $logo := resources.Get "image/logo.svg" }}
+{{ $illustortar := resources.Get "image/1.svg" }}
+{{ $illustortarLe := resources.Get "image/2.svg" }}
+{{ $illustortarC := resources.Get "image/3.svg" }}
+{{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
-  {{ if eq $webtype "offical" }}
-  {{ $context := dict
+{{ if eq $webtype "official" }}
+{{ $context := dict
+"Title" .Title
+"Tags" .Params.tags
+"Illustortar" $illustortar.Permalink
+"IllustortarLe" $illustortarLe.Permalink
+"IllustortarC" $illustortarC.Permalink
+"Permalink" .Permalink
+"Logo" $logo.Permalink
+"Can" .Params.can
+"Partnership" .Params.partnership
+"Company" .Params.company
+"Companylist" .Params.companylist
+"Message" .Params.Message
+"Type" .Params.Type
+"Image" .Params.Image
+"YouTube" .Params.youtube
+"Bilibili" .Params.bilibili
+"Desc" .Params.desc
+"Weight" .Params.weight
+}}
+{{ partial "official.html" $context }} <!-- 加载 brand.html partial -->
+{{ end }}
+
+{{ if eq $webtype "blog" }}
+<div class="home-page-content">
+  <div class="home-item-box">
+    {{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
+    {{ if eq .Params.position "home" }}
+    {{ if eq .Params.arrange "horizontal" }}
+    {{/* 创建一个新的上下文对象来传递给 partial */}}
+    {{ $context := dict
     "Title" .Title
     "Tags" .Params.tags
-   "Illustortar" $illustortar.Permalink
-   "IllustortarLe" $illustortarLe.Permalink
-   "IllustortarC" $illustortarC.Permalink
+    "Position" .Params.position
+    "Sitetitle" .Site.Title
     "Permalink" .Permalink
-    "Logo" $logo.Permalink
-    "Can" .Params.can
-    "Partnership" .Params.partnership
-    "Company" .Params.company
-    "Companylist" .Params.companylist
-    "Message" .Params.Message
+    "Date" .Params.Date
     "Type" .Params.Type
     "Image" .Params.Image
     "YouTube" .Params.youtube
     "Bilibili" .Params.bilibili
     "Desc" .Params.desc
     "Weight" .Params.weight
-  }}
-    {{ partial "offical.html" $context }} <!-- 加载 brand.html partial -->
-  {{ end }}
+    }}
+    {{ partial "blog.html" $context }}
+    {{ end }}
+    {{ end }}
+    {{ end }}
+  </div>
+</div>
 
-  {{ if eq $webtype "blog" }}
-    <div class="home-page-content">    
-      <div class="home-item-box">
-        {{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
-          {{ if eq .Params.position "home" }}
-            {{ if eq .Params.arrange "horizontal" }}
-              {{/* 创建一个新的上下文对象来传递给 partial */}}
-              {{ $context := dict
-                "Title" .Title
-                "Tags" .Params.tags
-                "Position" .Params.position
-                "Sitetitle" .Site.Title
-                "Permalink" .Permalink
-                "Date" .Params.Date
-                "Type" .Params.Type
-                "Image" .Params.Image
-                "YouTube" .Params.youtube
-                "Bilibili" .Params.bilibili
-                "Desc" .Params.desc
-                "Weight" .Params.weight
-              }}
-              {{ partial "blog.html" $context }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      </div>
-    </div>
-
-    <div>
-      {{ range first 10 .Site.RegularPages }}
-        {{ .Render "summary" }}
-      {{ end }}
-    </div>
+<div>
+  {{ range first 10 .Site.RegularPages }}
+  {{ .Render "summary" }}
   {{ end }}
+</div>
+{{ end }}
 {{ end }}
