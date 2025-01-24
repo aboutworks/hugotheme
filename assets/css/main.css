@@ -791,6 +791,7 @@ i {
 .fullbackground{
 	/* background-image: url('../image/1.svg'); */
 	background-size:cover;
+	background-color: rgb(191, 147, 75) !important;
 }
 
 .home-brand {
