@@ -807,7 +807,10 @@ i {
 	width: 1280px;
 	margin: auto;
 }
-
+.bannerIMG{
+	background-size: contain;
+	background-repeat: no-repeat;
+}
 .home-brand-left,
 .home-brand-right{
 	position: absolute;
@@ -843,6 +846,8 @@ i {
 	height: var(--mainHeight);
 	background-color: rgba(0, 0, 0, .3);
 	backdrop-filter: blur(3px);
+	display: flex;
+	justify-content: space-between;
 }
 .home-brand-left:hover .home-brand-content-company{
 	display: flex !important;

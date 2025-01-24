@@ -3,8 +3,8 @@
 
 
 
-	<div class="text" id="texttototo" style="font-size: 8rem; position: absolute; top:200px; right:300px ">LHY</div>
-	<div class="img" id="imgtototo" style="background-color: rgba(0, 0, 0,.3); height:60vh; width: 620px; position: absolute; top:100px; right:300px;"></div>
+	<div class="text" id="texttototo" style="background-image:url('http://localhost:1313/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800-1.webp');font-size: 8rem; position: absolute; top:0; left:50%; height: 100%;"></div>
+	<div class="bannerIMG" id="imgtototo" style="background-image:url('http://localhost:1313/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800.webp');height:60vh; width: 620px; position: absolute; top:100px; left:50%;"></div>
 
 	<div class="home-brand-left">
 		<div class="home-brand-left-icon"></div>
@@ -59,10 +59,10 @@
   </style>
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
-		const img = document.getElementById('imgtototo');
+		const bannerIMG = document.getElementById('imgtototo');
 		const text = document.getElementById('texttototo');
-		let initialTop = parseInt(img.style.top);
-		let initialRight = parseInt(img.style.right);
+		let initialTop = parseInt(bannerIMG.style.top);
+		let initialRight = parseInt(bannerIMG.style.right);
 	
 		// 设置最大偏移量
 		const maxOffset = 50;
@@ -73,12 +73,12 @@
 			let offsetTop = Math.min(maxOffset, Math.max(-maxOffset, e.clientY / 20 - initialTop));
 			let offsetRight = Math.min(maxOffset, Math.max(-maxOffset, e.clientX / 20 - initialRight));
 	
-			img.style.top = (initialTop + offsetTop) + 'px';
-			img.style.right = (initialRight - offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
+			bannerIMG.style.top = (initialTop + offsetTop) + 'px';
+			bannerIMG.style.right = (initialRight - offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
 			text.style.top = (initialTop + offsetTop) + 'px';
 			text.style.right = (initialRight + offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
 	
-			console.log(`Top: ${img.style.top}, Right: ${img.style.right}`);
+			console.log(`Top: ${bannerIMG.style.top}, Right: ${bannerIMG.style.right}`);
 		}
 	
 		// 添加鼠标移动监听器
@@ -86,8 +86,8 @@
 	
 		// 当鼠标移出窗口时，重置位置
 		document.addEventListener('mouseleave', function() {
-			img.style.top = initialTop + 'px';
-			img.style.right = initialRight + 'px';
+			bannerIMG.style.top = initialTop + 'px';
+			bannerIMG.style.right = initialRight + 'px';
 			text.style.top = initialTop + 'px';
 			text.style.right = initialRight + 'px';
 		});
