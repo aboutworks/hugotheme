@@ -810,12 +810,11 @@ i {
 
 .home-brand-left,
 .home-brand-right{
-	height: 100vh;
-	width: 100px;
 	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: yellow;
 
 }
 .home-brand-left{
@@ -842,8 +841,8 @@ i {
 .home-brand-right:hover {
 	width: 90vw;
 	height: var(--mainHeight);
-
-	background-color: black;
+	background-color: rgba(0, 0, 0, .3);
+	backdrop-filter: blur(3px);
 }
 .home-brand-left:hover .home-brand-content-company{
 	display: flex !important;
@@ -863,7 +862,10 @@ i {
 	height:32px;
 	width:32px;
 	background-image: url('../image/icon.svg');
-	background-position-x: 192px;
+	background-position-x: 32px;
+}
+.home-brand-right-icon{
+	transform: scale(-1);
 }
 
 .home-brand-content-banner {

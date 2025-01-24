@@ -1,32 +1,10 @@
 <div class="home-brand">
-	<!-- <div class="home-brand-content-banner">
-		<div class="home-brand-box" style="display: flex; justify-content: center; align-items: center; height: 100%; ">
-			<div style="flex-direction: column; flex: .8;">
-				<h4 style="font-size: 3rem;">我们创造数字化价值</h4>
-				<h2 style=" font-size: 6em; padding:1rem; display: block;font-family: Impact; font-weight: lighter; color: rgb(100, 55, 0);
-		text-transform: uppercase;
-		">
-					{{ .Can }}
-				</h2>
 
-				<div>
-					{{ range .Tags }}
-					<span style="
-					background-color: rgba(45, 26, 0, 0.5);
-					border-radius: 4px; backdrop-filter:blur(10px) ;
-					color:white; 
-					padding:8px 1rem; display: inline-flex; margin: 4px; 
-					justify-content: center; 
-					font-size: 2rem;
-					">{{ . }}</span>
-					{{ end }}
-				</div>
-			</div>
-			<div style="flex: .2; height: 100%;">
-				<img style="position: absolute; bottom: 0;" src=" {{ .IllustortarLe }}" />
-			</div>
-		</div>
-	</div> -->
+
+
+
+	<div class="text" id="texttototo" style="font-size: 8rem; position: absolute; top:200px; right:300px ">LHY</div>
+	<div class="img" id="imgtototo" style="background-color: rgba(0, 0, 0,.3); height:60vh; width: 620px; position: absolute; top:100px; right:300px;"></div>
 
 	<div class="home-brand-left">
 		<div class="home-brand-left-icon"></div>
@@ -45,7 +23,7 @@
 	</div>
 
 	<div class="home-brand-right">
-		<div>Right</div>
+		<div class="home-brand-right-icon"></div>
 
 		<div class="home-brand-content-message" style="">
 			<div class="home-brand-box" style="display: flex; flex-direction: column; height: 100%;">
@@ -59,42 +37,59 @@
 	</div>
 </div>
 
-<!-- <div class="home-brand-content-partnership">
-	<div class="home-brand-box" style="display: flex; flex-direction: row;">
-		<div style="flex: .5;">
-			<div style="font-size: 3rem; color:white; padding: 2rem 0;">{{ .Partnership }}</div>
-			<div></div>
-		</div>
-		<div style="flex: .5;">
-		</div>
-	</div>
 </div>
-
-<div class="home-brand-content-recently" style="display: none;">
-	<div class="home-brand-box">
-
-		<ul class="recentlyPost">
-			<li data-text="Title is Here"></li>
-			<li>d</li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</div>
-</div>
-<div class="home-brand-content-service" style="display:none">
-	<div class="home-brand-box">
-	</div>
-</div>
-<div>
-	<div class="home-brand-box">
-	</div>
-</div>
-<div class="home-brand-content-story" style="display:none">
-	<div class="home-brand-box">
-	</div>
-</div> -->
-
-
-
-</div>
+<style>
+	.img, .text {
+	  position: absolute;
+	  transition: top 0.1s, right 0.1s; /* 添加平滑过渡效果 */
+	}
+	.img {
+	  background-color: black;
+	  height: 600px;
+	  width: 520px;
+	  right: 300px;
+	  top: 100px;
+	}
+	.text {
+	  background-color: rgba(255, 255, 255, 0.8);
+	  padding: 10px;
+	  right: 300px;
+	  top: 100px;
+	}
+  </style>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const img = document.getElementById('imgtototo');
+		const text = document.getElementById('texttototo');
+		let initialTop = parseInt(img.style.top);
+		let initialRight = parseInt(img.style.right);
+	
+		// 设置最大偏移量
+		const maxOffset = 50;
+	
+		// 鼠标移动事件处理函数
+		function handleMouseMove(e) {
+			// 计算偏移量并限制在最大偏移范围内
+			let offsetTop = Math.min(maxOffset, Math.max(-maxOffset, e.clientY / 20 - initialTop));
+			let offsetRight = Math.min(maxOffset, Math.max(-maxOffset, e.clientX / 20 - initialRight));
+	
+			img.style.top = (initialTop + offsetTop) + 'px';
+			img.style.right = (initialRight - offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
+			text.style.top = (initialTop + offsetTop) + 'px';
+			text.style.right = (initialRight + offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
+	
+			console.log(`Top: ${img.style.top}, Right: ${img.style.right}`);
+		}
+	
+		// 添加鼠标移动监听器
+		document.addEventListener('mousemove', handleMouseMove);
+	
+		// 当鼠标移出窗口时，重置位置
+		document.addEventListener('mouseleave', function() {
+			img.style.top = initialTop + 'px';
+			img.style.right = initialRight + 'px';
+			text.style.top = initialTop + 'px';
+			text.style.right = initialRight + 'px';
+		});
+	});
+	</script>
