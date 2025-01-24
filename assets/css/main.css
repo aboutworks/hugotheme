@@ -24,7 +24,7 @@
 	--colorHover: gray;
 	--colorVisited: gray;
 	--colorActive: gray;
-	--colorPs: rgb(186, 186, 186);
+	--colorPs: rgb(255, 255, 255);
 	/* --headerWidth:  */
 	--fontSize: 14px;
 	--fontFamily: Arial, Helvetica, sans-serif;
@@ -774,7 +774,7 @@ i {
 .menu {
 	height: 4rem;
 	font-size: 1.2rem;
-	color: rgb(181, 181, 181);
+	color: rgb(255, 255, 255);
 	width: 100%;
 	display: flex;
 	justify-content: right;
@@ -791,7 +791,7 @@ i {
 .fullbackground{
 	/* background-image: url('../image/1.svg'); */
 	background-size:cover;
-	background-color: rgb(191, 147, 75) !important;
+	background-color: rgb(255, 123, 0) !important;
 }
 
 .home-brand {
@@ -808,10 +808,17 @@ i {
 	width: 1280px;
 	margin: auto;
 }
-.bannerIMG{
+.bannerTXT,.bannerIMG,.bannerBEFORE{
 	background-size: contain;
 	background-repeat: no-repeat;
+	background-position: center;	
+	width: 100vw;
+	position: absolute;
+	top:0;
+	left: 0;
+	height: var(--mainHeight);
 }
+
 .home-brand-left,
 .home-brand-right{
 	position: absolute;
