@@ -6,16 +6,26 @@ justify-content: space-between;
 	{{ $logo := resources.Get "image/logo.svg" }}
 	<div>
 
-		<a href="/" style="
+		<!-- <a href="/" style="
 			   font-weight: bolder;
 			   padding:1rem;
 			   font-size: 2rem;
 			   display: block;
 			   text-align: center;
-			   color:#66400E;
-			   "id="websitetitle"></a>
+			   color:#ffffff;
+			   "id="websitetitle">乐乎也 | 快乐视野</a> -->
+			   
+		<a href="/" style="
+			   font-weight: bolder;
+			   font-size: 2rem;
+			   display: inline-block;
+			   width: 300px;
+			   text-align: center;
+			   color:#ffffff;
+			  ">乐乎也 |
+			  <span style="font-size: 2rem; font-weight: lighter; color: #ffd4ab;"> 快乐视野</span></a>
 
-		<div style="height: 4rem;display: flex; justify-content: center; align-items: center">
+		<div style="height: 4rem;display: none; justify-content: center; align-items: center">
 			{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "Lehuye") }}
 			<a href="https://www.youtube.com/@jimmywongxyz">Youtube</a> |
 			<a href="https://www.tiktok.com/@jimmywongxyz">TikTok</a> |
@@ -43,11 +53,13 @@ justify-content: space-between;
 		{{ range .Site.Menus.main }}
 		<li><a href="{{ .URL }}">{{ .Name }}</a></li>
 		{{ end }}
-		<li>
+		<!-- <li>
 			<i style="background-position-x: 160px; background-image: url('{{ $icon.Permalink }}');"
 				class="hoverbox"></i>
 			<span>JimmyWong</span>
-		</li>
+		</li> -->
+		<a style="background-color: #071f3a;padding: 1rem; color: #ffffff; border-radius: 1rem; font-weight: bolder; margin-right:1rem;" href="https://www.douyin.com/user/self?from_tab_name=lehuye">抖音</a>
+		<a style="background-color: #ffd4ab;padding: 1rem; color: #723700; border-radius: 1rem; font-weight: bolder;" href="https://app.lehuye.com">AI提词平台</a>
 	</ul>
 
 

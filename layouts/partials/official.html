@@ -3,9 +3,10 @@
 
 
 
-	<div class="bannerTXT" id="texttototo" style="background-image:url('http://localhost:1313/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800-1.webp');"></div>
-	<div class="bannerIMG" id="imgtototo" style="background-image:url('http://localhost:1313/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800.webp'); "></div>
-	<div class="bannerBEFORE" id="imgtototo" style="background-image:url('http://localhost:1313/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800-2.webp');background-position:center 300px; "></div>
+	<div class="bannerTXT" id="texttototo" style="background-image:url('/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800.svg'); background-size: 32%;"></div>
+	<div class="bannerIMG" id="imgtototo" style="background-image:url('/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800.webp'); "></div>
+	<!-- <div class="bannerBEFORE" id="imgtototo" style="background-image:url('/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800-2.webp');background-position:center 300px; "></div> -->
+
 
 	<div class="home-brand-left">
 		<div class="home-brand-left-icon"></div>
@@ -15,7 +16,7 @@
 				<h1>{{ .Company }}</h1>
 				<ul class="companylist">
 					{{ range .Companylist }}
-					<li data-text="{{.}}"></li>
+					<li data-text="{{.}}" style="background-color: rgba(0, 0, 0,.3); backdrop-filter: blur(10px); color: white; padding: 1rem; border-radius: 8px;"></li>
 					{{ end}}
 				</ul>
 			</div>
@@ -25,14 +26,13 @@
 
 	<div class="home-brand-right">
 		<div class="home-brand-right-icon"></div>
-
-		<div class="home-brand-content-message" style="">
-			<div class="home-brand-box" style="display: flex; flex-direction: column; height: 100%;">
-				<h1>{{ .Message }}</h1>
-				<div style="flex: 1;">
+		<div class="home-brand-content-message" >
+			<!-- <div class="home-brand-box" style="display: flex; flex-direction: column; height: 100%;"> -->
+				<!-- <h1>{{ .Message }}</h1> -->
+				<!-- <div style="flex: 1;"> -->
 					{{ partial "message.html" . }}
-				</div>
-			</div>
+				<!-- </div> -->
+			<!-- </div> -->
 		</div>
 
 	</div>

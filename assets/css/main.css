@@ -108,6 +108,9 @@ footer {
 	/* border-top: var(--borderStyle); */
 	height: var(--footerHeight);
 }
+foot3er a{
+	color: var(--colorPs);
+}
 
 main {
 	padding: 0;
@@ -427,6 +430,7 @@ h2 {
 .home-item {
 	width: var(--homeWidth);
 	margin: auto;
+	margin-bottom:2rem;
 }
 
 .home-vertical,
@@ -438,6 +442,7 @@ h2 {
 }
 
 .home-image {
+	padding:2%;
 	position: relative;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -791,7 +796,7 @@ i {
 .fullbackground{
 	/* background-image: url('../image/1.svg'); */
 	background-size:cover;
-	background-color: rgb(255, 123, 0) !important;
+	background-color:#A62800 !important;
 }
 
 .home-brand {
@@ -844,14 +849,16 @@ i {
 .home-brand-content-company,
 .home-brand-content-message
 {
+	width: 100vw;
+	height: var(--mainHeight);
+	padding: 2rem;;
 	display: none;
 	justify-content: center;
 	align-items: center;
 }
 .home-brand-left:hover,
 .home-brand-right:hover {
-	width: 90vw;
-	height: var(--mainHeight);
+	/* height: var(--mainHeight); */
 	background-color: rgba(0, 0, 0, .3);
 	backdrop-filter: blur(3px);
 	display: flex;
