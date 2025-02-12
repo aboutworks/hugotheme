@@ -9,10 +9,32 @@
 }
 
 .light {
-	--colorBorderStyle: rgb(235, 235, 235);
+	--colorBodyBackground:rgb(255, 255, 255);
+	--colorHeaderTitle:rgb(0, 0, 0);
+	--colorHeaderMenu:rgb(0, 0, 0);
+
+	--colorLink: #000000;
+	--colorHover: gray;
+	--colorVisited: gray;
+	--colorActive: gray;
+}
+.dark{
+	--colorBodyBackground:rgb(35, 35, 35);
+	--colorHeaderTitle:white;
+	--colorHeaderMenu:white;
+
+	--colorLink: #ffffff;
+	--colorHover: gray;
+	--colorVisited: gray;
+	--colorActive: gray;
 }
 
 :root {
+
+	--sizeTitleFont:2rem;
+	--sizeNormalFont:14px;
+
+
 	--colorBorderStyle: #ECECEC;
 	--colorHomeItem: #ffffff;
 	--borderRadius: 0px;
@@ -20,10 +42,7 @@
 	--colorImage: rgb(237, 237, 237);
 	--colorDate: rgb(214, 214, 214);
 	--colorDesc: rgb(180, 180, 180);
-	--colorLink: #000000;
-	--colorHover: gray;
-	--colorVisited: gray;
-	--colorActive: gray;
+
 	--colorPs: rgb(255, 255, 255);
 	/* --headerWidth:  */
 	--fontSize: 14px;
@@ -65,6 +84,7 @@ html {
 	width: 100vw;
 	font-family: var(--fontFamily);
 	font-size: var(--fontSize);
+	background-color: var(--colorBodyBackground);
 	/* background-color: var(--colorBackground); */
 }
 
@@ -774,12 +794,16 @@ i {
 
 
 
-
+.title{
+	width: 100%;
+	font-size:var(--sizeTitleFont);
+	color:var(--colorHeaderTitle);
+}
 
 .menu {
 	height: 4rem;
 	font-size: 1.2rem;
-	color: rgb(255, 255, 255);
+	color: var(--colorHeaderMenu);
 	width: 100%;
 	display: flex;
 	justify-content: right;
