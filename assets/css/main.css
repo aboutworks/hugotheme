@@ -218,7 +218,9 @@ article {
 }
 
 p {
-	line-height: 2.75rem;
+	line-height: 1.75rem;
+	color: gray;
+	padding-top:2rem;
 }
 
 time {
