@@ -1,12 +1,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ .Title }}</title>
+<title>{{ .Site.Title}} | {{ .Site.Params.En }} | {{ .Site.Params.slogan}}</title>
+
+<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description | default .Summary | plainify | safeHTMLAttr }}{{ end }}">
+<meta name="keywords" content="{{ with .Keywords }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+<meta name="author" content="{{ .Site.Params.author }}">
 {{ $styles := resources.Get "css/main.css" | resources.ToCSS }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}">
 {{ $stylesdark := resources.Get "css/github-markdown-dark.css" | resources.ToCSS }}
 <link rel="stylesheet" href="{{ $stylesdark.Permalink }}">
 {{ $styleslight := resources.Get "css/github-markdown-light.css" | resources.ToCSS }}
 <link rel="stylesheet" href="{{ $styleslight.Permalink }}">
+{{ $stylesmedia := resources.Get "css/media.css" | resources.ToCSS }}
+<link rel="stylesheet" href="{{ $stylesmedia.Permalink }}">
 {{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $script.Permalink }}" defer></script>
 {{ $scriptmain := resources.Get "javascript/main.js" | resources.Minify | resources.Fingerprint }}

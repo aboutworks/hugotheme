@@ -1,78 +1,227 @@
-<div class="home-brand">
-
-
-
-
-	<div class="bannerTXT" id="texttototo" style="background-image:url('/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800.svg'); background-size: 32%;"></div>
-	<div class="bannerIMG" id="imgtototo" style="background-image:url('/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800.webp'); "></div>
-	<!-- <div class="bannerBEFORE" id="imgtototo" style="background-image:url('/posts/2025%E8%9B%87%E4%B9%8B%E6%98%A5/20241211T1217510800-2.webp');background-position:center 300px; "></div> -->
-
-
-	<div class="home-brand-left">
-		<div class="home-brand-left-icon"></div>
-
-		<div class="home-brand-content-company">
-			<div class="home-brand-box" style="padding: 3rem;">
-				<h1>{{ .Company }}</h1>
-				<ul class="companylist">
-					{{ range .Companylist }}
-					<li data-text="{{.}}" style="background-color: rgba(0, 0, 0,.3); backdrop-filter: blur(10px); color: white; padding: 1rem; border-radius: 8px;"></li>
-					{{ end}}
-				</ul>
+<div class="officialBox">
+	<div class="official_banner">
+		<div>
+			<div style="font-size: 3rem;">乐乎也,快乐视野</div>
+			<div>
+				虚拟现实数字化,
+				将现实数字化,
+				让生活更精彩
 			</div>
 		</div>
+	</div>
+	<div class="official_link">
+		<ul>
+			<li>
+				<svg width="100" height="36" viewBox="0 0 100 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="0.5" y="0.5" width="99" height="35" stroke="white" />
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8 7H36V11H26V23H36V11H44V15H48V25H44V29H36H8V7Z"
+						fill="white" />
+					<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M52 7V29H70H80H92V11H80H70V7H52ZM80 23V17H70V23H80Z" fill="white" />
+				</svg>
 
+
+				<div style="padding:1rem;" class="desc">
+					乐乎也DB(Digital
+					Box),理数字化信息的功能应用，两个方向，数字化多媒体，以及数字化地理信息系统。数字化多媒体，在于用户可以对多媒体进行收录，以及二次创作，引用等。数字化地理信息系统，主要在于用户对于地理位置的收取，以及位置的查询，路程，旅程的规划等。
+				</div>
+				<a class="abutton" href="https://db.lehuye.com">前往使用 <svg t="1741915257399" class="icon"
+						viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5711" width="32"
+						height="32">
+						<path
+							d="M853.333333 507.733333H128v42.666667h733.866667l-145.066667 145.066667 29.866667 29.866666 192-192L746.666667 341.333333l-29.866667 29.866667 136.533333 136.533333z"
+							fill="#ffffff" p-id="5712"></path>
+					</svg></a>
+			</li>
+			<li>
+				<svg width="100" height="36" viewBox="0 0 100 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="0.5" y="0.5" width="99" height="35" stroke="white" />
+					<path d="M26 7H8V29H48V23H36V18H26V7Z" fill="white" />
+					<path d="M52 29V7H92V11H70V17H80V23H70V29H52Z" fill="white" />
+				</svg>
+
+				<div style="padding:1rem;" class="desc">
+					乐乎也 Figma
+					插件,一款可以快速处理设计过程中的需求，可以与数字盒子联通的设计插件。目前可以应用在图标，文本处理，以及图片处理。等功能，后续将会根据数字盒子的更新，进行更新，两者的数据将会打通，做到无缝结合，以及在多场影使用。
+				</div>
+				<a class="abutton" href="https://db.lehuye.com">前往使用 <svg t="1741915257399" class="icon"
+						viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5711" width="32"
+						height="32">
+						<path
+							d="M853.333333 507.733333H128v42.666667h733.866667l-145.066667 145.066667 29.866667 29.866666 192-192L746.666667 341.333333l-29.866667 29.866667 136.533333 136.533333z"
+							fill="#ffffff" p-id="5712"></path>
+					</svg></a>
+			</li>
+		</ul>
 	</div>
 
-	<div class="home-brand-right">
-		<div class="home-brand-right-icon"></div>
-		<div class="home-brand-content-message" >
-			<!-- <div class="home-brand-box" style="display: flex; flex-direction: column; height: 100%;"> -->
-				<!-- <h1>{{ .Message }}</h1> -->
-				<!-- <div style="flex: 1;"> -->
-					{{ partial "message.html" . }}
-				<!-- </div> -->
-			<!-- </div> -->
-		</div>
+</div>
 
+
+
+<div style="width: 100%; display: flex; justify-content: center; padding-top:10rem">
+	<svg width="102" height="62" viewBox="0 0 102 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<g clip-path="url(#clip0_2500_18354)">
+			<path d="M101.5 24.5H2.5V59.5H101.5V24.5Z" stroke="#FF0D56" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M10 31H38V35H28V47H38V35H46V39H50V49H46V53H38H10V31Z"
+				fill="#FF0D56" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M54 31V53H72H82H94V35H82H72V31H54ZM82 47V41H72V47H82Z"
+				fill="#FF0D56" />
+		</g>
+		<g clip-path="url(#clip1_2500_18354)">
+			<path d="M99.5 26.5H0.5V61.5H99.5V26.5Z" stroke="#00AEE5" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M8 33H36V37H26V49H36V37H44V41H48V51H44V55H36H8V33Z"
+				fill="#00AEE5" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M52 33V55H70H80H92V37H80H70V33H52ZM80 49V43H70V49H80Z"
+				fill="#00AEE5" />
+		</g>
+		<g clip-path="url(#clip2_2500_18354)">
+			<path d="M100.5 25.5H1.5V60.5H100.5V25.5Z" stroke="white" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M9 32H37V36H27V48H37V36H45V40H49V50H45V54H37H9V32Z"
+				fill="white" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M53 32V54H71H81H93V36H81H71V32H53ZM81 48V42H71V48H81Z"
+				fill="white" />
+		</g>
+		<rect x="33" width="16" height="10" fill="#FF0D56" />
+		<rect x="53" width="16" height="10" fill="#00AEE5" />
+		<defs>
+			<clipPath id="clip0_2500_18354">
+				<rect width="100" height="36" fill="white" transform="translate(2 24)" />
+			</clipPath>
+			<clipPath id="clip1_2500_18354">
+				<rect width="100" height="36" fill="white" transform="translate(0 26)" />
+			</clipPath>
+			<clipPath id="clip2_2500_18354">
+				<rect width="100" height="36" fill="white" transform="translate(1 25)" />
+			</clipPath>
+		</defs>
+	</svg>
+</div>
+
+<div style="width: 100vw; font-size: 4rem; font-weight: bolder; text-align: center; padding-top:180px">Digital Box</h3>
+</div>
+
+<div style="width: 100vw; font-size: 2rem; text-align: center; padding-top:180px">我的数字媒体库</div>
+<div style="width: 100vw; font-size: 14px; text-align: center; padding-bottom:2rem">保存数字媒体，可以进行多次创作</div>
+
+<div class="official_itema">
+	<ul>
+		<li>
+			<h2>替换文本 / Replace Text</h2>
+			<p>批量替换文档中的指定文本，快速完成文案更新。 Batch replace specific text in your document to quickly update copy.</p>
+		</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+	</ul>
+	<div style="display: flex;justify-content: center;align-items: center; ">
+		<img src="https://view.lehuye.com/medias/webp/32daf80c-5318-440c-8e04-927475d26523_null.webp" class="img" />
+		<!-- <img src="https://view.lehuye.com/medias/webp/6df1282a-24da-4cdb-8748-ce8773dcd514_null.webp" width="50%" /> -->
 	</div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="width: 100%; display: flex; justify-content: center; padding-top:10rem">
+	<svg width="102" height="63" viewBox="0 0 102 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<rect x="33" width="16" height="10" fill="#FF0D56" />
+		<rect x="53" width="16" height="10" fill="#00AEE5" />
+		<g clip-path="url(#clip0_2500_18355)">
+			<path d="M99.5 27.5H0.5V62.5H99.5V27.5Z" stroke="#00AEE5" />
+			<path d="M26 34H8V56H48V50H36V45H26V34Z" fill="#00AEE5" />
+			<path d="M52 56V34H92V38H70V44H80V50H70V56H52Z" fill="#00AEE5" />
+		</g>
+		<g clip-path="url(#clip1_2500_18355)">
+			<path d="M101.5 25.5H2.5V60.5H101.5V25.5Z" stroke="#FF0D56" />
+			<path d="M28 32H10V54H50V48H38V43H28V32Z" fill="#FF0D56" />
+			<path d="M54 54V32H94V36H72V42H82V48H72V54H54Z" fill="#FF0D56" />
+		</g>
+		<path d="M100.5 26.5H1.5V61.5H100.5V26.5Z" stroke="white" />
+		<path d="M27 33H9V55H49V49H37V44H27V33Z" fill="white" />
+		<path d="M53 55V33H93V37H71V43H81V49H71V55H53Z" fill="white" />
+		<defs>
+			<clipPath id="clip0_2500_18355">
+				<rect width="100" height="36" fill="white" transform="translate(0 27)" />
+			</clipPath>
+			<clipPath id="clip1_2500_18355">
+				<rect width="100" height="36" fill="white" transform="translate(2 25)" />
+			</clipPath>
+		</defs>
+	</svg>
 </div>
 
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const bannerIMG = document.getElementById('imgtototo');
-		const text = document.getElementById('texttototo');
-		let initialTop = parseInt(bannerIMG.style.top);
-		let initialRight = parseInt(bannerIMG.style.right);
-	
-		// 设置最大偏移量
-		const maxOffset = 50;
-	
-		// 鼠标移动事件处理函数
-		function handleMouseMove(e) {
-			// 计算偏移量并限制在最大偏移范围内
-			let offsetTop = Math.min(maxOffset, Math.max(-maxOffset, e.clientY / 20 - initialTop));
-			let offsetRight = Math.min(maxOffset, Math.max(-maxOffset, e.clientX / 20 - initialRight));
-	
-			bannerIMG.style.top = (initialTop + offsetTop) + 'px';
-			bannerIMG.style.right = (initialRight - offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
-			text.style.top = (initialTop + offsetTop) + 'px';
-			text.style.right = (initialRight + offsetRight) + 'px'; // 注意这里使用减号，因为right属性是从右边开始计算的
-	
-			console.log(`Top: ${bannerIMG.style.top}, Right: ${bannerIMG.style.right}`);
-		}
-	
-		// 添加鼠标移动监听器
-		document.addEventListener('mousemove', handleMouseMove);
-	
-		// 当鼠标移出窗口时，重置位置
-		document.addEventListener('mouseleave', function() {
-			bannerIMG.style.top = initialTop + 'px';
-			bannerIMG.style.right = initialRight + 'px';
-			text.style.top = initialTop + 'px';
-			text.style.right = initialRight + 'px';
-		});
-	});
-	</script>
+<div style="width: 100vw; font-size: 4rem; font-weight: bolder; text-align: center; padding-top:180px">Figma Plugin</h3>
+</div>
+
+
+
+<div style="width: 100vw; font-size: 2rem; text-align: center; padding-top:180px">Figma 插件使用</div>
+<div style="width: 100vw; font-size: 14px; text-align: center; padding-bottom:2rem">极致的文本处理</div>
+
+<div class="official_itemb">
+	<div style="display: flex; justify-content: center; align-items: center;">
+		<video controls width="840" height="460">
+			<source src="{{ .Video }}" type="video/webm">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+	<ul>
+		<li>
+			<h2>获取文本 / Extract Text</h2>
+			<p>一键提取设计中的所有文本内容，轻松管理文案。
+
+				One-click extraction of all text content in your design, making copy management effortless.</p>
+		</li>
+		<li>
+			<h2>替换文本 / Replace Text</h2>
+			<p>批量替换文档中的指定文本，快速完成文案更新。 Batch replace specific text in your document to quickly update copy.</p>
+		</li>
+		<li>
+			<h2>过滤文本 / Filter Text</h2>
+			<p>精准筛选特定条件的文本，帮助您聚焦关键内容。
+
+				Precisely filter text based on specific conditions to focus on key content.</p>
+		</li>
+		<li>
+			<h2>插入文本 / Insert Text</h2>
+			<p>灵活插入动态文本或占位符，优化设计流程。
+
+				Flexibly insert dynamic text or placeholders to optimize your design workflow.</p>
+		</li>
+		<li>
+			<h2>获取 SVG 代码 / Get SVG Code</h2>
+			<p>快速导出矢量图形的 SVG 代码，便于开发使用。
+
+				Quickly export SVG code for vector graphics, making it developer-friendly.</p>
+		</li>
+		<li>
+			<h2>获取窗口标题 / Get Window Title</h2>
+			<p>自动捕获当前窗口的标题信息，方便项目整理。
+
+				Automatically capture the current window title for easy project organization.</p>
+		</li>
+	</ul>
+</div>
+
+
+
+<!-- 
+<div style="padding:3rem 0;">
+	<div style="width: 100vw; font-size: 2rem; text-align: center; padding-top:180px">我的路程规划</div>
+	<div style="width: 100vw; font-size: 14px; text-align: center;">即将上线</div>
+	<div style="display: flex;flex-direction:column; justify-content: center;">
+		<img src="/posts/%E4%B9%90%E4%B9%8E%E4%B9%9F-%E6%95%B0%E5%AD%97%E7%9B%92%E5%AD%90-%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%BF%E7%94%A8/1.webp"
+			class="img">
+		<img src="/posts/乐乎也-数字盒子-地理信息系统的使用/2.webp" class="img">
+	</div>
+</div> -->

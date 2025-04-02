@@ -3,7 +3,9 @@
 {{ $illustortar := resources.Get "image/1.svg" }}
 {{ $illustortarLe := resources.Get "image/2.svg" }}
 {{ $illustortarC := resources.Get "image/3.svg" }}
+{{ $video := resources.Get "image/example2.webm" }}
 {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
+
 
 {{ if eq $webtype "official" }}
 {{ $context := dict
@@ -18,13 +20,15 @@
 "Partnership" .Params.partnership
 "Company" .Params.company
 "Companylist" .Params.companylist
-"Message" .Params.Message
+"Message" .Params.Messag
 "Type" .Params.Type
 "Image" .Params.Image
 "YouTube" .Params.youtube
 "Bilibili" .Params.bilibili
 "Desc" .Params.desc
 "Weight" .Params.weight
+"Video" $video.RelPermalink
+
 }}
 {{ partial "official.html" $context }} <!-- 加载 brand.html partial -->
 {{ end }}

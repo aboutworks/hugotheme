@@ -1,80 +1,28 @@
-<div style="width:var(--homeWidth); margin: auto;
-display: flex;
-justify-content: space-between;
-">
-	{{ $icon := resources.Get "image/icon.svg" }}
-	{{ $logo := resources.Get "image/logo.svg" }}
-	<div style="flex:.5">
-			   
-		<a href="/" class="title">{{ .Site.Title }}</a>
+<div class="headerBox">
+	<div style="flex: 0.5;" class="title">
+		{{ $icon := resources.Get "image/icon.svg" }}
+		{{ $logo := resources.Get "image/logo.svg" }}
 
-		<div style="height: 4rem;display: none; justify-content: center; align-items: center">
-			{{ if or (eq .Site.Title "JimmyWong") (eq .Site.Title "Lehuye") }}
-			<a href="https://www.youtube.com/@jimmywongxyz">Youtube</a> |
-			<a href="https://www.tiktok.com/@jimmywongxyz">TikTok</a> |
-			<a href="https://x.com/jimmywongxyz">Twitter&X</a> |
-			<a href="mailto:aboutworks@outlook.com">Email</a>
-			{{ else if eq .Site.Title "Lehuye 乐乎也" }}
-			<a href="https://www.bilibili.com/@jimmywongxyz">
-				<i style="background-position-x: 0px; background-image: url('{{ $icon.Permalink }}');"></i>
-			</a>
-			<a href="https://www.douyin.com/@jimmywongxyz">
+		<a href="/"><img src="{{ $logo.RelPermalink }}" alt="Logo" height="20"></a>
 
-				<i style="background-position-x: 32px; background-image: url('{{ $icon.Permalink }}');"></i>
-			</a>
-			<a href="mailto:aboutworks@outlook.com">
-				<i style="background-position-x: 64px; background-image: url('{{ $icon.Permalink }}');"></i>
-			</a>
-			<i style="background-position-x: 96px; background-image: url('{{ $icon.Permalink }}');" class="hoverbox">
-				<div class="hoverboxpic">pic</div>
-			</i>
-			{{ end }}
-		</div>
 	</div>
 
-	<ul class="menu" style="flex:.5">
-		{{ range .Site.Menus.main }}
-		<li><a href="{{ .URL }}">{{ .Name }}</a></li>
-		{{ end }}
-		<!-- <li>
-			<i style="background-position-x: 160px; background-image: url('{{ $icon.Permalink }}');"
-				class="hoverbox"></i>
-			<span>JimmyWong</span>
-		</li> -->
-		<a style="background-color: #071f3a;padding: 1rem; color: #ffffff; border-radius: 1rem; font-weight: bolder; margin-right:1rem;" href="https://www.douyin.com/user/self?from_tab_name=lehuye">抖音</a>
-		<a style="background-color: #ffd4ab;padding: 1rem; color: #723700; border-radius: 1rem; font-weight: bolder;" href="https://app.lehuye.com">AI提词平台</a>
-	</ul>
+	<div style="flex: 0.5;">
+		<nav class="menu">
+			<!-- SVG 图标 -->
+			<svg class="toggle-menu" width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="30" height="4" rx="2" ry="2" fill="white"/>
+				<rect y="8" width="30" height="4" rx="2" ry="2" fill="white"/>
+				<rect y="16" width="30" height="4" rx="2" ry="2" fill="white"/>
+			</svg>
+			
+			<ul>
+				{{ range .Site.Menus.main }}
+				<li><a href="{{ .URL }}">{{ .Name }}</a></li>
+				{{ end }}
+			</ul>
+		</nav>
+	</div>
 
 
 </div>
-
-<script>
-	function getDomainAsTitle() {
-		// 获取当前页面的完整URL
-		const url = new URL(window.location.href);
-
-		// 提取主机名（域名）
-		let hostname = url.hostname;
-
-		// 移除 'www.' 前缀（如果存在）
-		if (hostname.startsWith('www.')) {
-			hostname = hostname.slice(4);
-		}
-
-		// 找到最后一个 '.' 的位置并移除其后的内容
-		const lastDotIndex = hostname.lastIndexOf('.');
-		if (lastDotIndex !== -1) {
-			hostname = hostname.slice(0, lastDotIndex);
-		}
-
-		// 首字母大写，其余字母小写
-		const title = hostname.charAt(0).toUpperCase() + hostname.slice(1).toLowerCase();
-
-		return title;
-	}
-
-	// 示例使用：将结果设置为页面标题或显示在页面上
-	document.title = getDomainAsTitle();
-	document.getElementById('websitetitle').innerHTML = document.title
-
-</script>
