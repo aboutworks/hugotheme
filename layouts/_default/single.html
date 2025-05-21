@@ -1,8 +1,6 @@
 {{ define "main" }}
 <section>
 
-  <!-- <img src="{{ .Params.Image }}" /> -->
-
   <h1>{{ .Title }}</h1>
 
   <h6>{{ .Params.uuid }}</h6>
@@ -14,7 +12,7 @@
   {{ end }}
 
 
-  <article class="markdown-body">
+  <article class="markdown-body"  data-theme="{{ .Site.Params.mode }}">
     <!-- 调用目录模块 -->
 
     {{ if eq .Params.toc "true"}}

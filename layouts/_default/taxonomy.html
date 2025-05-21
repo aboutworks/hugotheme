@@ -1,7 +1,14 @@
 {{ define "main" }}
+<div class="home-page-content">
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  {{ range .Data.Terms.ByCount }}
+    <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ .Count }})</h2>
+    <ul style="padding: 1rem;">
+      {{ range .WeightedPages }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    </ul>
   {{ end }}
+  </div>
 {{ end }}

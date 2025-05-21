@@ -22,7 +22,7 @@
 }
 
 .dark {
-	--colorBodyBackground: rgb(35, 35, 35);
+	--colorBodyBackground: #0d1117;
 	--colorBodyBackgroundInvert: rgb(255, 255, 255);
 	--colorFont:white;
 	--colorFontInvert:black;
@@ -200,7 +200,6 @@ section {
 	width: var(--homeWidth);
 	margin: auto;
 	/* background-color: var(--colorHomeItem); */
-	background-color: black;
 	min-height: var(--mainHeight);
 	border-left: var(--borderStyle);
 	border-right: var(--borderStyle);
@@ -391,7 +390,7 @@ h2 {
 	/* 距离顶部 2rem */
 	left: 0;
 	width: 300px;
-	/* 目录的宽度，可以根据需要调整 */
+	/* 目录的宽度, 可以根据需要调整 */
 	/* background-color: var(--colorHomeItem); */
 	/* 与内容区域相同的背景颜色 */
 	padding: 1rem;
@@ -400,7 +399,7 @@ h2 {
 	min-height: 100vh;
 	/* 使目录至少占据整个视口的高度 */
 	overflow-y: auto;
-	/* 如果内容过长，可以滚动 */
+	/* 如果内容过长, 可以滚动 */
 }
 
 #TableOfContents {}
@@ -673,7 +672,7 @@ button[type="button"] {
 	border-width: 25px 25px 0 0;
 	/* 直角朝左上方 */
 	border-color: rgba(255, 0, 0, .8) transparent transparent transparent;
-	/* 颜色和透明部分 */
+	/* 颜色和 transparent 部分 */
 }
 
 .flag::after {
@@ -684,7 +683,7 @@ button[type="button"] {
 	border-width: 25px 0 0 25px;
 	/* 直角朝右上方 */
 	border-color: rgba(255, 0, 0, .8) transparent transparent transparent;
-	/* 颜色和透明部分 */
+	/* 颜色和 transparent 部分 */
 }
 
 
@@ -811,7 +810,7 @@ i {
 .fullbackground {
 	/* background-image: url('../image/1.svg'); */
 	background-size: cover;
-	background-color: #000000 !important;
+	background-color: var(--colorBodyBackground) !important;
 }
 
 .home-brand {

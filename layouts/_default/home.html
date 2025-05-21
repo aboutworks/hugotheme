@@ -35,6 +35,7 @@
 
 {{ if eq $webtype "blog" }}
 <div class="home-page-content">
+
   <div class="home-item-box">
     {{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
     {{ if eq .Params.position "home" }}

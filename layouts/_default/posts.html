@@ -1,5 +1,8 @@
 {{ define "main" }}
 <div class="home-page-content">
+
+
+
 	{{ range where .Site.Pages "Section" "posts" }}
 	<div class="home-item">
 		{{ if eq .Params.position "top" }}
