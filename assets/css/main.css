@@ -386,8 +386,9 @@ h2 {
 	/* position: sticky; */
 	position: fixed;
 	/* 使目录随滚动固定 */
-	top: var(--headerHeight);
+	top: 0;
 	/* 距离顶部 2rem */
+	height: var(--mainHeight);
 	left: 0;
 	width: 300px;
 	/* 目录的宽度, 可以根据需要调整 */
@@ -1074,3 +1075,25 @@ textarea button {
 .official_itemb ul li{
 	height: 300px;
 }
+
+.tag-group-title {
+	font-weight: bold;
+	margin-bottom: 0.5em;
+  }
+  
+  .tag-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+  }
+  
+  .tag-list li a {
+	background-color: #f0f0f0;
+	padding: 0.3em 0.6em;
+	border-radius: 4px;
+	text-decoration: none;
+	color: #333;
+  }

@@ -1,6 +1,11 @@
 {{ define "main" }}
 <section>
 
+
+
+  {{ partial "toc.html" . }}
+
+
   <h1>{{ .Title }}</h1>
 
   <h6>{{ .Params.uuid }}</h6>
@@ -22,15 +27,11 @@
     {{ .Content }}
   </article>
   <aside>
-    {{ with .GetTerms "tags" }}
-    <div>{{ (index . 0).Parent.LinkTitle }}</div>
-    <ul>
-      {{ range . }}
-      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-      {{ end }}
-    </ul>
-    {{ end }}
+
+
   </aside>
+
+  {{ partial "taxonomy-tags.html" . }}
 
 
 

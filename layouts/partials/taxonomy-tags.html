@@ -1,0 +1,12 @@
+{{ with .GetTerms "tags" }}
+  <div class="tag-parent">
+    {{ with (index . 0).Parent }}
+      <div class="tag-group-title">{{ .LinkTitle }}</div>
+    {{ end }}
+  </div>
+  <ul class="tag-list">
+    {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+    {{ end }}
+  </ul>
+{{ end }}
