@@ -1,0 +1,38 @@
+
+  {{ partial "toc.html" . }}
+
+  <h1>{{ .Title }}</h1>
+  <h6>{{ .Params.uuid }}</h6>
+
+  {{ with .Date }}
+
+
+  {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateHuman := . | time.Format ":date_long" }}
+  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  {{ end }}
+
+
+  <article class="markdown-body" data-theme="{{ .Site.Params.mode }}">
+    <!-- 调用目录模块 -->
+    {{ if eq .Params.toc "true"}}
+    {{ partial "toc.html" . }}
+    {{end}}
+
+    {{ .Content }}
+  </article>
+
+
+
+  {{ partial "taxonomy-tags.html" . }}
+
+
+
+  {{ partial "comments.html"
+  (
+  dict
+  "uuid" .Params.uuid
+  "Sitetitle" .Site.Title
+  )}}
+
+

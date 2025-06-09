@@ -1,0 +1,76 @@
+<div class="table-of-contents">
+  <h2>{{ T "catalog" }}</h2>
+  <ul id="toc-accordion" class="toc-accordion">
+    {{ range .Pages }}
+      {{ partial "toc-item.html" . }}
+    {{ end }}
+  </ul>
+</div>
+
+<script>
+  function toggleTOCItem(element) {
+    const content = element.nextElementSibling;
+    const icon = element.querySelector('.toc-icon');
+    if (content.style.display === 'block') {
+      content.style.display = 'none';
+      icon.textContent = '▶';
+    } else {
+      content.style.display = 'block';
+      icon.textContent = '▼';
+    }
+  }
+
+  // 默认展开一级目录
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".toc-body");
+    items.forEach(item => {
+      item.style.display = 'none'; // 默认关闭所有子项
+    });
+  });
+</script>
+
+<style>
+.table-of-contents {
+  padding: 1rem;
+  border-left: 3px solid #42b983;
+  margin-bottom: 2rem;
+}
+
+.toc-accordion {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc-header {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: bold;
+  position: relative;
+  font-size: 1rem;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+}
+
+.toc-header .toc-icon {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.toc-body {
+  display: none;
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.toc-body li a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.3rem 0;
+  display: block;
+}
+
+.toc-body li a:hover {
+  text-decoration: underline;
+}
+</style>

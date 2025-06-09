@@ -134,6 +134,10 @@
 		display: none;
 	}
 
-
+.categories-box{
+	width: 95%;
+	margin:2.5%;
+	border: var(--borderStyle);
+}
 
 }

@@ -12,7 +12,7 @@
 	--colorBodyBackground: rgb(255, 255, 255);
 	--colorHeaderTitle: rgb(0, 0, 0);
 	--colorHeaderMenu: rgb(0, 0, 0);
-
+	--colorOpacity: rgba(255, 255, 255, .8);
 	--colorBlockBackground: white;
 
 	--colorLink: #000000;
@@ -24,8 +24,9 @@
 .dark {
 	--colorBodyBackground: #0d1117;
 	--colorBodyBackgroundInvert: rgb(255, 255, 255);
-	--colorFont:white;
-	--colorFontInvert:black;
+	--colorOpacity: rgba(255, 255, 255, .8);
+	--colorFont: white;
+	--colorFontInvert: black;
 	--colorHeaderTitle: white;
 	--colorHeaderMenu: white;
 	--colorBlockBackground: black;
@@ -56,7 +57,7 @@
 	--fontSize: 14px;
 	--fontFamily: Arial, Helvetica, sans-serif;
 	--homeWidth: 1280px;
-	--imgWidth:90%;
+	--imgWidth: 90%;
 	--scrollbarWidth: 0px;
 	--mobileWidth: 393px;
 	--headerHeight: 100px;
@@ -69,7 +70,7 @@
 	box-sizing: border-box;
 }
 
-.markdown-body a,
+/* .markdown-body a,
 a:link {
 	text-decoration: none;
 	color: var(--colorLink) !important;
@@ -85,7 +86,13 @@ a:visited {
 
 a:active {
 	color: var(--colorActive)
-}
+} */
+
+a:link , a:hover , a:visited , a:active {
+	color: var(--colorActive);
+	text-decoration: none;
+} 
+
 
 body,
 html {
@@ -130,7 +137,7 @@ footer {
 header {
 	/* border-bottom: var(--borderStyle); */
 	height: var(--headerHeight);
-	padding:1rem;
+	padding: 1rem;
 }
 
 
@@ -139,7 +146,7 @@ header {
 .officialBox {
 	width: var(--homeWidth);
 	margin: auto;
-	
+
 }
 
 .headerBox {
@@ -147,30 +154,34 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding:0 	2rem;
-	height:100%;
+	padding: 0 2rem;
+	height: 100%;
 	border: var(--border);
 }
 
 .official {}
-.official_banner{
+
+.official_banner {
 	width: 100%;
-	padding:3rem 1rem;
+	padding: 3rem 1rem;
 	display: flex;
 	justify-content: center;
 }
-.official_link ul{
+
+.official_link ul {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
-.official_link ul li{
+
+.official_link ul li {
 	width: 35%;
-	padding:2rem;
+	padding: 2rem;
 	line-height: 2.5rem;
-	border:var(--border);
+	border: var(--border);
 }
-.img{
+
+.img {
 	width: var(--imgWidth);
 }
 
@@ -219,7 +230,7 @@ article {
 p {
 	line-height: 1.75rem;
 	color: gray;
-	padding-top:2rem;
+	padding-top: 2rem;
 }
 
 time {
@@ -242,10 +253,6 @@ h2 {
 	font-size: 12px;
 }
 
-.home-page-content {
-	width: var(--homeWidth);
-	margin: auto;
-}
 
 .home-mobile-item,
 .home-tablet-item {
@@ -390,7 +397,8 @@ h2 {
 	/* 距离顶部 2rem */
 	height: var(--mainHeight);
 	left: 0;
-	width: 300px;
+	width: 280px;
+	overflow-x: hidden;
 	/* 目录的宽度, 可以根据需要调整 */
 	/* background-color: var(--colorHomeItem); */
 	/* 与内容区域相同的背景颜色 */
@@ -402,12 +410,14 @@ h2 {
 	overflow-y: auto;
 	/* 如果内容过长, 可以滚动 */
 }
+.table-of-contents:hover {
+	width: 30vw;
+	background-color: var(--colorOpacity);
+	backdrop-filter: blur(6px);
+}
+.table-of-contents-content{
+	width: 30vw;
 
-#TableOfContents {}
-
-#TableOfContents ul li {
-	text-align: left;
-	padding: 8px;
 }
 
 .comments {
@@ -782,30 +792,30 @@ i {
 
 /* 默认的 .menu 样式 */
 .menu {
-    position: relative;
-    display: flex;
-    align-items: center;
+	position: relative;
+	display: flex;
+	align-items: center;
 	justify-content: right;
 }
 
 .menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-    color: var(--colorHeaderMenu);
-    display: flex;
-    justify-content: right;
-    align-items: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: 1.2rem;
+	color: var(--colorHeaderMenu);
+	display: flex;
+	justify-content: right;
+	align-items: center;
 }
 
 .menu ul li {
-    padding: 0 1rem;
+	padding: 0 1rem;
 }
 
 .menu svg.toggle-menu {
-    /* 可根据需要调整图标的大小和颜色 */
-    cursor: pointer;
+	/* 可根据需要调整图标的大小和颜色 */
+	cursor: pointer;
 }
 
 .fullbackground {
@@ -1040,60 +1050,148 @@ textarea button {
 }
 
 
-.abutton{
+.abutton {
 	display: flex;
 	align-items: center;
 
 }
-.desc{
+
+.desc {
 	opacity: .6;
 }
 
 
 .official_itema ul,
-.official_itemb ul{
+.official_itemb ul {
 	width: var(--homeWidth);
 	margin-left: auto !important;
 	margin-right: auto !important;
 	display: flex;
 	justify-content: space-between;
 }
+
 .official_itema ul li,
-.official_itemb ul li{
+.official_itemb ul li {
 	width: 100%;
-	border:var(--border);
-	padding:1rem;
+	border: var(--border);
+	padding: 1rem;
 	margin: 6px;
-	background-color:#0d0d0d;
+	background-color: #0d0d0d;
 }
-.official_itema ul{
-	margin-bottom:-60px;
+
+.official_itema ul {
+	margin-bottom: -60px;
 }
-.official_itemb ul{
-	margin-bottom:60px;
+
+.official_itemb ul {
+	margin-bottom: 60px;
 }
-.official_itemb ul li{
+
+.official_itemb ul li {
 	height: 300px;
 }
 
 .tag-group-title {
 	font-weight: bold;
 	margin-bottom: 0.5em;
-  }
-  
-  .tag-list {
+}
+
+.tag-list {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5em;
-  }
-  
-  .tag-list li a {
+}
+
+.tag-list li a {
 	background-color: #f0f0f0;
 	padding: 0.3em 0.6em;
 	border-radius: 4px;
 	text-decoration: none;
 	color: #333;
-  }
+}
+
+
+/*目录高亮当前链接*/
+/* 目录链接激活样式 */
+#toc-nav{
+	color:rgb(181, 181, 181)
+}
+#toc-nav a.active,
+.active-heading {
+	color: #000000 !important;
+	font-weight: bold !important;
+	text-decoration: underline !important;
+}
+
+
+
+
+
+
+
+
+
+.home-page-content {
+	width: var(--homeWidth);
+	margin: auto;
+}
+
+
+.categories {
+	width: var(--homeWidth);
+	margin: auto;
+
+}
+
+.categories-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.categories-box{
+	width: 45%;
+	margin:2.5%;
+	border: var(--borderStyle);
+}
+
+.categories ul li {
+	padding: 4px 4px 4px 1.2rem;
+	position: relative;
+	border-left:4px solid rgba(197, 197, 197,.3);
+	margin:4px;
+	display: inline-block;
+	transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.categories ul li:hover {
+	color: #007bff;
+		border-left:4px solid rgb(0, 0, 0);
+}
+
+.categories ul li.active,
+.categories ul li.active:hover {
+	color: #333;
+}
+
+/* 下划线动画 */
+.categories ul li::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 1rem;
+	background: rgba(0, 0, 0, .1);
+	z-index: -1;
+	/* 确保下划线在文字后面 */
+	transition: width 0.3s ease;
+}
+
+/* 鼠标悬停或选中时下划线宽度变为100% */
+.categories ul li:hover::after,
+.categories ul li.active::after {
+	width: 100%;
+}

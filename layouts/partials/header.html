@@ -1,25 +1,30 @@
 <div class="headerBox">
-	<div style="flex: 0.5;" class="title">
-		{{ $icon := resources.Get "image/icon.svg" }}
-		{{ $logo := resources.Get "image/logo.svg" }}
 
-		<a href="/"><img src="{{ $logo.RelPermalink }}" alt="Logo" height="20"></a>
+	<div style="flex: 0.5;" class="title">
+
+		<!-- {{ $icon := resources.Get "image/icon.svg" }}
+		{{ $logo := resources.Get "image/logo.svg" }}
+		<a href="/"><img src="{{ $logo.RelPermalink }}" alt="Logo" height="20"></a> -->
+		<a href="/">{{ .Site.Title }}</a>
 
 	</div>
 
 	<div style="flex: 0.5;">
 		<nav class="menu">
 			<!-- SVG 图标 -->
-			<svg class="toggle-menu" width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<rect width="30" height="4" rx="2" ry="2" fill="white"/>
-				<rect y="8" width="30" height="4" rx="2" ry="2" fill="white"/>
-				<rect y="16" width="30" height="4" rx="2" ry="2" fill="white"/>
+			<svg class="toggle-menu" width="30" height="20" viewBox="0 0 30 20" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+				<rect width="30" height="4" rx="2" ry="2" fill="white" />
+				<rect y="8" width="30" height="4" rx="2" ry="2" fill="white" />
+				<rect y="16" width="30" height="4" rx="2" ry="2" fill="white" />
 			</svg>
-			
+
 			<ul>
 				{{ range .Site.Menus.main }}
 				<li><a href="{{ .URL }}">{{ .Name }}</a></li>
 				{{ end }}
+				<li onclick="toggleTheme()">主题</li>
+				<!-- <li id="theme-toggle">切换主题</li> -->
 			</ul>
 		</nav>
 	</div>

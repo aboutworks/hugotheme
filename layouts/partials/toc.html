@@ -1,5 +1,141 @@
-<!-- layouts/partials/toc.html -->
 <div class="table-of-contents">
-	<h2>{{ T "catalog" }}</h2>
-	{{ .TableOfContents }}
+  <div class="table-of-contents-content">
+  <h2 onclick="toggleTOC()" style="cursor: pointer;">
+    {{ T "catalog" }}
+    <span id="toc-toggle-icon">▶</span>
+  </h2>
+  <div id="toc-nav" class="toc-content" style="display: none;">
+    {{ .TableOfContents }}
   </div>
+  </div>
+</div>
+
+<script>
+  function toggleTOC() {
+    const tocNav = document.getElementById('toc-nav');
+    const icon = document.getElementById('toc-toggle-icon');
+    const isVisible = tocNav.style.display === 'block';
+
+    if (isVisible) {
+      tocNav.style.display = 'none';
+      icon.textContent = '▶'; // 折叠箭头
+    } else {
+      tocNav.style.display = 'block';
+      icon.textContent = '▼'; // 展开箭头
+    }
+  }
+
+  // 可选：页面加载时默认显示一次
+  document.addEventListener("DOMContentLoaded", function () {
+    const tocNav = document.getElementById('toc-nav');
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      tocNav.style.display = 'block'; // 在中等及以上屏幕默认展开
+      document.getElementById('toc-toggle-icon').textContent = '▼';
+    }
+  });
+
+  document.getElementById('TableOfContents')
+
+
+   document.addEventListener("DOMContentLoaded", function () {
+    const toc = document.getElementById('TableOfContents');
+
+    // 遍历所有带子菜单的 li 元素
+    const items = toc.querySelectorAll('li:has(> ul)');
+
+    items.forEach(li => {
+      const anchor = li.children[0]; // 获取第一个子元素（a 标签）
+      const subMenu = li.querySelector('ul');
+
+      // 设置初始状态：隐藏子菜单
+      subMenu.style.display = 'none';
+
+      // 插入一个小图标作为展开/收起按钮
+      const toggleIcon = document.createElement('span');
+      toggleIcon.textContent = '▶';
+      toggleIcon.style.marginRight = '0.5em';
+      toggleIcon.style.cursor = 'pointer';
+      toggleIcon.style.userSelect = 'none';
+      toggleIcon.style.color = '#888';
+
+      // 将图标插入到 a 标签前面
+      anchor.insertBefore(toggleIcon, anchor.firstChild);
+
+      // 点击图标或标题时切换子菜单
+      anchor.addEventListener('click', function (e) {
+        if (e.target !== anchor && e.target.tagName !== 'A') return;
+
+        e.preventDefault(); // 阻止默认跳转，方便演示，你也可以去掉这行
+
+        const isVisible = subMenu.style.display === 'block';
+        subMenu.style.display = isVisible ? 'none' : 'block';
+        toggleIcon.textContent = isVisible ? '▶' : '▼';
+      });
+    });
+  });
+</script>
+
+<style>
+  .table-of-contents {
+    padding: 1rem;
+    border-left: 3px solid #42b983;
+    margin-bottom: 2rem;
+  }
+
+  .table-of-contents h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    cursor: pointer;
+  }
+
+  #toc-toggle-icon {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .toc-content ul {
+    padding-left: 1rem;
+    list-style-type: none;
+  }
+
+  .toc-content li {
+    margin: 0.3rem 0;
+  }
+
+  .toc-content a:hover {
+    text-decoration: underline;
+  }
+
+  /* 设置嵌套层级的缩进（最多支持 3 层） */
+
+  .toc-content>ul>li {
+    /* 第一级 */
+    padding-left: 0;
+  }
+
+  .toc-content ul ul>li {
+    /* 第二级 */
+    padding-left: 1rem;
+  }
+
+  .toc-content ul ul ul>li {
+    /* 第三级 */
+    padding-left: 2rem;
+  }
+
+  /* 第四层及以上隐藏 */
+  .toc-content ul ul ul {
+    display: none;
+  }
+
+  .toc-content ul ul ul ul:hover{
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    .toc-content {
+      display: none;
+    }
+  }
+</style>

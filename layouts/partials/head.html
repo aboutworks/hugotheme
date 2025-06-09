@@ -1,5 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>{{ .Site.Title}} | {{ .Params.Title }} </title>
 
 <meta name="description"
@@ -23,3 +24,6 @@
 <script src="{{ $script.Permalink }}" defer></script>
 {{ $scriptmain := resources.Get "javascript/main.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $scriptmain.Permalink }}" defer></script>
+
+{{ $scriptssh := resources.Get "javascript/ssh.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $scriptssh.Permalink }}" defer></script>
