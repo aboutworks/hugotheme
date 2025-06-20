@@ -1,0 +1,133 @@
+:root {
+  /* Font */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 20px;
+  --line-height-base: 1.6;
+
+  /* Layout sizes and other variables here... */
+
+  /* Include all your provided :root variables here */
+}
+
+/* Light Theme */
+.light {
+  /* Include all your light theme variables here */
+}
+
+/* Dark Theme */
+.dark {
+  /* Include all your dark theme variables here */
+}
+
+/* Warm Theme */
+.warm {
+  /* Include all your warm theme variables here */
+}
+
+/* Base styles for markdown content */
+body {
+  font-family: var(--font-family);
+  color: var(--color-font);
+  background-color: var(--color-bg-body);
+  line-height: var(--line-height-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-header-title);
+  font-weight: bold;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+h1{ font-size: 200%; display: block; justify-content: center; align-items: center; opacity: 1; }
+h2{ font-size: 180%; display: block; justify-content: center; align-items: center; opacity: .9; padding-left:1rem;}
+h3{ font-size: 160%; display: block; justify-content: center; align-items: center; opacity: .8; padding-left:2rem;}
+h4{ font-size: 140%; display: block; justify-content: center; align-items: center; opacity: .7; padding-left:3rem; }
+h5{ font-size: 120%; display: block; justify-content: center; align-items: center; opacity: .6; padding-left:4rem;}
+h6{ font-size: 100%; display: block; justify-content: center; align-items: center; opacity: .5; padding-left:5rem;}
+
+h1::before{ content: "壹."; display: inline-block; }
+h2::before{ content: "贰."; display: inline-block; }
+h3::before{ content: "叁."; display: inline-block; }
+h4::before{ content: "肆."; display: inline-block; }
+h5::before{ content: "伍."; display: inline-block; }
+h6::before{ content: "陆."; display: inline-block; }
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before{
+  background-color: black;
+  color: white;
+  margin-right: 8px;
+  font-weight: lighter;
+  border-radius: 4px;
+  padding:8px;
+  font-size: var(--font-size-sm);
+}
+
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-base);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+code {
+  padding: var(--space-xs) var(--space-sm);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  background-color: var(--color-bg-block);
+  border-radius: var(--border-radius);
+}
+
+pre {
+  padding: var(--space-md);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-bg-block);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+}
+
+blockquote {
+  padding-left: var(--space-md);
+  border-left: var(--space-xs) solid var(--color-border);
+  margin-left: 0;
+  margin-right: 0;
+  color: var(--color-text-desc);
+}
+
+table {
+  width: var(--width-full);
+  max-width: var(--width-home);
+  margin-bottom: var(--space-lg);
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: var(--space-sm);
+  border: var(--border-base);
+  text-align: left;
+}
+
+th {
+  background-color: var(--color-bg-opacity);
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-bg-block);
+}

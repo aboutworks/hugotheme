@@ -8,9 +8,7 @@
   <body class="light" >
   <!-- <body class="light {{ if eq .Site.Params.webtype "official" }}fullbackground{{ end }}" style="background-color:#F5F5F5;"> -->
   {{ .Site.Params.setting.backgroundColor }}
-  <header>
-    {{ partial "header.html" . }}
-  </header>
+  {{ partial "header.html" . }}
   <main>
     {{ block "main" . }}{{ end }}
   </main>

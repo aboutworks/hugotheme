@@ -1,15 +1,15 @@
-<div class="table-of-contents">
+
+<div class="table-of-contents" id="table-of-contents'">
   <div class="table-of-contents-content">
   <h2 onclick="toggleTOC()" style="cursor: pointer;">
-    {{ T "catalog" }}
-    <span id="toc-toggle-icon">▶</span>
+    {{ T "catalog" }} 
+    <span id="toc-toggle-icon">▶</span> 点击这里可以展开或隐藏整个目录
   </h2>
   <div id="toc-nav" class="toc-content" style="display: none;">
     {{ .TableOfContents }}
   </div>
   </div>
 </div>
-
 <script>
   function toggleTOC() {
     const tocNav = document.getElementById('toc-nav');
@@ -29,52 +29,54 @@
   document.addEventListener("DOMContentLoaded", function () {
     const tocNav = document.getElementById('toc-nav');
     if (window.matchMedia("(min-width: 768px)").matches) {
-      tocNav.style.display = 'block'; // 在中等及以上屏幕默认展开
+      tocNav.style.display = 'block';
       document.getElementById('toc-toggle-icon').textContent = '▼';
     }
   });
 
-  document.getElementById('TableOfContents')
-
-
-   document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const toc = document.getElementById('TableOfContents');
 
-    // 遍历所有带子菜单的 li 元素
-    const items = toc.querySelectorAll('li:has(> ul)');
+    if (!toc) return;
 
+    const items = toc.querySelectorAll('li:has(> ul)');
     items.forEach(li => {
-      const anchor = li.children[0]; // 获取第一个子元素（a 标签）
+      const anchor = li.children[0]; // a 标签
       const subMenu = li.querySelector('ul');
 
-      // 设置初始状态：隐藏子菜单
-      subMenu.style.display = 'none';
+      // 默认展开子菜单
+      subMenu.style.display = 'block';
+      subMenu.style.marginLeft = '1.5rem';
 
-      // 插入一个小图标作为展开/收起按钮
+      // 创建展开/收起图标，作为 li 的第一个子元素
       const toggleIcon = document.createElement('span');
-      toggleIcon.textContent = '▶';
+      toggleIcon.textContent = '▼';
+      toggleIcon.className = 'toggle-icon';
       toggleIcon.style.marginRight = '0.5em';
       toggleIcon.style.cursor = 'pointer';
       toggleIcon.style.userSelect = 'none';
       toggleIcon.style.color = '#888';
+      toggleIcon.style.display = 'inline-block';
 
-      // 将图标插入到 a 标签前面
-      anchor.insertBefore(toggleIcon, anchor.firstChild);
+      // 插入到 a 标签前面
+      li.insertBefore(toggleIcon, anchor);
 
-      // 点击图标或标题时切换子菜单
-      anchor.addEventListener('click', function (e) {
-        if (e.target !== anchor && e.target.tagName !== 'A') return;
-
-        e.preventDefault(); // 阻止默认跳转，方便演示，你也可以去掉这行
+      // 点击图标切换子菜单
+      toggleIcon.addEventListener('click', function (e) {
+        e.preventDefault();
 
         const isVisible = subMenu.style.display === 'block';
         subMenu.style.display = isVisible ? 'none' : 'block';
         toggleIcon.textContent = isVisible ? '▶' : '▼';
       });
+
+      // 点击链接时允许跳转，不触发折叠/展开
+      anchor.addEventListener('click', function (e) {
+        // 这里可以什么都不做，让浏览器自己处理跳转
+      });
     });
   });
 </script>
-
 <style>
   .table-of-contents {
     padding: 1rem;

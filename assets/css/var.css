@@ -1,0 +1,144 @@
+:root {
+  /* Font */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 20px;
+  --line-height-base: 1.6;
+
+  /* Layout sizes */
+  --width-full:100%;
+  --width-home: 1280px;
+  --width-mobile: 420px;
+  --height-header: 80px;
+  --height-footer: 60px;
+  --height-main: calc(100vh - var(--height-header) - var(--height-footer));
+  --border-radius: 8px;
+  --scrollbar-width: 0px;
+
+  /* Spacing */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+
+  /* Card / image */
+  --card-width-min: 200px;
+  --card-width-max: 400px;
+  --card-height: 280px;
+  --image-height: 200px;
+  --image-radius: 6px;
+
+  /* Grid */
+  --grid-gap: 1rem;
+  --grid-col-min: 200px;
+  --grid-col-max: 1fr;
+
+  /* Button */
+  --btn-height: 40px;
+  --btn-padding-x: 1rem;
+  --btn-padding-y: 0.5rem;
+  --btn-radius: 6px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  /* Z-index */
+  --z-index-header: 1000;
+  --z-index-modal: 1100;
+  --z-index-tooltip: 1200;
+
+  /* Border */
+  --border-base: 1px solid var(--color-border);
+
+  /* Status colors */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+
+  /* Link states */
+  --color-link: #2c879a;
+  --color-link-hover: #2c879a;
+  --color-link-visited: #6610f2;
+  --color-link-active: #e83e8c;
+}
+/* Light Theme */
+.light {
+  --color-bg-body: #f5f5f5;
+  --color-font: #212529;
+  --color-font-invert: #ffffff;
+
+  --color-header-background: #ffffff; /* 白色，通用背景 */
+  --color-header-title: #111111;
+  --color-header-menu: #333333;
+
+  --color-bg-block: #f8f9fa;
+  --color-bg-opacity: rgba(255, 255, 255, 0.9);
+
+  --color-bg-image: #e9ecef;
+  --color-text-date: #6c757d;
+  --color-text-desc: #495057;
+  --color-text-ps: #adb5bd;
+
+  --color-card-background: #ffffff; /* 白色，通用卡片背景 */
+  --color-block-background: #ffffff; /* 白色，通用卡片背景 */
+
+  --color-border: #dee2e6;
+  --color-shadow: rgba(0, 0, 0, 0.05);
+  --color-accent: #2c879a;
+}
+
+/* Dark Theme */
+.dark {
+  --color-bg-body: #0d1117;
+  --color-font: #c9d1d9;
+  --color-font-invert: #0d1117;
+
+  --color-header-title: #f0f6fc;
+  --color-header-menu: #8b949e;
+
+  --color-bg-block: #161b22;
+  --color-bg-opacity: rgba(255, 255, 255, 0.05);
+
+  --color-bg-image: #21262d;
+  --color-text-date: #8b949e;
+  --color-text-desc: #a1b2c3;
+  --color-text-ps: #768390;
+
+  --color-card-background: #161b22; /* 深灰黑，低对比度卡片背景 */
+  --color-block-background:#161b22;
+
+  --color-border: #30363d;
+  --color-shadow: rgba(0, 0, 0, 0.6);
+  --color-accent: #58a6ff;
+}
+
+/* Warm Theme */
+.warm {
+  --color-bg-body: #f8f4e3;
+  --color-font: #3c2f2f;
+  --color-font-invert: #ffffff;
+
+  --color-header-title: #5a3e36;
+  --color-header-menu: #7e6651;
+
+  --color-bg-block: #fffaf2;
+  --color-bg-opacity: rgba(255, 248, 220, 0.9);
+
+  --color-bg-image: #e5dcc3;
+  --color-text-date: #a89b87;
+  --color-text-desc: #6d5f51;
+  --color-text-ps: #b8a88a;
+
+  --color-card-background: #fffaf2; /* 米白，暖色调卡片背景 */
+  --color-block-background: #fffaf2; /* 米白，暖色调卡片背景 */
+
+  --color-border: #d9cbb3;
+  --color-shadow: rgba(100, 84, 66, 0.1);
+  --color-accent: #d4a373;
+}

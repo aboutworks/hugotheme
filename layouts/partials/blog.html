@@ -1,17 +1,17 @@
-<div class="home-item-img">
-	<div style="width: 80%; height: 100%;">
-		<div class="home-item-img-box" style="background-image: url('{{ .Image | absURL }}');"></div>
+<div class="blog-item">
+  <!-- <div class="blog-img-box" style="background-image: url('{{ .Image | absURL }}');"></div> -->
 
-		<div style="padding:1rem 0; font-size:1.3rem; font-weight: bolder; color:rgb(95, 179, 192); "> 
-			<a href="{{ .Permalink}}">{{ .Title }}</a>
-		</div>
+  <div class="blog-title">
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </div>
 
-		<div style="opacity: .5; color: rgb(38, 60, 53);">{{ .Desc}}</div>
+  <div class="blog-desc">
+    {{ .Desc }}
+  </div>
 
-		<div style="opacity: .5; color: rgb(146, 188, 175); font-size: 12px; padding: 1rem 1rem 1rem 0;">
-			{{ range .Tags }}
-			<span style="background-color: black; padding:0 8px;">{{ . }}</span>
-		  {{ end }}
-		  </div>
-	</div>
+  <div class="blog-tags">
+    {{ range .Tags }}
+      <span class="blog-tag">{{ . }}</span>
+    {{ end }}
+  </div>
 </div>

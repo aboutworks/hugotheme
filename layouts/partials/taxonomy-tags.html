@@ -1,7 +1,7 @@
 {{ with .GetTerms "tags" }}
-<div class="tag-parent" style="padding:2rem 0;">
+<div class="tag-parent" >
   {{ with (index . 0).Parent }}
-  <div class="tag-group-title" style="padding: 2rem">{{ .LinkTitle }}</div>
+  <div class="tag-group-title">{{ .LinkTitle }}</div>
   {{ end }}
   <ul class="tag-list">
     {{ range . }}

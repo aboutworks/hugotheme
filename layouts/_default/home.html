@@ -6,7 +6,7 @@
 {{ $video := resources.Get "image/example2.webm" }}
 {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
-
+<!-- official 官网风格 -->
 {{ if eq $webtype "official" }}
 {{ $context := dict
 "Title" .Title
@@ -33,39 +33,68 @@
 {{ partial "official.html" $context }} <!-- 加载 brand.html partial -->
 {{ end }}
 
-{{ if eq $webtype "blog" }}
-<div class="home-page-content">
 
-  <div class="home-item-box">
-    {{ range sort (where .Site.Pages "Section" "posts") ".Params.weight" "asc" }}
-    {{ if eq .Params.position "home" }}
-    {{ if eq .Params.arrange "horizontal" }}
-    {{/* 创建一个新的上下文对象来传递给 partial */}}
-    {{ $context := dict
-    "Title" .Title
-    "Tags" .Params.tags
-    "Position" .Params.position
-    "Sitetitle" .Site.Title
-    "Permalink" .Permalink
-    "Date" .Params.Date
-    "Type" .Params.Type
-    "Image" .Params.Image
-    "YouTube" .Params.youtube
-    "Bilibili" .Params.bilibili
-    "Desc" .Params.desc
-    "Weight" .Params.weight
-    }}
-    {{ partial "blog.html" $context }}
-    {{ end }}
-    {{ end }}
+<!-- Blog 博客风格-->
+
+{{ if eq $webtype "blog" }}
+<div class="blog">
+  <!-- <h1 style="text-align: center;">📚 专属内容区</h1> -->
+  <!-- <p>仅限授权用户访问的高质量内容专区，包含深度教程、专业资料、会员福利等。为你提供更私密、更有价值的学习与使用体验。</p> -->
+  <div class="blog-box">
+    {{ $protected := where (where .Site.Pages "Section" "posts") "Params.protect" "eq" true }}
+    {{ range sort $protected ".Params.weight" "asc" }}
+      {{ if and (eq .Params.position "home") (eq .Params.arrange "horizontal") }}
+        {{ $context := dict
+          "Title" .Title
+          "Tags" .Params.tags
+          "Position" .Params.position
+          "Sitetitle" .Site.Title
+          "Permalink" .Permalink
+          "Date" .Date
+          "Type" .Params.type
+          "Image" .Params.image
+          "YouTube" .Params.youtube
+          "Bilibili" .Params.bilibili
+          "Desc" .Params.desc
+          "Weight" .Params.weight
+        }}
+        {{ partial "blog.html" $context }}
+      {{ end }}
     {{ end }}
   </div>
+  <!-- <h1 style="text-align: center;">📜 开放资源集</h1> -->
+  <div class="blog-box">
+    {{ $nonProtected := where (where .Site.Pages "Section" "posts") "Params.protect" "ne" true }}
+    {{ range sort $nonProtected ".Params.weight" "asc" }}
+      {{ if and (eq .Params.position "home") (eq .Params.arrange "horizontal") }}
+        {{ $context := dict
+          "Title" .Title
+          "Tags" .Params.tags
+          "Position" .Params.position
+          "Sitetitle" .Site.Title
+          "Permalink" .Permalink
+          "Date" .Date
+          "Type" .Params.type
+          "Image" .Params.image
+          "YouTube" .Params.youtube
+          "Bilibili" .Params.bilibili
+          "Desc" .Params.desc
+          "Weight" .Params.weight
+        }}
+        {{ partial "blog.html" $context }}
+      {{ end }}
+    {{ end }}
+  </div>
+  {{ partial "social.html" . }} <!-- 加载博客头部 -->
+  {{ partial "blog-banner.html" . }} <!-- 加载博客头部 -->
 </div>
+{{ end }}
+
+
 
 <div>
   {{ range first 10 .Site.RegularPages }}
   {{ .Render "summary" }}
   {{ end }}
 </div>
-{{ end }}
 {{ end }}

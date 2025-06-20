@@ -1,10 +1,14 @@
 <!-- <div style="display: flex; justify-content: space-between; width: var(--homeWidth);"> -->
+    <footer>
 <span>
     {{ T "footer.copyright" }} 2020 - {{ now.Year }} {{ T "footer.all_rights_reserved" }}
-    {{ T "footer.contactus"}} <a  href="mailto:aboutworks@outlook.com">{{ .Site.Title }}</a>
+    <span>{{ .Site.Title }}</span> | <a href="mailto:aboutworks@outlook.com">Aboutworks@outlook.com</a>
 </span>
+</footer>
 <!-- </div> -->
 
 {{ if .Site.Params.analyticsScript }}
 <script src="{{ .Site.Params.analyticsScript | absURL }}"></script>
 {{ end }}
+
+
