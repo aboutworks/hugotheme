@@ -107,7 +107,7 @@
 
   --color-bg-image: #21262d;
   --color-text-date: #8b949e;
-  --color-text-desc: #a1b2c3;
+  --color-text-desc : #a1b2c3;
   --color-text-ps: #768390;
 
   --color-card-background: #161b22; /* 深灰黑，低对比度卡片背景 */
@@ -132,7 +132,7 @@
 
   --color-bg-image: #e5dcc3;
   --color-text-date: #a89b87;
-  --color-text-desc: #6d5f51;
+  --color-text-desc : #6d5f51;
   --color-text-ps: #b8a88a;
 
   --color-card-background: #fffaf2; /* 米白，暖色调卡片背景 */

@@ -9,7 +9,18 @@
   {{ else }}
     {{ .Description | default .Summary | plainify | truncate 256 | safeHTMLAttr }}
   {{ end }}">
-<meta name="keywords" content="{{ with .Keywords }}{{ delimit . " , " }}{{ else }}{{ .Params.keywords }}{{ end }}">
+<meta name="keywords" content="
+{{ if .IsHome }}
+  {{ with .Site.Params.keywords }}
+    {{ delimit . ", " | plainify | truncate 256 | safeHTMLAttr }}
+  {{ end }}
+{{ else }}
+  {{ if .Params.keywords }}
+    {{ delimit .Params.keywords ", " | plainify | truncate 256 | safeHTMLAttr }}
+  {{ else if .Keywords }}
+    {{ delimit .Keywords ", " | plainify | truncate 256 | safeHTMLAttr }}
+  {{ end }}
+{{ end }}">
 <meta property="article:tag" content="{{ with .Params.tags }}{{ delimit . " , " }}{{ else }}{{ .Params.tags }}{{ end }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 
