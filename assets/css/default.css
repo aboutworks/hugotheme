@@ -310,3 +310,8 @@ footer{
 table{
   background-color: white;
 }
+
+.protected-content{
+  position: relative;
+  left: 0;
+}

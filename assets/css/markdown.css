@@ -40,9 +40,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: var(--space-md);
   margin-bottom: var(--space-sm);
 }
-h1{ font-size: 200%; display: block; justify-content: center; align-items: center; opacity: 1; }
-h2{ font-size: 180%; display: block; justify-content: center; align-items: center; opacity: .9; padding-left:1rem;}
-h3{ font-size: 160%; display: block; justify-content: center; align-items: center; opacity: .8; padding-left:2rem;}
+h1{ font-size: 200%; display: block; justify-content: center; align-items: center; opacity: 1; background-color: black; color:white;}
+h2{ font-size: 180%; display: block; justify-content: center; align-items: center; opacity: .9; padding-left:1rem; background-color: rgba(0, 0, 0,.6); color:white;}
+h3{ font-size: 160%; display: block; justify-content: center; align-items: center; opacity: .8; padding-left:2rem; background-color: rgba(0, 0, 0,.4); color:white;}
 h4{ font-size: 140%; display: block; justify-content: center; align-items: center; opacity: .7; padding-left:3rem; }
 h5{ font-size: 120%; display: block; justify-content: center; align-items: center; opacity: .6; padding-left:4rem;}
 h6{ font-size: 100%; display: block; justify-content: center; align-items: center; opacity: .5; padding-left:5rem;}
@@ -66,7 +66,7 @@ h6::before{
   font-weight: lighter;
   border-radius: 4px;
   padding:8px;
-  font-size: var(--font-size-sm);
+  /* font-size: var(--font-size-sm); */
 }
 
 
@@ -130,4 +130,8 @@ th {
 
 tr:nth-child(even) {
   background-color: var(--color-bg-block);
+}
+
+img{
+  max-width: 100%;
 }

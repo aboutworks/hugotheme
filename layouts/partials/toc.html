@@ -3,7 +3,7 @@
   <div class="table-of-contents-content">
   <h2 onclick="toggleTOC()" style="cursor: pointer;">
     {{ T "catalog" }} 
-    <span id="toc-toggle-icon">▶</span> 点击这里可以展开或隐藏整个目录
+    <span id="toc-toggle-icon">▶</span> 展开或隐藏整个目录
   </h2>
   <div id="toc-nav" class="toc-content" style="display: none;">
     {{ .TableOfContents }}
@@ -82,6 +82,12 @@
     padding: 1rem;
     border-left: 3px solid #42b983;
     margin-bottom: 2rem;
+    position: fixed;
+    background-color: white;
+    left:0;
+    top:var(--layout-header-height);
+    height:80vh;
+    overflow-y: auto;
   }
 
   .table-of-contents h2 {
