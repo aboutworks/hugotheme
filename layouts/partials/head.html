@@ -24,13 +24,24 @@
 <meta property="article:tag" content="{{ with .Params.tags }}{{ delimit . " , " }}{{ else }}{{ .Params.tags }}{{ end }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 
-<link rel="stylesheet" href="{{ "css/markdown.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/single.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/default.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/var.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/components.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/blog.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/media.css" | relURL }}">
+{{ $styles := resources.Get "css/var.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/components.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/blog.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/default.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/media.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/official.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/single.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/media.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
+{{ $styles := resources.Get "css/markdown.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}">
 
 {{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $script.Permalink }}" defer></script>

@@ -1,0 +1,8 @@
+/* static/css/import.css */
+@import url("markdown.css");
+@import url("single.css");
+@import url("default.css");
+@import url("var.css");
+@import url("components.css");
+@import url("blog.css");
+@import url("media.css");
