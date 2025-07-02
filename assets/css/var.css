@@ -8,7 +8,7 @@
 
   /* Layout sizes */
   --width-full:100%;
-  --width-home: 1280px;
+  --width-home: 1180px;
   --width-mobile: 420px;
   --height-header: 80px;
   --height-footer: 60px;
@@ -66,6 +66,9 @@
   --color-link-hover: #2c879a;
   --color-link-visited: #6610f2;
   --color-link-active: #e83e8c;
+
+
+  --backdrop-filter: blur(10px);
 }
 /* Light Theme */
 .light {

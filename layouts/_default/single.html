@@ -15,14 +15,14 @@
     <div id="validator">
       <p>该文章为受保护内容，请验证后访问。</p>
       <textarea id="ssh-key" placeholder="请输入您获得的授权串码"></textarea>
-        <button id="ssh-validate-button">验证权限</button>
+      <button id="ssh-validate-button">验证权限</button>
     </div>
   </div>
 
   <!-- 受保护内容区域，默认隐藏 -->
-  <div id="protected-content" style="display: none;">
-  <!-- SSH 验证器 partial -->
-  <button id="out-validate-button">退出验证权限</button>
+  <div id="protected-content" style="display: none;padding:2rem;">
+    <!-- SSH 验证器 partial -->
+    <button id="out-validate-button">退出验证权限</button>
 
     {{ partial "post-content.html" . }}
   </div>
@@ -58,7 +58,7 @@
 
   #ssh-key {
     width: 100%;
-    height: calc(var(--height-main) - 30vh) ;
+    height: calc(var(--height-main) - 30vh);
     padding: 10px 15px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -70,7 +70,7 @@
   }
 
   #validator button {
-        width: 100%;
+    width: 100%;
     display: inline-block;
     padding: 12px;
     font-size: 1rem;

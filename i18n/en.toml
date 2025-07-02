@@ -1,10 +1,14 @@
-catalog = "Catalog"
-[common]
-date = "Date"
-type = "Type"
-[footer]
-copyright = "Copyright"
-privacy = "Privacy Policy"
-terms = "Terms of Service"
-contactus = "Contact Us"
-all_rights_reserved = "All rights reserved"
+[en]
+  catalog = "Catalog"
+  home = "Home"
+
+  [en.common]
+    date = "Date"
+    type = "Type"
+
+  [en.footer]
+    copyright = "Copyright"
+    privacy = "Privacy Policy"
+    terms = "Terms of Service"
+    contactus = "Contact Us"
+    all_rights_reserved = "All rights reserved"

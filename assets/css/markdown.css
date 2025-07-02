@@ -37,8 +37,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-header-title);
   font-weight: bold;
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-sm);
+  margin:0;
+  /* margin-bottom: var(--space-sm); */
 }
 h1{ font-size: 200%; display: block; justify-content: center; align-items: center; opacity: 1; background-color: black; color:white;}
 h2{ font-size: 180%; display: block; justify-content: center; align-items: center; opacity: .9; padding-left:1rem; background-color: rgba(0, 0, 0,.6); color:white;}
@@ -64,14 +64,13 @@ h6::before{
   color: white;
   margin-right: 8px;
   font-weight: lighter;
-  border-radius: 4px;
   padding:8px;
   /* font-size: var(--font-size-sm); */
 }
 
 
 p {
-  margin-top: 0;
+  margin-top: var(--space-md);
   margin-bottom: var(--space-md);
   font-size: var(--font-size-base);
 }

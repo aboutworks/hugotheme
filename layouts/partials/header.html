@@ -4,19 +4,40 @@
       <a href="/">{{ .Site.Title }}</a>
     </div>
 
-    <nav class="header-nav">
-      <svg class="menu-toggle" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="30" height="4" rx="2" ry="2" />
-        <rect y="8" width="30" height="4" rx="2" ry="2" />
-        <rect y="16" width="30" height="4" rx="2" ry="2" />
-      </svg>
-
-      <ul class="nav-menu">
+    <nav class="header-web">
+      <ul class="web-menu">
         {{ range .Site.Menus.main }}
-          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
         {{ end }}
         <li><button class="theme-toggle" onclick="toggleTheme()">主题</button></li>
       </ul>
     </nav>
+
+    <nav class="header-phone">
+
+
+      <div id="menu-toggle" class="menu-toggle" onclick="menuToggleFun()">
+      </div>
+
+      <ul class="phone-menu">
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+        <li onclick="toggleTheme()">主题</li>
+      </ul>
+    </nav>
+
   </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  if (menuToggle) {
+    function menuToggleFun() {
+      console.log('Menu toggle function called');
+      const menu = document.querySelector('.phone-menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+  }
+
+</script>

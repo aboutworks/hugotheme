@@ -1,39 +1,49 @@
+/* 自定义字体 */
 @font-face {
-	font-family: 'PressStart2P';
-	src: url('/fonts/SankofaDisplay-Regular.ttf') format('truetype');
-}
-a:link , a:hover , a:visited , a:active {
-	color: var(--colorActive);
-	text-decoration: none;
-} 
-*{
-	box-sizing: border-box;
+  font-family: 'PressStart2P';
+  src: url('/fonts/SankofaDisplay-Regular.ttf') format('truetype');
 }
 
+/* 链接统一样式 */
+a:link,
+a:hover,
+a:visited,
+a:active {
+  color: var(--colorActive);
+  text-decoration: none;
+}
+
+/* 所有元素使用 border-box 盒模型 */
+* {
+  box-sizing: border-box;
+}
+
+/* 页面基础设置 */
 body,
 html {
-	height: 100vh;
+  height: 100vh;
   background-color: var(--color-bg-body);
-	width: var(--width-full);
-	font-family: var(--fontFamily);
-	padding: 0;
-	margin: 0;
-	font-family: var(--font-size-base);
+  width: var(--width-full);
+  font-family: var(--fontFamily);
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-size-base);
 }
 
-main{
-	width: var(--width-full);
-	min-height: var(--height-main);
+/* 主体内容容器 */
+main {
+  width: var(--width-full);
+  min-height: var(--height-main);
 }
 
-header{
+/* 页头样式 */
+header {
   background-color: var(--color-header-background);
 }
 
 .header {
   height: var(--height-header);
   width: var(--width-full);
-  /* background-color: var(--color-bg-body); */
   color: var(--color-font);
   box-shadow: 0 1px 4px var(--color-shadow);
   display: flex;
@@ -42,6 +52,7 @@ header{
   z-index: var(--z-index-header);
   position: sticky;
   top: 0;
+  background-color: var(--color-bg-body);
 }
 
 .header-inner {
@@ -66,30 +77,20 @@ header{
   gap: var(--space-md);
 }
 
-
-
-footer{
-	height: var(--height-footer);
-	display: flex;
-	justify-content: center;
+/* 页脚样式 */
+footer {
+  height: var(--height-footer);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: var(--font-size-sm);
-	align-items: center;
-
 }
 
-
-
-
-
-
-
-
+/* 分类区块样式 */
 .categories {
-  /* width: var(--width-full); */
   max-width: var(--width-home);
   margin: auto;
   padding: var(--space-md);
-  /* padding: var(--space-md); */
 }
 
 .categories-list {
@@ -105,7 +106,6 @@ footer{
   padding: var(--space-md);
   border-radius: var(--border-radius);
   background-color: var(--color-block-background);
-  /* box-shadow: var(--shadow-sm); */
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
@@ -128,11 +128,9 @@ footer{
   background-color: transparent;
   transition: color 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
-  /* font-size: var(--font-size-sm); */
   color: var(--color-font);
 }
 
-/* hover 效果更柔和 */
 .categories ul li:hover {
   background-color: rgba(0, 0, 0, 0.05);
   color: var(--color-accent);
@@ -143,7 +141,6 @@ footer{
   color: var(--color-font-invert);
 }
 
-/* 下划线动效更加轻盈 */
 .categories ul li::after {
   content: '';
   position: absolute;
@@ -160,31 +157,7 @@ footer{
   width: calc(100% - 2rem);
 }
 
-
-
-.menu-toggle {
-  display: none;
-  width: 30px;
-  height: 20px;
-  cursor: pointer;
-  fill: var(--color-font);
-}
-
-.nav-menu {
-  display: flex;
-  gap: var(--space-md);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: var(--color-header-menu);
-  font-size: 1rem;
-}
-
+/* 主题切换按钮样式 */
 .theme-toggle {
   background: none;
   border: none;
@@ -194,51 +167,150 @@ footer{
   padding: 0;
 }
 
+/* 移动端菜单按钮 */
+.menu-toggle{
+  display: none;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+/* 桌面导航 */
+.header-web {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.header-phone {
+  display: none;
+}
+
+.phone-menu,.web-menu {
+ list-style-type: none;
+ display: flex;
+ flex-direction: row;
+  column-gap: var(--space-sm); /* 垂直间距，使用更小的变量值 */
+}
+
+
+.phone-menu{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 1rem;
+  font-size: 3em;
+  top: var(--height-header);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  background-color: var( --color-bg-opacity);
+  backdrop-filter: var(--backdrop-filter);
+}
+
+
+/* 菜单切换按钮基础样式 */
+.menu-toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* 等号主体（中间线条） */
+.menu-toggle::before,
+.menu-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--menu-toggle-color, #333);
+  transition: all 0.3s ease;
+}
+
+/* 等号上线条 */
+.menu-toggle::before {
+  top: 12px;
+  border-radius: 2px;
+}
+
+/* 等号下线条 */
+.menu-toggle::after {
+  bottom: 12px;
+  border-radius: 2px;
+}
+
+/* 悬停状态 */
+.menu-toggle:hover::before,
+.menu-toggle:hover::after {
+  background-color: var(--menu-toggle-hover-color, #007bff);
+}
+
+/* 激活状态（菜单打开时的变形效果） */
+.menu-toggle.active::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menu-toggle.active::after {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+/* 响应式：平板及以下设备 */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
 
-  .nav-menu {
-    display: none; /* 你可以加 JS 切换菜单显示 */
-    flex-direction: column;
+  .header-web {
+    display: none;
+  }
+
+  .header-phone {
+    display: flex;
+  }
+
+  .phone-menu {
+    display: none;
     position: absolute;
-    top: var(--height-header);
-    right: 0;
-    background-color: var(--color-bg-body);
-    padding: var(--space-md);
-    box-shadow: var(--shadow-md);
+    right:1rem;
+    top:var(--height-header);
   }
 }
-
-
-
-
 
 
 
 
 
 .tag-group-title {
-	font-weight: bold;
-	margin-bottom: 0.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
 .tag-list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
 }
 
 .tag-list li a {
-	background-color: #f0f0f0;
-	padding: 0.3em 0.6em;
-	border-radius: 4px;
-	text-decoration: none;
-	color: #333;
+  background-color: #f0f0f0;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
 }
 
 
@@ -307,11 +379,11 @@ footer{
 }
 
 
-table{
+table {
   background-color: white;
 }
 
-.protected-content{
+.protected-content {
   position: relative;
   left: 0;
 }

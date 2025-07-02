@@ -1,15 +1,19 @@
 
-<div class="table-of-contents" id="table-of-contents'">
-  <div class="table-of-contents-content">
-  <h2 onclick="toggleTOC()" style="cursor: pointer;">
-    {{ T "catalog" }} 
-    <span id="toc-toggle-icon">▶</span> 展开或隐藏整个目录
-  </h2>
-  <div id="toc-nav" class="toc-content" style="display: none;">
-    {{ .TableOfContents }}
-  </div>
-  </div>
-</div>
+
+    <!-- 左侧目录 -->
+    <aside id="table-of-contents" class="table-of-contents">
+      <div>
+        <h1 >
+          <i>{{ T "catalog" }}</i>
+        </h1>
+        <nav>
+          {{ .TableOfContents }}
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+
 <script>
   function toggleTOC() {
     const tocNav = document.getElementById('toc-nav');
@@ -46,13 +50,13 @@
 
       // 默认展开子菜单
       subMenu.style.display = 'block';
-      subMenu.style.marginLeft = '1.5rem';
+      // subMenu.style.marginLeft = '1.5rem';
 
       // 创建展开/收起图标，作为 li 的第一个子元素
       const toggleIcon = document.createElement('span');
       toggleIcon.textContent = '▼';
       toggleIcon.className = 'toggle-icon';
-      toggleIcon.style.marginRight = '0.5em';
+      // toggleIcon.style.marginRight = '0.5em';
       toggleIcon.style.cursor = 'pointer';
       toggleIcon.style.userSelect = 'none';
       toggleIcon.style.color = '#888';
@@ -80,7 +84,7 @@
 <style>
   .table-of-contents {
     padding: 1rem;
-    border-left: 3px solid #42b983;
+    border-left: 2px solid #42b983;
     margin-bottom: 2rem;
     position: fixed;
     background-color: white;
@@ -141,7 +145,7 @@
     display: block;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1200px) {
     .toc-content {
       display: none;
     }

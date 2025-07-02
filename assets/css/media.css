@@ -1,12 +1,10 @@
-
-
-
-@media screen and (max-width: 1439px) {
+/*@media screen and (max-width: 1439px) {*/
+@media screen and (max-width: 1919px) {
 	:root {
 
 		--sizeTitleFont: 2rem;
 		--sizeNormalFont: 14px;
-	
+
 		--colorHomeItem: #ffffff;
 		--border: 1px solid rgb(75, 75, 75);
 		--borderRadius: 0px;
@@ -14,7 +12,6 @@
 		--colorImage: rgb(237, 237, 237);
 		--colorDate: rgb(214, 214, 214);
 		--colorDesc: rgb(180, 180, 180);
-	
 		--colorPs: rgb(255, 255, 255);
 		/* --headerWidth:  */
 		--fontSize: 14px;
@@ -31,42 +28,52 @@
 	.table-of-contents {
 		display: none;
 	}
-	.official_banner{
+
+	.official_banner {
 		width: 100vw;
 	}
 
-	.official_link ul{
+	.official_link ul {
 		width: 100vw;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
-	.official_link ul li{
+
+	.official_link ul li {
 		width: 100vw;
 		line-height: 2.5rem;
-		border:var(--border);
+		border: var(--border);
 	}
 
-    .menu ul {
-        display: none; /* 默认隐藏 */
-        position: absolute;
-        top: 100%; /* 位于图标下方 */
-        left: 0;
-        background-color: var(--colorBackgroundInvert); /* 背景颜色可根据设计调整 */
-        width: 100%;
-        flex-direction: column; /* 改变布局为垂直 */
-        z-index: 1000; /* 确保菜单在其他内容之上 */
-        padding: 10px 0; /* 增加一些内边距 */
-    }
+	.menu ul {
+		display: none;
+		/* 默认隐藏 */
+		position: absolute;
+		top: 100%;
+		/* 位于图标下方 */
+		left: 0;
+		background-color: var(--colorBackgroundInvert);
+		/* 背景颜色可根据设计调整 */
+		width: 100%;
+		flex-direction: column;
+		/* 改变布局为垂直 */
+		z-index: 1000;
+		/* 确保菜单在其他内容之上 */
+		padding: 10px 0;
+		/* 增加一些内边距 */
+	}
 
-    .menu ul li {
-        padding: 10px 20px; /* 调整列表项的内边距 */
-        text-align: center;
-    }
+	.menu ul li {
+		padding: 10px 20px;
+		/* 调整列表项的内边距 */
+		text-align: center;
+	}
 
-    .menu:hover ul {
-        display: flex; /* 悬停时显示 */
-    }
+	.menu:hover ul {
+		display: flex;
+		/* 悬停时显示 */
+	}
 }
 
 @media screen and (max-width: 780px) {
@@ -134,96 +141,10 @@
 		display: none;
 	}
 
-.category-box{
-	width: 95%;
-	margin:2.5%;
-	border: var(--borderStyle);
-}
+	.category-box {
+		width: 95%;
+		margin: 2.5%;
+		border: var(--borderStyle);
+	}
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.category {
-  width: var(--width-home);
-  margin: auto;
-  padding: var(--space-md);
-  box-sizing: border-box;
-}
-
-.category-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
-}
-
-.category-box {
-  flex: 1 1 45%;
-  min-width: 280px;
-  padding: var(--space-md);
-  border-radius: var(--border-radius);
-  background-color: var(--color-bg-block);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.category-box:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.category ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.category ul li {
-  padding: 0.5rem 1rem;
-  position: relative;
-  margin: 0.25rem 0;
-  border-radius: 6px;
-  background-color: transparent;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  color: var(--color-font);
-}
-
-/* hover 效果更柔和 */
-.category ul li:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  color: var(--color-accent);
-}
-
-.category ul li.active {
-  background-color: var(--color-accent);
-  color: var(--color-font-invert);
-}
-
-/* 下划线动效更加轻盈 */
-.category ul li::after {
-  content: '';
-  position: absolute;
-  left: 1rem;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-accent);
-  transition: width 0.3s ease;
-}
-
-.category ul li:hover::after,
-.category ul li.active::after {
-  width: calc(100% - 2rem);
 }
