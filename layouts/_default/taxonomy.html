@@ -17,7 +17,7 @@
     {{ range sort $sorted "weight" }}
       {{ $t := .term }}
       <div class="categories-box">
-        <h2><a href="{{ $t.Page.RelPermalink }}">{{ $t.Page.LinkTitle }}</a> ({{ $t.Count }})</h2>
+        <h1><a href="{{ $t.Page.RelPermalink }}">{{ $t.Page.LinkTitle }}</a> ({{ $t.Count }})</h1>
         <ul>
           {{ range $t.WeightedPages }}
             <li>

@@ -38,7 +38,7 @@
 
 {{ if eq $webtype "blog" }}
 <div class="blog">
-  <!-- <h1 style="text-align: center;">📚 专属内容区</h1> -->
+  <h1 style="text-align: center;">📚 专属内容</h1>
   <!-- <p>仅限授权用户访问的高质量内容专区，包含深度教程、专业资料、会员福利等。为你提供更私密、更有价值的学习与使用体验。</p> -->
   <div class="blog-box">
     {{ $protected := where (where .Site.Pages "Section" "posts") "Params.protect" "eq" true }}
@@ -62,7 +62,7 @@
       {{ end }}
     {{ end }}
   </div>
-  <!-- <h1 style="text-align: center;">📜 开放资源集</h1> -->
+  <h1 style="text-align: center;">📜 我的日志</h1>
   <div class="blog-box">
     {{ $nonProtected := where (where .Site.Pages "Section" "posts") "Params.protect" "ne" true }}
     {{ range sort $nonProtected ".Params.weight" "asc" }}
@@ -85,8 +85,8 @@
       {{ end }}
     {{ end }}
   </div>
-  {{ partial "social.html" . }} <!-- 加载博客头部 -->
   {{ partial "blog-banner.html" . }} <!-- 加载博客头部 -->
+  {{ partial "social.html" . }} <!-- 加载博客头部 -->
 </div>
 {{ end }}
 

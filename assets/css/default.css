@@ -347,7 +347,9 @@ footer {
 }
 
 .social-list li {
-  flex: 0 1 160px;
+  /* flex: 0 1 160px; */
+  /* width: 100%; */
+  flex:1;
   border: 1px solid #eee;
   border-radius: 0.75rem;
   padding: 1rem;
