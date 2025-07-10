@@ -1,0 +1,25 @@
+.officialBox{
+    width: 980px;
+    margin: auto;
+    padding:var(--grid-gap);
+    display: flex;
+}
+
+.officialBox_item{
+    flex:1;
+    padding:var(--grid-gap);
+    border: 1px solid var(--color-border);
+}
+.official_item_title{
+    /* font-size: var(--font-size-lg); */
+    font-weight: bolder;
+}
+.official_item_addr{
+    font-size: var(--font-size-sm);
+    color:var(--color-text-desc);
+    opacity: .6;
+}
+.official_item_desc{
+    font-size: var(--font-size-sm);
+    color: var(--color-text-ps);
+}

@@ -22,6 +22,7 @@ a:active {
 body,
 html {
   height: 100vh;
+  font-size:1.4em;
   background-color: var(--color-bg-body);
   width: var(--width-full);
   font-family: var(--fontFamily);

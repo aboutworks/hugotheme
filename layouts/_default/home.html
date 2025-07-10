@@ -6,32 +6,41 @@
 {{ $video := resources.Get "image/example2.webm" }}
 {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
+
+
+
 <!-- official 官网风格 -->
 {{ if eq $webtype "official" }}
-{{ $context := dict
-"Title" .Title
-"Tags" .Params.tags
-"Illustortar" $illustortar.Permalink
-"IllustortarLe" $illustortarLe.Permalink
-"IllustortarC" $illustortarC.Permalink
-"Permalink" .Permalink
-"Logo" $logo.Permalink
-"Can" .Params.can
-"Partnership" .Params.partnership
-"Company" .Params.company
-"Companylist" .Params.companylist
-"Message" .Params.Messag
-"Type" .Params.Type
-"Image" .Params.Image
-"YouTube" .Params.youtube
-"Bilibili" .Params.bilibili
-"Desc" .Params.desc
-"Weight" .Params.weight
-"Video" $video.RelPermalink
-
-}}
-{{ partial "official.html" $context }} <!-- 加载 brand.html partial -->
+  {{ range sort (where .Site.RegularPages "Params.position" "eq" "home") "Params.weight" }}
+    {{ $context := dict
+      "Title" .Params.Title
+      "Nation" .Params.Nation
+      "Addr" .Params.addr
+      "Image" .Params.Image
+      "publicDate" .Params.publicDate
+      "Tags" .Params.tags
+      "Illustortar" $illustortar.Permalink
+      "IllustortarLe" $illustortarLe.Permalink
+      "IllustortarC" $illustortarC.Permalink
+      "Permalink" .Permalink
+      "Logo" $logo.Permalink
+      "Can" .Params.can
+      "Partnership" .Params.partnership
+      "Company" .Params.company
+      "Companylist" .Params.companylist
+      "Message" .Params.message
+      "Type" .Params.Type
+      "Image" .Params.Image
+      "YouTube" .Params.youtube
+      "Bilibili" .Params.bilibili
+      "Desc" .Params.desc
+      "Weight" .Params.weight
+      "Video" $video.RelPermalink
+    }}
+    {{ partial "official.html" $context }}
+  {{ end }}
 {{ end }}
+
 
 
 <!-- Blog 博客风格-->

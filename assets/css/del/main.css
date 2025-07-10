@@ -105,26 +105,6 @@ header {
 
 .official {}
 
-.official_banner {
-	width: 100%;
-	padding: 3rem 1rem;
-	display: flex;
-	justify-content: center;
-}
-
-.official_link ul {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-
-.official_link ul li {
-	width: 35%;
-	padding: 2rem;
-	line-height: 2.5rem;
-	border: var(--border);
-}
-
 .img {
 	width: var(--imgWidth);
 }

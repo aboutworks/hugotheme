@@ -1,4 +1,4 @@
-<div class="officialBox">
+<!-- <div class="officialBox">
 			{{ .Title }}
 	<div class="official_banner">
 
@@ -63,7 +63,7 @@
 
 
 
-<div style="width: 100%; display: flex; justify-content: center; padding-top:10rem">
+<div>
 	<svg width="102" height="62" viewBox="0 0 102 62" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g clip-path="url(#clip0_2500_18354)">
 			<path d="M101.5 24.5H2.5V59.5H101.5V24.5Z" stroke="#FF0D56" />
@@ -102,11 +102,11 @@
 	</svg>
 </div>
 
-<div style="width: 100vw; font-size: 4rem; font-weight: bolder; text-align: center; padding-top:180px">Digital Box</h3>
+<div >Digital Box</h3>
 </div>
 
-<div style="width: 100vw; font-size: 2rem; text-align: center; padding-top:180px">我的数字媒体库</div>
-<div style="width: 100vw; font-size: 14px; text-align: center; padding-bottom:2rem">保存数字媒体，可以进行多次创作</div>
+<div >我的数字媒体库</div>
+<div>保存数字媒体，可以进行多次创作</div>
 
 <div class="official_itema">
 	<ul>
@@ -139,7 +139,7 @@
 	</ul>
 	<div style="display: flex;justify-content: center;align-items: center; ">
 		<img src="https://view.lehuye.com/medias/webp/32daf80c-5318-440c-8e04-927475d26523_null.webp" class="img" />
-		<!-- <img src="https://view.lehuye.com/medias/webp/6df1282a-24da-4cdb-8748-ce8773dcd514_null.webp" width="50%" /> -->
+		 <img src="https://view.lehuye.com/medias/webp/6df1282a-24da-4cdb-8748-ce8773dcd514_null.webp" width="50%" /> 
 	</div>
 </div>
 
@@ -155,7 +155,7 @@
 
 
 
-<div style="width: 100%; display: flex; justify-content: center; padding-top:10rem">
+<div>
 	<svg width="102" height="63" viewBox="0 0 102 63" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<rect x="33" width="16" height="10" fill="#FF0D56" />
 		<rect x="53" width="16" height="10" fill="#00AEE5" />
@@ -183,13 +183,13 @@
 	</svg>
 </div>
 
-<div style="width: 100vw; font-size: 4rem; font-weight: bolder; text-align: center; padding-top:180px">Figma Plugin</h3>
+<div>Figma Plugin</h3>
 </div>
 
 
 
-<div style="width: 100vw; font-size: 2rem; text-align: center; padding-top:180px">Figma 插件使用</div>
-<div style="width: 100vw; font-size: 14px; text-align: center; padding-bottom:2rem">极致的文本处理</div>
+<div >Figma 插件使用</div>
+<div>极致的文本处理</div>
 
 <div class="official_itemb">
 	<div style="display: flex; justify-content: center; align-items: center;">
@@ -234,8 +234,24 @@
 			</p>
 		</li>
 	</ul>
+</div> -->
+<div class="officialBox">
+	<div class="officialBox_item">
+		<a href="{{ .Permalink }}">
+			{{ with .Resources.GetMatch .Params.image }}
+			<img src="{{ .RelPermalink }}" alt="{{ $.Params.title }}" width="100%" />
+			{{ else }}
+			<p>图片未找到</p>
+			{{ end }}
+			<div class="official_item_title"> {{ .Title }} </div>
+		</a>
+		<div class="official_item_addr"> {{ .Nation }} / {{ .Addr }}</div>
+		<div class="official_item_date"> {{ .publicDate }}</div>
+		<div> 開催前 </div>
+		<div class="official_item_desc"> #絵画・平面 </div>
+		<div style="padding:4px 1rem; display: inline-block; border-radius: 4px; font-size: 12px; background-color: rgb(255, 34, 0); color:white;">前往</div>
+	</div>
 </div>
-
 
 <script>
 	var _hmt = _hmt || [];
