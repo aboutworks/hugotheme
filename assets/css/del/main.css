@@ -86,8 +86,7 @@ header {
 
 
 
-.headerBox,
-.officialBox {
+.headerBox {
 	width: var(--homeWidth);
 	margin: auto;
 
@@ -103,7 +102,6 @@ header {
 	border: var(--border);
 }
 
-.official {}
 
 .img {
 	width: var(--imgWidth);

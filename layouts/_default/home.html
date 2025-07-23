@@ -11,34 +11,43 @@
 
 <!-- official 官网风格 -->
 {{ if eq $webtype "official" }}
-  {{ range sort (where .Site.RegularPages "Params.position" "eq" "home") "Params.weight" }}
-    {{ $context := dict
-      "Title" .Params.Title
-      "Nation" .Params.Nation
-      "Addr" .Params.addr
-      "Image" .Params.Image
-      "publicDate" .Params.publicDate
-      "Tags" .Params.tags
-      "Illustortar" $illustortar.Permalink
-      "IllustortarLe" $illustortarLe.Permalink
-      "IllustortarC" $illustortarC.Permalink
-      "Permalink" .Permalink
-      "Logo" $logo.Permalink
-      "Can" .Params.can
-      "Partnership" .Params.partnership
-      "Company" .Params.company
-      "Companylist" .Params.companylist
-      "Message" .Params.message
-      "Type" .Params.Type
-      "Image" .Params.Image
-      "YouTube" .Params.youtube
-      "Bilibili" .Params.bilibili
-      "Desc" .Params.desc
-      "Weight" .Params.weight
-      "Video" $video.RelPermalink
-    }}
-    {{ partial "official.html" $context }}
-  {{ end }}
+        {{ $context := dict
+        "Title" .Params.Title
+        "Nation" .Params.Nation
+        "Addr" .Params.addr
+        "Image" .Params.Image
+        }}
+    {{ partial "official-banner.html" $context }}
+
+    {{ range sort (where .Site.RegularPages "Params.position" "eq" "home") "Params.weight" }}
+        {{ $context := dict
+        "Title" .Params.Title
+        "Nation" .Params.Nation
+        "Addr" .Params.addr
+        "Image" .Params.Image
+        "publicDate" .Params.publicDate
+        "Tags" .Params.tags
+        "Illustortar" $illustortar.Permalink
+        "IllustortarLe" $illustortarLe.Permalink
+        "IllustortarC" $illustortarC.Permalink
+        "Permalink" .Permalink
+        "Logo" $logo.Permalink
+        "Can" .Params.can
+        "Partnership" .Params.partnership
+        "Company" .Params.company
+        "Companylist" .Params.companylist
+        "Message" .Params.message
+        "Type" .Params.Type
+        "Image" .Params.Image
+        "YouTube" .Params.youtube
+        "Bilibili" .Params.bilibili
+        "Desc" .Params.desc
+        "Weight" .Params.weight
+        "Video" $video.RelPermalink
+        }}
+    {{ partial "official-list.html" $context }}
+    {{ end }}
+    
 {{ end }}
 
 
@@ -52,46 +61,46 @@
   <div class="blog-box">
     {{ $protected := where (where .Site.Pages "Section" "posts") "Params.protect" "eq" true }}
     {{ range sort $protected ".Params.weight" "asc" }}
-      {{ if and (eq .Params.position "home") (eq .Params.arrange "horizontal") }}
-        {{ $context := dict
-          "Title" .Title
-          "Tags" .Params.tags
-          "Position" .Params.position
-          "Sitetitle" .Site.Title
-          "Permalink" .Permalink
-          "Date" .Date
-          "Type" .Params.type
-          "Image" .Params.image
-          "YouTube" .Params.youtube
-          "Bilibili" .Params.bilibili
-          "Desc" .Params.description
-          "Weight" .Params.weight
-        }}
-        {{ partial "blog.html" $context }}
-      {{ end }}
+    {{ if and (eq .Params.position "home") (eq .Params.arrange "horizontal") }}
+    {{ $context := dict
+    "Title" .Title
+    "Tags" .Params.tags
+    "Position" .Params.position
+    "Sitetitle" .Site.Title
+    "Permalink" .Permalink
+    "Date" .Date
+    "Type" .Params.type
+    "Image" .Params.image
+    "YouTube" .Params.youtube
+    "Bilibili" .Params.bilibili
+    "Desc" .Params.description
+    "Weight" .Params.weight
+    }}
+    {{ partial "blog.html" $context }}
+    {{ end }}
     {{ end }}
   </div>
   <h1 style="text-align: center;">📜 我的日志</h1>
   <div class="blog-box">
     {{ $nonProtected := where (where .Site.Pages "Section" "posts") "Params.protect" "ne" true }}
     {{ range sort $nonProtected ".Params.weight" "asc" }}
-      {{ if and (eq .Params.position "home") (eq .Params.arrange "horizontal") }}
-        {{ $context := dict
-          "Title" .Title
-          "Tags" .Params.tags
-          "Position" .Params.position
-          "Sitetitle" .Site.Title
-          "Permalink" .Permalink
-          "Date" .Date
-          "Type" .Params.type
-          "Image" .Params.image
-          "YouTube" .Params.youtube
-          "Bilibili" .Params.bilibili
-          "Desc" .Params.desc
-          "Weight" .Params.weight
-        }}
-        {{ partial "blog.html" $context }}
-      {{ end }}
+    {{ if and (eq .Params.position "home") (eq .Params.arrange "horizontal") }}
+    {{ $context := dict
+    "Title" .Title
+    "Tags" .Params.tags
+    "Position" .Params.position
+    "Sitetitle" .Site.Title
+    "Permalink" .Permalink
+    "Date" .Date
+    "Type" .Params.type
+    "Image" .Params.image
+    "YouTube" .Params.youtube
+    "Bilibili" .Params.bilibili
+    "Desc" .Params.desc
+    "Weight" .Params.weight
+    }}
+    {{ partial "blog.html" $context }}
+    {{ end }}
     {{ end }}
   </div>
   {{ partial "blog-banner.html" . }} <!-- 加载博客头部 -->
