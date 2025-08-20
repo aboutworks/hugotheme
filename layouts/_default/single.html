@@ -27,7 +27,7 @@
   <!-- 受保护内容区域，默认隐藏 -->
   <div id="protected-content" style="display: none;padding:2rem;">
     <!-- SSH 验证器 partial -->
-    <button id="out-validate-button">退出验证权限</button>
+    <button id="out-validate-button_{{.Params.uuid}}">退出验证权限 {{.Params.uuid}}</button>
 
     {{ partial "post-content.html" . }}
   </div>

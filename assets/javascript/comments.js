@@ -1,6 +1,6 @@
 
 //const serviceUrl = 'http://localhost:7020'
-const serviceUrl = 'https://handle.keebone.com'
+const serviceUrl = 'https://handle.lehuye.com'
 
 function formComments(postId) {
     return `
