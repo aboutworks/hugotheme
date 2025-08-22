@@ -33,11 +33,44 @@ body {
   background-color: var(--color-bg-body);
   line-height: var(--line-height-base);
 }
+article{
+line-height: 2.75rem
+}
+p{
+   text-indent: 2em;  /* 首行缩进两个字宽 */
+}
+p:has(a) a{
+  font-weight: bolder;
+  text-decoration: underline !important;
+  color: rgb(0, 110, 255) !important;
+  padding:0 1rem;
+
+}
+p:has(img)
+ {
+  width: 60%;
+  margin: auto;
+  text-align: center;   /* 居中对齐 */
+  padding:2rem 0;
+}
+p:has(img) img {
+  display: block;       /* 图片单独一行 */
+  margin: auto;         /* 水平居中 */
+}
+table{
+  width: 60% !important;
+  margin: 2rem auto;
+}
+strong{
+  padding-left:2rem;
+}
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-header-title);
   font-weight: bold;
-  margin:0;
+  margin:2rem 0;
+  border:2rem solid #e7e7e7
+
   /* margin-bottom: var(--space-sm); */
 }
 h1{ font-size: 200%; display: block; justify-content: center; align-items: center; opacity: 1; background-color: black; color:white;}
