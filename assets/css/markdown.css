@@ -46,6 +46,9 @@ p:has(a) a{
   padding:0 1rem;
 
 }
+video{
+  width: 100%;
+}
 p:has(img)
  {
   width: 60%;
