@@ -31,14 +31,18 @@
 	box-sizing: border-box;
 	padding: var(--space-md, 1rem);
 	background-color: var(--color-block-background);
-	/* border-radius: var(--border-radius, 8px); */
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	color: var(--color-font, #fff);
-	/* box-shadow: var(--shadow-md, 0 2px 8px rgba(0, 0, 0, 0.15)); */
+	transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+.blog-item:hover {
+	transform: translateY(-5px) scale(1.02); /* 轻微上移并放大 */
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* 鼓起感的阴影 */
+	background-color: rgba(255, 255, 255, 0.05); /* 背景微微变化，可选 */
+}
 .blog-img-box {
 	width: 100%;
 	height: var(--image-height, 200px);
