@@ -80,7 +80,7 @@
     {{ end }}
     {{ end }}
   </div>
-  <h1 style="text-align: center;">📜 我的日志</h1>
+  <h1>📜 我的日志</h1>
   <div class="blog-box">
     {{ $nonProtected := where (where .Site.Pages "Section" "posts") "Params.protect" "ne" true }}
     {{ range sort $nonProtected ".Params.weight" "asc" }}
