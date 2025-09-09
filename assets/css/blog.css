@@ -29,19 +29,20 @@
 .blog-item {
 	width: var(--width-full);
 	box-sizing: border-box;
+	border-bottom:1px solid var(--color-border, #eee);
 	padding: var(--space-md, 1rem);
-	background-color: var(--color-block-background);
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	background-color: rgba(255, 255, 255, 0.05); /* 背景微微变化，可选 */
 	color: var(--color-font, #fff);
 	transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .blog-item:hover {
+	background-color: var(--color-block-background);
 	transform: translateY(-5px) scale(1.02); /* 轻微上移并放大 */
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* 鼓起感的阴影 */
-	background-color: rgba(255, 255, 255, 0.05); /* 背景微微变化，可选 */
 }
 .blog-img-box {
 	width: 100%;
@@ -78,11 +79,12 @@
 	gap: var(--space-xs, 0.5rem);
 	font-size: var(--font-size-small, 0.85rem);
 	opacity: 0.5;
-	color: var(--color-date, #92bcaf);
 }
 
 .blog-tag {
-	background-color: var(--color-font-invert, black);
+	/* background-color: var(--color-font-invert, black); */
+	color:white;
+	background-color: var(--color-accent, black);
 	padding: 0 var(--space-xs, 0.5rem);
 	border-radius: calc(var(--border-radius, 8px) / 2);
 }
@@ -161,17 +163,18 @@
 }
 
 .blog-project-list li {
-  background: #fff;
-  border-radius: 12px;
+  /* background: #fff; */
   margin: 1rem 0;
   padding: 1rem 1.25rem;
   text-align: left;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease;
+  border-bottom:1px solid var(--color-border,#eee);
+  transition: all 0.3s ease;
 }
 
 .blog-project-list li:hover {
-  transform: translateY(-3px);
+  transform: translateY(-8px);
+  box-shadow: 0 0px 20px rgba(0,0,0,0.15);
+  background-color: white;
 }
 
 .blog-project-list a {
