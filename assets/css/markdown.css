@@ -78,6 +78,9 @@ table {
 strong {
   padding-left: 2rem;
 }
+ul{
+  color:rgba(0, 0, 0, .4)
+}
 
 h1,
 h2,
