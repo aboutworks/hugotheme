@@ -15,10 +15,10 @@
     <div id="validator">
       <p>该文章为受保护内容，请验证后访问。</p>
       <p id="idcode">{{ $uuid }}</p>
-      <p>
-        <a href="https://lehuye.taobao.com" style="font-weight: bolder;" target="_blank">【淘宝获取授权码】</a>
-        <a href="mailto:aboutworks@outlook.com" style="font-weight: bolder;">【邮箱获取授权码】</a>
-      </p>
+      <div class="blog-box">
+        <a class="blog-item" href="https://lehuye.taobao.com" style="font-weight: bolder;" target="_blank">【淘宝获取授权码】</a>
+        <a class="blog-item" href="mailto:aboutworks@outlook.com" style="font-weight: bolder;">【邮箱获取授权码】</a>
+      </div>
       <textarea id="ssh-key" placeholder="请输入您获得的授权串码"></textarea>
       <button id="ssh-validate-button">验证权限</button>
     </div>
@@ -153,9 +153,9 @@
   #validator {
     width: 100%;
     padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    /* background-color: #f9f9f9; */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 
@@ -193,7 +193,7 @@
 
   #ssh-validate-button {
     width: 100%;
-    background-color: #007bff;
+    background-color: var(--color-link);
     color: white;
   }
 

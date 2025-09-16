@@ -861,6 +861,9 @@ input,
 button {
 	height: 3rem;
 }
+button{
+	background-color: var(--color-accent);
+}
 
 textarea {
 	height: 9rem;
