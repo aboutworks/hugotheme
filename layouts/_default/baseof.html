@@ -3,10 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<!-- <body class="light" style="background-color:rgb(255, 255, 255);"> -->
-  <!-- <body id="body" class="{{ .Site.Params.mode }} {{ if eq .Site.Params.webtype "official" }}fullbackground{{ end }}" > -->
   <body class="light" >
-  <!-- <body class="light {{ if eq .Site.Params.webtype "official" }}fullbackground{{ end }}" style="background-color:#F5F5F5;"> -->
   {{ .Site.Params.setting.backgroundColor }}
   {{ partial "header.html" . }}
   <main>
