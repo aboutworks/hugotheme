@@ -1,20 +1,38 @@
-
-
-    <!-- 左侧目录 -->
-    <aside id="table-of-contents" class="table-of-contents">
-      <div>
-        <h1 >
+<!-- 左侧目录 -->
+<aside id="table-of-contents" class="table-of-contents" style="display:none;">
+  <div id="toc-close" class="blog-tag">关闭目录</div>
+  <div>
+    <!-- <h1 >
           <i>{{ T "catalog" }}</i>
-        </h1>
-        <nav>
-          {{ .TableOfContents }}
-          </a>
-        </nav>
-      </div>
-    </aside>
+        </h1> -->
+    <nav>
+      {{ .TableOfContents }}
+      </a>
+    </nav>
+  </div>
+</aside>
+
+<div id="toc-toggle" class="toc-toggle blog-tag">开启目录</div>
 
 
 <script>
+  const tocAside = document.getElementById("table-of-contents");
+  const tocToggle = document.getElementById("toc-toggle");
+  const tocClose = document.getElementById("toc-close");
+
+  // 点击 TOC 按钮 → 显示 aside, 隐藏按钮
+  tocToggle.addEventListener("click", () => {
+    tocAside.style.display = "block";
+    tocToggle.style.display = "none";
+  });
+
+  // 点击 Close → 隐藏 aside, 显示按钮
+  tocClose.addEventListener("click", () => {
+    tocAside.style.display = "none";
+    tocToggle.style.display = "block";
+  });
+
+
   function toggleTOC() {
     const tocNav = document.getElementById('toc-nav');
     const icon = document.getElementById('toc-toggle-icon');
@@ -88,10 +106,15 @@
     margin-bottom: 2rem;
     position: fixed;
     background-color: white;
-    left:0;
-    top:0;
-    height:100vh;
+    left: 0;
+    top: var(--height-header);
+    height: var(--height-main);
     overflow-y: auto;
+  }
+  .toc-toggle{
+    position: fixed;
+    bottom:3rem;
+    right: 3rem;
   }
 
   .table-of-contents h2 {
@@ -141,7 +164,7 @@
     display: none;
   }
 
-  .toc-content ul ul ul ul:hover{
+  .toc-content ul ul ul ul:hover {
     display: block;
   }
 
