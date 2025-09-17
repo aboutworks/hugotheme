@@ -309,38 +309,6 @@ h2 {
 	height: 32px;
 }
 
-.table-of-contents {
-	position: -webkit-sticky;
-	/* Safari 支持 */
-	/* position: sticky; */
-	position: fixed;
-	/* 使目录随滚动固定 */
-	top: 0;
-	/* 距离顶部 2rem */
-	height: var(--mainHeight);
-	left: 0;
-	width: 280px;
-	overflow-x: hidden;
-	/* 目录的宽度, 可以根据需要调整 */
-	/* background-color: var(--colorHomeItem); */
-	/* 与内容区域相同的背景颜色 */
-	padding: 1rem;
-	/* border-left: var(--borderStyle); */
-	/* 与内容区域一致的边框 */
-	min-height: 100vh;
-	/* 使目录至少占据整个视口的高度 */
-	overflow-y: auto;
-	/* 如果内容过长, 可以滚动 */
-}
-.table-of-contents:hover {
-	width: 30vw;
-	background-color: var(--colorOpacity);
-	backdrop-filter: blur(6px);
-}
-.table-of-contents-content{
-	width: 30vw;
-
-}
 
 /* news */
 .home-item {
