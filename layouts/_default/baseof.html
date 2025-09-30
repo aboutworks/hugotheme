@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ or .Site.Language.Lang "en" }}" dir="{{ or .Site.Language.LanguageDirection "ltr" }}">
+<html lang="{{ or .Site.Language.Lang " en" }}" dir="{{ or .Site.Language.LanguageDirection " ltr" }}">
+
 <head>
   {{ partial "head.html" . }}
 </head>
-  <body class="light" >
-  {{ .Site.Params.setting.backgroundColor }}
-  {{ partial "header.html" . }}
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
-</body>
+
+{{ block "main" . }}{{ end }}
+
 </html>

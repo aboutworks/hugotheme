@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header-inner">
+    <div class="header-title">
+      <a href="/">official {{ .Site.Title }}</a>
+    </div>
+
+    <nav class="header-web">
+      <ul class="web-menu">
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+        <li><button class="theme-toggle" onclick="toggleTheme()">主题</button></li>
+      </ul>
+    </nav>
+
+    <nav class="header-phone">
+
+      <div id="menu-toggle" class="menu-toggle" onclick="menuToggleFun()">
+      </div>
+
+      <ul class="phone-menu">
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+        <li onclick="toggleTheme()">主题</li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  if (menuToggle) {
+    function menuToggleFun() {
+      console.log('Menu toggle function called');
+      const menu = document.querySelector('.phone-menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+  }
+
+</script>

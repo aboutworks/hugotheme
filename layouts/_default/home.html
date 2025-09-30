@@ -1,114 +1,15 @@
 {{ define "main" }}
-{{ $logo := resources.Get "image/logo.svg" }}
-{{ $illustortar := resources.Get "image/1.svg" }}
-{{ $illustortarLe := resources.Get "image/2.svg" }}
-{{ $illustortarC := resources.Get "image/3.svg" }}
-{{ $video := resources.Get "image/example2.webm" }}
 {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
-
-
 
 <!-- official 官网风格 -->
 {{ if eq $webtype "official" }}
-{{ $context := dict
-"Title" .Params.Title
-"Nation" .Params.Nation
-"Addr" .Params.addr
-"Image" .Params.Image
-}}
-{{ partial "official-banner.html" $context }}
-
-{{ range sort (where .Site.RegularPages "Params.position" "eq" "home") "Params.weight" }}
-{{ $context := dict
-"Title" .Params.Title
-"Nation" .Params.Nation
-"Addr" .Params.addr
-"Image" .Params.Image
-"publicDate" .Params.publicDate
-"Tags" .Params.tags
-"Illustortar" $illustortar.Permalink
-"IllustortarLe" $illustortarLe.Permalink
-"IllustortarC" $illustortarC.Permalink
-"Permalink" .Permalink
-"Logo" $logo.Permalink
-"Can" .Params.can
-"Partnership" .Params.partnership
-"Company" .Params.company
-"Companylist" .Params.companylist
-"Message" .Params.message
-"Type" .Params.Type
-"Image" .Params.Image
-"YouTube" .Params.youtube
-"Bilibili" .Params.bilibili
-"Desc" .Params.desc
-"Weight" .Params.weight
-"Video" $video.RelPermalink
-}}
-{{ partial "official-list.html" $context }}
+{{ partial "official/index.html" . }}
 {{ end }}
-{{ end }}
-
-
 
 <!-- Blog 博客风格-->
 {{ if eq $webtype "blog" }}
-<div class="blog">
-  <h1>📚 专属内容</h1>
-  <div class="blog-box">
-    {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.category" "intersect" (slice "授权"))
-    ".Params.index" "asc" }}
-    {{ if eq .Params.position "home" }}
-    {{ $context := dict
-    "Title" .Title
-    "Tags" .Params.tags
-    "Position" .Params.position
-    "Sitetitle" .Site.Title
-    "Permalink" .Permalink
-    "Date" .Date
-    "Type" .Params.type
-    "Image" .Params.image
-    "YouTube" .Params.youtube
-    "Bilibili" .Params.bilibili
-    "Desc" .Params.description
-    "Weight" .Params.weight
-    "Index" .Params.index
-    }}
-    {{ partial "blog.html" $context }}
-    {{ end }}
-    {{ end }}
-  </div>
-
-  <h1>📜 我的日志</h1>
-  <div class="blog-box">
-    {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.position" "eq" "home") ".Params.weight"
-    "asc" }}
-    {{/* 判断 category 数组是否不包含 "授权" */}}
-    {{ if not (in .Params.category "授权") }}
-    {{ $context := dict
-    "Title" .Title
-    "Tags" .Params.tags
-    "Position" .Params.position
-    "Sitetitle" .Site.Title
-    "Permalink" .Permalink
-    "Date" .Date
-    "Type" .Params.type
-    "Image" .Params.image
-    "YouTube" .Params.youtube
-    "Bilibili" .Params.bilibili
-    "Desc" .Params.description
-    "Weight" .Params.weight
-    }}
-    {{ partial "blog.html" $context }}
-    {{ end }}
-    {{ end }}
-  </div>
-
-  {{ partial "blog-banner.html" . }}
-  {{ partial "social.html" . }}
-</div>
+{{ partial "blog/index.html" . }}
 {{ end }}
-
-
 
 <div>
   {{ range first 10 .Site.RegularPages }}

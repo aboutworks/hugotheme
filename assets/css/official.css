@@ -4,10 +4,27 @@
     /* padding:var(--grid-gap); */
     display: flex;
 }
+.officialBox_img{
+    display: block;
+    width: 212px;
 
+}
+.officialBox_img::before{
+    padding-top:100%;
+
+}
+.officialBox_list{
+    flex:1;
+    margin: 8px;
+    padding:var(--grid-gap);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+}
 .officialBox_item{
     flex:1;
     margin: 8px;
+    display: flex;
     padding:var(--grid-gap);
     border: 1px solid var(--color-border);
 }
@@ -24,3 +41,5 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-ps);
 }
+
+

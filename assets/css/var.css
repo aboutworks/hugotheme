@@ -98,27 +98,38 @@
 
 /* Dark Theme */
 .dark {
-  --color-bg-body: #0d1117;
-  --color-font: #c9d1d9;
-  --color-font-invert: #0d1117;
+  /* 基础背景与文字 */
+  --color-bg-body: #0d1117;          /* 页面主背景 */
+  --color-font: #c9d1d9;             /* 主文字 */
+  --color-font-invert: #0d1117;      /* 反转文字/暗背景上使用 */
 
-  --color-header-title: #f0f6fc;
+  /* 头部标题与菜单 */
+  --color-header-title: #f0f6fc;     
   --color-header-menu: #8b949e;
 
-  --color-bg-block: #161b22;
+  /* 块级背景 */
+  --color-bg-block: #161b22;         
   --color-bg-opacity: rgba(255, 255, 255, 0.05);
-
   --color-bg-image: #21262d;
+
+  /* 文本颜色 */
   --color-text-date: #8b949e;
-  --color-text-desc : #a1b2c3;
+  --color-text-desc: #a1b2c3;
   --color-text-ps: #768390;
 
-  --color-card-background: #161b22; /* 深灰黑，低对比度卡片背景 */
-  --color-block-background:#161b22;
+  /* 按钮配色（优化后） */
+  --color-button-text: #0d1117;           /* 深色文字，和亮色背景形成对比 */
+  --color-button-background: #58a6ff;     /* 明亮蓝色按钮，突出在深色背景 */
+  --color-button-hover: #1f6feb;          /* 鼠标悬停状态颜色 */
 
+  /* 卡片与块背景 */
+  --color-card-background: #161b22;       /* 深灰黑，低对比度 */
+  --color-block-background: #161b22;
+
+  /* 边框与阴影 */
   --color-border: #30363d;
   --color-shadow: rgba(0, 0, 0, 0.6);
-  --color-accent: #58a6ff;
+  --color-accent: #58a6ff;               /* 主题强调色 */
 }
 
 /* Warm Theme */

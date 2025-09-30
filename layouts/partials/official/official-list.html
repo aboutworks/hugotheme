@@ -1,0 +1,35 @@
+{{ $logo := resources.Get "image/logo.svg" }}
+{{ $illustortar := resources.Get "image/1.svg" }}
+{{ $illustortarLe := resources.Get "image/2.svg" }}
+{{ $illustortarC := resources.Get "image/3.svg" }}
+{{ $video := resources.Get "image/example2.webm" }}
+
+<div class="officialBox" style="padding:1rem;">🔅 最新咨讯</div>
+{{ range sort (where .Site.RegularPages "Params.position" "eq" "home") "Params.weight" }}
+{{ $context := dict
+"Title" .Params.Title
+"Nation" .Params.Nation
+"Addr" .Params.addr
+"Image" .Params.Image
+"publicDate" .Params.publicDate
+"Tags" .Params.tags
+"Illustortar" $illustortar.Permalink
+"IllustortarLe" $illustortarLe.Permalink
+"IllustortarC" $illustortarC.Permalink
+"Permalink" .Permalink
+"Logo" $logo.Permalink
+"Can" .Params.can
+"Partnership" .Params.partnership
+"Company" .Params.company
+"Companylist" .Params.companylist
+"Message" .Params.message
+"Type" .Params.Type
+"Image" .Params.Image
+"YouTube" .Params.youtube
+"Bilibili" .Params.bilibili
+"Desc" .Params.desc
+"Weight" .Params.weight
+"Video" $video.RelPermalink
+}}
+{{ partial "official/official-item.html" $context }}
+{{ end }}

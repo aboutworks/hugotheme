@@ -1,18 +1,22 @@
 <div class="officialBox">
 	<div class="officialBox_item">
-		<a href="{{ .Permalink }}">
+		<a class="officialBox_img" href="{{ .Permalink }}">
 			{{ with .Resources.GetMatch .Params.image }}
 			<img src="{{ .RelPermalink }}" alt="{{ $.Params.title }}" width="100%" />
 			{{ else }}
 			<p>图片未找到</p>
 			{{ end }}
-			<div class="official_item_title"> {{ .Title }} </div>
 		</a>
-		<div class="official_item_addr"> {{ .Nation }} / {{ .Addr }}</div>
-		<div class="official_item_date"> {{ .publicDate }}</div>
-		<div> 開催前 </div>
-		<div class="official_item_desc"> #絵画・平面 </div>
-		<div style="padding:4px 1rem; display: inline-block; border-radius: 4px; font-size: 12px; background-color: rgb(255, 34, 0); color:white;">前往</div>
+		<div style="padding:1rem;">
+			<a class="officialBox_img" href="{{ .Permalink }}">
+				<div class="official_item_title"> {{ .Title }} </div>
+			</a>
+			<div class="official_item_addr"> {{ .Nation }} / {{ .Addr }}</div>
+			<div class="official_item_date"> {{ .publicDate }}</div>
+			<div> 開催前 </div>
+			<div class="official_item_desc"> #絵画・平面 </div>
+			<div class="button_text">前往</div>
+		</div>
 	</div>
 </div>
 
