@@ -78,16 +78,16 @@ table {
 strong {
   padding-left: 2rem;
 }
+
 ul{
   color:rgba(0, 0, 0, .4)
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.content-wrapper h1,
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper h4,
+.content-wrapper h5,
+.content-wrapper h6 {
   color: var(--color-header-title);
   font-weight: bold;
   margin: 2rem 0;
@@ -95,7 +95,7 @@ h6 {
     /* margin-bottom: var(--space-sm); */
 }
 
-h1 {
+.content-wrapper h1 {
   font-size: 200%;
   display: block;
   justify-content: center;
@@ -106,7 +106,7 @@ h1 {
   text-align: left;
 }
 
-h2 {
+.content-wrapper h2 {
   font-size: 180%;
   display: block;
   justify-content: center;
@@ -117,7 +117,7 @@ h2 {
   color: white;
 }
 
-h3 {
+.content-wrapper h3 {
   font-size: 160%;
   display: block;
   justify-content: center;
@@ -128,7 +128,7 @@ h3 {
   color: white;
 }
 
-h4 {
+.content-wrapper h4 {
   font-size: 140%;
   display: block;
   justify-content: center;
@@ -137,7 +137,7 @@ h4 {
   padding-left: 3rem;
 }
 
-h5 {
+.content-wrapper h5 {
   font-size: 120%;
   display: block;
   justify-content: center;
@@ -146,7 +146,7 @@ h5 {
   padding-left: 4rem;
 }
 
-h6 {
+.content-wrapper h6 {
   font-size: 100%;
   display: block;
   justify-content: center;
@@ -155,32 +155,32 @@ h6 {
   padding-left: 5rem;
 }
 
-h1::before {
+.content-wrapper h1::before {
   content: "壹.";
   display: inline-block;
 }
 
-h2::before {
+.content-wrapper h2::before {
   content: "贰.";
   display: inline-block;
 }
 
-h3::before {
+.content-wrapper h3::before {
   content: "叁.";
   display: inline-block;
 }
 
-h4::before {
+.content-wrapper h4::before {
   content: "肆.";
   display: inline-block;
 }
 
-h5::before {
+.content-wrapper h5::before {
   content: "伍.";
   display: inline-block;
 }
 
-h6::before {
+.content-wrapper h6::before {
   content: "陆.";
   display: inline-block;
 }

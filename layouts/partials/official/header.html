@@ -1,7 +1,7 @@
-<header class="header">
+<!-- <header class="header">
   <div class="header-inner">
     <div class="header-title">
-      <a href="/">official {{ .Site.Title }}</a>
+
     </div>
 
     <nav class="header-web">
@@ -27,7 +27,155 @@
     </nav>
 
   </div>
+</header> -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#2D3142',
+          secondary: '#EF8354',
+          neutral: '#F2F4F3',
+          accent: '#4F5D75',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .card-hover {
+        @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+      }
+      .section-padding {
+        @apply py-16 md:py-24;
+      }
+    }
+  </style>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .car-ad-display {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ad-position {
+    position: absolute;
+    border: 2px dashed rgba(239, 131, 84, 0.8);
+    background-color: rgba(239, 131, 84, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #EF8354;
+    font-weight: 600;
+  }
+
+  .ad-position:hover {
+    background-color: rgba(239, 131, 84, 0.2);
+  }
+
+  .ad-small-1 {
+    top: 20%;
+    left: 10%;
+    width: 15%;
+    height: 12%;
+  }
+
+  .ad-small-2 {
+    top: 40%;
+    right: 10%;
+    width: 15%;
+    height: 12%;
+  }
+
+  .ad-main {
+    top: 60%;
+    left: 25%;
+    width: 50%;
+    height: 20%;
+  }
+
+  .service-tab.active {
+    color: #EF8354;
+    border-bottom: 2px solid #EF8354;
+  }
+
+  .service-content {
+    display: none;
+  }
+
+  .service-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+<!-- 导航栏 -->
+<header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <a href="#" class="flex items-center space-x-2">
+        <span class="text-secondary text-2xl"><i class="fa fa-rocket"></i></span>
+        <span class="text-xl font-bold">official {{ .Site.Title }}</span>
+      </a>
+
+      <nav class="hidden md:flex space-x-8">
+        <a href="#home" class="text-accent hover:text-secondary transition-colors">首页</a>
+        <a href="#services" class="text-accent hover:text-secondary transition-colors">服务项目</a>
+        <a href="#pricing" class="text-accent hover:text-secondary transition-colors">收费标准</a>
+        <a href="#cases" class="text-accent hover:text-secondary transition-colors">成功案例</a>
+        <a href="#contact" class="text-accent hover:text-secondary transition-colors">联系我们</a>
+      </nav>
+
+      <button class="md:hidden text-primary text-xl" id="mobile-menu-button">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- 移动端菜单 -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="flex flex-col space-y-4 py-4">
+        <a href="#home" class="text-accent hover:text-secondary transition-colors">首页</a>
+        <a href="#services" class="text-accent hover:text-secondary transition-colors">服务项目</a>
+        <a href="#pricing" class="text-accent hover:text-secondary transition-colors">收费标准</a>
+        <a href="#cases" class="text-accent hover:text-secondary transition-colors">成功案例</a>
+        <a href="#contact" class="text-accent hover:text-secondary transition-colors">联系我们</a>
+      </div>
+    </div>
+  </div>
 </header>
+
+
 
 <script>
   const menuToggle = document.getElementById('menu-toggle');

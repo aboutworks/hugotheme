@@ -1,21 +1,10 @@
+<body class="bg-neutral text-primary font-sans">
 
-<body>
-
-{{ partial "official/header.html" . }}
-
-<main>
-	{{ $context := dict
-	"Title" .Params.Title
-	"Nation" .Params.Nation
-	"Addr" .Params.addr
-	"Image" .Params.Image
-	}}
-	{{ partial "official/official-banner.html" $context }}
-
-	{{ partial "official/official-list.html" . }}
-
-</main>
-
-{{ partial "official/footer.html" . }}
-
+	
+  {{ partial "official/header.html" . }}
+  <main>
+  {{ partial "official/index2.html" . }}
+  </main>
+  {{ partial "official/footer.html" . }}
+  
 </body>
