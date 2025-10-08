@@ -1,0 +1,85 @@
+{{ define "main" }}
+<div class="home-page-content">
+
+	{{ range where .Site.Pages "Section" "posts" }}
+	<div class="home-item">
+		{{ if eq .Params.position "top" }}
+		{{ if eq .Params.arrange "vertical" }}
+		{{ partial "vertical.html"
+		(
+		dict
+		"Title" .Title
+		"Position" .Params.position
+		"Sitetitle" .Site.Title
+		"Permalink" .Permalink
+		"Date" .Params.Date
+		"type" .Params.Type
+		"image" .Params.Image
+		"youtube" .Params.youtube
+		"bilibili" .Params.bilibili
+		"desc" .Params.desc
+		)}}
+		{{ else if eq .Params.arrange "horizontal" }}
+		{{ partial "horizontal.html"
+		(
+		dict
+		"Title" .Title
+		"Position" .Params.position
+		"Sitetitle" .Site.Title
+		"Permalink" .Permalink
+		"Date" .Params.Date
+		"type" .Params.Type
+		"image" .Params.Image
+		"youtube" .Params.youtube
+		"bilibili" .Params.bilibili
+		"desc" .Params.desc
+		)}}
+		{{ end }}
+		{{ end }}
+	</div>
+	{{ end }}
+
+	<!-- {{ .Content }} -->
+
+	{{ range where .Site.Pages "Section" "posts" }}
+	<div class="home-item">
+		{{ if eq .Params.position "normal" }}
+		{{ if eq .Params.arrange "vertical" }}
+		{{ partial "vertical.html"
+		(
+		dict
+		"Title" .Title
+		"Sitetitle" .Site.Title
+		"Permalink" .Permalink
+		"Date" .Params.Date
+		"type" .Params.Type
+		"image" .Params.Image
+		"youtube" .Params.youtube
+		"bilibili" .Params.bilibili
+		"desc" .Params.desc
+		)}}
+		{{ else if eq .Params.arrange "horizontal" }}
+		{{ partial "horizontal.html"
+		(
+		dict
+		"Title" .Title
+		"Sitetitle" .Site.Title
+		"Permalink" .Permalink
+		"Date" .Params.Date
+		"type" .Params.Type
+		"image" .Params.Image
+		"youtube" .Params.youtube
+		"bilibili" .Params.bilibili
+		"desc" .Params.desc
+		)}}
+		{{ end }}
+		{{ end }}
+	</div>
+	{{ end }}
+</div>
+<div>
+	{{ range first 10 .Site.RegularPages }}
+	{{ .Render "summary" }}
+	{{ end }}
+</div>
+{{ end }}

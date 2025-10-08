@@ -1,0 +1,289 @@
+{{ define "main" }}
+<section id="content-wrapper" class="content-wrapper">
+  {{ $uuid := .Params.uuid }}
+  <h6 style="display:none;" id="protected-uuid">{{ $uuid }}</h6>
+
+  {{ if .Params.protect }}
+  <!-- 受保护内容 -->
+
+  <!-- 验证按钮 -->
+  <div class="valid-form" id="valid-form">
+
+    <input type="file" id="ssh-file" accept=".lhy" style="display: none;" />
+
+
+    <div id="validator">
+      <p>该文章为受保护内容，请验证后访问。</p>
+      <p id="idcode">{{ $uuid }}</p>
+      <div class="blog-box">
+        <a class="blog-item" href="https://lehuye.taobao.com" style="font-weight: bolder;" target="_blank">【淘宝获取授权码】</a>
+        <a class="blog-item" href="mailto:aboutworks@outlook.com" style="font-weight: bolder;">【邮箱获取授权码】</a>
+      </div>
+      <textarea id="ssh-key" placeholder="请输入您获得的授权串码"></textarea>
+      <button id="ssh-validate-button">验证权限</button>
+    </div>
+  </div>
+
+  <!-- 受保护内容区域，默认隐藏 -->
+  <div id="protected-content" style="display: none;padding:2rem;">
+    <!-- SSH 验证器 partial -->
+    <button id="out-validate-button_{{.Params.uuid}}">退出验证权限 {{.Params.uuid}}</button>
+
+    {{ partial "post-content.html" . }}
+  </div>
+
+  {{ else }}
+  <!-- 公开内容 -->
+  {{ partial "post-content.html" . }}
+  {{ end }}
+</section>
+
+{{ partial "page\footer.html" . }}
+
+<script>
+  window.onload = () => {
+    const images = document.querySelectorAll('img');
+    const lightboxId = 'dynamic-lightbox'; // 灯箱唯一ID
+
+    // 创建灯箱并定义样式
+    function createLightbox() {
+      // 创建灯箱容器
+      const lightbox = document.createElement('div');
+      lightbox.id = lightboxId;
+
+      // 直接在JS中定义灯箱的样式
+      lightbox.style.position = 'fixed';
+      lightbox.style.top = '0';
+      lightbox.style.left = '0';
+      lightbox.style.width = '100vw';
+      lightbox.style.height = '100vh';
+      lightbox.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      lightbox.style.display = 'flex';
+      lightbox.style.justifyContent = 'center';
+      lightbox.style.alignItems = 'center';
+      lightbox.style.zIndex = '999999';
+      lightbox.style.cursor = 'zoom-out';
+      lightbox.style.transition = 'opacity 0.3s ease';
+
+      // 创建关闭按钮
+      const closeBtn = document.createElement('button');
+      closeBtn.innerHTML = '&times;';
+      // 定义关闭按钮样式
+      closeBtn.style.position = 'absolute';
+      closeBtn.style.top = '20px';
+      closeBtn.style.right = '20px';
+      closeBtn.style.color = 'white';
+      closeBtn.style.fontSize = '30px';
+      closeBtn.style.cursor = 'pointer';
+      closeBtn.style.background = 'none';
+      closeBtn.style.border = 'none';
+      closeBtn.style.width = '40px';
+      closeBtn.style.height = '40px';
+      closeBtn.style.display = 'flex';
+      closeBtn.style.alignItems = 'center';
+      closeBtn.style.justifyContent = 'center';
+      closeBtn.style.padding = '0';
+      closeBtn.style.userSelect = 'none';
+
+      lightbox.appendChild(closeBtn);
+
+      // 灯箱点击事件
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === closeBtn) {
+          removeLightbox();
+        }
+      });
+
+      document.body.appendChild(lightbox);
+      return lightbox;
+    }
+
+    // 移除灯箱
+    function removeLightbox() {
+      const lightbox = document.getElementById(lightboxId);
+      if (lightbox) {
+        lightbox.remove();
+      }
+    }
+
+    // 检查灯箱是否存在
+    function lightboxExists() {
+      return document.getElementById(lightboxId) !== null;
+    }
+
+    // 图片点击事件
+    images.forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        if (lightboxExists()) {
+          removeLightbox();
+          return;
+        }
+
+        const lightbox = createLightbox();
+        const clone = img.cloneNode();
+
+        // 定义灯箱中图片的样式
+        clone.style.maxWidth = '90%';
+        clone.style.maxHeight = '90vh';
+        clone.style.objectFit = 'contain';
+        clone.style.cursor = 'zoom-out';
+        clone.style.transition = 'transform 0.3s ease';
+
+        lightbox.appendChild(clone);
+      });
+    });
+
+    // ESC键关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightboxExists()) {
+        removeLightbox();
+      }
+    });
+  };
+</script>
+
+<style>
+  .valid-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: var(--height-main);
+  }
+
+  #validator {
+    width: 100%;
+    padding: 1.5rem;
+    /* background-color: #f9f9f9; */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  #validator h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  #ssh-key {
+    width: 100%;
+    height: calc(var(--height-main) - 80vh);
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    font-family: monospace;
+  }
+
+  #validator button {
+    width: 100%;
+    display: inline-block;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  #ssh-validate-button {
+    width: 100%;
+    background-color: var(--color-link);
+    color: white;
+  }
+
+  #ssh-validate-button:hover {
+    background-color: #0056b3;
+  }
+
+  #out-validate-button {
+    background-color: #6c757d;
+    color: white;
+    margin-right: 8px;
+  }
+
+  #out-validate-button:hover {
+    background-color: #545b62;
+  }
+
+  @media (max-width: 600px) {
+    #validator button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      margin-right: 0 !important;
+    }
+  }
+
+  .image-container {
+    margin: 20px 0;
+  }
+
+  /* 图片默认样式 */
+  img {
+    max-width: 100%;
+    height: auto;
+    cursor: zoom-in;
+    /* 鼠标悬停显示放大图标 */
+    transition: transform 0.2s;
+  }
+
+  img:hover {
+    transform: scale(1.02);
+  }
+
+  /* 灯箱样式 - 全屏覆盖 */
+  #lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    /* 默认隐藏 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    /* 鼠标悬停显示缩小图标 */
+  }
+
+  /* 灯箱显示状态 */
+  #lightbox.show {
+    display: flex;
+  }
+
+  /* 灯箱中的图片样式 */
+  #lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: zoom-out;
+  }
+
+  /* 关闭按钮 */
+  #lightbox .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+{{ end }}
