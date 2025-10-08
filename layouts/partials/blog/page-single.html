@@ -1,16 +1,21 @@
-{{ define "main" }}
+
+{{ partial "head.html" . }}
+
+{{ partial "blog/header.html" . }}
+
 <section id="content-wrapper" class="content-wrapper">
   {{ $uuid := .Params.uuid }}
+
+
+
   <h6 style="display:none;" id="protected-uuid">{{ $uuid }}</h6>
 
   {{ if .Params.protect }}
   <!-- 受保护内容 -->
-
   <!-- 验证按钮 -->
   <div class="valid-form" id="valid-form">
 
     <input type="file" id="ssh-file" accept=".lhy" style="display: none;" />
-
 
     <div id="validator">
       <p>该文章为受保护内容，请验证后访问。</p>
@@ -38,7 +43,7 @@
   {{ end }}
 </section>
 
-{{ partial "page\footer.html" . }}
+{{ partial "blog/footer.html" . }}
 
 <script>
   window.onload = () => {
@@ -285,5 +290,3 @@
     justify-content: center;
   }
 </style>
-
-{{ end }}

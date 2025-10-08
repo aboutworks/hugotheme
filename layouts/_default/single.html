@@ -1,12 +1,1 @@
-{{ define "main" }}
-{{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
-
-<!-- official 官网风格 -->
-{{ if eq $webtype "official" }}
-{{ partial "official/page-single.html" . }}
-{{ end }}
-
-<!-- Blog 博客风格-->
-{{ if eq $webtype "blog" }}
 {{ partial "blog/page-single.html" . }}
-{{ end }}
