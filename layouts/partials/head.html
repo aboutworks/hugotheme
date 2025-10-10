@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>{{ .Site.Title}} | {{ .Params.Title }} </title>
-
+<head>
 <meta name="description"
   content="{{ if .IsHome }}
     {{ .Site.Params.description | plainify | truncate 256 | safeHTMLAttr }}
@@ -24,24 +24,9 @@
 <meta property="article:tag" content="{{ with .Params.tags }}{{ delimit . " , " }}{{ else }}{{ .Params.tags }}{{ end }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 
-{{ $styles := resources.Get "css/var.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/components.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/blog.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
 {{ $styles := resources.Get "css/default.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/media.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/official.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/single.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/media.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-{{ $styles := resources.Get "css/markdown.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
+
 
 {{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $script.Permalink }}" defer></script>
@@ -51,3 +36,30 @@
 
 {{ $scriptssh := resources.Get "javascript/ssh.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $scriptssh.Permalink }}" defer></script>
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Font Awesome -->
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- AOS - Animate On Scroll -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#2D3142',
+          secondary: '#EF8354',
+          neutral: '#F2F4F3',
+          accent: '#4F5D75',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    }
+  }
+</script>
+</head>

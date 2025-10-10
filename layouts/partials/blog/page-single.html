@@ -1,292 +1,928 @@
 
-{{ partial "head.html" . }}
+    {{ if .Params.protect }}
+    {{ partial "blog/post-protect.html" (dict "uuid" .Params.uuid) }}
+    {{ else }}
+    <!-- 公开内容 -->
+    {{ partial "blog/post-content.html" . }}
+    {{ end }}
 
-{{ partial "blog/header.html" . }}
-
-<section id="content-wrapper" class="content-wrapper">
-  {{ $uuid := .Params.uuid }}
-
-
-
-  <h6 style="display:none;" id="protected-uuid">{{ $uuid }}</h6>
-
-  {{ if .Params.protect }}
-  <!-- 受保护内容 -->
-  <!-- 验证按钮 -->
-  <div class="valid-form" id="valid-form">
-
-    <input type="file" id="ssh-file" accept=".lhy" style="display: none;" />
-
-    <div id="validator">
-      <p>该文章为受保护内容，请验证后访问。</p>
-      <p id="idcode">{{ $uuid }}</p>
-      <div class="blog-box">
-        <a class="blog-item" href="https://lehuye.taobao.com" style="font-weight: bolder;" target="_blank">【淘宝获取授权码】</a>
-        <a class="blog-item" href="mailto:aboutworks@outlook.com" style="font-weight: bolder;">【邮箱获取授权码】</a>
-      </div>
-      <textarea id="ssh-key" placeholder="请输入您获得的授权串码"></textarea>
-      <button id="ssh-validate-button">验证权限</button>
-    </div>
-  </div>
-
-  <!-- 受保护内容区域，默认隐藏 -->
-  <div id="protected-content" style="display: none;padding:2rem;">
-    <!-- SSH 验证器 partial -->
-    <button id="out-validate-button_{{.Params.uuid}}">退出验证权限 {{.Params.uuid}}</button>
-
-    {{ partial "post-content.html" . }}
-  </div>
-
-  {{ else }}
-  <!-- 公开内容 -->
-  {{ partial "post-content.html" . }}
-  {{ end }}
-</section>
-
-{{ partial "blog/footer.html" . }}
 
 <script>
-  window.onload = () => {
-    const images = document.querySelectorAll('img');
-    const lightboxId = 'dynamic-lightbox'; // 灯箱唯一ID
+  // 初始化AOS动画库
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
 
-    // 创建灯箱并定义样式
-    function createLightbox() {
-      // 创建灯箱容器
-      const lightbox = document.createElement('div');
-      lightbox.id = lightboxId;
+    // 初始化阅读设置
+    initReadingSettings();
 
-      // 直接在JS中定义灯箱的样式
-      lightbox.style.position = 'fixed';
-      lightbox.style.top = '0';
-      lightbox.style.left = '0';
-      lightbox.style.width = '100vw';
-      lightbox.style.height = '100vh';
-      lightbox.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-      lightbox.style.display = 'flex';
-      lightbox.style.justifyContent = 'center';
-      lightbox.style.alignItems = 'center';
-      lightbox.style.zIndex = '999999';
-      lightbox.style.cursor = 'zoom-out';
-      lightbox.style.transition = 'opacity 0.3s ease';
+    // 初始化事件监听
+    initEventListeners();
 
-      // 创建关闭按钮
-      const closeBtn = document.createElement('button');
-      closeBtn.innerHTML = '&times;';
-      // 定义关闭按钮样式
-      closeBtn.style.position = 'absolute';
-      closeBtn.style.top = '20px';
-      closeBtn.style.right = '20px';
-      closeBtn.style.color = 'white';
-      closeBtn.style.fontSize = '30px';
-      closeBtn.style.cursor = 'pointer';
-      closeBtn.style.background = 'none';
-      closeBtn.style.border = 'none';
-      closeBtn.style.width = '40px';
-      closeBtn.style.height = '40px';
-      closeBtn.style.display = 'flex';
-      closeBtn.style.alignItems = 'center';
-      closeBtn.style.justifyContent = 'center';
-      closeBtn.style.padding = '0';
-      closeBtn.style.userSelect = 'none';
+    // 初始化阅读进度条
+    initProgressBar();
 
-      lightbox.appendChild(closeBtn);
+    // 检查并应用保存的阅读设置
+    loadSavedSettings();
+  });
 
-      // 灯箱点击事件
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox || e.target === closeBtn) {
-          removeLightbox();
-        }
-      });
+  // 初始化阅读设置
+  function initReadingSettings() {
+    // 布局设置
+    const layoutButtons = document.querySelectorAll('.layout-btn');
+    layoutButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const layout = this.getAttribute('data-layout');
+        setLayout(layout);
 
-      document.body.appendChild(lightbox);
-      return lightbox;
-    }
-
-    // 移除灯箱
-    function removeLightbox() {
-      const lightbox = document.getElementById(lightboxId);
-      if (lightbox) {
-        lightbox.remove();
-      }
-    }
-
-    // 检查灯箱是否存在
-    function lightboxExists() {
-      return document.getElementById(lightboxId) !== null;
-    }
-
-    // 图片点击事件
-    images.forEach(img => {
-      img.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        if (lightboxExists()) {
-          removeLightbox();
-          return;
-        }
-
-        const lightbox = createLightbox();
-        const clone = img.cloneNode();
-
-        // 定义灯箱中图片的样式
-        clone.style.maxWidth = '90%';
-        clone.style.maxHeight = '90vh';
-        clone.style.objectFit = 'contain';
-        clone.style.cursor = 'zoom-out';
-        clone.style.transition = 'transform 0.3s ease';
-
-        lightbox.appendChild(clone);
+        // 更新按钮样式
+        layoutButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-500', 'text-white');
+          btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        this.classList.remove('bg-gray-200', 'text-gray-700');
+        this.classList.add('bg-blue-500', 'text-white');
       });
     });
 
-    // ESC键关闭
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightboxExists()) {
-        removeLightbox();
+    // 字体设置
+    const fontButtons = document.querySelectorAll('.font-btn');
+    fontButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const font = this.getAttribute('data-font');
+        setFont(font);
+
+        // 更新按钮样式
+        fontButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-500', 'text-white');
+          btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        this.classList.remove('bg-gray-200', 'text-gray-700');
+        this.classList.add('bg-blue-500', 'text-white');
+      });
+    });
+
+    // 字体大小设置
+    const fontSizeSlider = document.getElementById('font-size-slider');
+    const fontSizeDecrease = document.getElementById('font-size-decrease');
+    const fontSizeIncrease = document.getElementById('font-size-increase');
+
+    fontSizeSlider.addEventListener('input', function () {
+      setFontSize(this.value);
+    });
+
+    fontSizeDecrease.addEventListener('click', function () {
+      const currentValue = parseInt(fontSizeSlider.value);
+      if (currentValue > 1) {
+        fontSizeSlider.value = currentValue - 1;
+        setFontSize(fontSizeSlider.value);
       }
     });
-  };
+
+    fontSizeIncrease.addEventListener('click', function () {
+      const currentValue = parseInt(fontSizeSlider.value);
+      if (currentValue < 4) {
+        fontSizeSlider.value = currentValue + 1;
+        setFontSize(fontSizeSlider.value);
+      }
+    });
+
+    // 行高设置
+    const lineHeightButtons = document.querySelectorAll('.line-height-btn');
+    lineHeightButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const lineHeight = this.getAttribute('data-line-height');
+        setLineHeight(lineHeight);
+
+        // 更新按钮样式
+        lineHeightButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-500', 'text-white');
+          btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        this.classList.remove('bg-gray-200', 'text-gray-700');
+        this.classList.add('bg-blue-500', 'text-white');
+      });
+    });
+
+    // 主题设置
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    themeButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const theme = this.getAttribute('data-theme');
+        setTheme(theme);
+
+        // 更新按钮样式
+        themeButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-500', 'text-white');
+          btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        this.classList.remove('bg-gray-200', 'text-gray-700');
+        this.classList.add('bg-blue-500', 'text-white');
+      });
+    });
+  }
+
+  // 初始化事件监听
+  function initEventListeners() {
+    // 侧边栏切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', function () {
+      sidebar.classList.toggle('-translate-x-full');
+    });
+
+    closeSidebar.addEventListener('click', function () {
+      sidebar.classList.add('-translate-x-full');
+    });
+
+    // 搜索面板切换
+    const searchToggle = document.getElementById('search-toggle');
+    const searchPanel = document.getElementById('search-panel');
+
+    searchToggle.addEventListener('click', function () {
+      searchPanel.classList.toggle('hidden');
+
+      // 如果显示搜索面板，自动聚焦搜索框
+      if (!searchPanel.classList.contains('hidden')) {
+        searchPanel.querySelector('input').focus();
+      }
+    });
+
+    // 设置面板切换
+    const settingsToggle = document.getElementById('settings-toggle');
+    const closeSettings = document.getElementById('close-settings');
+    const settingsPanel = document.getElementById('settings-panel');
+
+    settingsToggle.addEventListener('click', function () {
+      settingsPanel.classList.toggle('hidden');
+    });
+
+    closeSettings.addEventListener('click', function () {
+      settingsPanel.classList.add('hidden');
+    });
+
+    // 主题切换
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    themeToggle.addEventListener('click', function () {
+      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      setTheme(newTheme);
+
+      // 更新主题按钮样式
+      const themeButtons = document.querySelectorAll('.theme-btn');
+      themeButtons.forEach(btn => {
+        btn.classList.remove('bg-blue-500', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+
+        if (btn.getAttribute('data-theme') === newTheme) {
+          btn.classList.remove('bg-gray-200', 'text-gray-700');
+          btn.classList.add('bg-blue-500', 'text-white');
+        }
+      });
+    });
+
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 点击页面其他区域关闭搜索面板和设置面板
+    document.addEventListener('click', function (event) {
+      // 搜索面板
+      if (!searchPanel.contains(event.target) && event.target !== searchToggle) {
+        searchPanel.classList.add('hidden');
+      }
+
+      // 设置面板
+      if (!settingsPanel.contains(event.target) && event.target !== settingsToggle) {
+        settingsPanel.classList.add('hidden');
+      }
+    });
+
+    // 点击侧边栏链接关闭侧边栏
+    const sidebarLinks = sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        sidebar.classList.add('-translate-x-full');
+      });
+    });
+
+    // 导航栏滚动效果
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 50) {
+        header.classList.add('shadow-md');
+        header.classList.remove('shadow-sm');
+      } else {
+        header.classList.remove('shadow-md');
+        header.classList.add('shadow-sm');
+      }
+    });
+  }
+
+  // 初始化阅读进度条
+  function initProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.body.offsetHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      progressBar.style.width = scrollPercent + '%';
+
+      // 保存阅读进度
+      saveReadingProgress(scrollPercent);
+    });
+  }
+
+  // 设置布局
+  function setLayout(layout) {
+    const articleContent = document.getElementById('article-content');
+
+    // 移除所有布局类
+    articleContent.classList.remove('layout-single', 'layout-double', 'layout-card');
+
+    // 添加选中的布局类
+    articleContent.classList.add('layout-' + layout);
+
+    // 保存设置
+    saveSetting('layout', layout);
+  }
+
+  // 设置字体
+  function setFont(font) {
+    const articleContent = document.getElementById('article-content');
+
+    // 移除所有字体类
+    articleContent.classList.remove('font-sans', 'font-serif', 'font-mono');
+
+    // 添加选中的字体类
+    articleContent.classList.add('font-' + font);
+
+    // 保存设置
+    saveSetting('font', font);
+  }
+
+  // 设置字体大小
+  function setFontSize(size) {
+    const articleContent = document.getElementById('article-content');
+
+    // 移除所有字体大小类
+    articleContent.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+
+    // 根据大小值添加对应的类
+    const sizeClasses = ['', 'font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl'];
+    articleContent.classList.add(sizeClasses[size]);
+
+    // 保存设置
+    saveSetting('fontSize', size);
+  }
+
+  // 设置行高
+  function setLineHeight(lineHeight) {
+    const articleContent = document.getElementById('article-content');
+
+    // 移除所有行高类
+    articleContent.classList.remove('line-height-tight', 'line-height-normal', 'line-height-relaxed');
+
+    // 添加选中的行高类
+    articleContent.classList.add('line-height-' + lineHeight);
+
+    // 保存设置
+    saveSetting('lineHeight', lineHeight);
+  }
+
+  // 设置主题
+  function setTheme(theme) {
+    const html = document.documentElement;
+    const body = document.getElementById('app-body');
+    const header = document.getElementById('main-header');
+    const themeIcon = document.getElementById('theme-icon');
+
+    // 移除所有主题类
+    body.classList.remove('bg-gray-50', 'bg-amber-50', 'bg-gray-900');
+    body.classList.remove('text-gray-800', 'text-gray-700', 'text-gray-100');
+    html.classList.remove('dark');
+
+    // 根据主题设置样式
+    if (theme === 'dark') {
+      html.classList.add('dark');
+      body.classList.add('bg-gray-900', 'text-gray-100');
+      themeIcon.classList.remove('fa-moon-o');
+      themeIcon.classList.add('fa-sun-o');
+    } else if (theme === 'sepia') {
+      body.classList.add('bg-amber-50', 'text-gray-700');
+      themeIcon.classList.remove('fa-sun-o');
+      themeIcon.classList.add('fa-moon-o');
+    } else {
+      body.classList.add('bg-gray-50', 'text-gray-800');
+      themeIcon.classList.remove('fa-sun-o');
+      themeIcon.classList.add('fa-moon-o');
+    }
+
+    // 更新阅读卡片背景色
+    const readingCards = document.querySelectorAll('.reading-card');
+    readingCards.forEach(card => {
+      if (theme === 'dark') {
+        card.classList.remove('bg-white', 'bg-amber-100');
+        card.classList.add('bg-gray-800');
+      } else if (theme === 'sepia') {
+        card.classList.remove('bg-white', 'bg-gray-800');
+        card.classList.add('bg-amber-100');
+      } else {
+        card.classList.remove('bg-amber-100', 'bg-gray-800');
+        card.classList.add('bg-white');
+      }
+    });
+
+    // 保存设置
+    saveSetting('theme', theme);
+  }
+
+  // 保存设置到localStorage
+  function saveSetting(key, value) {
+    try {
+      localStorage.setItem('readingSettings_' + key, value);
+    } catch (e) {
+      console.error('无法保存设置:', e);
+    }
+  }
+
+  // 保存阅读进度
+  function saveReadingProgress(progress) {
+    try {
+      localStorage.setItem('readingProgress', progress);
+    } catch (e) {
+      console.error('无法保存阅读进度:', e);
+    }
+  }
+
+  // 加载保存的设置
+  function loadSavedSettings() {
+    // 布局设置
+    const savedLayout = localStorage.getItem('readingSettings_layout');
+    if (savedLayout) {
+      setLayout(savedLayout);
+
+      // 更新按钮样式
+      const layoutButtons = document.querySelectorAll('.layout-btn');
+      layoutButtons.forEach(btn => {
+        btn.classList.remove('bg-blue-500', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+
+        if (btn.getAttribute('data-layout') === savedLayout) {
+          btn.classList.remove('bg-gray-200', 'text-gray-700');
+          btn.classList.add('bg-blue-500', 'text-white');
+        }
+      });
+    }
+
+    // 字体设置
+    const savedFont = localStorage.getItem('readingSettings_font');
+    if (savedFont) {
+      setFont(savedFont);
+
+      // 更新按钮样式
+      const fontButtons = document.querySelectorAll('.font-btn');
+      fontButtons.forEach(btn => {
+        btn.classList.remove('bg-blue-500', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+
+        if (btn.getAttribute('data-font') === savedFont) {
+          btn.classList.remove('bg-gray-200', 'text-gray-700');
+          btn.classList.add('bg-blue-500', 'text-white');
+        }
+      });
+    }
+
+    // 字体大小设置
+    const savedFontSize = localStorage.getItem('readingSettings_fontSize');
+    if (savedFontSize) {
+      const fontSizeSlider = document.getElementById('font-size-slider');
+      fontSizeSlider.value = savedFontSize;
+      setFontSize(savedFontSize);
+    }
+
+    // 行高设置
+    const savedLineHeight = localStorage.getItem('readingSettings_lineHeight');
+    if (savedLineHeight) {
+      setLineHeight(savedLineHeight);
+
+      // 更新按钮样式
+      const lineHeightButtons = document.querySelectorAll('.line-height-btn');
+      lineHeightButtons.forEach(btn => {
+        btn.classList.remove('bg-blue-500', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+
+        if (btn.getAttribute('data-line-height') === savedLineHeight) {
+          btn.classList.remove('bg-gray-200', 'text-gray-700');
+          btn.classList.add('bg-blue-500', 'text-white');
+        }
+      });
+    }
+
+    // 主题设置
+    const savedTheme = localStorage.getItem('readingSettings_theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+
+      // 更新按钮样式
+      const themeButtons = document.querySelectorAll('.theme-btn');
+      themeButtons.forEach(btn => {
+        btn.classList.remove('bg-blue-500', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+
+        if (btn.getAttribute('data-theme') === savedTheme) {
+          btn.classList.remove('bg-gray-200', 'text-gray-700');
+          btn.classList.add('bg-blue-500', 'text-white');
+        }
+      });
+    }
+
+    // 阅读进度
+    const savedProgress = localStorage.getItem('readingProgress');
+    if (savedProgress && savedProgress > 0) {
+      // 询问用户是否要继续阅读
+      if (confirm('是否要继续上次的阅读进度？')) {
+        const docHeight = document.body.offsetHeight - window.innerHeight;
+        const scrollTop = (savedProgress / 100) * docHeight;
+
+        window.scrollTo({
+          top: scrollTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  // 图片预览功能
+  function openModal(imageSrc) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+
+    modal.style.display = 'flex';
+    modalImg.src = imageSrc;
+
+    // 禁止背景滚动
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('image-modal');
+    modal.style.display = 'none';
+
+    // 恢复背景滚动
+    document.body.style.overflow = 'auto';
+  }
+
+  // 点击模态框外部关闭
+  window.onclick = function (event) {
+    const modal = document.getElementById('image-modal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+
+  // 键盘导航
+  document.addEventListener('keydown', function (event) {
+    const modal = document.getElementById('image-modal');
+
+    // 按ESC键关闭模态框
+    if (event.key === 'Escape' && modal.style.display === 'flex') {
+      closeModal();
+    }
+
+    // 按箭头键滚动页面
+    if (event.key === 'ArrowUp') {
+      window.scrollBy({
+        top: -100,
+        behavior: 'smooth'
+      });
+    } else if (event.key === 'ArrowDown') {
+      window.scrollBy({
+        top: 100,
+        behavior: 'smooth'
+      });
+    }
+  });
 </script>
 
+
+
+
+
+
+
+
+<!-- 
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#3b82f6',
+          secondary: '#64748b',
+          accent: '#f59e0b',
+          light: '#f8fafc',
+          dark: '#1e293b',
+          'paper-light': '#ffffff',
+          'paper-sepia': '#f4ecd8',
+          'paper-dark': '#1e293b',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Georgia', 'Cambria', 'serif'],
+          mono: ['Consolas', 'Monaco', 'monospace'],
+        },
+        boxShadow: {
+          'reading': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+          'reading-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+        }
+      }
+    },
+    darkMode: 'class',
+  }
+</script> -->
+
 <style>
-  .valid-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: var(--height-main);
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 
-  #validator {
-    width: 100%;
-    padding: 1.5rem;
-    /* background-color: #f9f9f9; */
-    /* border-radius: 8px; */
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
 
-  #validator h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #333;
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 4px;
   }
 
-  #ssh-key {
-    width: 100%;
-    height: calc(var(--height-main) - 80vh);
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: none;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
-    font-family: monospace;
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(107, 114, 128, 0.5);
   }
 
-  #validator button {
-    width: 100%;
-    display: inline-block;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 500;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    box-sizing: border-box;
-  }
-
-  #ssh-validate-button {
-    width: 100%;
-    background-color: var(--color-link);
-    color: white;
-  }
-
-  #ssh-validate-button:hover {
-    background-color: #0056b3;
-  }
-
-  #out-validate-button {
-    background-color: #6c757d;
-    color: white;
-    margin-right: 8px;
-  }
-
-  #out-validate-button:hover {
-    background-color: #545b62;
-  }
-
-  @media (max-width: 600px) {
-    #validator button {
-      width: 100%;
-      margin-bottom: 0.5rem;
-      margin-right: 0 !important;
-    }
-  }
-
-  .image-container {
-    margin: 20px 0;
-  }
-
-  /* 图片默认样式 */
-  img {
-    max-width: 100%;
-    height: auto;
-    cursor: zoom-in;
-    /* 鼠标悬停显示放大图标 */
-    transition: transform 0.2s;
-  }
-
-  img:hover {
-    transform: scale(1.02);
-  }
-
-  /* 灯箱样式 - 全屏覆盖 */
-  #lightbox {
+  /* 图片预览模态框 */
+  .modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    /* 默认隐藏 */
+    z-index: 100;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    /* 鼠标悬停显示缩小图标 */
+    padding: 20px;
   }
 
-  /* 灯箱显示状态 */
-  #lightbox.show {
-    display: flex;
-  }
-
-  /* 灯箱中的图片样式 */
-  #lightbox img {
+  .modal-content {
     max-width: 90%;
-    max-height: 90vh;
+    max-height: 90%;
     object-fit: contain;
-    cursor: zoom-out;
+    animation: zoomIn 0.3s ease;
   }
 
-  /* 关闭按钮 */
-  #lightbox .close-btn {
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .close-modal {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: white;
     font-size: 30px;
+    color: white;
     cursor: pointer;
-    background: none;
-    border: none;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
+    z-index: 101;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 阅读设置面板动画 */
+  .settings-panel {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .settings-panel.hidden {
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* 页面过渡动画 */
+  .page-transition {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* 自定义复选框样式 */
+  .custom-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .custom-checkbox:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .custom-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* 自定义滑块样式 */
+  .custom-slider {
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e2e8f0;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .custom-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3b82f6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .custom-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+</style>
+<style type="text/tailwindcss">
+  @layer utilities {
+      .text-shadow-sm {
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+      .reading-container {
+        max-width: 900px;
+      }
+      .reading-container-wide {
+        max-width: 1200px;
+      }
+      .reading-container-narrow {
+        max-width: 700px;
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .image-zoom {
+        transition: transform 0.3s ease;
+      }
+      .image-zoom:hover {
+        transform: scale(1.02);
+      }
+      .progress-bar {
+        height: 3px;
+        background: linear-gradient(90deg, var(--tw-gradient-stops));
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 50;
+        transition: width 0.2s ease;
+      }
+      .layout-single {
+        column-count: 1;
+      }
+      .layout-double {
+        column-count: 2;
+        column-gap: 2rem;
+      }
+      .layout-card {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .layout-card .reading-card {
+        break-inside: avoid;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--tw-shadow);
+        background-color: var(--tw-bg-opacity);
+      }
+      .font-size-sm {
+        font-size: 0.9rem;
+      }
+      .font-size-md {
+        font-size: 1rem;
+      }
+      .font-size-lg {
+        font-size: 1.1rem;
+      }
+      .font-size-xl {
+        font-size: 1.25rem;
+      }
+      .line-height-tight {
+        line-height: 1.5;
+      }
+      .line-height-normal {
+        line-height: 1.65;
+      }
+      .line-height-relaxed {
+        line-height: 1.8;
+      }
+    }
+  </style>
+
+<style>
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(107, 114, 128, 0.5);
+  }
+
+  /* 图片预览模态框 */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 100;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 101;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 阅读设置面板动画 */
+  .settings-panel {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .settings-panel.hidden {
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* 页面过渡动画 */
+  .page-transition {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* 自定义复选框样式 */
+  .custom-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .custom-checkbox:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .custom-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* 自定义滑块样式 */
+  .custom-slider {
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e2e8f0;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .custom-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3b82f6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .custom-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
   }
 </style>

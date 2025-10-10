@@ -1,0 +1,633 @@
+<div class="mb-8" data-doubao-line="271" data-doubao-column="9" data-doubao-key="111">
+  <div class="flex items-center justify-between mb-6" data-doubao-line="272" data-doubao-column="13"
+    data-doubao-key="112">
+    <h2 class="text-2xl font-bold text-gray-800 aos-init aos-animate" data-aos="fade-right" data-doubao-line="273"
+      data-doubao-column="17" data-doubao-key="113">授权文章</h2>
+    <div class="flex items-center space-x-2 aos-init aos-animate" data-aos="fade-left" data-doubao-line="274"
+      data-doubao-column="17" data-doubao-key="114">
+      <button class="view-toggle active p-2 rounded-md hover:bg-gray-100 transition-colors" data-view="card"
+        data-doubao-line="275" data-doubao-column="21" data-doubao-key="115">
+        <i class="fa fa-th-large text-gray-600" data-doubao-line="276" data-doubao-column="25"
+          data-doubao-key="116"></i>
+      </button>
+      <button class="view-toggle p-2 rounded-md hover:bg-gray-100 transition-colors" data-view="list"
+        data-doubao-line="278" data-doubao-column="21" data-doubao-key="117">
+        <i class="fa fa-list text-gray-600" data-doubao-line="279" data-doubao-column="25" data-doubao-key="118"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 文章卡片网格 -->
+  <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-doubao-line="285"
+    data-doubao-column="13" data-doubao-key="119">
+    <!-- 文章卡片将通过JavaScript动态生成 -->
+
+
+    {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.category" "intersect" (slice "授权"))
+    ".Params.index" "asc" }}
+    {{ if eq .Params.position "home" }}
+    {{ $context := dict
+    "Title" .Title
+    "Tags" .Params.tags
+    "Position" .Params.position
+    "Sitetitle" .Site.Title
+    "Permalink" .Permalink
+    "Date" .Date
+    "Type" .Params.type
+    "Image" .Params.image
+    "YouTube" .Params.youtube
+    "Bilibili" .Params.bilibili
+    "Desc" .Params.description
+    "Weight" .Params.weight
+    "Index" .Params.index
+    }}
+    {{ partial "blog/blog-item.html" $context }}
+    {{ end }}
+    {{ end }}
+
+
+  </div>
+</div>
+
+
+
+
+
+<!-- 热门文章列表 -->
+<div class="mb-8" data-doubao-line="271" data-doubao-column="9" data-doubao-key="111">
+  <div class="flex items-center justify-between mb-6" data-doubao-line="272" data-doubao-column="13"
+    data-doubao-key="112">
+    <h2 class="text-2xl font-bold text-gray-800 aos-init aos-animate" data-aos="fade-right" data-doubao-line="273"
+      data-doubao-column="17" data-doubao-key="113">最新文章</h2>
+    <div class="flex items-center space-x-2 aos-init aos-animate" data-aos="fade-left" data-doubao-line="274"
+      data-doubao-column="17" data-doubao-key="114">
+      <button class="view-toggle active p-2 rounded-md hover:bg-gray-100 transition-colors" data-view="card"
+        data-doubao-line="275" data-doubao-column="21" data-doubao-key="115">
+        <i class="fa fa-th-large text-gray-600" data-doubao-line="276" data-doubao-column="25"
+          data-doubao-key="116"></i>
+      </button>
+      <button class="view-toggle p-2 rounded-md hover:bg-gray-100 transition-colors" data-view="list"
+        data-doubao-line="278" data-doubao-column="21" data-doubao-key="117">
+        <i class="fa fa-list text-gray-600" data-doubao-line="279" data-doubao-column="25" data-doubao-key="118"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 文章卡片网格 -->
+  <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-doubao-line="285"
+    data-doubao-column="13" data-doubao-key="119">
+    <!-- 文章卡片将通过JavaScript动态生成 -->
+
+    {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.position" "eq" "home")
+    ".Params.weight"
+    "asc" }}
+    {{/* 判断 category 数组是否不包含 "授权" */}}
+    {{ if not (in .Params.category "授权") }}
+    {{ $context := dict
+    "Title" .Title
+    "Tags" .Params.tags
+    "Position" .Params.position
+    "Sitetitle" .Site.Title
+    "Permalink" .Permalink
+    "Date" .Date
+    "Type" .Params.type
+    "Image" .Params.image
+    "YouTube" .Params.youtube
+    "Bilibili" .Params.bilibili
+    "Desc" .Params.description
+    "Weight" .Params.weight
+    }}
+    {{ partial "blog/blog-item" $context }}
+    {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+
+<!-- 加载更多 -->
+<div id="load-more-container" class="mt-8 text-center" data-doubao-line="290" data-doubao-column="13"
+  data-doubao-key="120">
+  <button id="load-more"
+    class="px-6 py-2 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors"
+    data-doubao-line="291" data-doubao-column="17" data-doubao-key="121">
+    加载更多
+  </button>
+  <div id="loader" class="loader hidden" data-doubao-line="294" data-doubao-column="17" data-doubao-key="122"></div>
+</div>
+</div>
+
+
+
+
+<!-- JavaScript -->
+<script>
+  // 初始化AOS动画库
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // 初始化阅读趋势图表
+    initReadingTrendsChart();
+
+    // 加载初始文章
+    loadArticles();
+
+    // 设置事件监听器
+    setupEventListeners();
+  });
+
+  // 模拟文章数据
+  const articlesData = [
+    {
+      id: 1,
+      title: '人工智能在医疗领域的应用与前景',
+      summary: '探索AI技术如何革新医疗行业，从诊断到治疗，AI正在改变我们的健康管理方式。本文深入分析了最新的研究进展和实际案例。',
+      category: 'technology',
+      categoryName: '科技',
+      tags: ['人工智能', '医疗健康', '科技创新'],
+      coverImage: 'https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D',
+      author: '李明',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-06-15',
+      readCount: 12456,
+      featured: true
+    },
+    {
+      id: 2,
+      title: '如何培养健康的阅读习惯',
+      summary: '在信息爆炸的时代，如何有效筛选和吸收知识成为关键。本文分享了培养健康阅读习惯的实用技巧，帮助你成为更高效的学习者。',
+      category: 'lifestyle',
+      categoryName: '生活方式',
+      tags: ['阅读', '自我提升', '学习方法'],
+      coverImage: 'https://p3-doubao-search-sign.byteimg.com/labis/be87c44672ab61a4fd1a8935b0f771b6~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=K2LvVffk4gMiGecJ6bJWazWXOk4%3D',
+      author: '张华',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-06-10',
+      readCount: 8723,
+      featured: false
+    },
+    {
+      id: 3,
+      title: '秋季旅行指南：探索中国最美的秋色',
+      summary: '秋天是一年中最适合旅行的季节之一。本文为你推荐了中国最值得一去的秋季旅行目的地，让你领略秋天的绚丽多彩。',
+      category: 'travel',
+      categoryName: '旅行',
+      tags: ['旅行', '秋季', '摄影'],
+      coverImage: 'https://p11-doubao-search-sign.byteimg.com/labis/a9b0ec27e751f6cc2d0286acdb1e8e82~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=TywzfaBx300%2FxZyGVHc6VqsG2Bw%3D',
+      author: '王芳',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-06-05',
+      readCount: 6542,
+      featured: false
+    },
+    {
+      id: 4,
+      title: '10道简单又美味的家常菜 recipes',
+      summary: '忙碌的生活中，如何快速做出营养美味的家常菜？本文分享了10道简单易做又美味的家常菜 recipes，让你轻松搞定一日三餐。',
+      category: 'food',
+      categoryName: '美食',
+      tags: ['美食', '家常菜', '烹饪技巧'],
+      coverImage: 'https://p26-doubao-search-sign.byteimg.com/labis/e7fe3fad386c8b7ad8545566cfebf3c3~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=PsXxtiO%2FGfYZA8sDJ8h2eoRVZj4%3D',
+      author: '陈丽',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-05-28',
+      readCount: 9345,
+      featured: false
+    },
+    {
+      id: 5,
+      title: '数字时代的专注力训练',
+      summary: '在信息爆炸和多任务处理的时代，专注力成为一种稀缺资源。本文介绍了科学有效的专注力训练方法，帮助你提高工作和学习效率。',
+      category: 'lifestyle',
+      categoryName: '生活方式',
+      tags: ['专注力', '效率', '心理健康'],
+      coverImage: 'https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D',
+      author: '赵强',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-05-20',
+      readCount: 7821,
+      featured: false
+    },
+    {
+      id: 6,
+      title: '如何打造个人品牌：从博客开始',
+      summary: '在竞争激烈的职场中，个人品牌变得越来越重要。本文分享了如何通过博客建立和提升个人品牌，开启你的影响力之旅。',
+      category: 'technology',
+      categoryName: '科技',
+      tags: ['个人品牌', '博客', '职场'],
+      coverImage: 'https://p26-doubao-search-sign.byteimg.com/labis/0ae2655313b5c69fe9def41cfac71534~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=5XvFeLfrUFH3V8NsTnGtcJ03OXM%3D',
+      author: '刘伟',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-05-15',
+      readCount: 12789,
+      featured: true
+    },
+    {
+      id: 7,
+      title: '健康饮食的科学指南',
+      summary: '饮食是健康的基础，但很多人对健康饮食存在误解。本文基于最新的营养学研究，为你提供科学的健康饮食指南。',
+      category: 'health',
+      categoryName: '健康',
+      tags: ['健康饮食', '营养学', '生活方式'],
+      coverImage: 'https://p3-doubao-search-sign.byteimg.com/labis/be87c44672ab61a4fd1a8935b0f771b6~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=K2LvVffk4gMiGecJ6bJWazWXOk4%3D',
+      author: '张医生',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-05-10',
+      readCount: 8932,
+      featured: false
+    },
+    {
+      id: 8,
+      title: '2023年数字营销趋势分析',
+      summary: '数字营销领域日新月异，了解最新趋势对营销人员至关重要。本文分析了2023年数字营销的主要趋势和发展方向。',
+      category: 'technology',
+      categoryName: '科技',
+      tags: ['数字营销', '趋势', '社交媒体'],
+      coverImage: 'https://p26-doubao-search-sign.byteimg.com/labis/e7fe3fad386c8b7ad8545566cfebf3c3~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=PsXxtiO%2FGfYZA8sDJ8h2eoRVZj4%3D',
+      author: '陈明',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-05-05',
+      readCount: 10345,
+      featured: false
+    },
+    {
+      id: 9,
+      title: '心灵成长：如何培养积极心态',
+      summary: '积极的心态是幸福生活的关键。本文分享了培养积极心态的实用方法，帮助你在面对挑战时保持乐观和坚韧。',
+      category: 'lifestyle',
+      categoryName: '生活方式',
+      tags: ['心灵成长', '积极心态', '心理健康'],
+      coverImage: 'https://p3-doubao-search-sign.byteimg.com/labis/be87c44672ab61a4fd1a8935b0f771b6~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=K2LvVffk4gMiGecJ6bJWazWXOk4%3D',
+      author: '李娜',
+      authorAvatar: 'https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1765254288&x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D',
+      publishDate: '2023-04-28',
+      readCount: 7654,
+      featured: false
+    }
+  ];
+
+  // 当前显示的文章数量
+  let currentArticlesCount = 6;
+  // 当前选中的分类
+  let currentCategory = 'all';
+  // 当前排序选项
+  let currentSort = 'latest';
+  // 当前视图模式
+  let currentView = 'card';
+  // 搜索关键词
+  let searchKeyword = '';
+
+  // 初始化阅读趋势图表
+  function initReadingTrendsChart() {
+    const ctx = document.getElementById('reading-trends-chart').getContext('2d');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+        datasets: [{
+          label: '阅读量',
+          data: [1250, 1920, 1500, 2500, 3200, 3800],
+          backgroundColor: 'rgba(37, 99, 235, 0.1)',
+          borderColor: 'rgba(37, 99, 235, 1)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              display: true,
+              color: 'rgba(0, 0, 0, 0.05)'
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // 加载文章
+  function loadArticles(reset = false) {
+    // 显示加载动画
+    document.getElementById('loader').classList.remove('hidden');
+    document.getElementById('load-more').classList.add('hidden');
+
+    // 模拟加载延迟
+    setTimeout(() => {
+      // 筛选和排序文章
+      let filteredArticles = articlesData;
+
+      // 按分类筛选
+      if (currentCategory !== 'all') {
+        filteredArticles = filteredArticles.filter(article => article.category === currentCategory);
+      }
+
+      // 按搜索关键词筛选
+      if (searchKeyword) {
+        const keyword = searchKeyword.toLowerCase();
+        filteredArticles = filteredArticles.filter(article =>
+          article.title.toLowerCase().includes(keyword) ||
+          article.summary.toLowerCase().includes(keyword) ||
+          article.tags.some(tag => tag.toLowerCase().includes(keyword))
+        );
+      }
+
+      // 排序
+      if (currentSort === 'latest') {
+        filteredArticles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+      } else if (currentSort === 'popular') {
+        filteredArticles.sort((a, b) => b.readCount - a.readCount);
+      }
+
+      // 限制显示数量
+      const articlesToShow = reset ? filteredArticles.slice(0, 6) : filteredArticles.slice(0, currentArticlesCount);
+
+      // 更新当前显示的文章数量
+      currentArticlesCount = articlesToShow.length;
+
+      // 渲染文章
+      const articlesContainer = document.getElementById('articles-container');
+
+      if (reset) {
+        articlesContainer.innerHTML = '';
+      }
+
+      articlesToShow.forEach((article, index) => {
+        const articleElement = createArticleElement(article, index);
+        articlesContainer.appendChild(articleElement);
+
+        // 添加动画效果
+        setTimeout(() => {
+          articleElement.classList.add('opacity-100');
+          articleElement.classList.remove('opacity-0', 'translate-y-4');
+        }, index * 100);
+      });
+
+      // 隐藏加载动画
+      document.getElementById('loader').classList.add('hidden');
+
+      // 显示或隐藏"加载更多"按钮
+      const loadMoreButton = document.getElementById('load-more');
+      if (articlesToShow.length < filteredArticles.length) {
+        loadMoreButton.classList.remove('hidden');
+        currentArticlesCount = articlesToShow.length + 3; // 下次加载3篇
+      } else {
+        loadMoreButton.classList.add('hidden');
+      }
+
+      // 如果没有文章，显示提示信息
+      if (articlesToShow.length === 0) {
+        articlesContainer.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <i class="fa fa-search text-gray-300 text-5xl mb-4"></i>
+                            <h3 class="text-xl font-medium text-gray-700 mb-2">未找到相关文章</h3>
+                            <p class="text-gray-500">请尝试使用其他关键词或分类</p>
+                        </div>
+                    `;
+      }
+    }, 800);
+  }
+
+  // 创建文章元素
+  function createArticleElement(article, index) {
+    const articleElement = document.createElement('div');
+    articleElement.className = `opacity-0 translate-y-4 transition-all duration-500 ${currentView === 'card' ? '' : 'col-span-full'}`;
+
+    if (currentView === 'card') {
+      articleElement.innerHTML = `
+                    <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover card-transition overflow-hidden">
+                        <div class="relative">
+                            <img src="${article.coverImage}" alt="${article.title}" class="w-full h-48 object-cover">
+                            <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">${article.categoryName}</span>
+                            ${article.featured ? '<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full">热门</span>' : ''}
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2">${article.title}</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">${article.summary}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${article.tags.slice(0, 2).map(tag => `
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">${tag}</span>
+                                `).join('')}
+                                ${article.tags.length > 2 ? `<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">+${article.tags.length - 2}</span>` : ''}
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="${article.authorAvatar}" alt="${article.author}" class="w-8 h-8 rounded-full object-cover mr-2">
+                                    <span class="text-sm text-gray-600">${article.author}</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <span class="mr-3"><i class="fa fa-calendar-o mr-1"></i> ${formatDate(article.publishDate)}</span>
+                                    <span><i class="fa fa-eye mr-1"></i> ${formatNumber(article.readCount)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    } else {
+      articleElement.innerHTML = `
+                    <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover card-transition overflow-hidden">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 relative">
+                                <img src="${article.coverImage}" alt="${article.title}" class="w-full h-full object-cover">
+                                <span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">${article.categoryName}</span>
+                                ${article.featured ? '<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full">热门</span>' : ''}
+                            </div>
+                            <div class="md:w-3/4 p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">${article.title}</h3>
+                                <p class="text-gray-600 text-sm mb-4">${article.summary}</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    ${article.tags.slice(0, 3).map(tag => `
+                                        <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">${tag}</span>
+                                    `).join('')}
+                                    ${article.tags.length > 3 ? `<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">+${article.tags.length - 3}</span>` : ''}
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img src="${article.authorAvatar}" alt="${article.author}" class="w-8 h-8 rounded-full object-cover mr-2">
+                                        <span class="text-sm text-gray-600">${article.author}</span>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <span class="mr-3"><i class="fa fa-calendar-o mr-1"></i> ${formatDate(article.publishDate)}</span>
+                                        <span><i class="fa fa-eye mr-1"></i> ${formatNumber(article.readCount)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    }
+
+    // 添加点击事件
+    articleElement.addEventListener('click', () => {
+      alert(`你点击了文章: ${article.title}`);
+    });
+
+    return articleElement;
+  }
+
+  // 设置事件监听器
+  function setupEventListeners() {
+    // 用户菜单下拉
+    const userMenuButton = document.getElementById('user-menu-button');
+    const userDropdown = document.getElementById('user-dropdown');
+
+    userMenuButton.addEventListener('click', () => {
+      userDropdown.classList.toggle('hidden');
+    });
+
+    // 点击页面其他地方关闭下拉菜单
+    document.addEventListener('click', (event) => {
+      if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+        userDropdown.classList.add('hidden');
+      }
+    });
+
+    // 移动端菜单
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // 分类筛选
+    const categoryFilter = document.getElementById('category-filter');
+    categoryFilter.addEventListener('change', () => {
+      currentCategory = categoryFilter.value;
+      currentArticlesCount = 6;
+      loadArticles(true);
+    });
+
+    // 排序选项
+    const sortOption = document.getElementById('sort-option');
+    sortOption.addEventListener('change', () => {
+      currentSort = sortOption.value;
+      currentArticlesCount = 6;
+      loadArticles(true);
+    });
+
+    // 搜索功能
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', debounce(() => {
+      searchKeyword = searchInput.value.trim();
+      currentArticlesCount = 6;
+      loadArticles(true);
+    }, 300));
+
+    // 视图切换
+    const viewToggles = document.querySelectorAll('.view-toggle');
+    viewToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        viewToggles.forEach(t => t.classList.remove('active', 'bg-gray-100'));
+        toggle.classList.add('active', 'bg-gray-100');
+
+        currentView = toggle.dataset.view;
+        currentArticlesCount = 6;
+        loadArticles(true);
+      });
+    });
+
+    // 加载更多
+    const loadMoreButton = document.getElementById('load-more');
+    loadMoreButton.addEventListener('click', () => {
+      loadArticles();
+    });
+
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 主题切换
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+
+      const icon = themeToggle.querySelector('i');
+      if (icon.classList.contains('fa-moon-o')) {
+        icon.classList.remove('fa-moon-o');
+        icon.classList.add('fa-sun-o');
+      } else {
+        icon.classList.remove('fa-sun-o');
+        icon.classList.add('fa-moon-o');
+      }
+    });
+
+    // 热门标签点击事件
+    const tagElements = document.querySelectorAll('.bg-blue-100, .bg-green-100, .bg-yellow-100, .bg-red-100, .bg-purple-100, .bg-pink-100, .bg-indigo-100, .bg-gray-100');
+    tagElements.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const tagText = tag.textContent.replace('#', '');
+        searchInput.value = tagText;
+        searchKeyword = tagText;
+        currentArticlesCount = 6;
+        loadArticles(true);
+
+        // 滚动到文章列表
+        document.getElementById('articles-container').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
+  // 工具函数：格式化日期
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  }
+
+  // 工具函数：格式化数字
+  function formatNumber(num) {
+    if (num >= 10000) {
+      return (num / 10000).toFixed(1) + '万';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + '千';
+    }
+    return num;
+  }
+
+  // 工具函数：防抖
+  function debounce(func, wait) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func.apply(context, args);
+      }, wait);
+    };
+  }
+</script>

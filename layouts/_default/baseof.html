@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ or .Site.Language.Lang " en" }}" dir="{{ or .Site.Language.LanguageDirection " ltr" }}">
 
-<head>
-  {{ partial "head.html" . }}
-</head>
+{{ partial "head.html" . }}
 
-{{ block "main" . }}{{ end }}
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300" id="app-body">
+	<!-- 阅读进度条 -->
+	<div class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600" id="progress-bar" style="width: 0%"></div>
+
+	{{ partial "blog/header.html" . }}
+	<main class="container mx-auto px-4 pt-24 pb-16 transition-all duration-300" id="main-content">
+		{{ block "main" . }}{{ end }}
+	</main>
+	{{ partial "blog/footer.html" . }}
+
+
+</body>
 
 </html>

@@ -1,14 +1,57 @@
-<!-- <div style="display: flex; justify-content: space-between; width: var(--homeWidth);"> -->
-    <footer>
-<span>
-    {{ T "footer.copyright" }} 2020 - {{ now.Year }} {{ T "footer.all_rights_reserved" }}
-   © Copyright By <span>{{ .Site.Title }}</span> Designer | <a href="mailto:aboutworks@outlook.com">Aboutworks@outlook.com</a>
-</span>
-</footer>
-<!-- </div> -->
+
+  <!-- 底部导航 -->
+  <footer class="bg-white border-t py-8 mt-12">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-xl font-semibold mb-2">JimmyWong</h2>
+          <p class="text-gray-600 text-sm">沉浸式图文阅读体验</p>
+        </div>
+        
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-8 pt-6 border-t text-center text-gray-600 text-sm">
+        <p>&copy;    {{ T "footer.copyright" }} 2020 - {{ now.Year }} {{ T "footer.all_rights_reserved" }}
+   © Copyright By <span>{{ .Site.Title }}</span> Designer | <a href="mailto:aboutworks@outlook.com">Aboutworks@outlook.com</a></p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- 图片预览模态框 -->
+  <div class="modal" id="image-modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-image">
+  </div>
+  
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full bg-blue-500 text-white shadow-lg z-30 opacity-0 invisible transition-all duration-300 hover:bg-blue-600">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+
+
+
+
 
 {{ if .Site.Params.analyticsScript }}
 <script src="{{ .Site.Params.analyticsScript | absURL }}"></script>
 {{ end }}
+
+
+
 
 

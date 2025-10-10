@@ -1,0 +1,37 @@
+<div class="transition-all duration-500 opacity-100">
+	<div class="bg-white rounded-xl shadow-card hover:shadow-card-hover card-transition overflow-hidden">
+		<div class="relative">
+			<img src="{{ .Image}}"
+				alt="人工智能在医疗领域的应用与前景" class="w-full h-48 object-cover" data-key="56dce00d" data-review-status="0"
+				data-src="https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D">
+			<span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">科技</span>
+			<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full">热门</span>
+		</div>
+		<div class="p-6">
+			<h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2"><a href="{{ .Permalink }}">{{ .Title }}</a>
+			</h3>
+			<p class="text-gray-600 text-sm mb-4 line-clamp-3"> {{ .Weight }},{{ .Desc }}</p>
+			<div class="flex flex-wrap gap-2 mb-4">
+
+				{{ range .Tags }}
+				<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">{{ . }}</span>
+				{{ end }}
+
+				<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">+1</span>
+			</div>
+			<div class="flex items-center justify-between">
+				<div class="flex items-center">
+					<img src="https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D"
+						alt="李明" class="w-8 h-8 rounded-full object-cover mr-2" data-key="17dc99d4"
+						data-review-status="0"
+						data-src="https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D">
+					<span class="text-sm text-gray-600">李明</span>
+				</div>
+				<div class="flex items-center text-sm text-gray-500">
+					<span class="mr-3"><i class="fa fa-calendar-o mr-1"></i> 2023-06-15</span>
+					<span><i class="fa fa-eye mr-1"></i> 1.2万</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

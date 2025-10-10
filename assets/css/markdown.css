@@ -1,268 +1,82 @@
-:root {
-  /* Font */
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-size-base: 16px;
-  --font-size-sm: 14px;
-  --font-size-lg: 20px;
-  --line-height-base: 1.6;
 
-  /* Layout sizes and other variables here... */
-
-  /* Include all your provided :root variables here */
+/* Markdown 编辑器样式 */
+#markdown-editor {
+  display: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-/* Light Theme */
-.light {
-  /* Include all your light theme variables here */
+/* Markdown 内容样式 */
+.markdown-content h1 {
+  @apply text-4xl md:text-5xl font-bold mb-4 text-balance;
 }
 
-/* Dark Theme */
-.dark {
-  /* Include all your dark theme variables here */
+.markdown-content h2 {
+  @apply text-2xl md:text-3xl font-bold mb-4;
 }
 
-/* Warm Theme */
-.warm {
-  /* Include all your warm theme variables here */
+.markdown-content h3 {
+  @apply text-xl font-bold mb-3;
 }
 
-/* Base styles for markdown content */
-body {
-  font-family: var(--font-family);
-  color: var(--color-font);
-  background-color: var(--color-bg-body);
-  line-height: var(--line-height-base);
+.markdown-content h4 {
+  @apply text-lg font-bold mb-2;
 }
 
-article {
-  line-height: 2.75rem
+.markdown-content p {
+  @apply mb-4;
 }
 
-p {
-  text-indent: 2em;
-  /* 首行缩进两个字宽 */
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-4 pl-6;
 }
 
-p:has(a) a {
-  font-weight: bolder;
-  text-decoration: underline !important;
-  color: rgb(0, 110, 255) !important;
-  padding: 0 1rem;
-
+.markdown-content ul {
+  @apply list-disc;
 }
 
-video {
-  width: 100%;
+.markdown-content ol {
+  @apply list-decimal;
 }
 
-p:has(img) {
-  width: 60%;
-  margin: auto;
-  text-align: center;
-  /* 居中对齐 */
-  padding: 2rem 0;
+.markdown-content li {
+  @apply mb-2;
 }
 
-p:has(img) img {
-  display: block;
-  /* 图片单独一行 */
-  margin: auto;
-  /* 水平居中 */
+.markdown-content blockquote {
+  @apply my-6 p-6 bg-gray-50 rounded-lg border-l-4 border-blue-500 italic text-gray-700;
 }
 
-table {
-  width: 80% !important;
-  margin: 2rem auto;
+.markdown-content pre {
+  @apply my-4 p-4 bg-gray-100 rounded-lg overflow-x-auto;
 }
 
-strong {
-  padding-left: 2rem;
+.markdown-content code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
 }
 
-ul{
-  color:rgba(0, 0, 0, .4)
-}
-.content-wrapper h1,
-.content-wrapper h2,
-.content-wrapper h3,
-.content-wrapper h4,
-.content-wrapper h5,
-.content-wrapper h6 {
-  color: var(--color-header-title);
-  font-weight: bold;
-  margin: 2rem 0;
-  border: 2rem solid #e7e7e7
-    /* margin-bottom: var(--space-sm); */
+.markdown-content pre code {
+  @apply bg-transparent p-0;
 }
 
-.content-wrapper h1 {
-  font-size: 200%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  background-color: rgb(52, 25, 6);
-  color: white;
-  text-align: left;
+.markdown-content img {
+  @apply my-8 rounded-xl overflow-hidden shadow-lg w-full h-auto object-cover cursor-pointer image-zoom;
 }
 
-.content-wrapper h2 {
-  font-size: 180%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  opacity: .9;
-  padding-left: 1rem;
-  background-color: rgba(0, 0, 0, .6);
-  color: white;
+.markdown-content a {
+  @apply text-blue-600 hover:text-blue-800 underline;
 }
 
-.content-wrapper h3 {
-  font-size: 160%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  opacity: .8;
-  padding-left: 2rem;
-  background-color: rgba(0, 0, 0, .4);
-  color: white;
+.markdown-content table {
+  @apply w-full border-collapse my-4;
 }
 
-.content-wrapper h4 {
-  font-size: 140%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  opacity: .7;
-  padding-left: 3rem;
+.markdown-content th,
+.markdown-content td {
+  @apply border border-gray-300 px-4 py-2;
 }
 
-.content-wrapper h5 {
-  font-size: 120%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  opacity: .6;
-  padding-left: 4rem;
-}
-
-.content-wrapper h6 {
-  font-size: 100%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  opacity: .5;
-  padding-left: 5rem;
-}
-
-.content-wrapper h1::before {
-  content: "壹.";
-  display: inline-block;
-}
-
-.content-wrapper h2::before {
-  content: "贰.";
-  display: inline-block;
-}
-
-.content-wrapper h3::before {
-  content: "叁.";
-  display: inline-block;
-}
-
-.content-wrapper h4::before {
-  content: "肆.";
-  display: inline-block;
-}
-
-.content-wrapper h5::before {
-  content: "伍.";
-  display: inline-block;
-}
-
-.content-wrapper h6::before {
-  content: "陆.";
-  display: inline-block;
-}
-
-h1::before,
-h2::before,
-h3::before,
-h4::before,
-h5::before,
-h6::before {
-  background-color: rgb(213, 78, 0);
-  color: rgb(255, 255, 255);
-  margin-right: 8px;
-  font-weight: lighter;
-  padding: 8px;
-  /* font-size: var(--font-size-sm); */
-}
-
-
-p {
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-md);
-  font-size: var(--font-size-base);
-}
-
-a {
-  color: var(--color-link);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-link-hover);
-}
-
-code {
-  padding: var(--space-xs) var(--space-sm);
-  margin: 0;
-  font-size: var(--font-size-sm);
-  background-color: var(--color-bg-block);
-  border-radius: var(--border-radius);
-}
-
-pre {
-  padding: var(--space-md);
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-md);
-  font-size: var(--font-size-sm);
-  background-color: var(--color-bg-block);
-  border-radius: var(--border-radius);
-  overflow-x: auto;
-}
-
-blockquote {
-  padding-left: var(--space-md);
-  border-left: var(--space-xs) solid var(--color-border);
-  margin-left: 0;
-  margin-right: 0;
-  color: var(--color-text-desc);
-}
-
-table {
-  width: var(--width-full);
-  max-width: var(--width-home);
-  margin-bottom: var(--space-lg);
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: var(--space-sm);
-  border: var(--border-base);
-  text-align: left;
-}
-
-th {
-  background-color: var(--color-bg-opacity);
-}
-
-tr:nth-child(even) {
-  background-color: var(--color-bg-block);
-}
-
-img {
-  max-width: 100%;
+.markdown-content th {
+  @apply bg-gray-100;
 }
