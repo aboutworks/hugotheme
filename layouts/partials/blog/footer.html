@@ -33,7 +33,7 @@
   
   <!-- 图片预览模态框 -->
   <div class="modal" id="image-modal">
-    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <span class="close-modal" onclick="closeModal()"></span>
     <img class="modal-content" id="modal-image">
   </div>
   
@@ -52,6 +52,15 @@
 {{ end }}
 
 
+<script>
+document.addEventListener("scroll", () => {
+  const bar = document.getElementById("progress-bar");
+  if (!bar) return;
+  
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
 
-
-
+  bar.style.width = `${scrollPercent}%`;
+});
+</script>

@@ -1,6 +1,6 @@
 {{ partial "toc.html" . }}
 
-<h1>{{ .Title }}</h1>
+<h1 >{{ .Title }}</h1>
 <h6>{{ .Params.uuid }}</h6>
 
 {{ with .Date }}
@@ -13,24 +13,21 @@
 
 
 <!-- Markdown编辑器 -->
-<textarea id="markdown-editor"></textarea>
+<!-- <textarea id="markdown-editor"></textarea> -->
 
-<article class="reading-container mx-auto font-sans font-size-md line-height-normal layout-single markdown-content"
+<article class="reading-container mx-auto font-sans font-size-md line-height-normal layout-single markdown-content markdown-body"
   id="article-content">
-</article>
-<!-- 调用目录模块 -->
-{{ if eq .Params.toc "true"}}
-{{ partial "toc.html" . }}
-{{end}}
+  <!-- 调用目录模块 -->
+  {{ if eq .Params.toc "true"}}
+  {{ partial "toc.html" . }}
+  {{end}}
 
-{{ .Content }}
+  {{ .Content }}
 </article>
 
 {{ partial "taxonomy-tags.html" . }}
 
 {{ partial "comments.html" ( dict "uuid" .Params.uuid "Sitetitle" .Site.Title)}}
-
-
 
 <style>
   .valid-form {

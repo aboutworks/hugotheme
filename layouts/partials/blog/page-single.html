@@ -1,10 +1,9 @@
-
-    {{ if .Params.protect }}
-    {{ partial "blog/post-protect.html" (dict "uuid" .Params.uuid) }}
-    {{ else }}
-    <!-- 公开内容 -->
-    {{ partial "blog/post-content.html" . }}
-    {{ end }}
+{{ if .Params.protect }}
+{{ partial "blog/post-protect.html" . }}
+{{ else }}
+<!-- 公开内容 -->
+{{ partial "blog/post-content.html" . }}
+{{ end }}
 
 
 <script>

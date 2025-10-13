@@ -1,0 +1,20 @@
+@import url('markdown.css');
+
+p{
+	line-height: 3rem;
+}
+
+/* 选中含有图片的段落，让文字居中 */
+p:has(img) {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 段落内的图片单独设置为居中显示，并与文字换行 */
+p:has(img) img {
+  display: block;         /* 图片单独占一行 */
+  margin: 0 auto 0.5em;   /* 居中 + 图文间距 */
+  max-width: 100%;        /* 防止超出容器 */
+  height: auto;
+}

@@ -7,76 +7,76 @@
 }
 
 /* Markdown 内容样式 */
-.markdown-content h1 {
+article h1 {
   @apply text-4xl md:text-5xl font-bold mb-4 text-balance;
 }
 
-.markdown-content h2 {
+article h2 {
   @apply text-2xl md:text-3xl font-bold mb-4;
 }
 
-.markdown-content h3 {
+article h3 {
   @apply text-xl font-bold mb-3;
 }
 
-.markdown-content h4 {
+article h4 {
   @apply text-lg font-bold mb-2;
 }
 
-.markdown-content p {
+article p {
   @apply mb-4;
 }
 
-.markdown-content ul,
-.markdown-content ol {
+article ul,
+article ol {
   @apply mb-4 pl-6;
 }
 
-.markdown-content ul {
+article ul {
   @apply list-disc;
 }
 
-.markdown-content ol {
+article ol {
   @apply list-decimal;
 }
 
-.markdown-content li {
+article li {
   @apply mb-2;
 }
 
-.markdown-content blockquote {
+article blockquote {
   @apply my-6 p-6 bg-gray-50 rounded-lg border-l-4 border-blue-500 italic text-gray-700;
 }
 
-.markdown-content pre {
+article pre {
   @apply my-4 p-4 bg-gray-100 rounded-lg overflow-x-auto;
 }
 
-.markdown-content code {
+article code {
   @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
 }
 
-.markdown-content pre code {
+article pre code {
   @apply bg-transparent p-0;
 }
 
-.markdown-content img {
+article img {
   @apply my-8 rounded-xl overflow-hidden shadow-lg w-full h-auto object-cover cursor-pointer image-zoom;
 }
 
-.markdown-content a {
+article a {
   @apply text-blue-600 hover:text-blue-800 underline;
 }
 
-.markdown-content table {
+article table {
   @apply w-full border-collapse my-4;
 }
 
-.markdown-content th,
-.markdown-content td {
+article th,
+article td {
   @apply border border-gray-300 px-4 py-2;
 }
 
-.markdown-content th {
+article th {
   @apply bg-gray-100;
 }

@@ -2,64 +2,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>{{ .Site.Title}} | {{ .Params.Title }} </title>
+
 <head>
-<meta name="description"
-  content="{{ if .IsHome }}
+  <meta name="description" content="{{ if .IsHome }}
     {{ .Site.Params.description | plainify | truncate 256 | safeHTMLAttr }}
   {{ else }}
     {{ .Description | default .Summary | plainify | truncate 256 | safeHTMLAttr }}
   {{ end }}">
-<meta name="keywords" content="
+  <meta name="keywords" content="
 {{ if .IsHome }}
   {{ with .Site.Params.keywords }}
-    {{ delimit . ", " | plainify | truncate 256 | safeHTMLAttr }}
+    {{ delimit . " , " | plainify | truncate 256 | safeHTMLAttr }}
   {{ end }}
 {{ else }}
   {{ if .Params.keywords }}
-    {{ delimit .Params.keywords ", " | plainify | truncate 256 | safeHTMLAttr }}
+    {{ delimit .Params.keywords " , " | plainify | truncate 256 | safeHTMLAttr }}
   {{ else if .Keywords }}
-    {{ delimit .Keywords ", " | plainify | truncate 256 | safeHTMLAttr }}
+    {{ delimit .Keywords " , " | plainify | truncate 256 | safeHTMLAttr }}
   {{ end }}
 {{ end }}">
-<meta property="article:tag" content="{{ with .Params.tags }}{{ delimit . " , " }}{{ else }}{{ .Params.tags }}{{ end }}">
-<meta name="author" content="{{ .Site.Params.author }}">
+  <meta property="article:tag" content="{{ with .Params.tags }}{{ delimit . " , " }}{{ else }}{{ .Params.tags }}{{ end }}">
+  <meta name="author" content="{{ .Site.Params.author }}">
 
-{{ $styles := resources.Get "css/default.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}">
-
-
-{{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $script.Permalink }}" defer></script>
-
-{{ $scriptmain := resources.Get "javascript/main.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $scriptmain.Permalink }}" defer></script>
-
-{{ $scriptssh := resources.Get "javascript/ssh.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $scriptssh.Permalink }}" defer></script>
+  {{ $styles := resources.Get "css/default.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}">
 
 
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- Font Awesome -->
-<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<!-- AOS - Animate On Scroll -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  {{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.Permalink }}" defer></script>
 
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: '#2D3142',
-          secondary: '#EF8354',
-          neutral: '#F2F4F3',
-          accent: '#4F5D75',
+  {{ $scriptmain := resources.Get "javascript/main.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $scriptmain.Permalink }}" defer></script>
+
+  {{ $scripthandle := resources.Get "javascript/handle.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $scripthandle.Permalink }}" defer></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.css">
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'custom-bg-color': '#f5f5f5', // 自定义的背景颜色，十六进制值表示
+            'brand-primary': {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              // 可以继续定义更多不同深浅的同色系颜色，如 200、300 等
+              900: '#1e3a8a'
+            },
+            primary: '#2D3142',
+            secondary: '#EF8354',
+            neutral: '#F2F4F3',
+            accent: '#4F5D75',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
         },
-        fontFamily: {
-          sans: ['Inter', 'system-ui', 'sans-serif'],
-        },
-      },
+      }
     }
-  }
-</script>
+  </script>
 </head>

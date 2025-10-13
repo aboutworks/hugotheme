@@ -37,123 +37,141 @@
 
 
 
-  
-  <!-- 左侧边栏 -->
-  <aside class="fixed top-0 left-0 bottom-0 w-64 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300" id="sidebar">
-    <div class="p-4 border-b">
-      <div class="flex justify-between items-center">
-        <h2 class="text-lg font-semibold">目录</h2>
-        <button id="close-sidebar" class="p-2 rounded-full hover:bg-gray-100">
-          <i class="fa fa-times"></i>
-        </button>
-      </div>
-    </div>
-    
-    <nav class="p-4">
-      <ul class="space-y-2">
-        <!-- 目录将由JavaScript动态生成 -->
-      </ul>
-      
-      <div class="mt-8 pt-4 border-t">
-        <h3 class="font-medium text-gray-700 mb-3">推荐阅读</h3>
-        <ul class="space-y-2">
-          <li>
-            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100 transition-colors">数字时代的深度阅读</a>
-          </li>
-          <li>
-            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100 transition-colors">如何培养阅读习惯</a>
-          </li>
-          <li>
-            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100 transition-colors">经典文学的现代解读</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </aside>
-  
-  <!-- 搜索面板 -->
-  <div class="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white rounded-lg shadow-lg z-40 hidden" id="search-panel">
-    <div class="p-4">
-      <div class="relative">
-        <input type="text" placeholder="搜索文章内容..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <i class="fa fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 阅读设置面板 -->
-  <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white rounded-lg shadow-lg z-40 p-4 settings-panel hidden" id="settings-panel">
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="font-medium">阅读设置</h3>
-      <button id="close-settings" class="p-2 rounded-full hover:bg-gray-100">
+
+<!-- 左侧边栏 -->
+<aside
+  class="fixed top-0 left-0 bottom-0 w-64 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300"
+  id="sidebar">
+  <div class="p-4 border-b">
+    <div class="flex justify-between items-center">
+      <h2 class="text-lg font-semibold">目录</h2>
+      <button id="close-sidebar" class="p-2 rounded-full hover:bg-gray-100">
         <i class="fa fa-times"></i>
       </button>
     </div>
-    
-    <div class="space-y-4">
-      <!-- 布局设置 -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">布局</label>
-        <div class="flex space-x-2">
-          <button data-layout="single" class="layout-btn flex-1 py-2 px-3 bg-blue-500 text-white rounded-lg text-sm font-medium">单栏</button>
-          <button data-layout="double" class="layout-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">双栏</button>
-          <button data-layout="card" class="layout-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">卡片</button>
-        </div>
+  </div>
+
+  <nav class="p-4">
+    <ul class="space-y-2">
+      <!-- 目录将由JavaScript动态生成 -->
+    </ul>
+
+    <div class="mt-8 pt-4 border-t">
+      <h3 class="font-medium text-gray-700 mb-3">推荐阅读</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="#" class="block p-2 rounded-lg hover:bg-gray-100 transition-colors">数字时代的深度阅读</a>
+        </li>
+        <li>
+          <a href="#" class="block p-2 rounded-lg hover:bg-gray-100 transition-colors">如何培养阅读习惯</a>
+        </li>
+        <li>
+          <a href="#" class="block p-2 rounded-lg hover:bg-gray-100 transition-colors">经典文学的现代解读</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</aside>
+
+<!-- 搜索面板 -->
+<div class="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white rounded-lg shadow-lg z-40 hidden"
+  id="search-panel">
+  <div class="p-4">
+    <div class="relative">
+      <input type="text" placeholder="搜索文章内容..."
+        class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <i class="fa fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+    </div>
+  </div>
+</div>
+
+<!-- 阅读设置面板 -->
+<div
+  class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white rounded-lg shadow-lg z-40 p-4 settings-panel hidden"
+  id="settings-panel">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="font-medium">阅读设置</h3>
+    <button id="close-settings" class="p-2 rounded-full hover:bg-gray-100">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <div class="space-y-4">
+    <!-- 布局设置 -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">布局</label>
+      <div class="flex space-x-2">
+        <button data-layout="single"
+          class="layout-btn flex-1 py-2 px-3 bg-blue-500 text-white rounded-lg text-sm font-medium">单栏</button>
+        <button data-layout="double"
+          class="layout-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">双栏</button>
+        <button data-layout="card"
+          class="layout-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">卡片</button>
       </div>
-      
-      <!-- 字体设置 -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">字体</label>
-        <div class="flex space-x-2">
-          <button data-font="sans" class="font-btn flex-1 py-2 px-3 bg-blue-500 text-white rounded-lg text-sm font-medium">无衬线</button>
-          <button data-font="serif" class="font-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">衬线</button>
-          <button data-font="mono" class="font-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">等宽</button>
-        </div>
+    </div>
+
+    <!-- 字体设置 -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">字体</label>
+      <div class="flex space-x-2">
+        <button data-font="sans"
+          class="font-btn flex-1 py-2 px-3 bg-blue-500 text-white rounded-lg text-sm font-medium">无衬线</button>
+        <button data-font="serif"
+          class="font-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">衬线</button>
+        <button data-font="mono"
+          class="font-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">等宽</button>
       </div>
-      
-      <!-- 字体大小 -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">字体大小</label>
-        <div class="flex items-center space-x-3">
-          <button id="font-size-decrease" class="p-2 rounded-full bg-gray-200 text-gray-700">
-            <i class="fa fa-minus"></i>
-          </button>
-          <input type="range" min="1" max="4" value="2" class="custom-slider flex-1" id="font-size-slider">
-          <button id="font-size-increase" class="p-2 rounded-full bg-gray-200 text-gray-700">
-            <i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <div class="flex justify-between text-xs text-gray-500 mt-1">
-          <span>小</span>
-          <span>中</span>
-          <span>大</span>
-        </div>
+    </div>
+
+    <!-- 字体大小 -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">字体大小</label>
+      <div class="flex items-center space-x-3">
+        <button id="font-size-decrease" class="p-2 rounded-full bg-gray-200 text-gray-700">
+          <i class="fa fa-minus"></i>
+        </button>
+        <input type="range" min="1" max="4" value="2" class="custom-slider flex-1" id="font-size-slider">
+        <button id="font-size-increase" class="p-2 rounded-full bg-gray-200 text-gray-700">
+          <i class="fa fa-plus"></i>
+        </button>
       </div>
-      
-      <!-- 行高设置 -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">行高</label>
-        <div class="flex space-x-2">
-          <button data-line-height="tight" class="line-height-btn flex-1 py-2 px-3 bg-blue-500 text-white rounded-lg text-sm font-medium">紧凑</button>
-          <button data-line-height="normal" class="line-height-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">标准</button>
-          <button data-line-height="relaxed" class="line-height-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">宽松</button>
-        </div>
+      <div class="flex justify-between text-xs text-gray-500 mt-1">
+        <span>小</span>
+        <span>中</span>
+        <span>大</span>
       </div>
-      
-      <!-- 背景设置 -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">背景</label>
-        <div class="flex space-x-2">
-          <button data-theme="light" class="theme-btn flex-1 py-2 px-3 bg-white border border-gray-200 rounded-lg text-sm font-medium">
-            <div class="w-4 h-4 rounded-full bg-white border border-gray-300 mx-auto"></div>
-          </button>
-          <button data-theme="sepia" class="theme-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">
-            <div class="w-4 h-4 rounded-full-full bg bg-amber-100 mx-auto"></div>
-          </button>
-          <button data-theme="dark" class="theme-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">
-            <div class="w-4 h-4 rounded-full bg-gray-800 mx-auto"></div>
-          </button>
-        </div>
+    </div>
+
+    <!-- 行高设置 -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">行高</label>
+      <div class="flex space-x-2">
+        <button data-line-height="tight"
+          class="line-height-btn flex-1 py-2 px-3 bg-blue-500 text-white rounded-lg text-sm font-medium">紧凑</button>
+        <button data-line-height="normal"
+          class="line-height-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">标准</button>
+        <button data-line-height="relaxed"
+          class="line-height-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">宽松</button>
+      </div>
+    </div>
+
+    <!-- 背景设置 -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">背景</label>
+      <div class="flex space-x-2">
+        <button data-theme="light"
+          class="theme-btn flex-1 py-2 px-3 bg-white border border-gray-200 rounded-lg text-sm font-medium">
+          <div class="w-4 h-4 rounded-full bg-white border border-gray-300 mx-auto"></div>
+        </button>
+        <button data-theme="sepia"
+          class="theme-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">
+          <div class="w-4 h-4 rounded-full-full bg bg-amber-100 mx-auto"></div>
+        </button>
+        <button data-theme="dark"
+          class="theme-btn flex-1 py-2 px-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">
+          <div class="w-4 h-4 rounded-full bg-gray-800 mx-auto"></div>
+        </button>
       </div>
     </div>
   </div>
+</div>
