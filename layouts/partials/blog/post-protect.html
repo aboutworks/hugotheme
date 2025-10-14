@@ -1,5 +1,4 @@
 <style>
-    /* 带protect前缀的样式，避免全局污染 */
     .protect-container {
         background-color: #fff;
         width: 100%;
@@ -218,9 +217,7 @@
 </div>
 
 <!-- 受保护内容区域 -->
-<div id="protected-content-section" style="display:none;">
-    <div class="protect-content bg-white p-8 rounded-lg shadow-md">
+<div  id="protected-content-section" style="display:none;">
         <button id="auth-logout-button_{{.Params.uuid}}">退出授权 {{.Params.uuid}}</button>
         {{ partial "blog/post-content.html" . }}
-    </div>
 </div>

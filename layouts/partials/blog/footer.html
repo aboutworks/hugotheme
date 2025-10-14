@@ -44,6 +44,10 @@
 
 
 
+    {{ $scriptblog := resources.Get "javascript/blog.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $scriptblog.Permalink }}" defer></script>
+
+
 
 
 

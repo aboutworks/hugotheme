@@ -1,17 +1,14 @@
 <!-- 左侧目录 -->
-<aside id="table-of-contents" class="table-of-contents" style="display:none;">
-  <div id="toc-close" class="blog-tag">关闭目录</div>
-  <div>
+<aside id="table-of-contents" class="table-of-contents" >
+  <!-- <div id="toc-close" class="blog-tag">关闭目录</div> -->
     <!-- <h1 >
           <i>{{ T "catalog" }}</i>
-        </h1> -->
+        </h1>-->
     <nav>
       {{ .TableOfContents }}
-      </a>
     </nav>
-  </div>
 </aside>
-
+<!-- 
 <div id="toc-toggle" class="toc-toggle blog-tag">开启目录</div>
 
 
@@ -20,13 +17,11 @@
   const tocToggle = document.getElementById("toc-toggle");
   const tocClose = document.getElementById("toc-close");
 
-  // 点击 TOC 按钮 → 显示 aside, 隐藏按钮
   tocToggle.addEventListener("click", () => {
     tocAside.style.display = "block";
     tocToggle.style.display = "none";
   });
 
-  // 点击 Close → 隐藏 aside, 显示按钮
   tocClose.addEventListener("click", () => {
     tocAside.style.display = "none";
     tocToggle.style.display = "block";
@@ -47,7 +42,6 @@
     }
   }
 
-  // 可选：页面加载时默认显示一次
   document.addEventListener("DOMContentLoaded", function () {
     const tocNav = document.getElementById('toc-nav');
     if (window.matchMedia("(min-width: 768px)").matches) {
@@ -98,8 +92,8 @@
       });
     });
   });
-</script>
-<style>
+</script> -->
+<!-- <style>
   .table-of-contents {
     padding: 1rem;
     border-left: 2px solid #42b983;
@@ -142,24 +136,19 @@
     text-decoration: underline;
   }
 
-  /* 设置嵌套层级的缩进（最多支持 3 层） */
 
   .toc-content>ul>li {
-    /* 第一级 */
     padding-left: 0;
   }
 
   .toc-content ul ul>li {
-    /* 第二级 */
     padding-left: 1rem;
   }
 
   .toc-content ul ul ul>li {
-    /* 第三级 */
     padding-left: 2rem;
   }
 
-  /* 第四层及以上隐藏 */
   .toc-content ul ul ul {
     display: none;
   }
@@ -173,4 +162,4 @@
       display: none;
     }
   }
-</style>
+</style> -->

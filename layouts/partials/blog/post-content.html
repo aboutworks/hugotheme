@@ -1,33 +1,38 @@
-{{ partial "toc.html" . }}
+<!-- 阅读进度条 -->
+<div class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600" id="progress-bar" style="width: 0%"></div>
 
-<h1 >{{ .Title }}</h1>
-<h6>{{ .Params.uuid }}</h6>
+<div class="protect-content bg-white p-8 rounded-lg shadow-md">
 
-{{ with .Date }}
+  <h1>{{ .Title }}</h1>
+  <h6>{{ .Params.uuid }}</h6>
+
+  {{ with .Date }}
+
+  {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateHuman := . | time.Format ":date_long" }}
+  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  {{ end }}
+
+  <!-- Markdown编辑器 -->
+  <!-- <textarea id="markdown-editor"></textarea> -->
+
+  <article
+    class="reading-container mx-auto font-sans font-size-md line-height-normal layout-single markdown-content markdown-body"
+    id="article-content">
+    <!-- 调用目录模块 -->
+    <!-- {{ if eq .Params.toc "true"}}
+      {{ partial "toc.html" . }}
+      {{end}} -->
+
+    {{ .Content }}
+  </article>
+
+  {{ partial "taxonomy-tags.html" . }}
+
+  {{ partial "comments.html" ( dict "uuid" .Params.uuid "Sitetitle" .Site.Title)}}
 
 
-{{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
-{{ $dateHuman := . | time.Format ":date_long" }}
-<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-{{ end }}
-
-
-<!-- Markdown编辑器 -->
-<!-- <textarea id="markdown-editor"></textarea> -->
-
-<article class="reading-container mx-auto font-sans font-size-md line-height-normal layout-single markdown-content markdown-body"
-  id="article-content">
-  <!-- 调用目录模块 -->
-  {{ if eq .Params.toc "true"}}
-  {{ partial "toc.html" . }}
-  {{end}}
-
-  {{ .Content }}
-</article>
-
-{{ partial "taxonomy-tags.html" . }}
-
-{{ partial "comments.html" ( dict "uuid" .Params.uuid "Sitetitle" .Site.Title)}}
+</div>
 
 <style>
   .valid-form {
@@ -170,3 +175,42 @@
     justify-content: center;
   }
 </style>
+
+
+<script> 
+// DOM加载完成后执行
+document.addEventListener('DOMContentLoaded', function () {
+  // 检查并应用保存的阅读设置
+  if(!document.getElementById('progress-bar')) return;
+  loadSavedSettings();
+});
+
+
+// 初始化阅读进度条
+function initProgressBar() {
+  const progressBar = document.getElementById('progress-bar');
+
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = scrollPercent + '%';
+
+    // 保存阅读进度
+    saveReadingProgress(scrollPercent);
+  });
+}
+
+// 保存阅读进度
+function saveReadingProgress(progress) {
+  try {
+    localStorage.setItem('readingProgress', progress);
+  } catch (e) {
+    console.error('无法保存阅读进度:', e);
+  }
+}
+
+
+
+</script>

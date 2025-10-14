@@ -1,26 +1,32 @@
 <div
 	class="flex flex-col justify-between  bg-white  rounded-xl shadow-card hover:shadow-card-hover card-transition overflow-hidden">
-	<!-- 图片 -->
 	<div class="relative">
-		<img src="{{.Image}}" alt="人工智能在医疗领域的应用与前景" class="w-full h-48 object-cover" data-key="56dce00d"
-			data-review-status="0"
-			data-src="https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D">
-		<span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">科技</span>
-		<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full">热门</span>
-	</div>
-	<!-- 内容 -->
-	<div class="p-6">
-		<h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2" onclick="clickaddcount('{{ .Uuid }}')"><a
-				href="{{.Permalink }}">{{.Title }}</a>
-		</h3>
-		<p class="text-gray-600 text-sm mb-4 line-clamp-3"> {{.Weight }},{{.Desc }}</p>
-		<div class="flex flex-wrap gap-2 mb-4">
-			{{ range.Tags }}
-			<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">{{. }}</span>
-			{{ end }}
-			<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">+1</span>
+		<!-- 图片 -->
+		<div>
+			<a href="{{.Permalink }}">
+				<img src="{{.Image}}" alt="人工智能在医疗领域的应用与前景" class="w-full h-48 object-cover" data-key="56dce00d"
+					data-review-status="0"
+					data-src="https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D">
+			</a>
+			<span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">科技</span>
+			<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full">热门</span>
+		</div>
+		<!-- 内容 -->
+		<div class="p-6">
+			<div class="authid_uuid_{{ .Uuid }}">UUID:{{ .Uuid }}</div>
+			<h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2" onclick="clickaddcount('{{ .Uuid }}')"><a
+					href="{{.Permalink }}">{{.Title }}</a>
+			</h3>
+			<p class="text-gray-600 text-sm mb-4 line-clamp-3"> {{.Weight }},{{.Desc }}</p>
+			<div class="flex flex-wrap gap-2 mb-4">
+				{{ range.Tags }}
+				<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">{{. }}</span>
+				{{ end }}
+				<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">+1</span>
+			</div>
 		</div>
 	</div>
+
 	<!-- 作者信息 -->
 	<div class="flex items-center justify-between p-4 px-6 border-t border-gray-100">
 		<div class="flex items-center">
@@ -44,6 +50,50 @@
 <script>
 
 	document.addEventListener("DOMContentLoaded", () => {
+		this.loadCount();
+		this.initLocalStorageData();
+		this.getdata();
+	});
+
+	// 创建对应的localstorage键名
+	function initLocalStorageData() {
+		// 遍历所有class以"authid_uuid_"开头的元素
+		document.querySelectorAll("[class^='authid_uuid_']").forEach(div => {
+			// 提取UUID（移除class前缀）
+			const uuid = div.className.replace("authid_uuid_", "");
+
+			// 定义localStorage的键（直接使用uuid）
+			const storageKey = uuid;
+
+			// 从localStorage获取已有数据（如果存在）
+			const existingData = localStorage.getItem(storageKey);
+
+			// 如果数据不存在，初始化一个包含授权和进度的对象
+			if (!existingData) {
+				const initialData = {
+					authorized: false,  // 授权状态：默认未授权
+					progress: 0,        // 阅读进度：默认0%
+					lastAccess: null    // 最后访问时间：可选扩展字段
+				};
+				// 存入localStorage（对象需转为JSON字符串）
+				localStorage.setItem(storageKey, JSON.stringify(initialData));
+
+			}
+
+		});
+	}
+	function getdata() {
+		document.querySelectorAll("[class^='authid_uuid_']").forEach(div => {
+			// 提取UUID（移除class前缀）
+			const uuid = div.className.replace("authid_uuid_", "");
+			const strong = JSON.parse(localStorage.getItem(uuid));
+			console.log(uuid,strong);
+		});
+	}
+
+	// 加载点击数
+	function loadCount() {
+		console.log("加载点击数");
 		document.querySelectorAll("[id^='eyescount_']").forEach(span => {
 			const uuid = span.id.replace("eyescount_", "");
 			fetch(`https://handle.lehuye.com/datas/getClickCount?uuid=${uuid}`, {
@@ -59,16 +109,18 @@
 				})
 				.catch(err => console.error("Error fetching click count:", err));
 		});
-	});
+	}
 
+	// 增加点击数
 	function clickaddcount(uuid) {
+		console.log("增加点击数");
 		fetch(`https://handle.lehuye.com/datas/incrementClickCount`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 				"authorization": "keebone"
 			},
-			body: JSON.stringify({ uuid }),			
+			body: JSON.stringify({ uuid }),
 		})
 			.then(res => res.json())
 			.then(data => {

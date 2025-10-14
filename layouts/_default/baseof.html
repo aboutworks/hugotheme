@@ -4,15 +4,12 @@
 {{ partial "head.html" . }}
 
 <body class="bg-gray-50 text-gray-800 transition-colors duration-300" id="app-body" style="background-color: rgb(237, 237, 237);">
-	<!-- 阅读进度条 -->
-	<div class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600" id="progress-bar" style="width: 0%"></div>
 
 	{{ partial "blog/header.html" . }}
 	<main class="bg-gray-80 container mx-auto px-4 pt-24 pb-16 transition-all duration-300" id="main-content">
 		{{ block "main" . }}{{ end }}
 	</main>
 	{{ partial "blog/footer.html" . }}
-
 
 </body>
 
