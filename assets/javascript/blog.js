@@ -25,17 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // 检查并应用保存的阅读设置
   // loadSavedSettings();
 
-  getdata();
+
 });
 
-	function getdata() {
-		document.querySelectorAll("[class^='authid_uuid_']").forEach(div => {
-			// 提取UUID（移除class前缀）
-			const uuid = div.className.replace("authid_uuid_", "");
-			const strong = JSON.parse(localStorage.getItem(uuid));
-			console.log(uuid,strong);
-		});
-	}
+
 // 初始化阅读设置
 function initReadingSettings() {
   // 布局设置

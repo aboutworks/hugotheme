@@ -1,5 +1,5 @@
 <!-- 左侧目录 -->
-<aside id="table-of-contents" class="table-of-contents" >
+<div id="table-of-contents" class="table-of-contents" >
   <!-- <div id="toc-close" class="blog-tag">关闭目录</div> -->
     <!-- <h1 >
           <i>{{ T "catalog" }}</i>
@@ -7,10 +7,10 @@
     <nav>
       {{ .TableOfContents }}
     </nav>
-</aside>
+  </div>
 <!-- 
 <div id="toc-toggle" class="toc-toggle blog-tag">开启目录</div>
-
+-->
 
 <script>
   const tocAside = document.getElementById("table-of-contents");
@@ -92,7 +92,7 @@
       });
     });
   });
-</script> -->
+</script>
 <!-- <style>
   .table-of-contents {
     padding: 1rem;

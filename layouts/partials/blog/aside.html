@@ -1,0 +1,68 @@
+<!-- 左侧边栏 -->
+<aside
+  class="fixed inset-y-0 left-0 z-50 w-full max-w-md md:max-w-lg lg:max-w-xl bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out"
+  id="sidebar">
+  <div class="p-4 border-b">
+    <div class="flex justify-between items-center">
+      <h2 class="text-lg font-semibold">目录</h2>
+      <button id="close-sidebar" class="p-2 rounded-full hover:bg-gray-100">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <nav id="TableOfContents" class="px-6 py-4 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent hover:scrollbar-thumb-gray-300">
+    <!-- 滚动容器 -->
+      <!-- 目录内容（原生 ul/li 结构） -->
+      <ul class="toc-level-1">
+        {{ .TableOfContents }}
+      </ul>
+  </nav>
+</aside>
+
+<style>
+  #TableOfContents ul {
+    padding:1rem !important;
+  }
+</style>
+
+<!-- 右侧边栏 -->
+<aside
+  class="fixed top-0 right-0 bottom-0 w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300"
+  id="sidebar-right">
+  <div class="p-4 border-b border-gray-200">
+    <div class="flex justify-between items-center">
+      <h2 class="text-lg font-semibold">导航</h2>
+      <button id="close-sidebar-right" class="p-2 rounded-full hover:bg-gray-100">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <nav class="p-4">
+    <ul class="space-y-2">
+      <!-- 目录将由JavaScript动态生成 -->
+
+      <ul class="space-y-2">
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </ul>
+
+    <div class="mt-8 pt-4 border-t border-gray-200">
+      <h3 class="font-medium text-gray-700 mb-3">设置</h3>
+      <button id="edit-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <i class="fa fa-pencil text-gray-700" id="edit-icon"></i>
+      </button>
+      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <i class="fa fa-moon-o text-gray-700" id="theme-icon"></i>
+      </button>
+      <button id="settings-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <i class="fa fa-cog text-gray-700"></i>
+      </button>
+
+    </div>
+  </nav>
+</aside>

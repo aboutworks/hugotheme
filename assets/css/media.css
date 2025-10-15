@@ -29,35 +29,6 @@
 		display: none;
 	}
 
-
-	.menu ul {
-		display: none;
-		/* 默认隐藏 */
-		position: absolute;
-		top: 100%;
-		/* 位于图标下方 */
-		left: 0;
-		background-color: var(--colorBackgroundInvert);
-		/* 背景颜色可根据设计调整 */
-		width: 100%;
-		flex-direction: column;
-		/* 改变布局为垂直 */
-		z-index: 1000;
-		/* 确保菜单在其他内容之上 */
-		padding: 10px 0;
-		/* 增加一些内边距 */
-	}
-
-	.menu ul li {
-		padding: 10px 20px;
-		/* 调整列表项的内边距 */
-		text-align: center;
-	}
-
-	.menu:hover ul {
-		display: flex;
-		/* 悬停时显示 */
-	}
 }
 
 @media screen and (max-width: 780px) {
