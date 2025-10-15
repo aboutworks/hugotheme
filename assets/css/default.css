@@ -18,3 +18,7 @@ p:has(img) img {
   max-width: 100%;        /* 防止超出容器 */
   height: auto;
 }
+
+main{
+  min-height: calc(100vh - 274px);
+}

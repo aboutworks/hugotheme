@@ -1,11 +1,21 @@
 {{ with .GetTerms "tags" }}
-<div class="tag-parent" >
+<div class="tag-parent mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm">
   {{ with (index . 0).Parent }}
-  <div class="tag-group-title">{{ .LinkTitle }}</div>
+    <div class="tag-group-title text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+      {{ .LinkTitle }}
+    </div>
   {{ end }}
-  <ul class="tag-list">
+  <ul class="tag-list flex flex-wrap gap-2">
     {{ range . }}
-    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      <li>
+        <a href="{{ .RelPermalink }}" 
+           class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full 
+                  bg-blue-100 text-blue-800 hover:bg-blue-200 
+                  dark:bg-blue-900 dark:text-blue-100 dark:hover:bg-blue-800
+                  transition-colors duration-200">
+          {{ .LinkTitle }}
+        </a>
+      </li>
     {{ end }}
   </ul>
 </div>

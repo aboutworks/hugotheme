@@ -182,7 +182,9 @@
             padding: 30px 20px;
         }
     }
-</style>
+</style> 
+
+
 <!-- 授权表单区域 -->
 <div id="auth-form-section" class="protect-container">
     <div class="protect-header">
@@ -207,7 +209,19 @@
         </div>
 
         <div class="protect-button-group">
-            <button id="auth-submit-button">验证授权</button>
+            <button id="auth-submit-button" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium 
+               text-white bg-blue-600 rounded-lg shadow-sm 
+               hover:bg-blue-700 active:bg-blue-800 
+               dark:bg-blue-700 dark:hover:bg-blue-600 dark:active:bg-blue-800
+               transition-all duration-200 ease-in-out
+               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+               dark:focus:ring-offset-gray-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                验证授权
+            </button>
         </div>
 
         <div class="protect-footer">
@@ -217,7 +231,21 @@
 </div>
 
 <!-- 受保护内容区域 -->
-<div  id="protected-content-section" style="display:none;">
-        <button id="auth-logout-button_{{.Params.uuid}}">退出授权 {{.Params.uuid}}</button>
-        {{ partial "blog/post-content.html" . }}
+<div id="protected-content-section" style="display:none;">
+    <button id="auth-logout-button_{{.Params.uuid}}" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium 
+               text-red-600 bg-red-50 rounded               border border-red-200 rounded-full 
+               hover:bg-red-100 hover:border-red-300
+               dark:bg-red-900/15 dark:text-red-400 
+               dark:border-red-800/50 dark:hover:bg-red-900/30
+               transition-all duration-200
+               focus:outline-none focus:ring-1.5 focus:ring-red-500
+               whitespace-nowrap">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+        </svg>
+        退出授权 {{.Params.uuid}}
+    </button>
+    {{ partial "blog/post-content.html" . }}
 </div>
