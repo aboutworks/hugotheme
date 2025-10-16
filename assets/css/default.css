@@ -1,4 +1,5 @@
 @import url('markdown.css');
+@import url('del/github-markdown-light.css');
 
 p{
 	line-height: 3rem;

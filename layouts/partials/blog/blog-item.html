@@ -9,11 +9,13 @@
 					data-src="https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D">
 			</a>
 			<span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">科技</span>
-			<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full">热门</span>
+			<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full authid_uuid_{{ .Uuid }}">{{ .Uuid }}
+				<span class="ml-1"><i class="fa fa-fire"></i></span>
+			</span>
 		</div>
 		<!-- 内容 -->
 		<div class="p-6">
-			<div class="authid_uuid_{{ .Uuid }}">UUID:{{ .Uuid }}</div>
+			<div class=""></div>
 			<h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2" onclick="clickaddcount('{{ .Uuid }}')"><a
 					href="{{.Permalink }}">{{.Title }}</a>
 			</h3>
@@ -46,8 +48,7 @@
 </div>
 
 
-
-<script>
+<!-- <script>
 
 	document.addEventListener("DOMContentLoaded", () => {
 		this.loadCount();
@@ -132,4 +133,4 @@
 			})
 			.catch(err => console.error("Error updating click count:", err));
 	}
-</script>
+</script> -->

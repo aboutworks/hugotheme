@@ -27,6 +27,9 @@
   {{ $styles := resources.Get "css/default.css" | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}">
 
+  {{ $markdown := resources.Get "css/markdown/github-markdown-light.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $markdown.Permalink }}">
+
 
   {{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $script.Permalink }}" defer></script>
@@ -38,8 +41,6 @@
   <script src="{{ $scripthandle.Permalink }}" defer></script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.css">
   <!-- Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- AOS - Animate On Scroll -->
@@ -48,6 +49,8 @@
 
   <script>
     tailwind.config = {
+        // 启用深色模式（基于 html 标签的 data-theme 或 class）
+      darkMode: 'class', // 推荐用 class 模式，方便通过 JS 切换主题
       theme: {
         extend: {
           colors: {

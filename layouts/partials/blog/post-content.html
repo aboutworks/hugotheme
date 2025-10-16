@@ -1,216 +1,159 @@
 <!-- 阅读进度条 -->
-<div class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600" id="progress-bar" style="width: 0%"></div>
+<div id="progress-bar"
+  class="fixed top-0 left-0 h-1 z-50 bg-gradient-to-r from-brand-primary-100 to-brand-primary-900 transition-all duration-300"
+  style="width: 0%;">
+</div>
 
-<div class="protect-content bg-white p-8 rounded-lg shadow-md">
+<!-- 主内容容器 -->
+<div class="protect-content bg-custom-bg-color p-8 rounded-2xl shadow-lg max-w-4xl mx-auto mt-8 transition-colors duration-300">
 
-  <h1>{{ .Title }}</h1>
-  <h6>{{ .Params.uuid }}</h6>
+  <!-- 标题区域 -->
+  <header class="mb-6">
+    <!-- Title -->
+    <h1
+      class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight">
+      {{ .Title }}
+    </h1>
 
-  {{ with .Date }}
+    <!-- UUID -->
+    {{ with .Params.uuid }}
+    <h6
+      class="mt-2 inline-block bg-neutral text-xs font-mono px-2 py-1 rounded text-accent select-all">
+      {{ . }}
+    </h6>
+    {{ end }}
 
-  {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := . | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-  {{ end }}
+    <!-- Date -->
+    {{ with .Date }}
+    {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := . | time.Format ":date_long" }}
+    <time datetime="{{ $dateMachine }}"
+      class="mt-3 block text-sm text-secondary italic">
+      {{ $dateHuman }}
+    </time>
+    {{ end }}
+  </header>
 
-  <!-- Markdown编辑器 -->
-  <!-- <textarea id="markdown-editor"></textarea> -->
-
+  <!-- 正文内容 -->
   <article
-    class="reading-container mx-auto font-sans font-size-md line-height-normal layout-single markdown-content markdown-body"
-    id="article-content">
-    <!-- 调用目录模块 -->
-    <!-- {{ if eq .Params.toc "true"}}
+    id="article-content"
+    class="markdown-body markdown-content reading-container prose prose-lg max-w-none font-sans text-primary leading-relaxed transition-colors duration-300">
+    
+    {{/* 目录 (可选) */}}
+    {{ if eq .Params.toc "true" }}
       {{ partial "toc.html" . }}
-      {{end}} -->
+    {{ end }}
 
     {{ .Content }}
   </article>
 
-  {{ partial "taxonomy-tags.html" . }}
-
-  {{ partial "comments.html" ( dict "uuid" .Params.uuid "Sitetitle" .Site.Title)}}
-
+  <!-- 标签与评论 -->
+  <footer class="mt-10 border-t border-neutral pt-6 transition-colors duration-300">
+    {{ partial "taxonomy-tags.html" . }}
+    {{ partial "comments.html" (dict "uuid" .Params.uuid "Sitetitle" .Site.Title) }}
+  </footer>
 
 </div>
 
-<style>
-  .valid-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: var(--height-main);
-  }
-
-  #validator {
-    width: 100%;
-    padding: 1.5rem;
-    /* background-color: #f9f9f9; */
-    /* border-radius: 8px; */
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  }
-
-  #validator h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-
-  #ssh-key {
-    width: 100%;
-    height: calc(var(--height-main) - 80vh);
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: none;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
-    font-family: monospace;
-  }
-
-  #validator button {
-    width: 100%;
-    display: inline-block;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 500;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    box-sizing: border-box;
-  }
-
-  #ssh-validate-button {
-    width: 100%;
-    background-color: var(--color-link);
-    color: white;
-  }
-
-  #ssh-validate-button:hover {
-    background-color: #0056b3;
-  }
-
-  #out-validate-button {
-    background-color: #6c757d;
-    color: white;
-    margin-right: 8px;
-  }
-
-  #out-validate-button:hover {
-    background-color: #545b62;
-  }
-
-  @media (max-width: 600px) {
-    #validator button {
-      width: 100%;
-      margin-bottom: 0.5rem;
-      margin-right: 0 !important;
-    }
-  }
-
-  .image-container {
-    margin: 20px 0;
-  }
-
-  /* 图片默认样式 */
-  img {
-    max-width: 100%;
-    height: auto;
-    cursor: zoom-in;
-    /* 鼠标悬停显示放大图标 */
-    transition: transform 0.2s;
-  }
-
-  img:hover {
-    transform: scale(1.02);
-  }
-
-  /* 灯箱样式 - 全屏覆盖 */
-  #lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    /* 默认隐藏 */
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    /* 鼠标悬停显示缩小图标 */
-  }
-
-  /* 灯箱显示状态 */
-  #lightbox.show {
-    display: flex;
-  }
-
-  /* 灯箱中的图片样式 */
-  #lightbox img {
-    max-width: 90%;
-    max-height: 90vh;
-    object-fit: contain;
-    cursor: zoom-out;
-  }
-
-  /* 关闭按钮 */
-  #lightbox .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>
-
-
 <script> 
-// DOM加载完成后执行
 document.addEventListener('DOMContentLoaded', function () {
-  // 检查并应用保存的阅读设置
-  if(!document.getElementById('progress-bar')) return;
-  loadSavedSettings();
+  const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
+
+  const articleUuid = "{{ with .Params.uuid }}{{ . }}{{ end }}";
+  console.log('当前文章UUID:', articleUuid);
+
+  // 初始化：读取并处理数据（兼容旧数据，若有ISO字符串则转为时间戳）
+  let savedData = null;
+  try {
+    const savedDataStr = localStorage.getItem(articleUuid);
+    if (typeof savedDataStr === 'string' && savedDataStr.trim() !== '') {
+      savedData = JSON.parse(savedDataStr);
+      // 兼容处理：若旧数据是ISO字符串，转为时间戳
+      if (typeof savedData.lastAccess === 'string') {
+        savedData.lastAccess = new Date(savedData.lastAccess).getTime();
+      }
+    }
+  } catch (e) {
+    console.warn('初始化解析数据失败，清除错误数据:', e);
+    localStorage.removeItem(articleUuid);
+    savedData = null;
+  }
+
+  initProgressBar(articleUuid, savedData);
+  localArticleProgress(articleUuid, savedData);
 });
 
-
-// 初始化阅读进度条
-function initProgressBar() {
+// 读取进度（无改动，仅使用时间戳字段）
+function localArticleProgress(storageKey, savedData) {
   const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
+
+  try {
+    const progress = savedData?.progress ?? 0;
+  console.log('读取进度：', storageKey,savedData, '上次进度：', progress);
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+
+
+
+// 3. 关键：根据历史进度计算滚动高度并定位
+    if (progress > 0) { // 只有进度>0时才自动定位（避免首次访问滚动到顶部）
+      // 计算文档可滚动总高度（文档高度 - 视口高度）
+      const docHeight = document.body.offsetHeight - window.innerHeight;
+      const scrollTop = (progress / 100) * docHeight;
+
+      window.scrollTo({
+        top: scrollTop,
+        behavior: 'smooth'
+      });
+    }
+
+
+  } catch (e) {
+    console.error('读取进度失败:', e);
+    progressBar.style.width = '0%';
+  }
+}
+
+// 初始化滚动监听（无改动）
+function initProgressBar(storageKey) {
+  const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
 
   window.addEventListener('scroll', function () {
     const scrollTop = window.pageYOffset;
     const docHeight = document.body.offsetHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
 
-    progressBar.style.width = scrollPercent + '%';
-
-    // 保存阅读进度
-    saveReadingProgress(scrollPercent);
+    progressBar.style.width = `${scrollPercent}%`;
+    saveReadingProgress(storageKey, scrollPercent);
   });
 }
 
-// 保存阅读进度
-function saveReadingProgress(progress) {
+// 保存进度：关键修改——lastAccess改为时间戳
+function saveReadingProgress(storageKey, progress) {
   try {
-    localStorage.setItem('readingProgress', progress);
+    // 读取已有数据
+    const savedDataStr = localStorage.getItem(storageKey);
+    const savedData = savedDataStr 
+      ? JSON.parse(savedDataStr) 
+      : { authorized: false, progress: 0, lastAccess: 0 }; // 默认时间戳0
+
+    // 构造新数据：lastAccess用Date.getTime()获取13位时间戳
+    const progressData = {
+      ...savedData,
+      progress: Math.min(progress, 100),
+      lastAccess: new Date().getTime() // 核心修改：存储毫秒级时间戳
+    };
+
+    // 验证并保存标准JSON
+    const goodJson = JSON.stringify(progressData);
+    JSON.parse(goodJson); // 二次验证格式
+    localStorage.setItem(storageKey, goodJson);
+
+    console.log('保存进度成功:', progressData);
   } catch (e) {
-    console.error('无法保存阅读进度:', e);
+    console.error('保存进度失败:', e);
   }
 }
-
-
-
 </script>
