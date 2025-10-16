@@ -249,3 +249,108 @@
     </button>
     {{ partial "blog/post-content.html" . }}
 </div>
+
+
+
+<script> 
+document.addEventListener('DOMContentLoaded', function () {
+  const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
+
+  const articleUuid = "{{ with .Params.uuid }}{{ . }}{{ end }}";
+  console.log('当前文章UUID:', articleUuid);
+
+  // 初始化：读取并处理数据（兼容旧数据，若有ISO字符串则转为时间戳）
+  let savedData = null;
+  try {
+    const savedDataStr = localStorage.getItem(articleUuid);
+    if (typeof savedDataStr === 'string' && savedDataStr.trim() !== '') {
+      savedData = JSON.parse(savedDataStr);
+      // 兼容处理：若旧数据是ISO字符串，转为时间戳
+      if (typeof savedData.lastAccess === 'string') {
+        savedData.lastAccess = new Date(savedData.lastAccess).getTime();
+      }
+    }
+  } catch (e) {
+    console.warn('初始化解析数据失败，清除错误数据:', e);
+    localStorage.removeItem(articleUuid);
+    savedData = null;
+  }
+
+  initProgressBar(articleUuid, savedData);
+  localArticleProgress(articleUuid, savedData);
+});
+
+// 读取进度（无改动，仅使用时间戳字段）
+function localArticleProgress(storageKey, savedData) {
+  const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
+
+  try {
+    const progress = savedData?.progress ?? 0;
+  console.log('读取进度：', storageKey,savedData, '上次进度：', progress);
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+
+
+
+// 3. 关键：根据历史进度计算滚动高度并定位
+    if (progress > 0) { // 只有进度>0时才自动定位（避免首次访问滚动到顶部）
+      // 计算文档可滚动总高度（文档高度 - 视口高度）
+      const docHeight = document.body.offsetHeight - window.innerHeight;
+      const scrollTop = (progress / 100) * docHeight;
+
+      window.scrollTo({
+        top: scrollTop,
+        behavior: 'smooth'
+      });
+    }
+
+
+  } catch (e) {
+    console.error('读取进度失败:', e);
+    progressBar.style.width = '0%';
+  }
+}
+
+// 初始化滚动监听（无改动）
+function initProgressBar(storageKey) {
+  const progressBar = document.getElementById('progress-bar');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    progressBar.style.width = `${scrollPercent}%`;
+    saveReadingProgress(storageKey, scrollPercent);
+  });
+}
+
+// 保存进度：关键修改——lastAccess改为时间戳
+function saveReadingProgress(storageKey, progress) {
+  try {
+    // 读取已有数据
+    const savedDataStr = localStorage.getItem(storageKey);
+    const savedData = savedDataStr 
+      ? JSON.parse(savedDataStr) 
+      : { authorized: false, progress: 0, lastAccess: 0 }; // 默认时间戳0
+
+    // 构造新数据：lastAccess用Date.getTime()获取13位时间戳
+    const progressData = {
+      ...savedData,
+      progress: Math.min(progress, 100),
+      lastAccess: new Date().getTime() // 核心修改：存储毫秒级时间戳
+    };
+
+    // 验证并保存标准JSON
+    const goodJson = JSON.stringify(progressData);
+    JSON.parse(goodJson); // 二次验证格式
+    localStorage.setItem(storageKey, goodJson);
+
+    console.log('保存进度成功:', progressData);
+  } catch (e) {
+    console.error('保存进度失败:', e);
+  }
+}
+</script>
