@@ -348,7 +348,7 @@ function saveReadingProgress(storageKey, progress) {
     JSON.parse(goodJson); // 二次验证格式
     localStorage.setItem(storageKey, goodJson);
 
-    console.log('保存进度成功:', progressData);
+    // console.log('保存进度成功:', progressData);
   } catch (e) {
     console.error('保存进度失败:', e);
   }
