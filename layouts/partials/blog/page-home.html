@@ -23,7 +23,7 @@
     <!-- 文章卡片将通过JavaScript动态生成 -->
 
 
-    {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.category" "intersect" (slice "授权"))
+    {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.categories" "intersect" (slice "授权"))
     ".Params.index" "asc" }}
     {{ if eq .Params.position "home" }}
     {{ $context := dict
@@ -79,7 +79,7 @@
     ".Params.weight"
     "asc" }}
     {{/* 判断 category 数组是否不包含 "授权" */}}
-    {{ if not (in .Params.category "授权") }}
+    {{ if not (in .Params.categories "授权") }}
     {{ $context := dict
     "Title" .Title
     "Uuid" .Params.uuid

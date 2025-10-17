@@ -1,0 +1,60 @@
+
+
+
+<div class="max-w-5xl mx-auto my-10 px-4">
+
+	为什么什么内容也没有显示？
+  <!-- 显示页面标题 -->
+  <h1 class="text-3xl font-bold mb-4">{{ .Title }}</h1>
+  <!-- 显示页面正文 -->
+  {{ .Content }}
+
+  没有内容
+
+  {{ $weights := .Site.Params.categories }}
+  {{ $terms := .Data.Terms.Alphabetical }}
+  {{ $sorted := slice }}
+
+  {{ range $term := $terms }}
+  {{ $termName := $term.Name }}
+  {{ $weight := index $weights $termName | default (dict "weight" 999) }}
+  {{ $sorted = $sorted | append (dict "term" $term "weight" $weight.weight) }}
+  {{ end }}
+
+
+
+
+{{ if not .Data.Terms }}
+  <p class="text-red-500">⚠️ .Data.Terms 为空，可能不是 taxonomy 页面。</p>
+{{ else }}
+  <p class="text-green-500">✅ .Data.Terms 检测到 {{ len .Data.Terms }} 个分类。</p>
+{{ end }}
+
+  <!-- 分类循环 -->
+  {{ range sort $sorted "weight" }}
+  {{ $t := .term }}
+
+  <section class="mb-10 border-b border-gray-200 pb-6">
+	这是标题
+    <h2 class="text-2xl font-semibold text-gray-900 mb-3">
+      <a href="{{ $t.Page.RelPermalink }}" class="text-blue-700 hover:underline">
+        {{ $t.Page.LinkTitle }}
+      </a>
+      <span class="text-gray-500 text-sm ml-1">({{ $t.Count }})</span>
+    </h2>
+
+    <ul class="pl-4 space-y-2">
+      {{ range $t.WeightedPages }}
+      <li class="flex items-baseline justify-between text-sm">
+        <a href="{{ .RelPermalink }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+          {{ .LinkTitle }}
+        </a>
+        <span class="text-gray-400 text-xs">({{ len .Content }})</span>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+
+  {{ end }}
+
+</div>

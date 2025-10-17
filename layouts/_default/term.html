@@ -1,13 +1,13 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <p>Affiliation: {{ .Params.affiliation }}</p>
-  {{ with .Resources.Get "portrait.jpg" }}
-    {{ with .Fill "100x100" }}
-      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="portrait">
-    {{ end }}
-  {{ end }}
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ end }}
+<h1>{{ .Title }}</h1>
+<p>Affiliation: {{ .Params.affiliation }}</p>
+{{ with .Resources.Get "portrait.jpg" }}
+{{ with .Fill "100x100" }}
+<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="portrait">
+{{ end }}
+{{ end }}
+{{ .Content }}
+{{ range .Pages }}
+<h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+{{ end }}
 {{ end }}

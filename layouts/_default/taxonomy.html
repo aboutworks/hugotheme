@@ -1,128 +1,28 @@
 {{ define "main" }}
-<div class="categories">
 
-  {{ .Content }}
+<p class="text-sm text-gray-500">
+当前页面路径: {{ .Permalink }} <br>
+当前页面类型: {{ .Kind }}
+</p>
 
-  <div class="categories-list">
-    {{ $weights := .Site.Params.categories }}
-    {{ $terms := .Data.Terms.Alphabetical }}
-    {{ $sorted := slice }}
+{{ if not .Data.Terms }}
+  <p class="text-red-500">⚠️ .Data.Terms 为空，可能不是 taxonomy 页面。</p>
+{{ else }}
+  <p class="text-green-500">✅ .Data.Terms 检测到 {{ len .Data.Terms }} 个分类。</p>
+{{ end }}
 
-    {{ range $term := $terms }}
-      {{ $termName := $term.Name }}
-      {{ $weight := index $weights $termName | default (dict "weight" 999) }}
-      {{ $sorted = $sorted | append (dict "term" $term "weight" $weight.weight) }}
-    {{ end }}
+{{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
-    {{ range sort $sorted "weight" }}
-      {{ $t := .term }}
-      <div class="categories-box">
-        <h1><a href="{{ $t.Page.RelPermalink }}">{{ $t.Page.LinkTitle }}</a> ({{ $t.Count }})</h1>
-        <ul>
-          {{ range $t.WeightedPages }}
-            <li>
-              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-              <sub>({{ len .Content }})</sub>
-            </li>
-          {{ end }}
-        </ul>
-      </div>
-    {{ end }}
-  </div>
-</div>
+{{$webtype}}
 
-<style> 
+<!-- official 官网风格 -->
+{{ if eq $webtype "official" }}
+{{ partial "official/page-categories.html" . }}
+{{ end }}
 
-  .categories {
-  max-width: 1280px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
-
-.categories-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-/* 分类盒子卡片 */
-.categories-box {
-  background: var(--color-bg, #fff);
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  padding: 1.2rem 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.categories-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-}
-
-/* 分类标题 */
-.categories-box h1 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.categories-box h1 a {
-  color: #1d4ed8;
-  text-decoration: none;
-}
-
-.categories-box h1 a:hover {
-  text-decoration: underline;
-}
-
-/* 分类下文章列表 */
-.categories-box ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.categories-box li {
-  margin: 0.4rem 0;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-}
-
-.categories-box li a {
-  color: #374151;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.categories-box li a:hover {
-  color: #1e40af;
-}
-
-.categories-box li sub {
-  color: #9ca3af;
-  font-size: 0.8rem;
-}
-
-/* 响应式优化 */
-@media (max-width: 640px) {
-  .categories {
-    padding: 0.5rem;
-  }
-  .categories-box {
-    padding: 1rem;
-  }
-  .categories-box h1 {
-    font-size: 1rem;
-  }
-}
-</style>
+<!-- Blog 博客风格-->
+{{ if eq $webtype "blog" }}
+{{ partial "blog/page-categories.html" . }}
+{{ end }}
 
 {{ end }}
