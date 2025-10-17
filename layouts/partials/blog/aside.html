@@ -68,3 +68,218 @@
   </nav>
 </aside>
 
+
+<script> 
+
+// 初始化事件监听
+function initEventListeners() {
+
+  // 遮罩管理工具函数
+  const maskManager = {
+    // 创建遮罩并添加到页面
+    createMask() {
+      // 检查是否已存在遮罩，避免重复创建
+      if (document.getElementById('sidebar-mask')) return;
+
+      const mask = document.createElement('div');
+      mask.id = 'sidebar-mask';
+      mask.className = 'fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 opacity-0 backdrop-blur-sm';
+      document.body.appendChild(mask);
+
+      // 延迟添加 opacity 实现淡入效果
+      setTimeout(() => {
+        mask.classList.replace('opacity-0', 'opacity-100');
+      }, 10);
+
+      // 点击遮罩关闭所有侧边栏
+      mask.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        sidebarRight.classList.add('translate-x-full');
+        this.removeMask();
+      });
+    },
+
+    // 移除遮罩
+    removeMask() {
+      const mask = document.getElementById('sidebar-mask');
+      if (!mask) return;
+
+      // 淡入淡出效果
+      mask.classList.replace('opacity-100', 'opacity-0');
+      setTimeout(() => {
+        mask.remove();
+      }, 300);
+    },
+
+    // 检查是否有侧边栏处于打开状态
+    hasOpenSidebar(sidebar, sidebarRight) {
+      return !sidebar.classList.contains('-translate-x-full') ||
+        !sidebarRight.classList.contains('translate-x-full');
+    }
+  };
+
+
+  // 左侧边栏逻辑
+  const menuToggle = document.getElementById('menu-toggle');
+  const closeSidebar = document.getElementById('close-sidebar');
+  const sidebar = document.getElementById('sidebar');
+
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('-translate-x-full');
+    // 根据侧边栏状态切换遮罩
+    if (sidebar.classList.contains('-translate-x-full')) {
+      // 关闭时检查是否还有其他打开的侧边栏
+      if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
+        maskManager.removeMask();
+      }
+    } else {
+      maskManager.createMask();
+    }
+  });
+
+  closeSidebar.addEventListener('click', () => {
+    sidebar.classList.add('-translate-x-full');
+    if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
+      maskManager.removeMask();
+    }
+  });
+
+  // 右侧边栏逻辑
+  const menuRightToggle = document.getElementById('menu-right-toggle');
+  const closeSidebarRight = document.getElementById('close-sidebar-right');
+  const sidebarRight = document.getElementById('sidebar-right');
+
+  menuRightToggle.addEventListener('click', () => {
+    sidebarRight.classList.toggle('translate-x-full');
+    // 根据侧边栏状态切换遮罩
+    if (sidebarRight.classList.contains('translate-x-full')) {
+      if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
+        maskManager.removeMask();
+      }
+    } else {
+      maskManager.createMask();
+    }
+  });
+
+  closeSidebarRight.addEventListener('click', () => {
+    sidebarRight.classList.add('translate-x-full');
+    if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
+      maskManager.removeMask();
+    }
+  });
+
+  // 搜索面板切换
+  const searchToggle = document.getElementById('search-toggle');
+  const searchPanel = document.getElementById('search-panel');
+
+  searchToggle.addEventListener('click', function () {
+    searchPanel.classList.toggle('hidden');
+
+    // 如果显示搜索面板，自动聚焦搜索框
+    if (!searchPanel.classList.contains('hidden')) {
+      searchPanel.querySelector('input').focus();
+    }
+  });
+
+  // 设置面板切换
+  const settingsToggle = document.getElementById('settings-toggle');
+  const closeSettings = document.getElementById('close-settings');
+  const settingsPanel = document.getElementById('settings-panel');
+
+  settingsToggle.addEventListener('click', function () {
+    settingsPanel.classList.toggle('hidden');
+  });
+
+  closeSettings.addEventListener('click', function () {
+    settingsPanel.classList.add('hidden');
+  });
+
+  // 编辑模式切换
+  const editToggle = document.getElementById('edit-toggle');
+  const editIcon = document.getElementById('edit-icon');
+  const markdownEditor = document.getElementById('markdown-editor');
+  const articleContent = document.getElementById('article-content');
+  const saveButton = document.getElementById('save-content');
+
+  editToggle.addEventListener('click', function () {
+    // 切换编辑模式和阅读模式
+    if (markdownEditor.style.display === 'block') {
+      // 保存内容并切换到阅读模式
+      renderMarkdownContent();
+      markdownEditor.style.display = 'none';
+      articleContent.style.display = 'block';
+      editIcon.classList.remove('fa-eye');
+      editIcon.classList.add('fa-pencil');
+    } else {
+      // 切换到编辑模式
+      markdownEditor.style.display = 'block';
+      articleContent.style.display = 'none';
+      editIcon.classList.remove('fa-pencil');
+      editIcon.classList.add('fa-eye');
+
+      // 重新初始化编辑器以适应主题
+      setTimeout(() => {
+        window.simplemde.codemirror.refresh();
+      }, 100);
+    }
+  });
+
+
+
+  // 返回顶部按钮
+  const backToTopButton = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.remove('opacity-100', 'visible');
+      backToTopButton.classList.add('opacity-0', 'invisible');
+    }
+  });
+
+  backToTopButton.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // 点击页面其他区域关闭搜索面板和设置面板
+  document.addEventListener('click', function (event) {
+    // 搜索面板
+    if (!searchPanel.contains(event.target) && event.target !== searchToggle) {
+      searchPanel.classList.add('hidden');
+    }
+
+    // 设置面板
+    if (!settingsPanel.contains(event.target) && event.target !== settingsToggle) {
+      settingsPanel.classList.add('hidden');
+    }
+  });
+
+  // 点击侧边栏链接关闭侧边栏
+  const sidebarLinks = sidebar.querySelectorAll('a');
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      sidebar.classList.add('-translate-x-full');
+    });
+  });
+
+  // 导航栏滚动效果
+  const header = document.getElementById('main-header');
+
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 50) {
+      header.classList.add('shadow-md');
+      header.classList.remove('shadow-sm');
+    } else {
+      header.classList.remove('shadow-md');
+      header.classList.add('shadow-sm');
+    }
+  });
+}
+
+
+</script>
