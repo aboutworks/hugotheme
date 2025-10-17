@@ -1,52 +1,60 @@
-<div
-	class="flex flex-col justify-between  bg-white  rounded-xl shadow-card hover:shadow-card-hover card-transition overflow-hidden">
-	<div class="relative">
-		<!-- 图片 -->
-		<div>
-			<a href="{{.Permalink }}">
-				<img src="{{.Image}}" alt="人工智能在医疗领域的应用与前景" class="w-full h-48 object-cover" data-key="56dce00d"
-					data-review-status="0"
-					data-src="https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D">
-			</a>
-			<span class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">科技</span>
-			<span class="absolute top-3 right-3 bg-accent text-white text-xs px-2 py-1 rounded-full authid_uuid_{{ .Uuid }}">{{ .Uuid }}
-				<span class="ml-1"><i class="fa fa-fire"></i></span>
-			</span>
-		</div>
-		<!-- 内容 -->
-		<div class="p-6">
-			<div class=""></div>
-			<h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2" onclick="clickaddcount('{{ .Uuid }}')"><a
-					href="{{.Permalink }}">{{.Title }}</a>
-			</h3>
-			<p class="text-gray-600 text-sm mb-4 line-clamp-3"> {{.Weight }},{{.Desc }}</p>
-			<div class="flex flex-wrap gap-2 mb-4">
-				{{ range.Tags }}
-				<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">{{. }}</span>
-				{{ end }}
-				<span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">+1</span>
-			</div>
-		</div>
-	</div>
+<div class="flex flex-col justify-between bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+  <div class="relative">
+    <!-- 图片 -->
+    <div>
+      <a href="{{.Permalink }}" class="block">
+        <img src="{{.Image}}" 
+             alt="{{.Title }}" 
+             class="w-full h-52 object-cover rounded-t-xl dark:opacity-90"  
+             data-key="56dce00d"
+             data-review-status="0"
+             data-src="https://p3-doubao-search-sign.byteimg.com/labis/ed5537814528b44db262f0bbcbf9a7e2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=ndi5fGZJaMpbhUOM6WJd2Fi5ZCM%3D"
+             loading="lazy">
+      </a>
+      <!-- 标签：深色模式换色 -->
+      <span class="absolute top-4 left-4 bg-blue-500 dark:bg-blue-600 text-white text-xs px-2.5 py-1 rounded-full font-medium">科技</span>
+      <span class="absolute top-4 right-4 bg-amber-500 dark:bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-medium authid_uuid_{{ .Uuid }}">
+        {{ .Uuid }}
+        <span class="ml-1"><i class="fa fa-fire"></i></span>
+      </span>
+    </div>
+    <!-- 内容：深色模式文字换色 -->
+    <div class="p-5 dark:text-gray-200">
+      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" onclick="clickaddcount('{{ .Uuid }}')">
+        <a href="{{.Permalink }}">{{.Title }}</a>
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-3"> {{.Weight }},{{.Desc }}</p>
+      <!-- 标签组：深色模式换背景 -->
+      <div class="flex flex-wrap gap-2 mb-1">
+        {{ range.Tags }}
+        <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">{{. }}</span>
+        {{ end }}
+        <span class="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full text-xs font-medium">+1</span>
+      </div>
+    </div>
+  </div>
 
-	<!-- 作者信息 -->
-	<div class="flex items-center justify-between p-4 px-6 border-t border-gray-100">
-		<div class="flex items-center">
-			<img src="https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D"
-				alt="李明" class="w-8 h-8 rounded-full object-cover mr-2" data-key="17dc99d4" data-review-status="0"
-				data-src="https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D">
-			<span class="text-sm text-gray-600">李明</span>
-		</div>
-		<div class="flex items-center text-sm text-gray-500">
-			<span class="mr-3"><i class="fa fa-calendar-o mr-1"></i>{{.Date.Format "2006-01-02 15:04:05" }}</span>
-			<span>
-				<i class="fa fa-eye mr-1"></i>
-				<span id="eyescount_{{.Uuid}}">-</span>
-			</span>
-		</div>
-	</div>
+  <!-- 作者信息：深色模式换边框和背景 -->
+  <div class="flex items-center justify-between p-4 px-5 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50">
+    <div class="flex items-center">
+      <img src="https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D"
+           alt="李明" 
+           class="w-7 h-7 rounded-full object-cover mr-2 border border-gray-200 dark:border-gray-600"
+           data-key="17dc99d4" 
+           data-review-status="0"
+           data-src="https://p11-doubao-search-sign.byteimg.com/labis/fb07cea27fb5d4643f3316dbb74a2c66~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1765254288&amp;x-signature=tu5W%2BluFYywwFmlKL4i6d3Jv6RU%3D"
+           loading="lazy">
+      <span class="text-sm text-gray-700 dark:text-gray-300 font-medium">李明</span>
+    </div>
+    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400">
+      <span class="mr-3"><i class="fa fa-calendar-o mr-1"></i>{{.Date.Format "2006-01-02 15:04:05" }}</span>
+      <span>
+        <i class="fa fa-eye mr-1"></i>
+        <span id="eyescount_{{.Uuid}}">-</span>
+      </span>
+    </div>
+  </div>
 </div>
-
 
 <script>
 

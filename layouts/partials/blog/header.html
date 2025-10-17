@@ -1,20 +1,28 @@
 
 <!-- 顶部导航栏 -->
-<header class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 bg-blur shadow-sm z-40 transition-all duration-300" id="main-header">
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm transition-all" id="main-header">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <div class="flex items-center space-x-2">
-      <button id="menu-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <i class="fa fa-bars text-gray-700"></i>
+      <!-- 左侧菜单按钮 -->
+      <button id="menu-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <i class="fa fa-bars text-gray-700 dark:text-gray-300"></i> <!-- 图标颜色：亮色深灰/深色浅灰 -->
       </button>
-      <h1 class="text-xl font-semibold text-gray-800"><a href="/">{{ .Site.Title }}</a></h1>
+      <!-- 网站标题 -->
+      <h1 class="text-xl font-semibold">
+        <a href="/" class="text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-dark-primary transition-colors">
+          {{ .Site.Title }}
+        </a>
+      </h1>
     </div>
 
     <div class="flex items-center space-x-3">
-      <button id="search-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <i class="fa fa-search text-gray-700"></i>
+      <!-- 搜索按钮 -->
+      <button id="search-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <i class="fa fa-search text-gray-700 dark:text-gray-300"></i> <!-- 图标颜色：同上 -->
       </button>
-      <button id="menu-right-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <i class="fa fa-bars text-gray-700"></i>
+      <!-- 右侧菜单按钮 -->
+      <button id="menu-right-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <i class="fa fa-bars text-gray-700 dark:text-gray-300"></i> <!-- 图标颜色：同上 -->
       </button>
     </div>
   </div>

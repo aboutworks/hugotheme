@@ -1,3 +1,8 @@
 {{ define "main" }}
-	{{ partial "blog/page-single.html" . }}
+{{ partial "breadcrumb.html" . }}
+{{ if eq .Params.type "article" }}
+{{ partial "blog/page-ariticle.html" . }}
+{{else if eq .Params.type "assets" }}
+{{ partial "blog/page-assets.html" . }}
+{{ end }}
 {{ end }}

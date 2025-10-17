@@ -3,13 +3,10 @@
 
 <div class="max-w-5xl mx-auto my-10 px-4">
 
-	为什么什么内容也没有显示？
   <!-- 显示页面标题 -->
   <h1 class="text-3xl font-bold mb-4">{{ .Title }}</h1>
   <!-- 显示页面正文 -->
   {{ .Content }}
-
-  没有内容
 
   {{ $weights := .Site.Params.categories }}
   {{ $terms := .Data.Terms.Alphabetical }}
@@ -35,7 +32,6 @@
   {{ $t := .term }}
 
   <section class="mb-10 border-b border-gray-200 pb-6">
-	这是标题
     <h2 class="text-2xl font-semibold text-gray-900 mb-3">
       <a href="{{ $t.Page.RelPermalink }}" class="text-blue-700 hover:underline">
         {{ $t.Page.LinkTitle }}

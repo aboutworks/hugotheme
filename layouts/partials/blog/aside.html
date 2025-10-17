@@ -1,285 +1,351 @@
-<!-- 左侧边栏 -->
 <aside
-  class="fixed inset-y-0 left-0 z-50 w-full max-w-md md:max-w-lg lg:max-w-xl bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out"
+  class="fixed inset-y-0 left-0 z-50 w-full max-w-md md:max-w-lg lg:max-w-xl 
+         bg-white dark:bg-gray-800  <!-- 浅色白 → 深色深灰 -->
+         shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out"
   id="sidebar">
-  <div class="p-4 border-b">
+  <div class="p-4 border-b border-gray-200 dark:border-gray-700">  <!-- 边框：浅灰 → 深灰 -->
+    <!-- 内容不变 -->
     <div class="flex justify-between items-center">
-      <h2 class="text-lg font-semibold">目录</h2>
-      <button id="close-sidebar" class="p-2 rounded-full hover:bg-gray-100">
-        <i class="fa fa-times"></i>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white">目录</h2>  <!-- 文字：黑 → 白 -->
+      <button id="close-sidebar" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+        <i class="fa fa-times text-gray-700 dark:text-gray-200"></i>  <!-- 图标：深灰 → 浅灰 -->
       </button>
     </div>
   </div>
-  <nav id="TableOfContents" class="px-6 py-4 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent hover:scrollbar-thumb-gray-300">
-    <!-- 滚动容器 -->
-      <!-- 目录内容（原生 ul/li 结构） -->
-      <ul class="toc-level-1">
-        {{ .TableOfContents }}
-      </ul>
+  <nav id="TableOfContents"
+    class="px-6 py-4 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent hover:scrollbar-thumb-gray-300 dark:hover:scrollbar-thumb-gray-600">
+    <ul class="toc-level-1">
+      {{ .TableOfContents }}
+    </ul>
   </nav>
 </aside>
 
-
 <style>
   #TableOfContents ul {
-    padding:1rem !important;
+    padding: 1rem !important;
+  }
+  /* 深色模式适配目录链接 */
+  #TableOfContents a {
+    color: #374151;
+    transition: color 0.2s;
+  }
+  #TableOfContents a:hover {
+    color: #1e40af;
+  }
+  .dark #TableOfContents a {
+    color: #d1d5db;
+  }
+  .dark #TableOfContents a:hover {
+    color: #93c5fd;
   }
 </style>
 
 <!-- 右侧边栏 -->
 <aside
-  class="fixed top-0 right-0 bottom-0 w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300"
+  class="fixed top-0 right-0 bottom-0 w-64 
+         bg-white dark:bg-gray-800 
+         shadow-lg z-50 transform translate-x-full transition-transform duration-300"
   id="sidebar-right">
-  <div class="p-4 border-b border-gray-200">
+  <div class="p-4 border-b border-gray-200 dark:border-gray-700">  <!-- 边框：浅灰 → 深灰 -->
     <div class="flex justify-between items-center">
-      <h2 class="text-lg font-semibold">导航</h2>
-      <button id="close-sidebar-right" class="p-2 rounded-full hover:bg-gray-100">
-        <i class="fa fa-times"></i>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white">导航</h2>  <!-- 文字：黑 → 白 -->
+      <button id="close-sidebar-right" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+        <i class="fa fa-times text-gray-700 dark:text-gray-200"></i>  <!-- 图标：深灰 → 浅灰 -->
       </button>
     </div>
   </div>
 
   <nav class="p-4">
     <ul class="space-y-2">
-      <!-- 目录将由JavaScript动态生成 -->
-
       <ul class="space-y-2">
         {{ range .Site.Menus.main }}
         <li>
-          <a href="{{ .URL }}">{{ .Name }}</a>
+          <a href="{{ .URL }}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+            {{ .Name }}
+          </a>
         </li>
         {{ end }}
       </ul>
     </ul>
 
-    <div class="mt-8 pt-4 border-t border-gray-200">
-      <h3 class="font-medium text-gray-700 mb-3">设置</h3>
-      <button id="edit-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <i class="fa fa-pencil text-gray-700" id="edit-icon"></i>
+    <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+      <h3 class="font-medium text-gray-700 dark:text-gray-300 mb-3">设置</h3>
+      <button id="edit-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+        <i class="fa fa-pencil text-gray-700 dark:text-gray-300" id="edit-icon"></i>
       </button>
-      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <i class="fa fa-moon-o text-gray-700" id="theme-icon"></i>
+      <!-- 移除 onclick，只保留 ID 用于 JS 绑定 -->
+      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+        <i class="fa fa-moon-o text-gray-700 dark:text-gray-300" id="theme-icon"></i>
       </button>
-      <button id="settings-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <i class="fa fa-cog text-gray-700"></i>
+      <button id="settings-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+        <i class="fa fa-cog text-gray-700 dark:text-gray-300"></i>
       </button>
-
     </div>
   </nav>
 </aside>
 
+<script>
+  // 所有逻辑统一包裹在 DOMContentLoaded 中，确保 DOM 加载完成
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. 先初始化主题切换（避免依赖其他逻辑）
+    initThemeToggle();
 
-<script> 
+    // 2. 再初始化其他事件（侧边栏、搜索等）
+    initOtherEventListeners();
 
-// 初始化事件监听
-function initEventListeners() {
 
-  // 遮罩管理工具函数
-  const maskManager = {
-    // 创建遮罩并添加到页面
-    createMask() {
-      // 检查是否已存在遮罩，避免重复创建
-      if (document.getElementById('sidebar-mask')) return;
+    // -------------------------- 主题切换逻辑 --------------------------
+    function initThemeToggle() {
+      // 获取主题相关元素
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon'); // 用图标替代 btnText，更直观
+      const html = document.documentElement;
 
-      const mask = document.createElement('div');
-      mask.id = 'sidebar-mask';
-      mask.className = 'fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 opacity-0 backdrop-blur-sm';
-      document.body.appendChild(mask);
+      // 检查元素是否存在，避免报错
+      if (!themeToggle || !themeIcon) {
+        console.warn('主题切换按钮或图标未找到');
+        return;
+      }
 
-      // 延迟添加 opacity 实现淡入效果
-      setTimeout(() => {
-        mask.classList.replace('opacity-0', 'opacity-100');
-      }, 10);
+      // 初始化主题（读取本地存储/系统偏好）
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark' || 
+                      (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+          html.classList.add('dark');
+          themeIcon.classList.remove('fa-moon-o');
+          themeIcon.classList.add('fa-sun-o'); // 深色模式显示太阳图标
+        } else {
+          html.classList.remove('dark');
+          themeIcon.classList.remove('fa-sun-o');
+          themeIcon.classList.add('fa-moon-o'); // 浅色模式显示月亮图标
+        }
+      }
 
-      // 点击遮罩关闭所有侧边栏
-      mask.addEventListener('click', () => {
-        sidebar.classList.add('-translate-x-full');
-        sidebarRight.classList.add('translate-x-full');
-        this.removeMask();
+      // 切换主题逻辑
+      function toggleTheme() {
+        const isDark = html.classList.toggle('dark');
+        
+        // 更新图标（比文字更简洁）
+        if (isDark) {
+          themeIcon.classList.remove('fa-moon-o');
+          themeIcon.classList.add('fa-sun-o');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeIcon.classList.remove('fa-sun-o');
+          themeIcon.classList.add('fa-moon-o');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // 绑定点击事件（唯一触发方式）
+      themeToggle.addEventListener('click', toggleTheme);
+
+      // 初始化主题
+      initTheme();
+    }
+
+
+    // -------------------------- 其他事件逻辑（侧边栏、搜索等） --------------------------
+    function initOtherEventListeners() {
+      // 遮罩管理工具函数
+      const maskManager = {
+        createMask() {
+          if (document.getElementById('sidebar-mask')) return;
+
+          const mask = document.createElement('div');
+          mask.id = 'sidebar-mask';
+          mask.className = 'fixed inset-0 bg-black/50 dark:bg-black/70 z-40 transition-opacity duration-300 opacity-0 backdrop-blur-sm';
+          document.body.appendChild(mask);
+
+          setTimeout(() => mask.classList.replace('opacity-0', 'opacity-100'), 10);
+
+          // 点击遮罩关闭所有侧边栏
+          mask.addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarRight = document.getElementById('sidebar-right');
+            if (sidebar) sidebar.classList.add('-translate-x-full');
+            if (sidebarRight) sidebarRight.classList.add('translate-x-full');
+            this.removeMask();
+          });
+        },
+
+        removeMask() {
+          const mask = document.getElementById('sidebar-mask');
+          if (!mask) return;
+
+          mask.classList.replace('opacity-100', 'opacity-0');
+          setTimeout(() => mask.remove(), 300);
+        },
+
+        hasOpenSidebar(sidebar, sidebarRight) {
+          return (sidebar && !sidebar.classList.contains('-translate-x-full')) ||
+                 (sidebarRight && !sidebarRight.classList.contains('translate-x-full'));
+        }
+      };
+
+
+      // 左侧边栏逻辑
+      const menuToggle = document.getElementById('menu-toggle');
+      const closeSidebar = document.getElementById('close-sidebar');
+      const sidebar = document.getElementById('sidebar');
+
+      if (menuToggle && closeSidebar && sidebar) {
+        menuToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('-translate-x-full');
+          if (sidebar.classList.contains('-translate-x-full')) {
+            if (!maskManager.hasOpenSidebar(sidebar, document.getElementById('sidebar-right'))) {
+              maskManager.removeMask();
+            }
+          } else {
+            maskManager.createMask();
+          }
+        });
+
+        closeSidebar.addEventListener('click', () => {
+          sidebar.classList.add('-translate-x-full');
+          if (!maskManager.hasOpenSidebar(sidebar, document.getElementById('sidebar-right'))) {
+            maskManager.removeMask();
+          }
+        });
+
+        // 点击侧边栏链接关闭侧边栏
+        sidebar.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => sidebar.classList.add('-translate-x-full'));
+        });
+      }
+
+
+      // 右侧边栏逻辑
+      const menuRightToggle = document.getElementById('menu-right-toggle');
+      const closeSidebarRight = document.getElementById('close-sidebar-right');
+      const sidebarRight = document.getElementById('sidebar-right');
+
+      if (menuRightToggle && closeSidebarRight && sidebarRight) {
+        menuRightToggle.addEventListener('click', () => {
+          sidebarRight.classList.toggle('translate-x-full');
+          if (sidebarRight.classList.contains('translate-x-full')) {
+            if (!maskManager.hasOpenSidebar(document.getElementById('sidebar'), sidebarRight)) {
+              maskManager.removeMask();
+            }
+          } else {
+            maskManager.createMask();
+          }
+        });
+
+        closeSidebarRight.addEventListener('click', () => {
+          sidebarRight.classList.add('translate-x-full');
+          if (!maskManager.hasOpenSidebar(document.getElementById('sidebar'), sidebarRight)) {
+            maskManager.removeMask();
+          }
+        });
+      }
+
+
+      // 搜索面板切换（需确保元素存在）
+      const searchToggle = document.getElementById('search-toggle');
+      const searchPanel = document.getElementById('search-panel');
+      if (searchToggle && searchPanel) {
+        searchToggle.addEventListener('click', () => {
+          searchPanel.classList.toggle('hidden');
+          if (!searchPanel.classList.contains('hidden')) {
+            const searchInput = searchPanel.querySelector('input');
+            if (searchInput) searchInput.focus();
+          }
+        });
+      }
+
+
+      // 设置面板切换（需确保元素存在）
+      const settingsToggle = document.getElementById('settings-toggle');
+      const closeSettings = document.getElementById('close-settings');
+      const settingsPanel = document.getElementById('settings-panel');
+      if (settingsToggle && closeSettings && settingsPanel) {
+        settingsToggle.addEventListener('click', () => settingsPanel.classList.toggle('hidden'));
+        closeSettings.addEventListener('click', () => settingsPanel.classList.add('hidden'));
+      }
+
+
+      // 编辑模式切换（需确保元素存在）
+      const editToggle = document.getElementById('edit-toggle');
+      const editIcon = document.getElementById('edit-icon');
+      const markdownEditor = document.getElementById('markdown-editor');
+      const articleContent = document.getElementById('article-content');
+      const saveButton = document.getElementById('save-content');
+      if (editToggle && editIcon && markdownEditor && articleContent) {
+        editToggle.addEventListener('click', () => {
+          if (markdownEditor.style.display === 'block') {
+            // 假设 renderMarkdownContent 已定义（若未定义需补充）
+            if (window.renderMarkdownContent) renderMarkdownContent();
+            markdownEditor.style.display = 'none';
+            articleContent.style.display = 'block';
+            editIcon.classList.remove('fa-eye');
+            editIcon.classList.add('fa-pencil');
+          } else {
+            markdownEditor.style.display = 'block';
+            articleContent.style.display = 'none';
+            editIcon.classList.remove('fa-pencil');
+            editIcon.classList.add('fa-eye');
+
+            // 重新初始化编辑器
+            setTimeout(() => {
+              if (window.simplemde && window.simplemde.codemirror) {
+                window.simplemde.codemirror.refresh();
+              }
+            }, 100);
+          }
+        });
+      }
+
+
+      // 返回顶部按钮（需确保元素存在）
+      const backToTopButton = document.getElementById('back-to-top');
+      if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+          } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+          }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+
+      // 点击页面其他区域关闭面板
+      document.addEventListener('click', (event) => {
+        // 关闭搜索面板
+        if (searchPanel && !searchPanel.contains(event.target) && event.target !== searchToggle) {
+          searchPanel.classList.add('hidden');
+        }
+
+        // 关闭设置面板
+        if (settingsPanel && !settingsPanel.contains(event.target) && event.target !== settingsToggle) {
+          settingsPanel.classList.add('hidden');
+        }
       });
-    },
-
-    // 移除遮罩
-    removeMask() {
-      const mask = document.getElementById('sidebar-mask');
-      if (!mask) return;
-
-      // 淡入淡出效果
-      mask.classList.replace('opacity-100', 'opacity-0');
-      setTimeout(() => {
-        mask.remove();
-      }, 300);
-    },
-
-    // 检查是否有侧边栏处于打开状态
-    hasOpenSidebar(sidebar, sidebarRight) {
-      return !sidebar.classList.contains('-translate-x-full') ||
-        !sidebarRight.classList.contains('translate-x-full');
-    }
-  };
 
 
-  // 左侧边栏逻辑
-  const menuToggle = document.getElementById('menu-toggle');
-  const closeSidebar = document.getElementById('close-sidebar');
-  const sidebar = document.getElementById('sidebar');
-
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('-translate-x-full');
-    // 根据侧边栏状态切换遮罩
-    if (sidebar.classList.contains('-translate-x-full')) {
-      // 关闭时检查是否还有其他打开的侧边栏
-      if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
-        maskManager.removeMask();
+      // 导航栏滚动效果（需确保元素存在）
+      const header = document.getElementById('main-header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 50) {
+            header.classList.add('shadow-md');
+            header.classList.remove('shadow-sm');
+          } else {
+            header.classList.remove('shadow-md');
+            header.classList.add('shadow-sm');
+          }
+        });
       }
-    } else {
-      maskManager.createMask();
     }
   });
-
-  closeSidebar.addEventListener('click', () => {
-    sidebar.classList.add('-translate-x-full');
-    if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
-      maskManager.removeMask();
-    }
-  });
-
-  // 右侧边栏逻辑
-  const menuRightToggle = document.getElementById('menu-right-toggle');
-  const closeSidebarRight = document.getElementById('close-sidebar-right');
-  const sidebarRight = document.getElementById('sidebar-right');
-
-  menuRightToggle.addEventListener('click', () => {
-    sidebarRight.classList.toggle('translate-x-full');
-    // 根据侧边栏状态切换遮罩
-    if (sidebarRight.classList.contains('translate-x-full')) {
-      if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
-        maskManager.removeMask();
-      }
-    } else {
-      maskManager.createMask();
-    }
-  });
-
-  closeSidebarRight.addEventListener('click', () => {
-    sidebarRight.classList.add('translate-x-full');
-    if (!maskManager.hasOpenSidebar(sidebar, sidebarRight)) {
-      maskManager.removeMask();
-    }
-  });
-
-  // 搜索面板切换
-  const searchToggle = document.getElementById('search-toggle');
-  const searchPanel = document.getElementById('search-panel');
-
-  searchToggle.addEventListener('click', function () {
-    searchPanel.classList.toggle('hidden');
-
-    // 如果显示搜索面板，自动聚焦搜索框
-    if (!searchPanel.classList.contains('hidden')) {
-      searchPanel.querySelector('input').focus();
-    }
-  });
-
-  // 设置面板切换
-  const settingsToggle = document.getElementById('settings-toggle');
-  const closeSettings = document.getElementById('close-settings');
-  const settingsPanel = document.getElementById('settings-panel');
-
-  settingsToggle.addEventListener('click', function () {
-    settingsPanel.classList.toggle('hidden');
-  });
-
-  closeSettings.addEventListener('click', function () {
-    settingsPanel.classList.add('hidden');
-  });
-
-  // 编辑模式切换
-  const editToggle = document.getElementById('edit-toggle');
-  const editIcon = document.getElementById('edit-icon');
-  const markdownEditor = document.getElementById('markdown-editor');
-  const articleContent = document.getElementById('article-content');
-  const saveButton = document.getElementById('save-content');
-
-  editToggle.addEventListener('click', function () {
-    // 切换编辑模式和阅读模式
-    if (markdownEditor.style.display === 'block') {
-      // 保存内容并切换到阅读模式
-      renderMarkdownContent();
-      markdownEditor.style.display = 'none';
-      articleContent.style.display = 'block';
-      editIcon.classList.remove('fa-eye');
-      editIcon.classList.add('fa-pencil');
-    } else {
-      // 切换到编辑模式
-      markdownEditor.style.display = 'block';
-      articleContent.style.display = 'none';
-      editIcon.classList.remove('fa-pencil');
-      editIcon.classList.add('fa-eye');
-
-      // 重新初始化编辑器以适应主题
-      setTimeout(() => {
-        window.simplemde.codemirror.refresh();
-      }, 100);
-    }
-  });
-
-
-
-  // 返回顶部按钮
-  const backToTopButton = document.getElementById('back-to-top');
-
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset > 300) {
-      backToTopButton.classList.remove('opacity-0', 'invisible');
-      backToTopButton.classList.add('opacity-100', 'visible');
-    } else {
-      backToTopButton.classList.remove('opacity-100', 'visible');
-      backToTopButton.classList.add('opacity-0', 'invisible');
-    }
-  });
-
-  backToTopButton.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  // 点击页面其他区域关闭搜索面板和设置面板
-  document.addEventListener('click', function (event) {
-    // 搜索面板
-    if (!searchPanel.contains(event.target) && event.target !== searchToggle) {
-      searchPanel.classList.add('hidden');
-    }
-
-    // 设置面板
-    if (!settingsPanel.contains(event.target) && event.target !== settingsToggle) {
-      settingsPanel.classList.add('hidden');
-    }
-  });
-
-  // 点击侧边栏链接关闭侧边栏
-  const sidebarLinks = sidebar.querySelectorAll('a');
-  sidebarLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      sidebar.classList.add('-translate-x-full');
-    });
-  });
-
-  // 导航栏滚动效果
-  const header = document.getElementById('main-header');
-
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset > 50) {
-      header.classList.add('shadow-md');
-      header.classList.remove('shadow-sm');
-    } else {
-      header.classList.remove('shadow-md');
-      header.classList.add('shadow-sm');
-    }
-  });
-}
-
-
 </script>
