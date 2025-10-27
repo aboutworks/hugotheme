@@ -8,7 +8,7 @@
 <div class="protect-content bg-custom-bg-color p-8 rounded-2xl shadow-lg max-w-4xl mx-auto mt-8 transition-colors duration-300">
 
   <!-- 标题区域 -->
-  <header class="mb-6">
+  <div class="mb-6">
     <!-- Title -->
     <h1
       class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight">
@@ -32,7 +32,7 @@
       {{ $dateHuman }}
     </time>
     {{ end }}
-  </header>
+  </div>
 
   <!-- 正文内容 -->
   <article
@@ -48,9 +48,9 @@
   </article>
 
   <!-- 标签与评论 -->
-  <footer class="mt-10 border-t border-neutral pt-6 transition-colors duration-300">
+  <div class="mt-10 border-t border-neutral pt-6 transition-colors duration-300">
     {{ partial "taxonomy-tags.html" . }}
     {{ partial "comments.html" (dict "uuid" .Params.uuid "Sitetitle" .Site.Title) }}
-  </footer>
+  </div>
 
 </div>

@@ -68,17 +68,18 @@
 		</svg>
 		退出授权 {{.Params.uuid}}
 	</button>
+	<div id="protect-article">
 	{{ partial "blog/post-content.html" . }}
+	</div>
 </div>
 
 
 {{ else }}
 
 <!-- 不受保护的内容 -->
-<div id="protected-content-section">
+<div>
 	{{ partial "blog/post-content.html" . }}
 </div>
-
 
 {{ end }}
 
@@ -158,7 +159,7 @@ function outValidateAuthCode(uuid){
 		localStorage.setItem(uuid, JSON.stringify(authDataObj));
 		window.location.reload();
 				document.getElementById('auth-form-section').style.display = 'block';
-				document.getElementById('article-content').remove();
+				document.getElementById('protect-article').remove();
 	}
 }
 
@@ -167,6 +168,7 @@ function outValidateAuthCode(uuid){
 
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
+		
 		const progressBar = document.getElementById('progress-bar');
 		if (!progressBar) return;
 
@@ -185,7 +187,7 @@ function outValidateAuthCode(uuid){
 				document.getElementById('auth-form-section').style.display = 'none';
 				document.getElementById('protected-content-section').style.display = 'block';
 			}else if(josnStorage && josnStorage.authorized === false){
-				document.getElementById('article-content').remove();
+				document.getElementById('protect-article').remove();
 
 			}else if(josnStorage && josnStorage.authorized  === null){
 				window.location.reload();
