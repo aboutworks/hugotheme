@@ -1,3 +1,9 @@
+<!-- 阅读进度条 -->
+<div id="progress-bar"
+  class="fixed top-0 left-0 h-1 z-50 bg-gradient-to-r from-brand-primary-100 to-brand-primary-900 transition-all duration-300"
+  style="width: 0%;">
+</div>
+
 {{ if .Params.protect }}
 
 <!-- 授权表单区域 -->
@@ -53,7 +59,7 @@
 </div>
 <!-- 受保护内容区域 -->
 <div id="protected-content-section" style="display:none;">
-	<button  data-uuid="{{ .Params.uuid }}" onclick="outValidateAuthCode(this.dataset.uuid)" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium 
+	<button data-uuid="{{ .Params.uuid }}" onclick="outValidateAuthCode(this.dataset.uuid)" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium 
                text-red-600 bg-red-50 rounded               border border-red-200 rounded-full 
                hover:bg-red-100 hover:border-red-300
                dark:bg-red-900/15 dark:text-red-400 
@@ -69,7 +75,7 @@
 		退出授权 {{.Params.uuid}}
 	</button>
 	<div id="protect-article">
-	{{ partial "blog/post-content.html" . }}
+		{{ partial "blog/post-content.html" . }}
 	</div>
 </div>
 
@@ -84,9 +90,10 @@
 {{ end }}
 
 <script>
+
 	// 授权验证脚本
 	async function validateAuthCode(authCode) {
-		console.log('开始验证授权码...', authCode,document.getElementById('auth-code-input').value);
+		console.log('开始验证授权码...', authCode, document.getElementById('auth-code-input').value);
 
 		// 从 localStorage 读取数据
 		let authData = localStorage.getItem(authCode);
@@ -149,26 +156,24 @@
 
 
 
-function outValidateAuthCode(uuid){
-	console.log('开始退出授权...', uuid);
-	const authData = localStorage.getItem(uuid);
-	//将authorized改为false其它不变
-	if (authData) {
-		const authDataObj = JSON.parse(authData);
-		authDataObj.authorized = false;
-		localStorage.setItem(uuid, JSON.stringify(authDataObj));
-		window.location.reload();
-				document.getElementById('auth-form-section').style.display = 'block';
-				document.getElementById('protect-article').remove();
+	// 退出授权
+	function outValidateAuthCode(uuid) {
+		console.log('开始退出授权...', uuid);
+		const authData = localStorage.getItem(uuid);
+		//将authorized改为false其它不变
+		if (authData) {
+			const authDataObj = JSON.parse(authData);
+			authDataObj.authorized = false;
+			localStorage.setItem(uuid, JSON.stringify(authDataObj));
+			window.location.reload();
+			document.getElementById('auth-form-section').style.display = 'block';
+			document.getElementById('protect-article').remove();
+		}
 	}
-}
-
-</script>
 
 
-<script>
 	document.addEventListener('DOMContentLoaded', function () {
-		
+
 		const progressBar = document.getElementById('progress-bar');
 		if (!progressBar) return;
 
@@ -183,13 +188,13 @@ function outValidateAuthCode(uuid){
 			// 如果saveDataStr中的authorized为true时
 			const josnStorage = JSON.parse(savedDataStr);
 
-			if(josnStorage && josnStorage.authorized){
+			if (josnStorage && josnStorage.authorized) {
 				document.getElementById('auth-form-section').style.display = 'none';
 				document.getElementById('protected-content-section').style.display = 'block';
-			}else if(josnStorage && josnStorage.authorized === false){
+			} else if (josnStorage && josnStorage.authorized === false) {
 				document.getElementById('protect-article').remove();
 
-			}else if(josnStorage && josnStorage.authorized  === null){
+			} else if (josnStorage && josnStorage.authorized === null) {
 				window.location.reload();
 			}
 
@@ -245,6 +250,8 @@ function outValidateAuthCode(uuid){
 	// 初始化滚动监听（无改动）
 	function initProgressBar(storageKey) {
 		const progressBar = document.getElementById('progress-bar');
+		const savedDataStr = localStorage.getItem(storageKey);
+		console.log('初始化进度条监听:', storageKey, savedDataStr);
 		if (!progressBar) return;
 
 		window.addEventListener('scroll', function () {
