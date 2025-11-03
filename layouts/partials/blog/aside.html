@@ -197,10 +197,10 @@
           sidebar.classList.toggle('-translate-x-full');
           if (sidebar.classList.contains('-translate-x-full')) {
             if (!maskManager.hasOpenSidebar(sidebar, document.getElementById('sidebar-right'))) {
-              maskManager.removeMask();
+              // maskManager.removeMask(); //移除遮罩
             }
           } else {
-            maskManager.createMask();
+            // maskManager.createMask(); //创建遮罩 这里不需要了了，会挡住当前内容，注释掉
           }
         });
 
