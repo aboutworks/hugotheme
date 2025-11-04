@@ -21,5 +21,5 @@ p:has(img) img {
 }
 
 main{
-  min-height: calc(100vh - 274px);
+  min-height: calc(100vh - 338px);
 }
