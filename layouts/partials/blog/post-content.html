@@ -7,7 +7,7 @@
   <div class="mb-6">
     <!-- Title -->
     <h1
-      class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight">
+      class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight dark:text-white">
       {{ .Title }}
     </h1>
 
@@ -33,7 +33,7 @@
   <!-- 正文内容 -->
   <article
     id="article-content"
-    class="markdown-body markdown-content reading-container prose prose-lg max-w-none font-sans text-primary leading-relaxed transition-colors duration-300">
+    class="dark:text-gray-200 markdown-body markdown-content reading-container prose prose-lg max-w-none font-sans text-primary leading-relaxed transition-colors duration-300">
     
     {{/* 目录 (可选) */}}
     {{ if eq .Params.toc "true" }}
