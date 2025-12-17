@@ -1,0 +1,31 @@
+<div class="officialBox">
+	<div class="officialBox_item">
+		<a class="officialBox_img" href="{{ .Permalink }}">
+			{{ with .Resources.GetMatch .Params.image }}
+			<img src="{{ .RelPermalink }}" alt="{{ $.Params.title }}" width="100%" />
+			{{ else }}
+			<p>图片未找到</p>
+			{{ end }}
+		</a>
+		<div style="padding:1rem;">
+			<a class="officialBox_img" href="{{ .Permalink }}">
+				<div class="official_item_title"> {{ .Title }} </div>
+			</a>
+			<div class="official_item_addr"> {{ .Nation }} / {{ .Addr }}</div>
+			<div class="official_item_date"> {{ .publicDate }}</div>
+			<div> 開催前 </div>
+			<div class="official_item_desc"> #絵画・平面 </div>
+			<div class="button_text">前往</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var _hmt = _hmt || [];
+	(function () {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?ca1a7b295f745ebde412951ff4ac73fe";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>

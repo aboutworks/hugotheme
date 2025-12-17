@@ -1,32 +1,32 @@
 
   <!-- 底部导航 -->
-  <footer class="bg-white border-t py-8 mt-12">
+<footer class="bg-white dark:bg-gray-900 border-t dark:border-gray-800 py-8 mt-12 transition-colors duration-300">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-          <h2 class="text-xl font-semibold mb-2">JimmyWong</h2>
-          <p class="text-gray-600 text-sm">沉浸式图文阅读体验</p>
+          <h2 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">JimmyWong</h2>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">沉浸式图文阅读体验</p>
         </div>
         
         <div class="flex space-x-4">
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+          <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <i class="fa fa-facebook"></i>
           </a>
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+          <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <i class="fa fa-twitter"></i>
           </a>
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+          <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <i class="fa fa-instagram"></i>
           </a>
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+          <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <i class="fa fa-linkedin"></i>
           </a>
         </div>
       </div>
       
-      <div class="mt-8 pt-6 border-t text-center text-gray-600 text-sm">
-        <p>&copy;    {{ T "footer.copyright" }} 2020 - {{ now.Year }} {{ T "footer.all_rights_reserved" }}
-   © Copyright By <span>{{ .Site.Title }}</span> Designer | <a href="mailto:aboutworks@outlook.com">Aboutworks@outlook.com</a></p>
+      <div class="mt-8 pt-6 border-t dark:border-gray-800 text-center text-gray-600 dark:text-gray-400 text-sm">
+        <p>&copy; {{ T "footer.copyright" }} 2020 - {{ now.Year }} {{ T "footer.all_rights_reserved" }}
+   © Copyright By <span class="text-gray-900 dark:text-white">{{ .Site.Title }}</span> Designer | <a href="mailto:aboutworks@outlook.com" class="hover:text-blue-600 dark:hover:text-blue-400">Aboutworks@outlook.com</a></p>
       </div>
     </div>
   </footer>

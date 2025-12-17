@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进销库存对账退货管理系统 - 账号申请</title>
+  <!-- 引入Tailwind CSS实现样式 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 自定义配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF', // 主色调：专业蓝
+            secondary: '#36CFC9', // 辅助色：科技青
+            neutral: '#F5F7FA', // 中性色：背景灰
+            dark: '#1D2129', // 深色：文字
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .input-focus {
+        @apply focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-neutral font-sans text-dark">
+  <!-- 顶部导航栏 -->
+  <header class="bg-white card-shadow sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- 系统Logo -->
+        <div class="flex items-center">
+          <div class="text-primary text-2xl mr-2">
+
+
+
+            <i class="fa fa-cubes"></i>
+          </div>
+
+
+          <h1 class="text-xl font-bold text-dark">易用进销存管理系统</h1>
+          <div style="padding: 0 1rem;">|</div>
+
+       <svg width="101" height="26" viewBox="0 0 101 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 16H28.4164V12.3076H31V16ZM31 3.2H9.78945V6.4H16.3156V4.8H24.4733V6.4H31V9.6H24.4733V15.9995H11.4211V12.7995H16.3156V9.6H0V0H31V3.2ZM4.70078 15.7014H0V12.4808H4.70078V15.7014Z" fill="black"/>
+<path d="M57.938 3.20011H67V0H36V3.20011H47.4211V8.00026H36V11.1998H47.4211V12.7999H40.7008V16H57.938V11.1998H67V8.00026H57.938V3.20011Z" fill="black"/>
+<path d="M36 7.38405H40.7008V4.92287H36V7.38405Z" fill="black"/>
+<path d="M62.0397 7.38405H67V4.92287H62.0397V7.38405Z" fill="black"/>
+<path d="M96.1756 9.59989H101V0H71V3.19979H75.7366L71 16H101V11.1998H96.1756V12.7997H79.2124L82.5081 3.19979H86.7019V9.59989H91.4385V3.19979H96.1756V9.59989Z" fill="black"/>
+<path d="M6.42857 20H0V26H15V24.3636H10V23H6.42857V20Z" fill="black"/>
+<path d="M32 20V23H28V21.0909H24V23H28V24.3636H32V26H18V20H32Z" fill="black"/>
+<path d="M36 26V20H41.5714V22.7273H45.2857V20H49V26H45.2857V24.3636H41.5714V26H36Z" fill="black"/>
+<path d="M52 20V26H57.5714H61.2857H65V20H61.2857V24.9091H57.5714V20H52Z" fill="black"/>
+<path d="M68 24.9091V20H74.4286V23.2727H78.7143V20H83V26H78.7143V24.9091H74.4286H68Z" fill="black"/>
+<path d="M101 20V23H96.7143V21.0909H92.4286V23H96.7143V24.3636H101V26H86V20H101Z" fill="black"/>
+</svg>
+
+        </div>
+        
+        <!-- 导航链接 -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#features" class="text-gray-600 hover:text-primary transition-colors">系统功能</a>
+          <a href="#apply" class="text-gray-600 hover:text-primary transition-colors">账号申请</a>
+          <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">联系支持</a>
+        </nav>
+        
+        <!-- 移动端菜单按钮 -->
+        <button class="md:hidden text-gray-600 hover:text-primary" id="menuBtn">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- 移动端导航菜单 -->
+    <div class="md:hidden hidden bg-white w-full" id="mobileMenu">
+      <div class="container mx-auto px-4 py-3 space-y-3">
+        <a href="#features" class="block text-gray-600 hover:text-primary transition-colors">系统功能</a>
+        <a href="#apply" class="block text-gray-600 hover:text-primary transition-colors">账号申请</a>
+        <a href="#contact" class="block text-gray-600 hover:text-primary transition-colors">联系支持</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+    <!-- 页面标题区 -->
+    <section class="text-center mb-12 md:mb-20">
+      <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">
+        申请系统账号，高效管理进销存
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+        填写下方表单申请系统使用权限，审核通过后将通过短信/邮件发送账号信息，助力企业实现库存、对账、退货全流程数字化管理
+      </p>
+    </section>
+
+    <!-- 系统功能介绍区 -->
+    <section id="features" class="mb-16 md:mb-24">
+      <div class="text-center mb-12">
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">系统核心功能</h3>
+        <div class="w-20 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <!-- 功能卡片网格 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <!-- 功能1：进销管理 -->
+        <div class="bg-white rounded-lg p-6 card-shadow hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl mb-4">
+            <i class="fa fa-exchange"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-3">进销管理</h4>
+          <p class="text-gray-600">
+            支持采购入库、销售出库单创建，自动关联库存数据，实时更新商品流通记录，减少人工统计误差
+          </p>
+        </div>
+        
+        <!-- 功能2：库存对账 -->
+        <div class="bg-white rounded-lg p-6 card-shadow hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl mb-4">
+            <i class="fa fa-balance-scale"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-3">库存对账</h4>
+          <p class="text-gray-600">
+            自动生成库存台账与财务对账报表，支持Excel导出，对比实际库存与系统数据，快速定位差异原因
+          </p>
+        </div>
+        
+        <!-- 功能3：退货处理 -->
+        <div class="bg-white rounded-lg p-6 card-shadow hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl mb-4">
+            <i class="fa fa-reply"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-3">退货处理</h4>
+          <p class="text-gray-600">
+            标准化退货流程，支持退货申请、审核、入库全跟踪，自动调整库存与应收账款，降低退货管理成本
+          </p>
+        </div>
+        
+        <!-- 功能4：数据报表 -->
+        <div class="bg-white rounded-lg p-6 card-shadow hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl mb-4">
+            <i class="fa fa-bar-chart"></i>
+          </div>
+          <h4 class="text-xl font-semibold mb-3">数据报表</h4>
+          <p class="text-gray-600">
+            多维度数据可视化（销量趋势、库存周转率、退货率），支持自定义报表周期，辅助经营决策
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 账号申请表单区 -->
+     {{ partial "official/page-applyfor-form.html" . }}
+     
+     </main>
+
+  <!-- 页脚 -->
+  <footer id="contact" class="bg-dark text-white py-12 mt-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 系统介绍 -->
+        <div>
+          <div class="flex items-center mb-4">
+            <div class="text-secondary text-2xl mr-2">
+              <i class="fa fa-cubes"></i>
+            </div>
+            <h4 class="text-xl font-bold">进销库存对账退货管理系统</h4>
+          </div>
+          <p class="text-gray-400 mb-4">
+            专注于企业进销存全流程数字化管理，助力降低运营成本，提升管理效率
+          </p>
+          <div class="flex space-x-4 text-gray-400">
+            <a href="#" class="hover:text-secondary transition-colors"><i class="fa fa-weixin text-xl"></i></a>
+            <a href="#" class="hover:text-secondary transition-colors"><i class="fa fa-weibo text-xl"></i></a>
+            <a href="#" class="hover:text-secondary transition-colors"><i class="fa fa-envelope text-xl"></i></a>
+          </div>
+        </div>
+        
+        <!-- 联系支持 -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">联系支持</h4>
+          <ul class="space-y-3 text-gray-400">
+            <!-- <li class="flex items-center">
+              <i class="fa fa-phone mr-3 text-secondary"></i>
+              <span>400-888-9999</span>
+            </li> -->
+            <li class="flex items-center">
+              <i class="fa fa-envelope mr-3 text-secondary"></i>
+              <span>aboutworks@outlook.com</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-clock-o mr-3 text-secondary"></i>
+              <span>工作日 9:00-18:00</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- 快速链接 -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-secondary transition-colors">系统演示</a></li>
+            <li><a href="#" class="hover:text-secondary transition-colors">帮助文档</a></li>
+            <li><a href="#" class="hover:text-secondary transition-colors">常见问题</a></li>
+            <li><a href="#" class="hover:text-secondary transition-colors">版本更新</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+        <p>© 2025 进销库存对账退货管理系统 版权所有 | 京ICP备12345678号</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // 表单提交处理
+    const applyForm = document.getElementById('applyForm');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.getElementById('closeModal');
+    const submitBtn = document.getElementById('submitBtn');
+
+    applyForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // 阻止默认提交
+      
+      // 模拟提交加载状态
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>提交中...';
+      
+      // 模拟接口请求（2秒后显示成功弹窗）
+      setTimeout(() => {
+        successModal.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa fa-paper-plane mr-2"></i>提交申请';
+        applyForm.reset(); // 重置表单
+      }, 2000);
+    });
+
+    // 关闭成功弹窗
+    closeModal.addEventListener('click', () => {
+      successModal.classList.add('hidden');
+    });
+
+    // 点击弹窗外部关闭
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.add('hidden');
+      }
+    });
+
+    // 手机号格式验证提示
+    const contactPhone = document.getElementById('contactPhone');
+    contactPhone.addEventListener('input', () => {
+      const phoneValue = contactPhone.value;
+      if (phoneValue.length > 0 && !/^1[3-9]\d{0,9}$/.test(phoneValue)) {
+        contactPhone.setCustomValidity('请输入正确的11位手机号');
+      } else {
+        contactPhone.setCustomValidity('');
+      }
+    });
+  </script>
+</body>
+</html>

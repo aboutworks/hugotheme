@@ -1,0 +1,138 @@
+
+    <style>
+        /* 广告横幅基础样式 */
+        .ad-banner {
+            width: 100%;
+            background: linear-gradient(135deg, #868203, #02264e);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* flex-wrap: wrap; */
+            gap: 1rem;
+            /* position: relative; */
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 横幅内容区 */
+        .ad-banner__content {
+            max-width: 800px;
+        }
+
+        .ad-banner__title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .ad-banner__desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0 0 1rem 0;
+            line-height: 1.4;
+        }
+
+        /* 跳转按钮 */
+        .ad-banner__btn {
+            background: #fff;
+            color: #165DFF;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .ad-banner__btn:hover {
+            background: #f0f5ff;
+            transform: translateY(-2px);
+        }
+
+        /* 关闭按钮 */
+        .ad-banner__close {
+            background: transparent;
+            color: #fff;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .ad-banner__close:hover {
+            opacity: 1;
+        }
+
+        /* 隐藏横幅的类 */
+        .ad-banner.hidden {
+            display: none;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .ad-banner {
+                padding: 1rem 1.5rem;
+            }
+
+            .ad-banner__title {
+                font-size: 1.2rem;
+            }
+
+            .ad-banner__desc {
+                font-size: 0.9rem;
+            }
+
+            .ad-banner__btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <!-- 广告横幅 Section -->
+    <section class="ad-banner" id="inventoryAdBanner">
+        <div class="ad-banner__content">
+            <h3 class="ad-banner__title">进销库存对账退货管理系统 - 免费申请试用</h3>
+            <p class="ad-banner__desc">一键搞定采购入库、库存对账、退货处理！企业数字化管理效率提升50%，现在申请全功能体验</p>
+            <a href="/applyfor" class="ad-banner__btn" target="_self" style="color: #868203;">立即申请账号</a>
+        </div>
+        <button class="ad-banner__close" id="closeAdBtn">&times;</button>
+    </section>
+
+    <script>
+        // // 1. 获取DOM元素
+        // const adBanner = document.getElementById('inventoryAdBanner');
+        // const closeAdBtn = document.getElementById('closeAdBtn');
+
+        // // 2. 页面加载时检查横幅是否已被关闭（从localStorage读取状态）
+        // window.addEventListener('DOMContentLoaded', () => {
+        //     // 读取localStorage中"adBannerClosed"的状态（默认false，即显示）
+        //     const isAdClosed = localStorage.getItem('adBannerClosed') === 'true';
+        //     if (isAdClosed) {
+        //         adBanner.classList.add('hidden'); // 已关闭则隐藏横幅
+        //     }
+        // });
+
+        // // 3. 点击关闭按钮隐藏横幅，并保存状态到localStorage
+        // closeAdBtn.addEventListener('click', () => {
+        //     adBanner.classList.add('hidden'); // 隐藏横幅
+        //     // 保存关闭状态到localStorage（有效期与浏览器存储一致，清除缓存或隐私数据后会重置）
+        //     localStorage.setItem('adBannerClosed', 'true');
+        // });
+
+        // （可选）如需添加"重新显示横幅"的逻辑，可添加如下代码（示例：按F5刷新时不重置，按特定按钮重置）
+        // 示例：添加一个按钮触发重新显示
+        // const showAdBtn = document.getElementById('showAdBtn');
+        // showAdBtn.addEventListener('click', () => {
+        //     adBanner.classList.remove('hidden');
+        //     localStorage.setItem('adBannerClosed', 'false');
+        // });
+    </script>

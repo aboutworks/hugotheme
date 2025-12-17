@@ -1,8 +1,9 @@
     <!-- 面包屑导航 -->
-    <div class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+    <div class="text-sm text-gray-500 dark:text-gray-400 pt-6 pb-6 max-w-4xl mx-auto">
       <a href="/" class="hover:text-primary dark:hover:text-dark-primary">首页</a>
       <span class="mx-2">/</span>
-      <a href="#" class="hover:text-primary dark:hover:text-dark-primary">{{ .Params.type }}</a>
+      {{ $btype := default .Type .Params.type }}
+      <a href="#" class="hover:text-primary dark:hover:text-dark-primary">{{ $btype }}</a>
       <span class="mx-2">/</span>
-      <span class="text-gray-700 dark:text-gray-300">{{ .Params.title }}</span>
+      <span class="text-gray-700 dark:text-gray-300">{{ .Title }}</span>
     </div>

@@ -1,138 +1,237 @@
+<style>
+    /* 广告横幅基础样式 */
+    .ad-banner {
+        width: 100%;
+        background: linear-gradient(135deg, #868203, #02264e);
+        color: #fff;
+        padding: 1.5rem 2rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease; /* 新增：过渡动画 */
+    }
 
-    <style>
-        /* 广告横幅基础样式 */
+    /* 深色模式适配 */
+    .dark .ad-banner {
+        background: linear-gradient(135deg, #a19d04, #03305f); /* 深色模式下稍亮的渐变 */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* 加深阴影增强层级 */
+    }
+
+    /* 横幅内容区 */
+    .ad-banner__content {
+        max-width: 800px;
+    }
+
+    .ad-banner__title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .ad-banner__desc {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin: 0 0 1rem 0;
+        line-height: 1.4;
+    }
+
+    /* 跳转按钮 */
+    .ad-banner__btn {
+        background: #fff;
+        color: #868203 !important; /* 强制覆盖颜色，避免继承 */
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .ad-banner__btn:hover {
+        background: #f0f5ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 新增hover阴影 */
+    }
+
+    /* 深色模式按钮适配 */
+    .dark .ad-banner__btn {
+        background: #1f2937; /* 深色模式按钮背景 */
+        color: #e5e7eb !important; /* 深色模式按钮文字 */
+    }
+
+    .dark .ad-banner__btn:hover {
+        background: #374151; /* 深色模式hover背景 */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 关闭按钮 */
+    .ad-banner__close {
+        background: transparent;
+        color: #fff;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: opacity 0.3s ease, transform 0.2s ease;
+        padding: 0.5rem;
+        line-height: 1;
+        border-radius: 50%; /* 圆形点击区域 */
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ad-banner__close:hover {
+        opacity: 1;
+        transform: scale(1.1); /* hover放大效果 */
+        background: rgba(255, 255, 255, 0.1); /* 浅色背景蒙层 */
+    }
+
+    /* 隐藏横幅的类（新增淡出动画） */
+    .ad-banner.hidden {
+        display: none;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 768px) {
         .ad-banner {
-            width: 100%;
-            background: linear-gradient(135deg, #868203, #02264e);
-            color: #fff;
-            padding: 1.5rem 2rem;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* flex-wrap: wrap; */
-            gap: 1rem;
-            /* position: relative; */
-            z-index: 10;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 横幅内容区 */
-        .ad-banner__content {
-            max-width: 800px;
+            padding: 1rem 1.5rem;
+            flex-wrap: wrap; /* 移动端换行，避免内容溢出 */
         }
 
         .ad-banner__title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
         }
 
         .ad-banner__desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin: 0 0 1rem 0;
-            line-height: 1.4;
+            font-size: 0.9rem;
         }
 
-        /* 跳转按钮 */
         .ad-banner__btn {
-            background: #fff;
-            color: #165DFF;
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
         }
 
-        .ad-banner__btn:hover {
-            background: #f0f5ff;
-            transform: translateY(-2px);
-        }
-
-        /* 关闭按钮 */
         .ad-banner__close {
-            background: transparent;
-            color: #fff;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-            padding: 0.5rem;
-            line-height: 1;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            width: 32px;
+            height: 32px;
         }
+    }
+</style>
 
-        .ad-banner__close:hover {
-            opacity: 1;
+<!-- 广告横幅 Section -->
+<section class="ad-banner" id="inventoryAdBanner">
+    <div class="ad-banner__content">
+        <h3 class="ad-banner__title">进销库存对账退货管理系统 - 免费申请试用</h3>
+        <p class="ad-banner__desc">一键搞定采购入库、库存对账、退货处理！企业数字化管理效率提升50%，现在申请全功能体验</p>
+        <a href="/applyfor" class="ad-banner__btn" target="_self">立即申请账号</a>
+    </div>
+    <button class="ad-banner__close" id="closeAdBtn" aria-label="关闭广告横幅">&times;</button>
+</section>
+
+<script>
+    // 1. 安全获取DOM元素（避免元素不存在报错）
+    const adBanner = document.getElementById('inventoryAdBanner');
+    const closeAdBtn = document.getElementById('closeAdBtn');
+
+    // 2. 工具函数：安全操作localStorage（避免隐私模式下报错）
+    const setLocalStorage = (key, value) => {
+        try {
+            localStorage.setItem(key, value);
+        } catch (e) {
+            console.warn('无法存储到localStorage（可能是隐私模式）:', e);
+            // 降级方案：使用sessionStorage或cookie
+            sessionStorage.setItem(key, value);
         }
+    };
 
-        /* 隐藏横幅的类 */
-        .ad-banner.hidden {
-            display: none;
+    const getLocalStorage = (key) => {
+        try {
+            return localStorage.getItem(key);
+        } catch (e) {
+            return sessionStorage.getItem(key);
         }
+    };
 
-        /* 响应式适配 */
-        @media (max-width: 768px) {
-            .ad-banner {
-                padding: 1rem 1.5rem;
-            }
+    // 3. 页面加载时检查横幅状态
+    window.addEventListener('DOMContentLoaded', () => {
+        if (!adBanner || !closeAdBtn) return; // 元素不存在则终止
 
-            .ad-banner__title {
-                font-size: 1.2rem;
-            }
+        // 读取关闭状态（支持定时重置：比如24小时后重新显示）
+        const adClosedInfo = JSON.parse(getLocalStorage('adBannerClosedInfo') || '{"closed": false, "closeTime": 0}');
+        const now = Date.now();
+        const oneDay = 24 * 60 * 60 * 1000; // 24小时毫秒数
 
-            .ad-banner__desc {
-                font-size: 0.9rem;
-            }
-
-            .ad-banner__btn {
-                padding: 0.5rem 1.2rem;
-                font-size: 0.9rem;
-            }
+        // 如果已关闭且超过24小时，重置状态；否则按原状态显示/隐藏
+        if (adClosedInfo.closed && (now - adClosedInfo.closeTime) > oneDay) {
+            adBanner.classList.remove('hidden');
+            setLocalStorage('adBannerClosedInfo', JSON.stringify({ closed: false, closeTime: 0 }));
+        } else if (adClosedInfo.closed) {
+            adBanner.classList.add('hidden');
         }
-    </style>
-    <!-- 广告横幅 Section -->
-    <section class="ad-banner" id="inventoryAdBanner">
-        <div class="ad-banner__content">
-            <h3 class="ad-banner__title">进销库存对账退货管理系统 - 免费申请试用</h3>
-            <p class="ad-banner__desc">一键搞定采购入库、库存对账、退货处理！企业数字化管理效率提升50%，现在申请全功能体验</p>
-            <a href="/applyfor" class="ad-banner__btn" target="_self" style="color: #868203;">立即申请账号</a>
-        </div>
-        <button class="ad-banner__close" id="closeAdBtn">&times;</button>
-    </section>
+    });
 
-    <script>
-        // // 1. 获取DOM元素
-        // const adBanner = document.getElementById('inventoryAdBanner');
-        // const closeAdBtn = document.getElementById('closeAdBtn');
+    // 4. 点击关闭按钮处理
+    if (closeAdBtn) {
+        closeAdBtn.addEventListener('click', () => {
+            if (!adBanner) return;
+            // 平滑隐藏（先加过渡类，再隐藏）
+            adBanner.style.opacity = '0';
+            adBanner.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                adBanner.classList.add('hidden');
+                // 存储关闭状态+关闭时间（用于定时重置）
+                setLocalStorage('adBannerClosedInfo', JSON.stringify({
+                    closed: true,
+                    closeTime: Date.now()
+                }));
+            }, 300); // 匹配CSS过渡时间
+        });
+    }
 
-        // // 2. 页面加载时检查横幅是否已被关闭（从localStorage读取状态）
-        // window.addEventListener('DOMContentLoaded', () => {
-        //     // 读取localStorage中"adBannerClosed"的状态（默认false，即显示）
-        //     const isAdClosed = localStorage.getItem('adBannerClosed') === 'true';
-        //     if (isAdClosed) {
-        //         adBanner.classList.add('hidden'); // 已关闭则隐藏横幅
-        //     }
-        // });
+    // ========== 可选功能：重新显示横幅 ==========
+    /*
+    // 示例：添加按钮ID为"showAdBtn"，点击重新显示
+    const showAdBtn = document.getElementById('showAdBtn');
+    if (showAdBtn) {
+        showAdBtn.addEventListener('click', () => {
+            if (!adBanner) return;
+            adBanner.classList.remove('hidden');
+            adBanner.style.opacity = '1';
+            adBanner.style.transform = 'translateY(0)';
+            setLocalStorage('adBannerClosedInfo', JSON.stringify({ closed: false, closeTime: 0 }));
+        });
+    }
+    */
 
-        // // 3. 点击关闭按钮隐藏横幅，并保存状态到localStorage
-        // closeAdBtn.addEventListener('click', () => {
-        //     adBanner.classList.add('hidden'); // 隐藏横幅
-        //     // 保存关闭状态到localStorage（有效期与浏览器存储一致，清除缓存或隐私数据后会重置）
-        //     localStorage.setItem('adBannerClosed', 'true');
-        // });
-
-        // （可选）如需添加"重新显示横幅"的逻辑，可添加如下代码（示例：按F5刷新时不重置，按特定按钮重置）
-        // 示例：添加一个按钮触发重新显示
-        // const showAdBtn = document.getElementById('showAdBtn');
-        // showAdBtn.addEventListener('click', () => {
-        //     adBanner.classList.remove('hidden');
-        //     localStorage.setItem('adBannerClosed', 'false');
-        // });
-    </script>
+    // ========== 可选功能：深色模式同步 ==========
+    /*
+    // 监听深色模式切换（需和全站dark模式逻辑联动）
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class' && document.documentElement.classList.contains('dark')) {
+                adBanner.classList.add('dark-ad');
+            } else {
+                adBanner.classList.remove('dark-ad');
+            }
+        });
+    });
+    observer.observe(document.documentElement, { attributes: true });
+    */
+</script>

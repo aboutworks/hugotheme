@@ -110,48 +110,108 @@
   }
 </style>
 <!-- 导航栏 -->
-<header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
-  <!-- <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<header
+  class="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm dark:shadow-gray-800/50 z-50 transition-all duration-300 border-b border-gray-100 dark:border-gray-800">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center py-4">
-      <a href="#" class="flex items-center space-x-2">
-<svg width="117" height="30" viewBox="0 0 117 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M36 18H32.9997V13.846H36V18ZM36 3.6H11.3684V7.2H18.9471V5.4H28.4207V7.2H36V10.8H28.4207V17.9994H13.2632V14.3994H18.9471V10.8H0V0H36V3.6ZM5.45897 17.6641H0V14.0409H5.45897V17.6641Z" fill="black"/>
-<path d="M66.7688 3.60012H77V0H42V3.60012H54.8948V9.0003H42V12.5998H54.8948V14.3999H47.3073V18H66.7688V12.5998H77V9.0003H66.7688V3.60012Z" fill="black"/>
-<path d="M42 8.30705H47.3073V5.53823H42V8.30705Z" fill="black"/>
-<path d="M71.3997 8.30705H77V5.53823H71.3997V8.30705Z" fill="black"/>
-<path d="M111.372 10.7999H117V0H82V3.59976H87.526L82 18H117V12.5998H111.372V14.3996H91.5812L95.4261 3.59976H100.319V10.7999H105.845V3.59976H111.372V10.7999Z" fill="black"/>
-<path d="M7.28571 23H0V30H17V28.0909H11.3333V26.5H7.28571V23Z" fill="black"/>
-<path d="M37 23V26.5H32.4286V24.2727H27.8571V26.5H32.4286V28.0909H37V30H21V23H37Z" fill="black"/>
-<path d="M42 30V23H48.4286V26.1818H52.7143V23H57V30H52.7143V28.0909H48.4286V30H42Z" fill="black"/>
-<path d="M60 23V30H66.4286H70.7143H75V23H70.7143V28.7273H66.4286V23H60Z" fill="black"/>
-<path d="M78 28.7273V23H85.7143V26.8182H90.8571V23H96V30H90.8571V28.7273H85.7143H78Z" fill="black"/>
-<path d="M117 23V26.5H111.857V24.2727H106.714V26.5H111.857V28.0909H117V30H99V23H117Z" fill="black"/>
-</svg>
-
+      <a href="/" class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-secondary/50 rounded-md p-1">
+        Houdini
+        <!-- <svg width="141" height="11" viewBox="0 0 141 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="dark:invert">
+          <path d="M0 11V0H9V6H14V9H21V11H0Z" fill="black" />
+          <path d="M45 6H38V9H45V11H24V0H45V6ZM33 2V6H38V2H33Z" fill="black" />
+          <path d="M48 11V0H57V6H62V0H69V11H62V9H57V11H48Z" fill="black" />
+          <path d="M72 11V0H81V9H86V0H93V11H86H81H72Z" fill="black" />
+          <path d="M96 9V0H105V6H110V0H117V9V11H110V9H105H96Z" fill="black" />
+          <path d="M141 6H134V9H141V11H120V0H141V6ZM129 2V6H134V2H129Z" fill="black" />
+        </svg> -->
       </a>
 
       <nav class="hidden md:flex space-x-8">
-        <a href="/" class="text-accent hover:text-secondary transition-colors">首页</a>
-        <a href="/sponsors" class="text-accent hover:text-secondary transition-colors">赞助冠名</a>
-        <a href="/partner" class="text-accent hover:text-secondary transition-colors">合作伙伴</a>
-        <a href="/contact" class="text-accent hover:text-secondary transition-colors">联系我们</a>
+        <a href="/"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">首页</a>
+        <a href="/sponsors"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">赞助冠名</a>
+        <a href="/partner"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">合作伙伴</a>
+        <a href="/contact"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">联系我们</a>
       </nav>
 
-      <button class="md:hidden text-primary text-xl" id="mobile-menu-button">
+      <button class="md:hidden text-primary dark:text-primary-400 text-xl" id="mobile-menu-button">
         <i class="fa fa-bars"></i>
       </button>
     </div>
 
     <div class="md:hidden hidden" id="mobile-menu">
-      <div class="flex flex-col space-y-4 py-4">
-        <a href="/" class="text-accent hover:text-secondary transition-colors">首页</a>
-        <a href="/sponsors" class="text-accent hover:text-secondary transition-colors">赞助冠名</a>
-        <a href="/partner" class="text-accent hover:text-secondary transition-colors">合作伙伴</a>
-        <a href="/contact" class="text-accent hover:text-secondary transition-colors">联系我们</a>
+      <div
+        class="flex flex-col space-y-4 py-4 bg-white dark:bg-gray-900 rounded-md dark:border dark:border-gray-800 p-4">
+        <a href="/"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">首页</a>
+        <a href="/sponsors"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">赞助冠名</a>
+        <a href="/partner"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">合作伙伴</a>
+        <a href="/contact"
+          class="text-accent dark:text-gray-300 hover:text-secondary dark:hover:text-secondary-400 transition-colors">联系我们</a>
       </div>
     </div>
+  </div>
+
+  <!-- <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+    <h3 class="font-medium text-gray-700 dark:text-gray-300 mb-3">设置</h3>
+    <button id="edit-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+      <i class="fa fa-pencil text-gray-700 dark:text-gray-300" id="edit-icon"></i>
+    </button>
+    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+      <i class="fa fa-moon-o text-gray-700 dark:text-gray-300" id="theme-icon"></i>
+    </button>
+    <button id="settings-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+      <i class="fa fa-cog text-gray-700 dark:text-gray-300"></i>
+    </button>
   </div> -->
 </header>
+
+<!-- 可选：添加深色模式切换的JS逻辑 -->
+<script>
+  // 移动端菜单切换
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // 深色模式切换
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  // 初始化深色模式（从本地存储读取）
+  if (localStorage.getItem('darkMode') === 'true' ||
+    (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+    themeIcon.classList.remove('fa-moon-o');
+    themeIcon.classList.add('fa-sun-o');
+  }
+
+  // 切换深色模式
+  if (themeToggle && themeIcon) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('darkMode', isDark);
+
+      // 切换图标
+      if (isDark) {
+        themeIcon.classList.remove('fa-moon-o');
+        themeIcon.classList.add('fa-sun-o');
+      } else {
+        themeIcon.classList.remove('fa-sun-o');
+        themeIcon.classList.add('fa-moon-o');
+      }
+    });
+  }
+</script>
 
 
 
@@ -165,4 +225,269 @@
     }
   }
 
+
+
+  // 所有逻辑统一包裹在 DOMContentLoaded 中，确保 DOM 加载完成
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1. 先初始化主题切换（避免依赖其他逻辑）
+    initThemeToggle();
+
+    // 2. 再初始化其他事件（侧边栏、搜索等）
+    initOtherEventListeners();
+
+
+    // -------------------------- 主题切换逻辑 --------------------------
+    function initThemeToggle() {
+      // 获取主题相关元素
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon'); // 用图标替代 btnText，更直观
+      const html = document.documentElement;
+
+      // 检查元素是否存在，避免报错
+      if (!themeToggle || !themeIcon) {
+        console.warn('主题切换按钮或图标未找到');
+        return;
+      }
+
+      // 初始化主题（读取本地存储/系统偏好）
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark' ||
+          (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        if (isDark) {
+          html.classList.add('dark');
+          themeIcon.classList.remove('fa-moon-o');
+          themeIcon.classList.add('fa-sun-o'); // 深色模式显示太阳图标
+        } else {
+          html.classList.remove('dark');
+          themeIcon.classList.remove('fa-sun-o');
+          themeIcon.classList.add('fa-moon-o'); // 浅色模式显示月亮图标
+        }
+      }
+
+      // 切换主题逻辑
+      function toggleTheme() {
+        const isDark = html.classList.toggle('dark');
+
+        // 更新图标（比文字更简洁）
+        if (isDark) {
+          themeIcon.classList.remove('fa-moon-o');
+          themeIcon.classList.add('fa-sun-o');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeIcon.classList.remove('fa-sun-o');
+          themeIcon.classList.add('fa-moon-o');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // 绑定点击事件（唯一触发方式）
+      themeToggle.addEventListener('click', toggleTheme);
+
+      // 初始化主题
+      initTheme();
+    }
+
+
+    // -------------------------- 其他事件逻辑（侧边栏、搜索等） --------------------------
+    function initOtherEventListeners() {
+      // 遮罩管理工具函数
+      const maskManager = {
+        createMask() {
+          if (document.getElementById('sidebar-mask')) return;
+
+          const mask = document.createElement('div');
+          mask.id = 'sidebar-mask';
+          mask.className = 'fixed inset-0 bg-black/50 dark:bg-black/70 z-40 transition-opacity duration-300 opacity-0 backdrop-blur-sm';
+          document.body.appendChild(mask);
+
+          setTimeout(() => mask.classList.replace('opacity-0', 'opacity-100'), 10);
+
+          // 点击遮罩关闭所有侧边栏
+          mask.addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarRight = document.getElementById('sidebar-right');
+            if (sidebar) sidebar.classList.add('-translate-x-full');
+            if (sidebarRight) sidebarRight.classList.add('translate-x-full');
+            this.removeMask();
+          });
+        },
+
+        removeMask() {
+          const mask = document.getElementById('sidebar-mask');
+          if (!mask) return;
+
+          mask.classList.replace('opacity-100', 'opacity-0');
+          setTimeout(() => mask.remove(), 300);
+        },
+
+        hasOpenSidebar(sidebar, sidebarRight) {
+          return (sidebar && !sidebar.classList.contains('-translate-x-full')) ||
+            (sidebarRight && !sidebarRight.classList.contains('translate-x-full'));
+        }
+      };
+
+
+      // 左侧边栏逻辑
+      const menuToggle = document.getElementById('menu-toggle');
+      const closeSidebar = document.getElementById('close-sidebar');
+      const sidebar = document.getElementById('sidebar');
+
+      if (menuToggle && closeSidebar && sidebar) {
+        menuToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('-translate-x-full');
+          if (sidebar.classList.contains('-translate-x-full')) {
+            if (!maskManager.hasOpenSidebar(sidebar, document.getElementById('sidebar-right'))) {
+              // maskManager.removeMask(); //移除遮罩
+            }
+          } else {
+            // maskManager.createMask(); //创建遮罩 这里不需要了了，会挡住当前内容，注释掉
+          }
+        });
+
+        closeSidebar.addEventListener('click', () => {
+          sidebar.classList.add('-translate-x-full');
+          if (!maskManager.hasOpenSidebar(sidebar, document.getElementById('sidebar-right'))) {
+            maskManager.removeMask();
+          }
+        });
+
+        // 点击侧边栏链接关闭侧边栏
+        sidebar.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => sidebar.classList.add('-translate-x-full'));
+        });
+      }
+
+
+      // 右侧边栏逻辑
+      const menuRightToggle = document.getElementById('menu-right-toggle');
+      const closeSidebarRight = document.getElementById('close-sidebar-right');
+      const sidebarRight = document.getElementById('sidebar-right');
+
+      if (menuRightToggle && closeSidebarRight && sidebarRight) {
+        menuRightToggle.addEventListener('click', () => {
+          sidebarRight.classList.toggle('translate-x-full');
+          if (sidebarRight.classList.contains('translate-x-full')) {
+            if (!maskManager.hasOpenSidebar(document.getElementById('sidebar'), sidebarRight)) {
+              maskManager.removeMask();
+            }
+          } else {
+            maskManager.createMask();
+          }
+        });
+
+        closeSidebarRight.addEventListener('click', () => {
+          sidebarRight.classList.add('translate-x-full');
+          if (!maskManager.hasOpenSidebar(document.getElementById('sidebar'), sidebarRight)) {
+            maskManager.removeMask();
+          }
+        });
+      }
+
+
+      // 搜索面板切换（需确保元素存在）
+      const searchToggle = document.getElementById('search-toggle');
+      const searchPanel = document.getElementById('search-panel');
+      if (searchToggle && searchPanel) {
+        searchToggle.addEventListener('click', () => {
+          searchPanel.classList.toggle('hidden');
+          if (!searchPanel.classList.contains('hidden')) {
+            const searchInput = searchPanel.querySelector('input');
+            if (searchInput) searchInput.focus();
+          }
+        });
+      }
+
+
+      // 设置面板切换（需确保元素存在）
+      const settingsToggle = document.getElementById('settings-toggle');
+      const closeSettings = document.getElementById('close-settings');
+      const settingsPanel = document.getElementById('settings-panel');
+      if (settingsToggle && closeSettings && settingsPanel) {
+        settingsToggle.addEventListener('click', () => settingsPanel.classList.toggle('hidden'));
+        closeSettings.addEventListener('click', () => settingsPanel.classList.add('hidden'));
+      }
+
+
+      // 编辑模式切换（需确保元素存在）
+      const editToggle = document.getElementById('edit-toggle');
+      const editIcon = document.getElementById('edit-icon');
+      const markdownEditor = document.getElementById('markdown-editor');
+      const articleContent = document.getElementById('article-content');
+      const saveButton = document.getElementById('save-content');
+      if (editToggle && editIcon && markdownEditor && articleContent) {
+        editToggle.addEventListener('click', () => {
+          if (markdownEditor.style.display === 'block') {
+            // 假设 renderMarkdownContent 已定义（若未定义需补充）
+            if (window.renderMarkdownContent) renderMarkdownContent();
+            markdownEditor.style.display = 'none';
+            articleContent.style.display = 'block';
+            editIcon.classList.remove('fa-eye');
+            editIcon.classList.add('fa-pencil');
+          } else {
+            markdownEditor.style.display = 'block';
+            articleContent.style.display = 'none';
+            editIcon.classList.remove('fa-pencil');
+            editIcon.classList.add('fa-eye');
+
+            // 重新初始化编辑器
+            setTimeout(() => {
+              if (window.simplemde && window.simplemde.codemirror) {
+                window.simplemde.codemirror.refresh();
+              }
+            }, 100);
+          }
+        });
+      }
+
+
+      // 返回顶部按钮（需确保元素存在）
+      const backToTopButton = document.getElementById('back-to-top');
+      if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+          } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+          }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+
+      // 点击页面其他区域关闭面板
+      document.addEventListener('click', (event) => {
+        // 关闭搜索面板
+        if (searchPanel && !searchPanel.contains(event.target) && event.target !== searchToggle) {
+          searchPanel.classList.add('hidden');
+        }
+
+        // 关闭设置面板
+        if (settingsPanel && !settingsPanel.contains(event.target) && event.target !== settingsToggle) {
+          settingsPanel.classList.add('hidden');
+        }
+      });
+
+
+      // 导航栏滚动效果（需确保元素存在）
+      const header = document.getElementById('main-header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 50) {
+            header.classList.add('shadow-md');
+            header.classList.remove('shadow-sm');
+          } else {
+            header.classList.remove('shadow-md');
+            header.classList.add('shadow-sm');
+          }
+        });
+      }
+    }
+  });
 </script>

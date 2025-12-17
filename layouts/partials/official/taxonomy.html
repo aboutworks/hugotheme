@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+{{ partial "blog/header.html" . }}
+
+<main class="container mx-auto px-4">
+
+  <p class="text-sm text-gray-500">
+    当前页面路径: {{ .Permalink }} <br>
+    当前页面类型: {{ .Kind }}
+  </p>
+
+  {{ if not .Data.Terms }}
+  <p class="text-red-500">⚠️ .Data.Terms 为空，可能不是 taxonomy 页面。</p>
+  {{ else }}
+  <p class="text-green-500">✅ .Data.Terms 检测到 {{ len .Data.Terms }} 个分类。</p>
+  {{ end }}
+
+  {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
+
+  {{$webtype}}
+
+
+
+  <!-- Blog 博客风格-->
+  {{ if eq $webtype "blog" }}
+  {{ partial "blog/page-categories.html" . }}
+  {{ end }}
+</main>
+
+{{ partial "blog/footer.html" . }}
+{{ end }}

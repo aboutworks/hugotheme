@@ -1,8 +1,8 @@
 {{ define "main" }}
-{{ partial "breadcrumb.html" . }}
-{{ if eq .Params.type "article" }}
-{{ partial "blog/page-ariticle.html" . }}
-{{else if eq .Params.type "assets" }}
-{{ partial "blog/page-assets.html" . }}
-{{ end }}
+<!-- 获取站点配置中的 webtype -->
+{{ $webtype := .Site.Params.webtype }}
+<!-- Blog 博客风格-->
+{{ if eq $webtype "blog" }} {{ partial "blog/single.html" . }} {{ end }}
+<!-- Blog 博客风格-->
+{{ if eq $webtype "official" }} {{ partial "official/single.html" . }} {{ end }}
 {{ end }}

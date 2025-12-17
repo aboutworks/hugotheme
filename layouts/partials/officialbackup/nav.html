@@ -1,0 +1,176 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#2D3142',
+          secondary: '#EF8354',
+          neutral: '#F2F4F3',
+          accent: '#4F5D75',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .card-hover {
+        @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+      }
+      .section-padding {
+        @apply py-16 md:py-24;
+      }
+    }
+  </style>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .car-ad-display {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ad-position {
+    position: absolute;
+    border: 2px dashed rgba(239, 131, 84, 0.8);
+    background-color: rgba(239, 131, 84, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #EF8354;
+    font-weight: 600;
+  }
+
+  .ad-position:hover {
+    background-color: rgba(239, 131, 84, 0.2);
+  }
+
+  .ad-small-1 {
+    top: 20%;
+    left: 10%;
+    width: 15%;
+    height: 12%;
+  }
+
+  .ad-small-2 {
+    top: 40%;
+    right: 10%;
+    width: 15%;
+    height: 12%;
+  }
+
+  .ad-main {
+    top: 60%;
+    left: 25%;
+    width: 50%;
+    height: 20%;
+  }
+
+  .service-tab.active {
+    color: #EF8354;
+    border-bottom: 2px solid #EF8354;
+  }
+
+  .service-content {
+    display: none;
+  }
+
+  .service-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+<!-- 导航栏 -->
+<header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <a href="#" class="flex items-center space-x-2">
+        <!-- <span class="text-xl font-bold">{{ .Site.Title }} Lehuye</span> -->
+<svg width="117" height="30" viewBox="0 0 117 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M36 18H32.9997V13.846H36V18ZM36 3.6H11.3684V7.2H18.9471V5.4H28.4207V7.2H36V10.8H28.4207V17.9994H13.2632V14.3994H18.9471V10.8H0V0H36V3.6ZM5.45897 17.6641H0V14.0409H5.45897V17.6641Z" fill="black"/>
+<path d="M66.7688 3.60012H77V0H42V3.60012H54.8948V9.0003H42V12.5998H54.8948V14.3999H47.3073V18H66.7688V12.5998H77V9.0003H66.7688V3.60012Z" fill="black"/>
+<path d="M42 8.30705H47.3073V5.53823H42V8.30705Z" fill="black"/>
+<path d="M71.3997 8.30705H77V5.53823H71.3997V8.30705Z" fill="black"/>
+<path d="M111.372 10.7999H117V0H82V3.59976H87.526L82 18H117V12.5998H111.372V14.3996H91.5812L95.4261 3.59976H100.319V10.7999H105.845V3.59976H111.372V10.7999Z" fill="black"/>
+<path d="M7.28571 23H0V30H17V28.0909H11.3333V26.5H7.28571V23Z" fill="black"/>
+<path d="M37 23V26.5H32.4286V24.2727H27.8571V26.5H32.4286V28.0909H37V30H21V23H37Z" fill="black"/>
+<path d="M42 30V23H48.4286V26.1818H52.7143V23H57V30H52.7143V28.0909H48.4286V30H42Z" fill="black"/>
+<path d="M60 23V30H66.4286H70.7143H75V23H70.7143V28.7273H66.4286V23H60Z" fill="black"/>
+<path d="M78 28.7273V23H85.7143V26.8182H90.8571V23H96V30H90.8571V28.7273H85.7143H78Z" fill="black"/>
+<path d="M117 23V26.5H111.857V24.2727H106.714V26.5H111.857V28.0909H117V30H99V23H117Z" fill="black"/>
+</svg>
+
+      </a>
+
+      <nav class="hidden md:flex space-x-8">
+        <a href="#home" class="text-accent hover:text-secondary transition-colors">首页</a>
+        <a href="#sponsor" class="text-accent hover:text-secondary transition-colors">赞助冠名</a>
+        <a href="#services" class="text-accent hover:text-secondary transition-colors">服务项目</a>
+        <a href="#pricing" class="text-accent hover:text-secondary transition-colors">收费标准</a>
+        <a href="#cases" class="text-accent hover:text-secondary transition-colors">成功案例</a>
+        <a href="#partner" class="text-accent hover:text-secondary transition-colors">合作伙伴</a>
+        <a href="#contact" class="text-accent hover:text-secondary transition-colors">联系我们</a>
+      </nav>
+
+      <button class="md:hidden text-primary text-xl" id="mobile-menu-button">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- 移动端菜单 -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="flex flex-col space-y-4 py-4">
+        <a href="#home" class="text-accent hover:text-secondary transition-colors">首页</a>
+        <a href="#sponsor" class="text-accent hover:text-secondary transition-colors">赞助冠名</a>
+        <a href="#services" class="text-accent hover:text-secondary transition-colors">服务项目</a>
+        <a href="#pricing" class="text-accent hover:text-secondary transition-colors">收费标准</a>
+        <a href="#cases" class="text-accent hover:text-secondary transition-colors">成功案例</a>
+        <a href="#partner" class="text-accent hover:text-secondary transition-colors">合作伙伴</a>
+        <a href="#contact" class="text-accent hover:text-secondary transition-colors">联系我们</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  if (menuToggle) {
+    function menuToggleFun() {
+      console.log('Menu toggle function called');
+      const menu = document.querySelector('.phone-menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+  }
+
+</script>
