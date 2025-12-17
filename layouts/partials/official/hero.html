@@ -1,45 +1,134 @@
-<!-- 英雄区域（通栏版 + 深色模式支持） -->
-<section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-white to-neutral-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 w-full">
+<!-- 英雄区域（通栏背景视频 + PingPong循环 + 文字垂直居中 + 深色模式支持） -->
+<section id="home"
+  class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-white to-neutral-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 w-full relative">
+  <!-- 背景视频：全屏覆盖 + 明暗模式遮罩 -->
+  <div class="absolute inset-0 z-0">
+    <video id="pingPongVideo" class="w-full h-full object-cover object-center" autoplay muted playsinline preload="auto"
+      poster="https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20201211221907.png"
+      src="posts/assets/output_min.mp4"></video>
+    <!-- 明暗模式遮罩（提升文字可读性） -->
+    <div class="absolute inset-0 bg-black/30 dark:bg-black/50 mix-blend-multiply"></div>
+  </div>
+
   <!-- 通栏容器：仅限制内容宽度，背景铺满全屏 -->
-  <div class="w-full">
+  <div class="w-full relative z-10">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0">
-          <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-6 text-gray-900 dark:text-white">
-            Houdini<br>
-            <span class="text-secondary dark:text-secondary-400">视觉数字化</span>
-          </h1>
-          <p class="text-accent dark:text-gray-300 text-lg md:text-xl mb-8 max-w-lg text-balance">
-            乐乎也数字孪生，视觉数字化，助力企业快速增长。
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#services"
-              class="bg-secondary hover:bg-secondary/90 dark:bg-secondary-600 dark:hover:bg-secondary-500 text-white font-medium py-3 px-8 rounded-md transition-all text-center">
-              了解服务
-            </a>
-            <a href="#contact"
-              class="border-2 border-primary dark:border-primary-400 hover:border-secondary dark:hover:border-secondary-400 text-primary dark:text-primary-300 hover:text-secondary dark:hover:text-secondary-300 font-medium py-3 px-8 rounded-md transition-all text-center">
-              联系我们
-            </a>
-          </div>
-        </div>
-        <!-- <div class="md:w-1/2">
-          <div class="relative">
-            <img
-              src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/6558c315cfd14c5e8d577ea48b7c5933~tplv-a9rns2rl98-image.image?rcl=20251007101750E45D02CBCD91451B0561&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1762395484&x-signature=g7PgK4Thq1RyWZxPZ%2FStIwWpDEU%3D"
-              alt="汽车广告与社交媒体营销" class="rounded-lg shadow-xl w-full h-auto object-cover dark:shadow-gray-700/50">
-            <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg dark:shadow-gray-700/50 border dark:border-gray-700">
-              <div class="flex items-center gap-2">
-                <span class="text-secondary dark:text-secondary-400 text-2xl"><i class="fa fa-line-chart"></i></span>
-                <div>
-                  <p class="text-sm text-accent dark:text-gray-400">转化率提升</p>
-                  <p class="font-bold text-xl text-gray-900 dark:text-white">+156%</p>
-                </div>
-              </div>
+      <!-- 核心：flex垂直居中 + 最小高度保证居中效果 -->
+      <div class="flex flex-col md:flex-row items-center justify-center min-h-[500px] md:min-h-[600px]">
+        <div class="flex flex-col md:flex-row items-center justify-center min-h-[500px] md:min-h-[600px] h-full">
+          <div class="text-center md:text-left flex flex-col justify-center h-full">
+            <h1
+              class="flex justify-center items-center text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white dark:text-white drop-shadow-lg tracking-tight">
+              LEHUYE
+              <br>
+            </h1>
+            <p
+              class="flex justify-center items-center  text-white/90 dark:text-white/90 text-lg md:text-xl mb-8 text-balance mx-auto md:mx-0 drop-shadow-md">
+              视觉数字化乐乎也数字孪生，视觉数字化，助力企业快速增长。
+            </p>
+            <div class="flex text-center md:text-left justify-center md:justify-center">
+              <!-- 父容器：text-center 实现 inline-block 元素居中，md:text-left 桌面端左对齐 -->
+              <a href="#services"
+                class="inline-block align-middle bg-secondary hover:bg-secondary/90 dark:bg-secondary-600 dark:hover:bg-secondary-500 text-white font-medium py-3 px-8 rounded-md transition-all shadow-lg hover:shadow-xl mb-4 sm:mb-0 sm:mr-4">
+                了解服务
+              </a>
+              <a href="#contact"
+                class="inline-block align-middle border-2 border-white/80 dark:border-white/80 hover:border-secondary dark:hover:border-secondary-400 text-white hover:text-secondary dark:hover:text-secondary-300 font-medium py-3 px-8 rounded-md transition-all shadow-lg hover:shadow-xl">
+                联系我们
+              </a>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+{{/* PingPong 视频循环逻辑 + Tailwind工具类 */}}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('pingPongVideo');
+    let isForward = true; // 标记当前播放方向（正向/反向）
+
+    // 移除原生loop属性，改用PingPong逻辑
+    video.removeAttribute('loop');
+
+    // 核心：PingPong循环播放逻辑
+    const initPingPong = () => {
+      // 监听正向播放结束（到末尾）
+      video.addEventListener('ended', () => {
+        if (isForward) {
+          video.currentTime = video.duration; // 确保回到视频末尾
+          video.playbackRate = -1; // 切换为反向播放
+          isForward = false;
+          video.play(); // 继续播放（反向）
+        }
+      });
+
+      // 监听视频时间更新（反向播放到开头）
+      video.addEventListener('timeupdate', () => {
+        // 当反向播放到接近开头（0.1秒内），切换回正向
+        if (!isForward && video.currentTime <= 0.1) {
+          video.playbackRate = 1; // 恢复正向播放速率
+          isForward = true;
+          // 无需手动play，正向会自动继续循环
+        }
+      });
+
+      // 兼容：部分浏览器不支持负速率播放，降级为普通循环
+      const checkReverseSupport = () => {
+        // 测试是否支持反向播放
+        video.playbackRate = -1;
+        if (video.playbackRate === 1) { // 不支持负速率，值会被重置为1
+          video.loop = true; // 降级为原生循环
+          console.log('当前浏览器不支持反向播放，已降级为普通循环');
+        } else {
+          video.playbackRate = 1; // 恢复初始正向速率
+        }
+      };
+
+      // 视频加载完成后检查反向播放支持性
+      video.addEventListener('loadedmetadata', checkReverseSupport);
+    };
+
+    // 初始化PingPong并自动播放
+    initPingPong();
+    // 确保视频自动播放（兼容部分浏览器的自动播放策略）
+    video.play().catch(err => {
+      console.log('视频自动播放失败，尝试用户交互后播放：', err);
+      // 备选方案：监听用户首次点击后播放
+      document.addEventListener('click', () => {
+        video.play();
+      }, { once: true });
+    });
+  });
+</script>
+
+<style type="text/tailwindcss">
+  @layer utilities {
+    .secondary {
+      @apply bg-purple-600;
+    }
+    .secondary-400 {
+      @apply text-purple-400;
+    }
+    .secondary-500 {
+      @apply bg-purple-500;
+    }
+    .secondary-600 {
+      @apply bg-purple-600;
+    }
+    .primary {
+      @apply text-gray-900;
+    }
+    .primary-300 {
+      @apply text-gray-300;
+    }
+    .primary-400 {
+      @apply border-gray-400;
+    }
+    .accent {
+      @apply text-gray-700;
+    }
+  }
+</style>

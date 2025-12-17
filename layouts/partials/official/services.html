@@ -1,88 +1,209 @@
-
-<!-- 服务项目 -->
-<section id="services" class="section-padding bg-white">
+<!-- 数字媒体服务项目 -->
+<section id="services" class="section-padding bg-white dark:bg-gray-900 transition-colors duration-300">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">服务项目</h2>
-      <p class="text-accent max-w-2xl mx-auto text-lg">我们提供全方位的营销服务，从传统广告到社交媒体推广，满足您的各种需求</p>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-gray-900 dark:text-white">数字媒体服务</h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">专注3D可视化、专业摄影航拍与数字场景构建，为品牌提供沉浸式视觉解决方案</p>
     </div>
 
-    <!-- 服务标签页 -->
-    <div class="flex flex-wrap justify-center mb-10 border-b">
-      <button class="service-tab active px-6 py-3 font-medium text-lg" data-tab="advertising">
-        <i class="fa fa-bullhorn mr-2"></i>广告投放
+    <!-- 服务标签页 - 新增3D画廊展厅制作标签 -->
+    <div class="flex flex-wrap justify-center mb-10 border-b border-gray-200 dark:border-gray-800">
+      <button class="service-tab active px-6 py-3 font-medium text-lg text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-400 transition-colors" data-tab="3d-gallery">
+        <i class="fa fa-picture-o mr-2"></i>3D画廊展厅制作
       </button>
-      <button class="service-tab px-6 py-3 font-medium text-lg" data-tab="social-media">
-        <i class="fa fa-share-alt mr-2"></i>社交媒体营销
+      <button class="service-tab px-6 py-3 font-medium text-lg text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-400 transition-colors" data-tab="3d-promotion">
+        <i class="fa fa-film mr-2"></i>3D宣传片制作
       </button>
-      <button class="service-tab px-6 py-3 font-medium text-lg" data-tab="integrated">
-        <i class="fa fa-cubes mr-2"></i>整合营销方案
+      <button class="service-tab px-6 py-3 font-medium text-lg text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-400 transition-colors" data-tab="photo-aerial">
+        <i class="fa fa-camera mr-2"></i>数码摄影及航拍
+      </button>
+      <button class="service-tab px-6 py-3 font-medium text-lg text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary-400 transition-colors" data-tab="3d-scene">
+        <i class="fa fa-cube mr-2"></i>3D场景制作
       </button>
     </div>
 
-    <!-- 广告投放服务 -->
-    <div id="advertising" class="service-content active">
+    <!-- 新增：1. 3D画廊展厅制作 -->
+    <div id="3d-gallery" class="service-content active block dark:hidden:!hidden">
       <div class="flex flex-col lg:flex-row gap-12 items-center">
         <div class="lg:w-1/2">
-          <div class="car-ad-display bg-neutral rounded-xl p-4 md:p-8">
-            <img src="https://picsum.photos/id/1071/800/600" alt="汽车内部广告位示意图" class="w-full h-auto rounded-lg">
-            <div class="ad-position ad-small-1">小屏1</div>
-            <div class="ad-position ad-small-2">小屏2</div>
-            <div class="ad-position ad-main">主屏</div>
+          <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 md:p-8 relative overflow-hidden">
+            <img src="https://picsum.photos/id/1068/800/600" alt="3D画廊展厅制作效果展示" class="w-full h-auto rounded-lg">
+            <div class="absolute top-4 left-4 bg-primary/80 dark:bg-primary-600/80 text-white px-3 py-1 rounded text-sm font-medium">沉浸式3D交互展厅</div>
+            <div class="absolute bottom-4 right-4 bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white px-3 py-1 rounded text-sm">支持多终端访问</div>
           </div>
         </div>
 
         <div class="lg:w-1/2">
           <div class="space-y-8">
-            <div class="bg-neutral p-6 rounded-lg card-hover">
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
               <div class="flex items-center gap-4 mb-4">
-                <div
-                  class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-xl">
+                <div class="w-12 h-12 bg-primary/20 dark:bg-primary-900/20 rounded-full flex items-center justify-center text-primary dark:text-primary-400 text-xl">
+                  <i class="fa fa-university"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">艺术展馆3D数字化</h3>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400">
+                将实体美术馆、博物馆、艺术画廊数字化，构建1:1还原的3D虚拟展厅，支持720°全景漫游、作品细节交互、语音讲解，打破空间限制。
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">高精度展厅复刻建模</span>
+                </li>
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">作品高清扫描与还原</span>
+                </li>
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">VR/AR沉浸式观展体验</span>
+                </li>
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">多语言语音导览系统</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-xl">
+                  <i class="fa fa-shopping-bag"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">品牌3D产品展厅</h3>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400">
+                为企业打造专属3D产品画廊展厅，支持产品360°旋转查看、参数交互、场景化展示，适用于线上发布会、电商平台、客户接待。
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">产品模型轻量化处理</span>
+                </li>
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">交互式产品参数展示</span>
+                </li>
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">一键分享/嵌入官网</span>
+                </li>
+                <li class="flex items-center gap-2 text-sm">
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">数据统计与访客分析</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-xl">
+                  <i class="fa fa-users"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">虚拟展厅定制功能</h3>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                基于业务需求定制3D画廊展厅功能，满足不同场景的交互与展示需求：
+              </p>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white dark:bg-gray-700 p-2 rounded text-xs text-center">
+                  <span class="font-medium text-gray-900 dark:text-white">多人在线漫游</span>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-2 rounded text-xs text-center">
+                  <span class="font-medium text-gray-900 dark:text-white">虚拟讲解员</span>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-2 rounded text-xs text-center">
+                  <span class="font-medium text-gray-900 dark:text-white">扫码收藏作品</span>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-2 rounded text-xs text-center">
+                  <span class="font-medium text-gray-900 dark:text-white">展厅自定义布局</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-primary/10 dark:bg-primary-900/20 p-6 rounded-lg border border-primary/20 dark:border-primary-800">
+        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-3">3D画廊展厅交付标准</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex items-center gap-2">
+            <i class="fa fa-file-code-o text-primary dark:text-primary-400"></i>
+            <span class="text-gray-700 dark:text-gray-300 text-sm">WebGL/Three.js源码交付</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa fa-mobile text-primary dark:text-primary-400"></i>
+            <span class="text-gray-700 dark:text-gray-300 text-sm">PC/移动端自适应</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa fa-cloud text-primary dark:text-primary-400"></i>
+            <span class="text-gray-700 dark:text-gray-300 text-sm">云端部署/私有化部署</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 3D宣传片制作 -->
+    <div id="3d-promotion" class="service-content hidden dark:hidden:!hidden">
+      <div class="flex flex-col lg:flex-row gap-12 items-center">
+        <div class="lg:w-1/2">
+          <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 md:p-8 relative overflow-hidden">
+            <img src="https://picsum.photos/id/1059/800/600" alt="3D宣传片制作流程展示" class="w-full h-auto rounded-lg">
+            <div class="absolute top-4 left-4 bg-primary/80 dark:bg-primary-600/80 text-white px-3 py-1 rounded text-sm font-medium">全流程3D可视化</div>
+            <div class="absolute bottom-4 right-4 bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white px-3 py-1 rounded text-sm">支持4K/8K输出</div>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2">
+          <div class="space-y-8">
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-primary/20 dark:bg-primary-900/20 rounded-full flex items-center justify-center text-primary dark:text-primary-400 text-xl">
                   <i class="fa fa-desktop"></i>
                 </div>
-                <h3 class="text-xl font-bold">主屏广告</h3>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">产品3D宣传片</h3>
               </div>
-              <p class="text-accent">
-                位于车辆主视觉区域，尺寸最大，视觉冲击力最强，是品牌宣传的最佳选择，能够立即吸引乘客注意力。
+              <p class="text-gray-600 dark:text-gray-400">
+                基于产品CAD模型或实拍素材，构建高精度3D动画，全方位展示产品结构、功能与使用场景，适用于发布会、电商详情页、企业展厅。
               </p>
               <ul class="mt-4 space-y-2">
                 <li class="flex items-center gap-2 text-sm">
-                  <i class="fa fa-check text-secondary"></i>
-                  <span>尺寸：30cm × 18cm</span>
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">高精度模型建模</span>
                 </li>
                 <li class="flex items-center gap-2 text-sm">
-                  <i class="fa fa-check text-secondary"></i>
-                  <span>位置：主控制台中央</span>
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">动态特效与光影渲染</span>
                 </li>
                 <li class="flex items-center gap-2 text-sm">
-                  <i class="fa fa-check text-secondary"></i>
-                  <span>视觉优先级：最高</span>
+                  <i class="fa fa-check text-primary dark:text-primary-400"></i>
+                  <span class="text-gray-700 dark:text-gray-300">多格式输出（MP4/AVI/MOV）</span>
                 </li>
               </ul>
             </div>
 
-            <div class="bg-neutral p-6 rounded-lg card-hover">
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
               <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-accent text-xl">
-                  <i class="fa fa-mobile"></i>
+                <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-xl">
+                  <i class="fa fa-building"></i>
                 </div>
-                <h3 class="text-xl font-bold">小屏广告</h3>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">企业/园区3D宣传片</h3>
               </div>
-              <p class="text-accent">
-                位于车辆两侧的小型显示屏，尺寸适中，适合辅助宣传或定向展示特定信息，覆盖更多视角。
+              <p class="text-gray-600 dark:text-gray-400">
+                结合实景航拍与3D建模，打造沉浸式企业/园区漫游动画，直观呈现空间布局、建筑特色与品牌实力，提升招商与展示效果。
               </p>
               <ul class="mt-4 space-y-2">
                 <li class="flex items-center gap-2 text-sm">
-                  <i class="fa fa-check text-accent"></i>
-                  <span>尺寸：15cm × 9cm</span>
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">实景与3D场景融合</span>
                 </li>
                 <li class="flex items-center gap-2 text-sm">
-                  <i class="fa fa-check text-accent"></i>
-                  <span>位置：车门内侧及后排</span>
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">虚拟漫游路径定制</span>
                 </li>
                 <li class="flex items-center gap-2 text-sm">
-                  <i class="fa fa-check text-accent"></i>
-                  <span>视觉优先级：中等</span>
+                  <i class="fa fa-check text-gray-700 dark:text-gray-300"></i>
+                  <span class="text-gray-700 dark:text-gray-300">配音/字幕/背景音乐定制</span>
                 </li>
               </ul>
             </div>
@@ -91,241 +212,229 @@
       </div>
     </div>
 
-    <!-- 社交媒体营销服务 -->
-    <div id="social-media" class="service-content">
+    <!-- 3. 数码摄影及航拍 -->
+    <div id="photo-aerial" class="service-content hidden dark:hidden:!hidden">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-neutral p-6 rounded-lg card-hover">
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
           <div class="flex items-center gap-4 mb-6">
-            <div
-              class="w-14 h-14 bg-[#FE2C55]/20 rounded-full flex items-center justify-center text-[#FE2C55] text-2xl">
-              <img
-                src="https://p26-doubao-search-sign.byteimg.com/labis/f71341ac329e0bea3596b946c89e24f0~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1764987488&x-signature=4Q9kRwCrqc0%2Bq1sMdHTB%2FPcpTOM%3D"
-                alt="小红书" class="w-8 h-8 object-contain">
+            <div class="w-14 h-14 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-2xl">
+              <i class="fa fa-camera"></i>
             </div>
-            <h3 class="text-xl font-bold">小红书营销</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">商业产品摄影</h3>
           </div>
-          <p class="text-accent mb-6">
-            基于小红书平台特性，打造种草内容，通过KOL/KOC合作、笔记发布和话题策划，提升品牌影响力和产品转化率。
+          <p class="text-gray-600 dark:text-gray-400 mb-6">
+            专业影棚拍摄，结合光影调控与细节捕捉，为电商产品、工业设备、消费品提供高质量商业摄影服务，满足宣传与销售需求。
           </p>
           <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">笔记发布</p>
-              <p class="font-bold">专业内容创作</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">服务类型</p>
+              <p class="font-bold text-gray-900 dark:text-white">产品/静物/人像</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">KOL合作</p>
-              <p class="font-bold">达人资源对接</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">输出分辨率</p>
+              <p class="font-bold text-gray-900 dark:text-white">5000万像素以上</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">话题策划</p>
-              <p class="font-bold">热门话题打造</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">后期处理</p>
+              <p class="font-bold text-gray-900 dark:text-white">精修/调色/抠图</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">数据优化</p>
-              <p class="font-bold">曝光量提升</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">交付格式</p>
+              <p class="font-bold text-gray-900 dark:text-white">JPG/PNG/TIFF</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-neutral p-6 rounded-lg card-hover">
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
           <div class="flex items-center gap-4 mb-6">
-            <div
-              class="w-14 h-14 bg-[#000000]/20 rounded-full flex items-center justify-center text-[#000000] text-2xl">
-              <img
-                src="https://p26-doubao-search-sign.byteimg.com/labis/07b11e2621106834263a8c235129484f~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1764987488&x-signature=XxZb%2FK%2F76j077335J8L%2Bs%2BE5Xk%3D"
-                alt="抖音" class="w-8 h-8 object-contain">
+            <div class="w-14 h-14 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-2xl">
+              <i class="fa fa-plane"></i>
             </div>
-            <h3 class="text-xl font-bold">抖音营销</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">专业航拍服务</h3>
           </div>
-          <p class="text-accent mb-6">
-            利用抖音短视频平台的巨大流量，通过创意视频制作、达人合作和直播带货，实现品牌快速曝光和销售转化。
+          <p class="text-gray-600 dark:text-gray-400 mb-6">
+            采用工业级无人机设备，提供建筑工程、园区规划、活动赛事、自然风光等航拍服务，获取上帝视角高清影像与视频素材。
           </p>
           <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">视频创作</p>
-              <p class="font-bold">创意内容制作</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">无人机型号</p>
+              <p class="font-bold text-gray-900 dark:text-white">大疆悟 Inspire 3</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">达人合作</p>
-              <p class="font-bold">网红资源对接</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">视频分辨率</p>
+              <p class="font-bold text-gray-900 dark:text-white">8K RAW 视频</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">直播带货</p>
-              <p class="font-bold">实时销售转化</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">服务范围</p>
+              <p class="font-bold text-gray-900 dark:text-white">建筑/活动/风光</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">流量投放</p>
-              <p class="font-bold">精准用户触达</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">数据处理</p>
+              <p class="font-bold text-gray-900 dark:text-white">建模/测绘/拼接</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-neutral p-6 rounded-lg card-hover">
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
           <div class="flex items-center gap-4 mb-6">
-            <div
-              class="w-14 h-14 bg-[#1DA1F2]/20 rounded-full flex items-center justify-center text-[#1DA1F2] text-2xl">
-              <i class="fa fa-twitter"></i>
+            <div class="w-14 h-14 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-2xl">
+              <i class="fa fa-image"></i>
             </div>
-            <h3 class="text-xl font-bold">社交媒体矩阵</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">影像后期合成</h3>
           </div>
-          <p class="text-accent mb-6">
-            整合微信、微博、抖音、小红书等多平台资源，构建品牌社交媒体矩阵，实现全方位、立体化的品牌传播。
+          <p class="text-gray-600 dark:text-gray-400 mb-6">
+            结合实拍与3D素材，进行专业后期合成处理，实现实景与虚拟场景融合、特效添加、色彩校正，提升视觉表现力。
           </p>
           <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">平台整合</p>
-              <p class="font-bold">多平台统一管理</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">合成技术</p>
+              <p class="font-bold text-gray-900 dark:text-white">绿幕抠像/三维跟踪</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">内容策略</p>
-              <p class="font-bold">平台差异化内容</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">特效制作</p>
+              <p class="font-bold text-gray-900 dark:text-white">粒子/光影/流体</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">用户互动</p>
-              <p class="font-bold">粉丝运营管理</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">调色风格</p>
+              <p class="font-bold text-gray-900 dark:text-white">电影级/商业级</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">活动策划</p>
-              <p class="font-bold">跨平台活动执行</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">软件工具</p>
+              <p class="font-bold text-gray-900 dark:text-white">AE/PR/Blender</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-neutral p-6 rounded-lg card-hover">
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
           <div class="flex items-center gap-4 mb-6">
-            <div
-              class="w-14 h-14 bg-[#4267B2]/20 rounded-full flex items-center justify-center text-[#4267B2] text-2xl">
-              <i class="fa fa-paint-brush"></i>
+            <div class="w-14 h-14 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 text-2xl">
+              <i class="fa fa-clock-o"></i>
             </div>
-            <h3 class="text-xl font-bold">内容创意设计</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">延时摄影服务</h3>
           </div>
-          <p class="text-accent mb-6">
-            专业的创意设计团队，提供高质量的图文设计、视频制作和品牌视觉设计，为您的营销活动提供有力支持。
+          <p class="text-gray-600 dark:text-gray-400 mb-6">
+            捕捉建筑施工、城市风光、自然景观的时间流逝过程，制作震撼延时视频，用于项目汇报、品牌宣传、纪录片等场景。
           </p>
           <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">图文设计</p>
-              <p class="font-bold">海报与宣传物料</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">拍摄场景</p>
+              <p class="font-bold text-gray-900 dark:text-white">建筑/城市/自然</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">视频制作</p>
-              <p class="font-bold">短视频与宣传片</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">拍摄时长</p>
+              <p class="font-bold text-gray-900 dark:text-white">几小时至数月</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">品牌设计</p>
-              <p class="font-bold">VI与视觉识别</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">后期处理</p>
+              <p class="font-bold text-gray-900 dark:text-white">去闪/防抖/调色</p>
             </div>
-            <div class="bg-white p-3 rounded-md text-center">
-              <p class="text-sm text-accent">创意策划</p>
-              <p class="font-bold">营销活动创意</p>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-md text-center">
+              <p class="text-sm text-gray-600 dark:text-gray-400">应用场景</p>
+              <p class="font-bold text-gray-900 dark:text-white">宣传/汇报/纪录片</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 整合营销方案 -->
-    <div id="integrated" class="service-content">
+    <!-- 4. 3D场景制作 -->
+    <div id="3d-scene" class="service-content hidden dark:hidden:!hidden">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-neutral p-6 rounded-lg card-hover">
-          <div
-            class="w-14 h-14 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-2xl mb-6">
-            <i class="fa fa-bullseye"></i>
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
+          <div class="w-14 h-14 bg-primary/20 dark:bg-primary-900/20 rounded-full flex items-center justify-center text-primary dark:text-primary-400 text-2xl mb-6">
+            <i class="fa fa-gamepad"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">品牌推广方案</h3>
-          <p class="text-accent mb-4">
-            结合广告投放与社交媒体营销，打造全方位的品牌推广策略，提升品牌知名度和美誉度。
+          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">游戏3D场景制作</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            为手游、端游、VR游戏打造高精度3D场景，包括地图建模、道具制作、光影烘焙，支持主流游戏引擎导入。
           </p>
           <ul class="space-y-2">
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>品牌定位与策略制定</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">低模/高模双精度建模</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>多渠道广告投放组合</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">PBR材质贴图制作</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>社交媒体品牌形象塑造</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">支持Unity/Unreal引擎</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>品牌活动策划与执行</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">VR/AR场景优化</span>
             </li>
           </ul>
         </div>
 
-        <div class="bg-neutral p-6 rounded-lg card-hover">
-          <div
-            class="w-14 h-14 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-2xl mb-6">
-            <i class="fa fa-shopping-cart"></i>
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
+          <div class="w-14 h-14 bg-primary/20 dark:bg-primary-900/20 rounded-full flex items-center justify-center text-primary dark:text-primary-400 text-2xl mb-6">
+            <i class="fa fa-building-o"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">产品营销方案</h3>
-          <p class="text-accent mb-4">
-            针对具体产品，设计从曝光到转化的全链路营销方案，提升产品销量和市场份额。
+          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">建筑可视化场景</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            为房地产、建筑设计行业制作3D建筑场景，实现户型预览、小区漫游、室内装修效果可视化，辅助营销与设计决策。
           </p>
           <ul class="space-y-2">
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>产品卖点挖掘与定位</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">CAD图纸一键建模</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>精准广告投放策略</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">室内外材质渲染</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>社交媒体内容种草</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">交互式3D看房系统</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>销售转化活动策划</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">日照/采光模拟分析</span>
             </li>
           </ul>
         </div>
 
-        <div class="bg-neutral p-6 rounded-lg card-hover">
-          <div
-            class="w-14 h-14 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-2xl mb-6">
-            <i class="fa fa-calendar"></i>
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/20 transition-shadow">
+          <div class="w-14 h-14 bg-primary/20 dark:bg-primary-900/20 rounded-full flex items-center justify-center text-primary dark:text-primary-400 text-2xl mb-6">
+            <i class="fa fa-globe"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">活动营销方案</h3>
-          <p class="text-accent mb-4">
-            为品牌活动提供从策划到执行的全流程服务，通过多渠道传播扩大活动影响力。
+          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Web3D交互场景</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            基于Three.js/GLTF技术，开发轻量化Web3D交互场景，支持网页端直接加载，无需安装插件，适用于产品展示、线上展厅。
           </p>
           <ul class="space-y-2">
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>活动创意策划</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">模型轻量化压缩</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>活动预热与宣传</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">支持鼠标拖拽/缩放</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>多平台活动同步</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">H5移动端适配</span>
             </li>
             <li class="flex items-start gap-2">
-              <i class="fa fa-check-circle text-secondary mt-1"></i>
-              <span>活动效果评估与复盘</span>
+              <i class="fa fa-check-circle text-primary dark:text-primary-400 mt-1"></i>
+              <span class="text-gray-700 dark:text-gray-300">与Vue/React项目集成</span>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="mt-12 bg-primary text-white p-8 rounded-lg shadow-lg">
+      <div class="mt-12 bg-primary dark:bg-primary-800 text-white p-8 rounded-lg shadow-lg dark:shadow-gray-700/30">
         <div class="flex flex-col md:flex-row items-center justify-between">
           <div class="mb-6 md:mb-0">
-            <h3 class="text-2xl font-bold mb-2">定制您的专属营销方案</h3>
-            <p class="text-gray-300">
-              我们的专业团队将根据您的品牌特点和营销目标，为您量身定制最适合的综合营销解决方案。
+            <h3 class="text-2xl font-bold mb-2">定制数字媒体解决方案</h3>
+            <p class="text-gray-200 dark:text-gray-300">
+              结合3D可视化、摄影航拍与交互技术，为您打造专属的品牌视觉体验，助力企业数字化营销升级。
             </p>
           </div>
-          <a href="#contact"
-            class="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-8 rounded-md transition-all text-center">
-            联系我们
+          <a href="#contact" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium py-3 px-8 rounded-md transition-all text-center">
+            咨询报价
           </a>
         </div>
       </div>
@@ -333,25 +442,86 @@
   </div>
 </section>
 
+<!-- 样式补充：适配黑白模式 + 内容切换动画 -->
+<style>
+  /* 标签激活样式 */
+  .service-tab.active {
+    color: theme('colors.primary') !important;
+    border-b-2 border-primary dark:border-primary-400;
+  }
+
+  /* 内容切换动画 */
+  .service-content {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-content.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    display: none !important;
+  }
+
+  .service-content.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block !important;
+  }
+
+  /* 深色模式全局适配 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+    }
+  }
+</style>
 
 <script> 
-  // 服务标签页切换
+  // 服务标签页切换（增强版，适配深色模式）
   const serviceTabs = document.querySelectorAll('.service-tab');
   const serviceContents = document.querySelectorAll('.service-content');
 
+  // 初始化激活状态
+  function initServiceTabs() {
+    const activeTab = document.querySelector('.service-tab.active');
+    if (activeTab) {
+      const tabId = activeTab.getAttribute('data-tab');
+      showServiceContent(tabId);
+    }
+  }
+
+  // 显示指定内容
+  function showServiceContent(tabId) {
+    serviceContents.forEach(content => {
+      content.classList.remove('active');
+      content.classList.add('hidden');
+    });
+    const targetContent = document.getElementById(tabId);
+    if (targetContent) {
+      targetContent.classList.add('active');
+      targetContent.classList.remove('hidden');
+    }
+  }
+
+  // 绑定点击事件
   serviceTabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      // 移除所有标签页的active类
       serviceTabs.forEach(t => t.classList.remove('active'));
-      // 为当前点击的标签页添加active类
       tab.classList.add('active');
-
-      // 隐藏所有内容
-      serviceContents.forEach(content => content.classList.remove('active'));
-      // 显示对应的内容
       const tabId = tab.getAttribute('data-tab');
-      document.getElementById(tabId).classList.add('active');
+      showServiceContent(tabId);
     });
   });
 
+  // 监听深色模式切换
+  const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  darkModeMedia.addEventListener('change', () => {
+    document.body.classList.toggle('dark', darkModeMedia.matches);
+    initServiceTabs();
+  });
+
+  // 页面加载初始化
+  document.addEventListener('DOMContentLoaded', initServiceTabs);
 </script>

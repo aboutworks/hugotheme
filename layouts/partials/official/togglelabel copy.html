@@ -1,0 +1,187 @@
+{{/* 功能标签导航栏 - 锚点定位 + 内容切换 + 文字居中 */}}
+
+
+
+<div
+	class="w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm dark:shadow-gray-800/50 z-50 transition-all duration-300 border-b border-gray-100 dark:border-gray-800 sticky top-0">
+	<div class="toggle-label-container w-full  mx-auto py-2 sm:px-6 lg:px-8">
+		<div class="flex flex-wrap items-center justify-center gap-1 sm:gap-0">
+			{{/* 1. 贴图生成 - 锚点+内容切换 */}}
+			<a href="#tool-content-texture"
+				class="toggle-btn group relative px-6 py-3 font-medium text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200 inline-block text-center tool-tab"
+				data-target="tool-content-texture" aria-label="贴图生成工具">
+				{{ i18n "toggle.texture" | default "贴图生成" }}
+				<span
+					class="absolute bottom-0 left-0 w-full h-0.5 bg-primary dark:bg-primary-400 transition-transform origin-left scale-x-0 group-hover:scale-x-100 tool-underline"></span>
+			</a>
+
+			{{/* 2. 颜色主题生成 - 锚点+内容切换 */}}
+			<a href="#tool-content-theme"
+				class="toggle-btn group relative px-6 py-3 font-medium text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200 inline-block text-center tool-tab"
+				data-target="tool-content-theme" aria-label="颜色主题生成工具">
+				{{ i18n "toggle.theme" | default "颜色主题生成" }}
+				<span
+					class="absolute bottom-0 left-0 w-full h-0.5 bg-primary dark:bg-primary-400 transition-transform origin-left scale-x-0 group-hover:scale-x-100 tool-underline"></span>
+			</a>
+
+			{{/* 3. 地图经纬获取 - 锚点+内容切换 */}}
+			<a href="#tool-content-map"
+				class="toggle-btn group relative px-6 py-3 font-medium text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200 inline-block text-center tool-tab"
+				data-target="tool-content-map" aria-label="地图经纬获取工具">
+				{{ i18n "toggle.map" | default "地图经纬获取" }}
+				<span
+					class="absolute bottom-0 left-0 w-full h-0.5 bg-primary dark:bg-primary-400 transition-transform origin-left scale-x-0 group-hover:scale-x-100 tool-underline"></span>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="bg-gray-80 container mx-auto px-4 transition-all duration-300">
+	{{/* 统一ID的内容区域 */}}
+	<div class="w-full mx-auto py-8 px-4 sm:px-6 lg:px-8">
+		{{/* 1. 贴图生成内容（默认显示） */}}
+		<div id="tool-content-texture" class="tool-content block min-h-[300px] py-4">
+			<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">贴图生成工具</h3>
+			<p class="text-gray-600 dark:text-gray-400 mb-6">
+				支持自定义分辨率（1080P/4K/8K）、纹理类型（木纹/大理石/渐变/格子），一键生成高清无缝贴图，可直接下载PNG/JPG格式，适用于设计、游戏、3D建模等场景。
+			</p>
+			<button
+				class="bg-primary dark:bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 dark:hover:bg-primary-700 transition-colors">
+				开始生成贴图
+			</button>
+		</div>
+
+		{{/* 2. 颜色主题生成内容（默认隐藏） */}}
+		<div id="tool-content-theme" class="tool-content hidden min-h-[300px] py-4">
+			<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">颜色主题生成工具</h3>
+			<p class="text-gray-600 dark:text-gray-400 mb-6">
+				输入主色调（十六进制/RGB），自动生成配套的渐变色、互补色、中性色方案，支持导出CSS变量、JSON配置，适配网页/APP/UI设计场景。
+			</p>
+			<button
+				class="bg-primary dark:bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 dark:hover:bg-primary-700 transition-colors">
+				生成颜色主题
+			</button>
+		</div>
+
+		{{/* 3. 地图经纬获取内容（默认隐藏） */}}
+		<div id="tool-content-map" class="tool-content hidden min-h-[300px] py-4">
+			<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">地图经纬获取工具</h3>
+			<p class="text-gray-600 dark:text-gray-400 mb-6">
+				输入地址自动解析经纬度，或点击地图拾取坐标，支持高德/百度/谷歌地图坐标系转换，批量导出Excel/CSV格式，适用于物流、定位、数据分析场景。
+			</p>
+			<button
+				class="bg-primary dark:bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 dark:hover:bg-primary-700 transition-colors">
+				查询经纬度
+			</button>
+		</div>
+	</div>
+</div>
+{{/* 样式 + 核心切换脚本 */}}
+<style>
+	/* 下划线动画 */
+	.tool-underline {
+		transition: transform 0.25s ease-in-out;
+	}
+
+	/* 标签基础样式 */
+	.toggle-btn {
+		-webkit-tap-highlight-color: transparent;
+		cursor: pointer;
+		white-space: nowrap;
+		position: relative;
+	}
+
+	/* 内容切换动画 */
+	.tool-content {
+		transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.tool-content.hidden {
+		opacity: 0;
+		transform: translateY(10px);
+		pointer-events: none;
+	}
+
+	/* 明暗模式适配 */
+	@media (prefers-color-scheme: dark) {
+		.toggle-label-container {
+			color-scheme: dark;
+		}
+	}
+
+	/* 激活标签样式 */
+	.tool-tab.active {
+		text-primary dark: text-primary-400 !important;
+	}
+
+	.tool-tab.active .tool-underline {
+		scale-x-100 !important;
+	}
+</style>
+
+<script>
+	// DOM加载完成后执行
+	document.addEventListener('DOMContentLoaded', function () {
+		// 获取所有标签和内容
+		const toolTabs = document.querySelectorAll('.tool-tab');
+		const toolContents = document.querySelectorAll('.tool-content');
+		// 默认激活第一个标签
+		const defaultTab = 'tool-content-texture';
+
+		// 切换内容函数
+		function switchToolContent(targetId) {
+			// 隐藏所有内容
+			toolContents.forEach(content => {
+				content.classList.add('hidden');
+				content.classList.remove('block');
+			});
+			// 显示目标内容
+			const targetContent = document.getElementById(targetId);
+			if (targetContent) {
+				targetContent.classList.remove('hidden');
+				targetContent.classList.add('block');
+			}
+
+			// 更新标签激活状态
+			toolTabs.forEach(tab => {
+				if (tab.dataset.target === targetId) {
+					tab.classList.add('active');
+				} else {
+					tab.classList.remove('active');
+				}
+			});
+
+			// 记录当前激活的标签（刷新页面保留状态）
+			localStorage.setItem('activeToolTab', targetId);
+		}
+
+		// 绑定标签点击事件
+		toolTabs.forEach(tab => {
+			tab.addEventListener('click', function (e) {
+				// 阻止默认锚点跳转（避免页面滚动），如需滚动可删除这行
+				e.preventDefault();
+				const targetId = this.dataset.target;
+				switchToolContent(targetId);
+				// 可选：滚动到内容区域顶部
+				document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+			});
+		});
+
+		// 从URL锚点/本地存储恢复状态
+		const urlHash = window.location.hash;
+		let activeTab = defaultTab;
+
+		// 1. 优先读取URL锚点
+		if (urlHash && document.getElementById(urlHash.slice(1))) {
+			activeTab = urlHash.slice(1);
+		}
+		// 2. 其次读取本地存储
+		else if (localStorage.getItem('activeToolTab')) {
+			activeTab = localStorage.getItem('activeToolTab');
+		}
+
+		// 初始化显示对应内容
+		switchToolContent(activeTab);
+	});
+</script>

@@ -1,5 +1,3 @@
-{{ define "main" }}
-
 {{ partial "official/header.html" . }}
 
 <main class="container mx-auto px-4">
@@ -21,11 +19,8 @@
 
 
 
-  <!-- Blog 博客风格-->
-  {{ if eq $webtype "blog" }}
-  {{ partial "blog/page-categories.html" . }}
-  {{ end }}
+  {{ partial "official/page-categories.html" . }}
+
 </main>
 
-{{ partial "blog/footer.html" . }}
-{{ end }}
+{{ partial "official/footer.html" . }}

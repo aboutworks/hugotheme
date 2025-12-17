@@ -1,40 +1,40 @@
-<body class="bg-neutral text-primary font-sans">
+{{ partial "official/header.html" . }}
 
-  {{ partial "official/header.html" . }}
+{{ partial "official/hero.html" . }}
 
-  {{ partial "official/hero.html" . }}
+{{ partial "official/togglelabel.html" . }}
 
-  <main class="bg-gray-80 container mx-auto px-4 pb-16 transition-all duration-300" id="main-content">
-    <!-- 英雄区域 -->
+<main class="bg-gray-80 container mx-auto px-4 pb-16 transition-all duration-300" id="main-content">
+  <!-- 英雄区域 -->
 
-    <!-- 广告区域 -->
-    {{ partial "official/adbanner.html" . }}
+  <!-- 广告区域 -->
+  {{ partial "official/adbanner.html" . }}
 
-    <!-- 赞助企业 -->
-    {{ partial "official/sponsors.html" . }}
+  <!-- 服务项目 -->
+  {{ partial "official/services.html" . }}
+  
+  <!-- 赞助企业 -->
+  {{ partial "official/sponsors.html" . }}
 
-    <!-- 合作伙伴 -->
-    <!-- {{ partial "official/partner.html" . }} -->
+  <!-- 合作伙伴 -->
+  <!-- {{ partial "official/partner.html" . }} -->
 
-    <!-- 服务项目 -->
-    <!-- {{ partial "official/services.html" . }} -->
 
-    <!-- 收费标准 -->
-    <!-- {{ partial "official/charges.html" . }} -->
+  <!-- 收费标准 -->
+  <!-- {{ partial "official/charges.html" . }} -->
 
-    <!-- 成功案例 -->
-    <!-- {{ partial "official/cases.html" . }} -->
+  <!-- 成功案例 -->
+  <!-- {{ partial "official/cases.html" . }} -->
 
-    <!-- 为什么选择我们 -->
-    {{ partial "official/whychooseus.html" . }}
+  <!-- 为什么选择我们 -->
+  {{ partial "official/whychooseus.html" . }}
 
-    <!-- 联系我们 -->
-    {{ partial "official/contactus.html" }}
+  <!-- 联系我们 -->
 
-  </main>
-  {{ partial "official/footer.html" . }}
+</main>
+{{ partial "official/contactus.html" }}
+{{ partial "official/footer.html" . }}
 
-</body>
 
 
 <script>
