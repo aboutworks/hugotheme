@@ -3,13 +3,13 @@
 {{partial "blog/post-home-hot.html" . }}
 
 <!-- 加载更多 -->
-<div id="load-more-container" class="mt-8 text-center" data-doubao-line="290" data-doubao-column="13"
-  data-doubao-key="120">
+<div id="load-more-container" class="mt-8 text-center" data-doubao-line="290" data-doubao-column="13" data-doubao-key="120">
+  <!-- 加载更多按钮 -->
   <button id="load-more"
-    class="px-6 py-2 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors"
+    class="px-6 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm hover:bg-gray-50 dark:hover:bg-gray-750 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-colors duration-200 active:bg-gray-100 dark:active:bg-gray-700"
     data-doubao-line="291" data-doubao-column="17" data-doubao-key="121">
     加载更多
   </button>
-  <div id="loader" class="loader hidden" data-doubao-line="294" data-doubao-column="17" data-doubao-key="122"></div>
-</div>
+  <!-- 加载中指示器 -->
+  <div id="loader" class="loader hidden mt-4 inline-block" data-doubao-line="294" data-doubao-column="17" data-doubao-key="122"></div>
 </div>

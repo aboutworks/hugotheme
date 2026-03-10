@@ -45,7 +45,7 @@
   </article>
 
   <!-- 标签与评论 -->
-  <div class="mt-10 border-t border-neutral pt-6 transition-colors duration-300">
+<div class="mt-10 border-t border-neutral-200 dark:border-neutral-800 pt-6 transition-colors duration-300">
     {{ partial "taxonomy-tags.html" . }}
     {{ partial "comments.html" (dict "uuid" .Params.uuid "Sitetitle" .Site.Title) }}
   </div>
