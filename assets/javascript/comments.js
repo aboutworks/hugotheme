@@ -4,7 +4,7 @@ const serviceUrl = 'https://handle.lehuye.com'
 
 function formComments(postId) {
     return `
-        <form id="kb-comment-form-${postId}" class="kb-comment-form">
+        <form id="kb-comment-form-${postId}" class="bg-white dark:bg-gray-900 border-t dark:border-gray-800 py-8 mt-12 transition-colors duration-300">
             <input type="text" id="comment-name-${postId}" placeholder="Your name" required />
             <textarea id="comment-content-${postId}" placeholder="Your comment" required></textarea>
             <button type="button" onclick="submitComment('${postId}')">Submit</button>

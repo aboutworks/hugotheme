@@ -1,0 +1,15 @@
+{{partial "blog/header.html" . }}
+
+{{ partial "breadcrumb.html" . }}
+
+{{ $ptype := default .Type .Params.type }}
+{{ if eq $ptype "article" }}
+{{ partial "blog/page-ariticle.html" . }}
+{{ else if eq $ptype "assets" }}
+{{ partial "blog/page-assets.html" . }}
+{{ else }}
+{{/* 默认渲染为文章模板，避免因 frontmatter 缺少 type 导致空白 */}}
+{{ partial "blog/page-ariticle.html" . }}
+{{ end }}
+
+{{ partial "blog/footer.html" . }}

@@ -1,19 +1,14 @@
 {{ define "main" }}
 {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
-<!-- Blog 博客风格-->
-{{ if eq $webtype "blog" }}
-
-{{ partial "blog/taxonomy.html" . }}
-
-{{ end }}
+<!-- Pro 博客风格-->
+{{ if eq $webtype "pro" }} {{ partial "pro/taxonomy.html" . }} {{ end }}
 
 <!-- Blog 博客风格-->
-{{ if eq $webtype "official" }}
+{{ if eq $webtype "blog" }} {{ partial "blog/taxonomy.html" . }} {{ end }}
 
-{{ partial "official/taxonomy.html" . }}
-
-{{ end }}
+<!-- official 博客风格-->
+{{ if eq $webtype "official" }} {{ partial "official/taxonomy.html" . }} {{ end }}
 
 
 

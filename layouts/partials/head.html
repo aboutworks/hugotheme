@@ -30,6 +30,8 @@
   {{ $markdown := resources.Get "css/markdown/github-markdown-light.css" | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $markdown.Permalink }}">
 
+  {{ $markdown := resources.Get "css/markdown/github-markdown-dark.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $markdown.Permalink }}">
 
   {{ $script := resources.Get "javascript/comments.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $script.Permalink }}" defer></script>

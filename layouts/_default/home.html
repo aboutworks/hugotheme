@@ -11,6 +11,11 @@
 {{ partial "blog/index.html" . }}
 {{ end }}
 
+<!-- Pro 专业风格-->
+{{ if eq $webtype "pro" }}
+{{ partial "pro/index.html" . }}
+{{ end }}
+
 <div>
   {{ range first 10 .Site.RegularPages }}
   {{ .Render "summary" }}

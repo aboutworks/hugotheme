@@ -1,8 +1,10 @@
 {{ define "main" }}
 <!-- 获取站点配置中的 webtype -->
 {{ $webtype := .Site.Params.webtype }}
+<!-- Pro 博客风格-->
+{{ if eq $webtype "pro" }} {{ partial "pro/single.html" . }} {{ end }}
 <!-- Blog 博客风格-->
 {{ if eq $webtype "blog" }} {{ partial "blog/single.html" . }} {{ end }}
-<!-- Blog 博客风格-->
+<!-- official 博客风格-->
 {{ if eq $webtype "official" }} {{ partial "official/single.html" . }} {{ end }}
 {{ end }}
