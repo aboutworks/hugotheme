@@ -1,16 +1,24 @@
-
-
 <!-- 顶部导航栏 -->
-<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm transition-all" id="main-header">
+<header
+  class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm transition-all"
+  id="main-header"
+>
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <div class="flex items-center space-x-2">
       <!-- 左侧菜单按钮 -->
-      <button id="menu-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-        <i class="fa fa-bars text-gray-700 dark:text-gray-300"></i> <!-- 图标颜色：亮色深灰/深色浅灰 -->
+      <button
+        id="menu-toggle"
+        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        <i class="fa fa-bars text-gray-700 dark:text-gray-300"></i>
+        <!-- 图标颜色：亮色深灰/深色浅灰 -->
       </button>
       <!-- 网站标题 -->
       <h1 class="text-xl font-semibold">
-        <a href="/" class="text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-dark-primary transition-colors">
+        <a
+          href="/"
+          class="text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-dark-primary transition-colors"
+        >
           {{ .Site.Title }}
         </a>
       </h1>
@@ -18,12 +26,30 @@
 
     <div class="flex items-center space-x-3">
       <!-- 搜索按钮 -->
-      <button id="search-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-        <i class="fa fa-search text-gray-700 dark:text-gray-300"></i> <!-- 图标颜色：同上 -->
+      <button
+        id="search-toggle"
+        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        <i class="fa fa-search text-gray-700 dark:text-gray-300"></i>
+        <!-- 图标颜色：同上 -->
       </button>
+      <!-- 中英文切换按钮（新增 ✅） -->
+      <button
+        id="lang-toggle"
+        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center justify-center"
+      >
+        <span class="text-gray-700 dark:text-gray-300 font-medium text-sm"
+          >中/EN</span
+        >
+      </button>
+
       <!-- 右侧菜单按钮 -->
-      <button id="menu-right-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-        <i class="fa fa-bars text-gray-700 dark:text-gray-300"></i> <!-- 图标颜色：同上 -->
+      <button
+        id="menu-right-toggle"
+        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        <i class="fa fa-bars text-gray-700 dark:text-gray-300"></i>
+        <!-- 图标颜色：同上 -->
       </button>
     </div>
   </div>
@@ -36,4 +62,31 @@
 {{ partial "blog/search.html" . }}
 
 <!-- 设置-->
- {{ partial "blog/setting.html" . }}
+{{ partial "blog/setting.html" . }}
+
+
+<script>
+      // 语言切换（跳转对应语言页面，风格与你现有JS完全一致）
+      const langToggle = document.getElementById("lang-toggle");
+      if (langToggle) {
+        langToggle.addEventListener("click", () => {
+          console.log("当前路径:", window.location.pathname);
+          const currentLang = window.location.pathname.startsWith("/en/")
+            ? "en"
+            : "zh";
+          let targetUrl;
+
+          if (currentLang === "zh") {
+            // 中文 → 英文
+            targetUrl =
+              window.location.pathname.replace("/zh/", "/en/") || "/en/";
+          } else {
+            // 英文 → 中文
+            targetUrl =
+              window.location.pathname.replace("/en/", "/zh/") || "/zh/";
+          }
+
+          window.location.href = targetUrl;
+        });
+      }
+</script>

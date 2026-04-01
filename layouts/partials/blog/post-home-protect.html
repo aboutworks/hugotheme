@@ -30,7 +30,6 @@
     data-doubao-column="13" data-doubao-key="119">
     <!-- 文章卡片将通过JavaScript动态生成 -->
 
-
     {{ range sort (where (where .Site.RegularPages "Section" "posts") "Params.categories" "intersect" (slice "授权"))
     ".Params.index" "asc" }}
     {{ if eq .Params.position "home" }}
@@ -53,7 +52,6 @@
     {{ partial "blog/blog-item-unpic.html" $context }}
     {{ end }}
     {{ end }}
-
 
   </div>
 </div>
