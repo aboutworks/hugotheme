@@ -44,6 +44,15 @@
     {{ .Content }}
   </article>
 
+
+    <!-- ↓↓↓ 把我粘贴在这里 ↓↓↓ -->
+  <div class="flex gap-2 mb-6 pb-4 border-b border-gray-200 dark:border-neutral-700">
+    <button id="btn-original" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium transition">只看原文</button>
+    <button id="btn-translate" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-neutral-700 font-medium transition">只看翻译</button>
+    <button id="btn-both" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-neutral-700 font-medium transition">原文+翻译</button>
+  </div>
+  <!-- ↑↑↑ 粘贴结束 ↑↑↑ -->
+
   <!-- 标签与评论 -->
 <div class="mt-10 border-t border-neutral-200 dark:border-neutral-800 pt-6 transition-colors duration-300">
     {{ partial "taxonomy-tags.html" . }}
@@ -52,3 +61,58 @@
 
 </div>
 
+
+
+
+<script>
+// 获取按钮与内容区域
+const btnOriginal = document.getElementById('btn-original');
+const btnTranslate = document.getElementById('btn-translate');
+const btnBoth = document.getElementById('btn-both');
+const article = document.getElementById('article-content');
+
+// 切换样式
+function setActiveButton(activeBtn) {
+  [btnOriginal, btnTranslate, btnBoth].forEach(btn => {
+    btn.classList.remove('bg-blue-600', 'text-white');
+    btn.classList.add('bg-gray-200', 'dark:bg-neutral-700');
+  });
+  activeBtn.classList.remove('bg-gray-200', 'dark:bg-neutral-700');
+  activeBtn.classList.add('bg-blue-600', 'text-white');
+}
+
+// 只看原文
+function showOriginal() {
+  setActiveButton(btnOriginal);
+  const paragraphs = article.querySelectorAll('p');
+  const blocks = article.querySelectorAll('blockquote');
+  paragraphs.forEach(p => p.style.display = 'block');
+  blocks.forEach(b => b.style.display = 'none');
+}
+
+// 只看翻译
+function showTranslate() {
+  setActiveButton(btnTranslate);
+  const paragraphs = article.querySelectorAll('p');
+  const blocks = article.querySelectorAll('blockquote');
+  paragraphs.forEach(p => p.style.display = 'none');
+  blocks.forEach(b => b.style.display = 'block');
+}
+
+// 全部显示
+function showBoth() {
+  setActiveButton(btnBoth);
+  const paragraphs = article.querySelectorAll('p');
+  const blocks = article.querySelectorAll('blockquote');
+  paragraphs.forEach(p => p.style.display = 'block');
+  blocks.forEach(b => b.style.display = 'block');
+}
+
+// 绑定点击事件
+btnOriginal.addEventListener('click', showOriginal);
+btnTranslate.addEventListener('click', showTranslate);
+btnBoth.addEventListener('click', showBoth);
+
+// 默认显示：原文+翻译
+showBoth();
+</script>

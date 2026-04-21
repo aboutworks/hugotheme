@@ -1,8 +1,8 @@
 <div
   class="flex flex-row bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
 >
-  <!-- 左侧：1:1 书籍封面 -->
-  <div class="w-48 aspect-square shrink-0">
+  <!-- 左侧：1:1 书籍封面 → 手机隐藏，电脑显示 -->
+  <div class="w-48 aspect-square shrink-0 hidden md:block">
     <a href="{{.Permalink }}" class="block w-full h-full">
       <img
         src="{{.Image}}"
@@ -87,43 +87,6 @@
     // this.initLocalStorageData();
     // this.getdata();
   });
-
-  // 创建对应的localstorage键名
-  // function initLocalStorageData() {
-  // 	// 遍历所有class以"authid_uuid_"开头的元素
-  // 	document.querySelectorAll("[class^='authid_uuid_']").forEach(div => {
-  // 		// 提取UUID（移除class前缀）
-  // 		const uuid = div.className.replace("authid_uuid_", "");
-
-  // 		// 定义localStorage的键（直接使用uuid）
-  // 		const storageKey = uuid;
-
-  // 		// 从localStorage获取已有数据（如果存在）
-  // 		const existingData = localStorage.getItem(storageKey);
-
-  // 		// 如果数据不存在，初始化一个包含授权和进度的对象
-  // 		if (!existingData) {
-  // 			const initialData = {
-  // 				authorized: false,  // 授权状态：默认未授权
-  // 				progress: 0,        // 阅读进度：默认0%
-  // 				lastAccess: null    // 最后访问时间：可选扩展字段
-  // 			};
-  // 			// 存入localStorage（对象需转为JSON字符串）
-  // 			localStorage.setItem(storageKey, JSON.stringify(initialData));
-
-  // 		}
-
-  // 	});
-  // }
-  // function getdata() {
-  // 	document.querySelectorAll("[class^='authid_uuid_']").forEach(div => {
-  // 		// 提取UUID（移除class前缀）
-  // 		const uuid = div.className.replace("authid_uuid_", "");
-  // 		const strong = JSON.parse(localStorage.getItem(uuid));
-  // 		console.log(uuid,strong);
-  // 	});
-  // }
-
   // 加载点击数
   function loadCount() {
     console.log("加载点击数");
