@@ -26,12 +26,14 @@
 	  <!-- {{.Weight }}, -->
       <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-3"> {{.Desc }}</p>
       <!-- 标签组：深色模式换背景 -->
-      <div class="flex flex-wrap gap-2 mb-1">
-        {{ range.Tags }}
-        <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">{{. }}</span>
-        {{ end }}
-        <!-- <span class="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full text-xs font-medium">+1</span> -->
-      </div>
+	      <div class="flex flex-wrap gap-2 mb-4">
+      {{ range.Tags }}
+      <span
+        class="px-4 py-0.5 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover-bg-gray-600 transition-colors"
+        >{{ . }}</span
+      >
+      {{ end }}
+    </div>
     </div>
   </div>
 
