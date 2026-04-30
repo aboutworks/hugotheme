@@ -1,46 +1,20 @@
 <!-- 英雄区域（通栏背景视频 + PingPong循环 + 文字垂直居中 + 深色模式支持） -->
 <section id="home"
-  class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-white to-neutral-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 w-full relative">
-  <!-- 背景视频：全屏覆盖 + 明暗模式遮罩 -->
-  <div class="absolute inset-0 z-0">
-    <video id="pingPongVideo" class="w-full h-full object-cover object-center" autoplay muted playsinline preload="auto"
-      poster="https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20201211221907.png"
-      src="posts/assets/output_min.mp4"></video>
-    <!-- 明暗模式遮罩（提升文字可读性） -->
-    <div class="absolute inset-0 bg-black/30 dark:bg-black/50 mix-blend-multiply"></div>
-  </div>
+  class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-white to-neutral-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 w-full relative h-[80vh]">
+  <!-- 背景视频 -->
+  <video
+    id="pingPongVideo"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    muted
+    autoplay
+    loop
+    playsinline
+    preload="auto"
+    poster="posts/assets/bw.webp"
+  >
+    <!-- <source src="posts/assets/bw.mp4" type="video/mp4"> -->
+  </video>
 
-  <!-- 通栏容器：仅限制内容宽度，背景铺满全屏 -->
-  <div class="w-full relative z-10">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- 核心：flex垂直居中 + 最小高度保证居中效果 -->
-      <div class="flex flex-col md:flex-row items-center justify-center min-h-[500px] md:min-h-[600px]">
-        <div class="flex flex-col md:flex-row items-center justify-center min-h-[500px] md:min-h-[600px] h-full">
-          <div class="text-center md:text-left flex flex-col justify-center h-full">
-            <h1
-              class="flex justify-center items-center text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-white dark:text-white drop-shadow-lg tracking-tight">
-              <br>
-            </h1>
-            <p
-              class="flex justify-center items-center  text-white/90 dark:text-white/90 text-lg md:text-xl mb-8 text-balance mx-auto md:mx-0 drop-shadow-md">
-              -
-            </p>
-            <div class="flex text-center md:text-left justify-center md:justify-center">
-              <!-- 父容器：text-center 实现 inline-block 元素居中，md:text-left 桌面端左对齐 -->
-              <!-- <a href="#services"
-                class="inline-block align-middle bg-secondary hover:bg-secondary/90 dark:bg-secondary-600 dark:hover:bg-secondary-500 text-white font-medium py-3 px-8 rounded-md transition-all shadow-lg hover:shadow-xl mb-4 sm:mb-0 sm:mr-4">
-                了解服务
-              </a>
-              <a href="#contact"
-                class="inline-block align-middle border-2 border-white/80 dark:border-white/80 hover:border-secondary dark:hover:border-secondary-400 text-white hover:text-secondary dark:hover:text-secondary-300 font-medium py-3 px-8 rounded-md transition-all shadow-lg hover:shadow-xl">
-                联系我们
-              </a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 {{/* PingPong 视频循环逻辑 + Tailwind工具类 */}}
