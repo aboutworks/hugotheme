@@ -2,13 +2,13 @@
 {{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
 
 <!-- Pro 博客风格-->
-{{ if eq $webtype "pro" }} {{ partial "pro/taxonomy.html" . }} {{ end }}
+{{ if eq $webtype "pro" }} {{ template "pro/taxonomy.html" . }} {{ end }}
 
 <!-- Blog 博客风格-->
-{{ if eq $webtype "blog" }} {{ partial "blog/taxonomy.html" . }} {{ end }}
+{{ if eq $webtype "blog" }} {{ template "blog/taxonomy.html" . }} {{ end }}
 
 <!-- official 博客风格-->
-{{ if eq $webtype "official" }} {{ partial "official/taxonomy.html" . }} {{ end }}
+{{ if eq $webtype "official" }} {{ template "official/taxonomy.html" . }} {{ end }}
 
 
 

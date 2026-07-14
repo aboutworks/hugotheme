@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<!-- 这里写你商务洽谈的全部 HTML + CSS 样式 -->
+<section class="py-20 px-4">
+  <div class="container mx-auto max-w-4xl">
+    <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+    <div class="prose max-w-none">
+      {{ .Content }}
+    </div>
+
+    <!-- 你可以随便加自定义样式区域 -->
+    <div class="mt-10 p-6 bg-neutral rounded-xl">
+      <p>商务合作、项目委托、品牌联名、设计开发</p>
+      <p>微信：xxxxxx | 邮箱：xxxx@shturl.</p>
+    </div>
+  </div>
+</section>
+
+{{ end }}

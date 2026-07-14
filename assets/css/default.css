@@ -20,10 +20,6 @@ p:has(img) img {
   height: auto;
 }
 
-main{
-  min-height: calc(100vh - 338px);
-}
-
 .debug{
   display: none;
 }

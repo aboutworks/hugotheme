@@ -1,25 +1,13 @@
 {{ define "main" }}
-{{ $webtype := .Site.Params.webtype }} <!-- 获取站点配置中的 webtype -->
+{{ $webtype := .Site.Params.webtype | default "official" }}
 
-<!-- official 官网风格 -->
 {{ if eq $webtype "official" }}
-{{ partial "official/index.html" . }}
+  {{ template "official/home/index.html" . }}
+{{ else if eq $webtype "blog" }}
+  {{ template "blog/home/index.html" . }}
+{{ else if eq $webtype "pro" }}
+  {{ template "pro/home/index.html" . }}
+{{ else }}
+  {{ template "official/home/index.html" . }}
 {{ end }}
-
-<!-- Blog 博客风格-->
-{{ if eq $webtype "blog" }}
-{{ partial "blog/index.html" . }}
-{{ end }}
-
-<!-- Pro 专业风格-->
-{{ if eq $webtype "pro" }}
-{{ partial "pro/index.html" . }}
-{{ end }}
-
-<div>
-  {{ range first 10 .Site.RegularPages }}
-  {{ .Render "summary" }}
-  {{ end }}
-</div>
-
 {{ end }}

@@ -1,0 +1,74 @@
+<!-- 导航栏 -->
+<header id="main-header">
+  <nav
+    class="fixed w-full top-0 left-0 z-[999] px-[6rem] py-8 flex justify-between items-center bg-white/92 backdrop-lux transition-lux"
+  >
+    <a href="#" class="text-[1.6rem] tracking-[4px] font-medium text-blackDeep">
+      <span class="text-gold">XINSIRUI</span></a
+    >
+    <div class="nav-menu">
+      {{ range .Site.Menus.official.ByWeight }}
+      <a
+        href="{{ .URL }}"
+        class="text-[#333] text-[0.95rem] tracking-[1px] ml-10 transition-lux hover:text-gold"
+        >{{ .Name }}</a
+      >
+      {{ end }}
+    </div>
+  </nav>
+</header>
+
+<!-- 返回顶部按钮（可选） -->
+<button
+  id="back-to-top"
+  class="fixed bottom-6 right-6 bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-secondary/90 z-50"
+>
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+<!-- 核心功能脚本 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // 移动端菜单切换
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const icon = mobileMenuButton.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-times");
+      });
+    }
+
+    // 导航栏滚动阴影
+    const header = document.getElementById("main-header");
+    if (header) {
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 50) {
+          header.classList.add("shadow-md");
+          header.classList.remove("shadow-sm");
+        } else {
+          header.classList.remove("shadow-md");
+          header.classList.add("shadow-sm");
+        }
+      });
+    }
+
+    // 返回顶部
+    const backToTopButton = document.getElementById("back-to-top");
+    if (backToTopButton) {
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  });
+</script>
