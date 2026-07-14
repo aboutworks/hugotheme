@@ -1,0 +1,12 @@
+<div
+  class="nav-menu flex flex-col gap-3 items-end font-['Century_Gothic',_'Futura',_sans-serif]"
+>
+  {{ range .Site.Menus.official.ByWeight }}
+  <a
+    href="{{ .URL }}"
+    class="text-gray-400 text-xs font-light tracking-[2px] uppercase transition-all hover:text-gray-900 hover:translate-x-1 transform block"
+  >
+    {{ .Name }}
+  </a>
+  {{ end }}
+</div>

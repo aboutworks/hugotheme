@@ -21,13 +21,12 @@
   {{ $styles := resources.Get "css/default.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
-  {{ $markdownLight := resources.Get "css/markdown/github-markdown-light.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $markdownLight.RelPermalink }}">
+  <!-- {{ $markdownLight := resources.Get "css/markdown/github-markdown-light.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $markdownLight.RelPermalink }}"> -->
 
   {{ $markdownDark := resources.Get "css/markdown/github-markdown-dark.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $markdownDark.RelPermalink }}">
 
-  <!-- CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
