@@ -1,19 +1,33 @@
 <!-- 导航栏 -->
-<header id="main-header">
+<header>
   <nav
-    class="fixed w-full top-0 left-0 z-[999] px-[6rem] py-8 flex justify-between items-center bg-white/92 backdrop-lux transition-lux"
+    class=" px-8 py-12 flex flex-col "
   >
-    <a href="#" class="text-[1.6rem] tracking-[4px] font-medium text-blackDeep">
-      <span class="text-gold">XINSIRUI</span></a
-    >
-    <div class="nav-menu">
-      {{ range .Site.Menus.official.ByWeight }}
+    <!-- 顶部 Logo 区域 -->
+    <div class="w-full">
       <a
-        href="{{ .URL }}"
-        class="text-[#333] text-[0.95rem] tracking-[1px] ml-10 transition-lux hover:text-gold"
-        >{{ .Name }}</a
+        href="#"
+        class="text-[1.6rem] tracking-[4px] font-medium text-blackDeep block mb-16"
       >
-      {{ end }}
+        <span class="text-gold">XINSIRUI</span>
+      </a>
+
+      <!-- 导航菜单：垂直排列列队 -->
+      <div class="nav-menu flex flex-col gap-3 items-end font-['Century_Gothic',_'Futura',_sans-serif]">
+        {{ range .Site.Menus.official.ByWeight }}
+<a
+  href="{{ .URL }}"
+  class="text-gray-390 text-xs font-light tracking-[2px] uppercase transition-lux hover:text-gold hover:translate-x-1 transform block"
+>
+  {{ .Name }}
+</a>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- 可选：底部版权或社交媒体区域（因为是侧边栏，底部留白可以利用起来） -->
+    <div class="text-[0.75rem] text-gray-400 tracking-[1px]">
+      © 2026 XINSIRUI
     </div>
   </nav>
 </header>
@@ -25,50 +39,3 @@
 >
   <i class="fa fa-arrow-up"></i>
 </button>
-
-<!-- 核心功能脚本 -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // 移动端菜单切换
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        const icon = mobileMenuButton.querySelector("i");
-        icon.classList.toggle("fa-bars");
-        icon.classList.toggle("fa-times");
-      });
-    }
-
-    // 导航栏滚动阴影
-    const header = document.getElementById("main-header");
-    if (header) {
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 50) {
-          header.classList.add("shadow-md");
-          header.classList.remove("shadow-sm");
-        } else {
-          header.classList.remove("shadow-md");
-          header.classList.add("shadow-sm");
-        }
-      });
-    }
-
-    // 返回顶部
-    const backToTopButton = document.getElementById("back-to-top");
-    if (backToTopButton) {
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.remove("opacity-0", "invisible");
-          backToTopButton.classList.add("opacity-100", "visible");
-        } else {
-          backToTopButton.classList.add("opacity-0", "invisible");
-        }
-      });
-      backToTopButton.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
-  });
-</script>
