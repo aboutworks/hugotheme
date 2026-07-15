@@ -1,11 +1,11 @@
 {{ if hugo.IsMultilingual }}
-<div class="flex items-center gap-3 text-xs">
+<div class="flex items-center gap-3 text-xs" style="position: absolute; top:2rem; left:2rem">
   <a href="/zh/"
-     class="{{ if eq .Lang `zh` }}text-black dark:text-white font-bold{{ else }}text-gray-500 hover:text-black dark:hover:text-gray-200{{ end }}">
+     class="{{ if eq .Lang `zh` }}text-black dark:text-white font-bold{{ else }}text-gray-300 hover:text-black dark:hover:text-gray-200{{ end }}">
     中文
   </a>
   <a href="/en/"
-     class="{{ if eq .Lang `en` }}text-black dark:text-white font-bold{{ else }}text-gray-500 hover:text-black dark:hover:text-gray-200{{ end }}">
+     class="{{ if eq .Lang `en` }}text-black dark:text-white font-bold{{ else }}text-gray-300 hover:text-black dark:hover:text-gray-200{{ end }}">
     EN
   </a>
 </div>
