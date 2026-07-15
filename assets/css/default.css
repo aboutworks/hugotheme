@@ -23,3 +23,7 @@ p:has(img) img {
 .debug{
   display: none;
 }
+
+::-webkit-scrollbar{
+  width: 0;
+}
