@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<main class="w-full bg-gray-100 dark:bg-gray-900 mx-auto min-h-screen transition-all duration-300 flex flex-col md:flex-row gap-4">
+    <section class="flex-1 p-4 bg-cover bg-center flex items-end justify-end" style="background-image: url('https://picsum.photos/2560/1440');">
+
+        <ul class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 text-right">
+            <li class="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-3">
+                <img src="https://picsum.photos/seed/product1/400/300" alt="产品图片" class="w-full h-auto rounded mb-2">
+                <h3 class="font-semibold text-lg">产品标题 1</h3>
+                <h5 class="text-red-500 font-bold">¥ 100.00</h5>
+                <p class="text-sm text-gray-600 dark:text-gray-400">产品简要描述</p>
+            </li>
+            <li class="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-3">
+                <img src="https://picsum.photos/seed/product2/400/300" alt="产品图片" class="w-full h-auto rounded mb-2">
+                <h3 class="font-semibold text-lg">产品标题 2</h3>
+                <h5 class="text-red-500 font-bold">¥ 200.00</h5>
+                <p class="text-sm text-gray-600 dark:text-gray-400">产品简要描述</p>
+            </li>
+            <li class="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-3">
+                <img src="https://picsum.photos/seed/product3/400/300" alt="产品图片" class="w-full h-auto rounded mb-2">
+                <h3 class="font-semibold text-lg">产品标题 3</h3>
+                <h5 class="text-red-500 font-bold">¥ 300.00</h5>
+                <p class="text-sm text-gray-600 dark:text-gray-400">产品简要描述</p>
+            </li>
+        </ul>
+
+    </section>
+
+    {{ template "official/section/right.html" . }}
+</main>
+
+{{ end }}
