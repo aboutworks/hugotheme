@@ -1,8 +1,15 @@
 <!-- 导航栏 -->
 <header>
-  <nav class="px-2 py-2 flex flex-col">
+  <nav class="flex flex-col">
     <!-- 顶部 Logo 区域 -->
     <div class="w-full">
+
+
+      <div class="flex justify-end pb-6">
+ <a href="/official/signup">注册 </a> ｜ <a href="/official/signin">登录</a>
+
+  </div>
+
       <a
         href="#"
         class="text-[1.6rem] tracking-[4px] font-medium text-blackDeep block mb-6"
@@ -98,6 +105,7 @@
           </svg>
         </span>
       </a>
+
 
       <!-- 导航菜单：垂直排列列队 -->
       {{ template "official/layout/nav.html" . }}
