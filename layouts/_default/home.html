@@ -2,12 +2,12 @@
 {{ $webtype := .Site.Params.webtype | default "official" }}
 
 {{ if eq $webtype "official" }}
-  {{ template "official/home/index.html" . }}
+  {{ template "official/home/list.html" . }}
 {{ else if eq $webtype "blog" }}
   {{ template "blog/home/index.html" . }}
 {{ else if eq $webtype "pro" }}
   {{ template "pro/home/index.html" . }}
 {{ else }}
-  {{ template "official/home/index.html" . }}
+  {{ template "official/home/list.html" . }}
 {{ end }}
 {{ end }}
