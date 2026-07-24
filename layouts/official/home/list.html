@@ -1,21 +1,23 @@
-<main
-  class="w-full max-w-none dark:bg-gray-900 mx-auto min-h-screen transition-all duration-300 flex flex-col md:flex-row gap-0"
->
-  <!-- 英雄区域 -->
-  <section
-    class="w-full flex-1 dark:bg-gray-800 p-0 relative overflow-hidden max-h-screen"
-  >
-    {{ template "official/layout/changelanuge.html" .}}
-
-    <div class="w-full h-full p-2 flex flex-row gap-6" style="background-image: url('/bg.webp'); background-size: 100%; background-repeat: no-repeat; background-position: center bottom;">
-      <!-- <img
-        src="/bg.webp"
-        class="h-full w-full max-h-full object-center object-contain"
-        alt=""
-      /> -->
+<!-- 顶部：页面容器 -->
+<div class="relative min-h-screen dark:bg-gray-900">
+  <!-- 主体内容区（左侧） -->
+  <div class="w-full dark:bg-gray-800 p-0 relative overflow-hidden h-screen">
+    <div
+      class="w-full h-full p-2 flex flex-row gap-6"
+      style="
+        background-image: url(&quot;/bg.webp&quot;);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+      "
+    >
+      {{ template "official/layout/changelanuge.html" .}}
     </div>
-  </section>
-  {{ template "official/layout/right.html" .}}
-</main>
 
-{{ template "official/layout/footer.html" . }}
+    <div>{{ template "official/layout/menu.html" . }}</div>
+  </div>
+  <!-- 右侧边栏（菜单 + header + social） -->
+
+  <!-- 底部 footer（全局） -->
+  {{ template "official/layout/footer.html" . }}
+</div>

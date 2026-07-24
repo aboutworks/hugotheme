@@ -1,21 +1,89 @@
 {{ define "main" }}
-<main
-  class="w-full max-w-none dark:bg-gray-900 mx-auto min-h-screen transition-all duration-300 flex flex-col md:flex-row gap-0"
->
-  <!-- 英雄区域 -->
+  <!-- 左侧表单主区域 -->
   <section
-    class="w-full flex-1 dark:bg-gray-800 p-0 relative overflow-hidden max-h-screen"
+class="w-full flex-1 dark:bg-gray-800 p-6 pt-24 md:p-12 md:pr-[330px] pt-24 relative overflow-hidden min-h-screen flex items-start justify-end"
   >
+    <!-- 语言切换组件 -->
     {{ template "official/layout/changelanuge.html" .}}
 
-    <div class="w-full h-full p-2 flex flex-row gap-6">
-      <input>
-      <input>
-      <textarea></textarea>
-      <button>提交</button>
+    <div class="w-full max-w-md">
+      <!-- 页面标题 -->
+      <div class="text-center mb-8">
+        <h2 class="text-[24px] font-bold text-gray-800 dark:text-white">{{ i18n "contact.title" }}</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">{{ i18n "contact.desc" }}</p>
+      </div>
 
+      <!-- 联系表单 -->
+      <form class="space-y-5">
+        <!-- 1. 联系人姓名 -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            {{ i18n "contact.name" }}
+          </label>
+          <input
+            type="text"
+            name="username"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-black-500 dark:focus:ring-white/60 focus:border-transparent bg-white dark:bg-gray-700 dark:text-white"
+            placeholder="{{ i18n "contact.placeholder_name" }}"
+          />
+        </div>
+
+        <!-- 2. 联系手机号 -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            {{ i18n "contact.phone" }}
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-black-500 dark:focus:ring-white/60 focus:border-transparent bg-white dark:bg-gray-700 dark:text-white"
+            placeholder="{{ i18n "contact.placeholder_phone" }}"
+          />
+        </div>
+
+        <!-- 3. 详细地址 -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            {{ i18n "contact.address" }}
+          </label>
+          <input
+            type="text"
+            name="address"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-black-500 dark:focus:ring-white/60 focus:border-transparent bg-white dark:bg-gray-700 dark:text-white"
+            placeholder="{{ i18n "contact.placeholder_address" }}"
+          />
+        </div>
+
+        <!-- 4. 备注留言（多行文本框） -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            {{ i18n "contact.remark" }}
+          </label>
+          <textarea
+            name="remark"
+            rows="4"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-black-500 dark:focus:ring-white/60 focus:border-transparent resize-none bg-white dark:bg-gray-700 dark:text-white"
+            placeholder="{{ i18n "contact.placeholder_remark" }}"
+          ></textarea>
+        </div>
+
+        <!-- 提交按钮 -->
+        <button
+          type="submit"
+          class="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-black text-white py-3 rounded-xl transition font-medium text-base"
+        >
+          {{ i18n "contact.submit" }}
+        </button>
+      </form>
     </div>
+
+
+
+  {{ template "official/layout/menu.html" .}}
+
   </section>
-  {{ template "official/layout/right.html" .}}
-</main>
+
 {{ end }}

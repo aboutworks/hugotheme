@@ -1,115 +1,113 @@
 {{ define "main" }}
+<style>
+  /* 全局动画公共样式，抽取复用 */
+  .timeline-item-active {
+    @apply bg-black/10 backdrop-blur-md p-4 rounded-xl text-white transition-all duration-300;
+  }
+</style>
 
-<!-- 主容器 Section -->
-<section class="w-full h-screen bg-white overflow-hidden relative flex justify-end">
-  <!-- 背景层 -->
+<!-- 主容器 Section：左右固定分栏布局 -->
+<section class="w-full h-screen bg-white dark:bg-black overflow-hidden relative flex flex-row justify-between items-stretch">
+  <!-- 全局背景层（最底层） -->
   <div id="bg-layer" class="fixed inset-0 z-0 opacity-0 transition-opacity duration-1000 bg-cover bg-center">
+    <!-- 渐变遮罩 深浅双模式适配 -->
     <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent dark:from-black/90 dark:via-black/40 dark:to-transparent"></div>
   </div>
-  <!-- 左侧/内容区域：这里放置你的时间线 -->
-  <div
-    id="time-list"
-    class="w-[400px] p-16 transition-transform duration-700 ease-out translate-x-0"
-  >
-    <div class="max-w-sm">
-      <h2 class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-20">
+
+  <!-- 左侧：时间线列表区域 -->
+  <div id="time-list" class="w-[400px] p-16 flex-shrink-0 transition-transform duration-700 ease-out translate-x-0 z-10">
+    <div class="max-w-sm h-full flex flex-col">
+      <h2 class="text-[10px] uppercase tracking-[0.4em] text-gray-400 dark:text-gray-500 mb-20">
         Our Heritage
       </h2>
 
-      <div class="relative border-l border-gray-800 ml-2 space-y-24 h-[calc(100vh-240px)] overflow-y-auto pr-4">
-        <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
-        </div>
-        <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item  transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
-        </div>
-        <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item  transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
-        </div>
-                <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item  transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
-        </div>
-                <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item  transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
-        </div>
-                <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item  transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
-        </div>
-                <!-- 节点 2026 -->
-        <div class="group cursor-pointer ml-6 transition-colors duration-300" >
-          <span class="absolute -left-[5px] w-2.5 h-2.5 bg-gray-700 rounded-full group-hover:bg-amber-500 transition-colors" ></span>
-          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3" > 2026 - Present </h3>
-          <p class="time-list-item  transition-all duration-300 ease-out text-[11px] leading-loose text-black-200 font-light tracking-wide" > 将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。 </p>
+      <!-- 竖向时间线容器 -->
+      <div class="relative border-l border-gray-800 dark:border-gray-600 ml-2 space-y-24 flex-1 overflow-y-auto pr-4">
+        {{/* 可替换为Hugo菜单循环：{{ range .Site.Menus.heritage.ByWeight }} */}}
+        <!-- 时间线节点 -->
+        <div class="group cursor-pointer ml-6 relative">
+          <!-- 时间圆点 -->
+         <span class="absolute -left-[29px] top-1 w-2.5 h-2.5 bg-gray-700 dark:bg-gray-500 rounded-full group-hover:bg-amber-500 transition-colors duration-300"></span>
+          
+          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3">
+            2026 - Present
+          </h3>
+          
+          <p class="time-list-item text-[11px] leading-loose text-gray-800 dark:text-gray-200 font-light tracking-wide transition-all duration-300 ease-out">
+            将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。
+          </p>
         </div>
 
+        <div class="group cursor-pointer ml-6 relative">
+        <span class="absolute -left-[29px] top-1 w-2.5 h-2.5 bg-gray-700 dark:bg-gray-500 rounded-full group-hover:bg-amber-500 transition-colors duration-300"></span>
+          <h3 class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-3">
+            2026 - Present
+          </h3>
+          <p class="time-list-item text-[11px] leading-loose text-gray-800 dark:text-gray-200 font-light tracking-wide transition-all duration-300 ease-out">
+            将AI与3D数字孪生技术引入传统木雕。在屏幕与木质纹理的博弈间，重构古老工艺的灵魂。
+          </p>
+        </div>
+
+
+
+        
       </div>
     </div>
   </div>
 
-  <!-- 右侧 Template -->
-  <div id="timeline-section" class="transition-transform duration-700 ease-out">
-    {{ template "official/layout/right.html" . }}
+  <!-- 右侧：菜单面板区域 -->
+  <div id="timeline-section" class="flex-shrink-0 transition-transform duration-700 ease-out z-10">
+    {{ template "official/layout/menu.html" . }}
   </div>
 </section>
 
 <script>
-  const timeline = document.getElementById("timeline-section");
+  const timelinePanel = document.getElementById("timeline-section");
   const bgLayer = document.getElementById("bg-layer");
-  const timelistitem = document.getElementsByClassName("time-list-item");
+  // 抓取所有时间线整组节点（包含圆点+年份+文字），全域hover均可触发
+  const timeGroups = document.querySelectorAll(".group");
+  const timeItems = document.querySelectorAll(".time-list-item");
 
-// 给每个时间线项目添加 hover
-for (let i = 0; i < timelistitem.length; i++) {
-  timelistitem[i].addEventListener("mouseenter", () => {
-    timeline.style.transform = "translateX(85%)";
-    // 毛玻璃样式
-    timelistitem[i].style.backgroundColor = "rgba(0,0,0,.1)";
-    timelistitem[i].style.backdropFilter = "blur(10px)";
-    timelistitem[i].style.padding = "1rem";
-    timelistitem[i].style.borderRadius = "1rem";
-    timelistitem[i].style.color = "#fff"; // 文字白色更协调
+  // 背景图切换函数
+  const showBg = (imgUrl) => {
+    bgLayer.style.backgroundImage = `url(${imgUrl})`;
+    bgLayer.style.opacity = "1";
+  };
+  const hideBg = () => {
+    bgLayer.style.opacity = "0";
+  };
 
-    // 显示背景图
-    showBg('https://picsum.photos/1920/1080?1');
+  // 绑定整组hover事件
+  timeGroups.forEach((group, index) => {
+    const item = group.querySelector(".time-list-item");
+    // 自定义每张节点对应背景图
+    const bgImgList = [
+      'https://picsum.photos/1920/1080?1',
+      'https://picsum.photos/1920/1080?2',
+      'https://picsum.photos/1920/1080?3',
+      'https://picsum.photos/1920/1080?4',
+      'https://picsum.photos/1920/1080?5',
+      'https://picsum.photos/1920/1080?6',
+      'https://picsum.photos/1920/1080?7',
+    ];
+
+    group.addEventListener("mouseenter", () => {
+      // 右侧面板右滑
+      timelinePanel.style.transform = "translateX(85%)";
+      // 激活样式类
+      item.classList.add("timeline-item-active");
+      // 切换对应背景图
+      showBg(bgImgList[index]);
+    });
+
+    group.addEventListener("mouseleave", () => {
+      // 面板复位
+      timelinePanel.style.transform = "translateX(0)";
+      // 移除激活样式，彻底清空状态
+      item.classList.remove("timeline-item-active");
+      // 隐藏背景
+      hideBg();
+    });
   });
-
-  timelistitem[i].addEventListener("mouseleave", () => {
-    timeline.style.transform = "translateX(0)";
-    // 恢复样式
-    timelistitem[i].style.backgroundColor = "";
-    timelistitem[i].style.backdropFilter = "";
-    timelistitem[i].style.padding = "";
-    timelistitem[i].style.borderRadius = "";
-    timelistitem[i].style.color = "";
-
-    // 隐藏背景图
-    hideBg();
-  });
-}
-
-function showBg(url) {
-  bgLayer.style.backgroundImage = `url('${url}')`;
-  bgLayer.style.opacity = "1";
-}
-function hideBg() {
-  bgLayer.style.opacity = "0";
-}
 </script>
 {{ end }}
